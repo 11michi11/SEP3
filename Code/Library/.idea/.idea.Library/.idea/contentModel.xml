@@ -12,6 +12,7 @@
         <e p="Connections" t="Include">
           <e p="DatabaseProxy.cs" t="Include" />
           <e p="IDatabaseProxy.cs" t="Include" />
+          <e p="MockDatabaseProxy.cs" t="Include" />
         </e>
         <e p="Controllers.csproj" t="IncludeRecursive" />
         <e p="LibraryController.cs" t="Include" />
@@ -27,6 +28,8 @@
       <e p="Models" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Book.cs" t="Include" />
+        <e p="BookList.cs" t="Include" />
+        <e p="Category.cs" t="Include" />
         <e p="Models.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

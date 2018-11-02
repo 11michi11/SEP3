@@ -28,14 +28,16 @@ namespace Requests.Controllers
         [HttpGet("{searchTerm}")]
         public ActionResult<string> Get(string searchTerm)
         {
+            //return $"GetMethodWithSearchTerm {searchTerm}";
             return Search(searchTerm);
         }
         
         // GET api/values/title/author/year/isbn/category
-        [HttpGet("{title}/{author}/{year}/{isbn}")]
-        public ActionResult<string> Get(string title, string author, int year, string isbn)
+        [HttpGet("{title}/{author}/{year}/{isbn}/{category}")]
+        public ActionResult<string> Get(string title, string author, int year, string isbn, Category category)
         {
-            return AdvancedSearch(title, author,year, isbn);
+            return $"GetMethodWithAdvence {title},{author},{year},{isbn},{category}";
+            // return AdvancedSearch(title, author,year, isbn, category);
         }
 
         // POST api/values
@@ -61,9 +63,9 @@ namespace Requests.Controllers
            return _libraryController.Search(searchTerm);
         }
 
-        private string AdvancedSearch(string title, string author, int year, string isbn)
+        private string AdvancedSearch(string title, string author, int year, string isbn, Category category)
         { 
-           return _libraryController.AdvancedSearch(title, author,year, isbn);
+           return _libraryController.AdvancedSearch(title, author,year, isbn,category);
         }
     }
 }

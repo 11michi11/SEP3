@@ -14,7 +14,11 @@
     ],
     "frameworks": {
       "netstandard2.0": {
-        "projectReferences": {}
+        "projectReferences": {
+          "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj": {
+            "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj"
+          }
+        }
       }
     },
     "warningProperties": {
@@ -31,6 +35,10 @@
           "target": "Package",
           "version": "[2.0.3, )",
           "autoReferenced": true
+        },
+        "Newtonsoft.Json": {
+          "target": "Package",
+          "version": "[11.0.2, )"
         }
       },
       "imports": [
