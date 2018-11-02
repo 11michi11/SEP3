@@ -24,7 +24,6 @@ public class HibernateAdapter implements DBProxy {
         return ourSessionFactory.openSession();
     }
 
-    @Override
     public List<Book> getAllBooks() {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
@@ -39,13 +38,32 @@ public class HibernateAdapter implements DBProxy {
         return new LinkedList<>();
     }
 
-    @Override
-    public List<Book> search(String searchTerm) {
-        return null;
+    @SuppressWarnings("unchecked")
+    public List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category) {
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<Book> searchedBooks = session.createQuery("select new model.Book(isbn, title, author, year, category) from Book where " +
+                    "isbn like :isbn or " +
+                    "title like :title or " +
+                    "author like :author or " +
+                    "year = :year or " +
+                    "category like :category")
+                    .setParameter("isbn", "%" + isbn + "%")
+                    .setParameter("title", "%" + title + "%")
+                    .setParameter("author", "%" + author + "%")
+                    .setParameter("year", year)
+                    .setParameter("category", category)
+                    .list();
+            tx.commit();
+            return searchedBooks;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
     }
 
-    @Override
-    public List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category) {
-        return null;
-    }
+
+
 }
