@@ -26,7 +26,7 @@ namespace Controllers.Connections
             Console.WriteLine($"Request was sent: '{searchTerm}'");
             throw new System.NotImplementedException();
         }
-        public string AdvancedSearch(string title, string author, int year, string isbn, Category category)
+        public string AdvancedSearch(string title, string author, int? year, string isbn, Category? category)
         {
             throw new System.NotImplementedException();
         }

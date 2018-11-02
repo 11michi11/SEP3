@@ -5,6 +5,6 @@ namespace Controllers.Connections
     public interface IDatabaseProxy
     {
          string Search(string searchTerm);
-         string AdvancedSearch(string title, string author, int year, string isbn, Category category);
+         string AdvancedSearch(string title, string author, int? year, string isbn, Category? category);
     }
 }

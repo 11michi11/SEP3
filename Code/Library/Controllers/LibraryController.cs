@@ -26,7 +26,7 @@ namespace Controllers
         {
             return _proxy.Search(searchTerm);
         }
-        public string AdvancedSearch(string title, string author, int year, string isbn, Category category)
+        public string AdvancedSearch(string title, string author, int? year, string isbn, Category? category)
         {
             return _proxy.AdvancedSearch(title,author,year,isbn,category);
         }

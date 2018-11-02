@@ -15,16 +15,16 @@ namespace Requests.Controllers
         private readonly LibraryController _libraryController = LibraryController.GetInstance();
         
 
-        // GET api/values
-        [HttpGet]
-        public string Get()
-        {
-            throw new NotImplementedException();
-            // return Search(searchTerm);
-        }
+//        // GET api/books
+//        [HttpGet]
+//        public string Get()
+//        {
+//            throw new NotImplementedException();
+//            // return Search(searchTerm);
+//        }
 
 
-        // GET api/values/searchTerm
+        // GET api/books/searchTerm
         [HttpGet("{searchTerm}")]
         public ActionResult<string> Get(string searchTerm)
         {
@@ -32,12 +32,12 @@ namespace Requests.Controllers
             return Search(searchTerm);
         }
         
-        // GET api/values/title/author/year/isbn/category
-        [HttpGet("{title}/{author}/{year}/{isbn}/{category}")]
-        public ActionResult<string> Get(string title, string author, int year, string isbn, Category category)
+        // GET api/books/title/author/year/isbn/category
+        [HttpGet("{title?}/{author?}/{year?}/{isbn?}/{category?}")]
+        public ActionResult<string> Get(string title, string author, int? year, string isbn, Category? category)
         {
-            return $"GetMethodWithAdvence {title},{author},{year},{isbn},{category}";
-            // return AdvancedSearch(title, author,year, isbn, category);
+            //return $"GetMethodWithAdvanced {title},{author},{year},{isbn},{category}";
+            return AdvancedSearch(title, author,year, isbn, category);
         }
 
         // POST api/values
@@ -63,7 +63,7 @@ namespace Requests.Controllers
            return _libraryController.Search(searchTerm);
         }
 
-        private string AdvancedSearch(string title, string author, int year, string isbn, Category category)
+        private string AdvancedSearch(string title, string author, int? year, string isbn, Category? category)
         { 
            return _libraryController.AdvancedSearch(title, author,year, isbn,category);
         }
