@@ -11,3 +11,4 @@ C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Test
 C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.AssemblyInfo.cs
 C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.dll
 C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.pdb
+c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.csprojAssemblyReference.cache
