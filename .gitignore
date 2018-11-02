@@ -1,2 +1,10 @@
 
 Code/Library/\.idea/\.idea\.Library/\.idea/
+
+*.cache
+
+Code/Library/Tests/obj/Tests\.csproj\.nuget\.g\.props
+
+Code/Library/Models/obj/Models\.csproj\.nuget\.g\.props
+
+Code/Library/Models/obj/project\.packagespec\.json
