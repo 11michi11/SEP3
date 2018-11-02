@@ -12,22 +12,30 @@ namespace Requests.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private LibraryController _libraryController = LibraryController.GetInstance();
+        private readonly LibraryController _libraryController = LibraryController.GetInstance();
         
 
         // GET api/values
         [HttpGet]
         public string Get()
         {
-            return Search(searchTerm);
+            throw new NotImplementedException();
+            // return Search(searchTerm);
         }
 
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        // GET api/values/searchTerm
+        [HttpGet("{searchTerm}")]
+        public ActionResult<string> Get(string searchTerm)
         {
-            return "value";
+            return Search(searchTerm);
+        }
+        
+        // GET api/values/title/author/year/isbn/category
+        [HttpGet("{title}/{author}/{year}/{isbn}")]
+        public ActionResult<string> Get(string title, string author, int year, string isbn)
+        {
+            return AdvancedSearch(title, author,year, isbn);
         }
 
         // POST api/values
@@ -53,9 +61,9 @@ namespace Requests.Controllers
            return _libraryController.Search(searchTerm);
         }
 
-        private string AdvanceSearch(string searchTerm)
-        {
-           return _libraryController.AdvanceSearch(searchTerm);
+        private string AdvancedSearch(string title, string author, int year, string isbn)
+        { 
+           return _libraryController.AdvancedSearch(title, author,year, isbn);
         }
     }
 }

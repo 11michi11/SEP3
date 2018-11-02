@@ -2,3 +2,8 @@ c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\obj\Debug\netstandard2
 c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\obj\Debug\netstandard2.0\Controllers.csproj.CoreCompileInputs.cache
 c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\obj\Debug\netstandard2.0\Controllers.AssemblyInfoInputs.cache
 c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\obj\Debug\netstandard2.0\Controllers.AssemblyInfo.cs
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\bin\Debug\netstandard2.0\Controllers.deps.json
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\bin\Debug\netstandard2.0\Controllers.dll
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\bin\Debug\netstandard2.0\Controllers.pdb
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\obj\Debug\netstandard2.0\Controllers.dll
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\obj\Debug\netstandard2.0\Controllers.pdb
