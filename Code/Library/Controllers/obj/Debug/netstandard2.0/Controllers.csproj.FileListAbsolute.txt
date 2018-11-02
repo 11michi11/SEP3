@@ -1,0 +1,4 @@
+c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\obj\Debug\netstandard2.0\Controllers.csprojAssemblyReference.cache
+c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\obj\Debug\netstandard2.0\Controllers.csproj.CoreCompileInputs.cache
+c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\obj\Debug\netstandard2.0\Controllers.AssemblyInfoInputs.cache
+c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Controllers\obj\Debug\netstandard2.0\Controllers.AssemblyInfo.cs
