@@ -32,11 +32,27 @@ namespace Requests.Controllers
             return Search(searchTerm);
         }
         
-        // GET api/books/title/author/year/isbn/category
-        [HttpGet("{title?}/{author?}/{year?}/{isbn?}/{category?}")]
-        public ActionResult<string> Get(string title, string author, int? year, string isbn, Category? category)
-        {
-            //return $"GetMethodWithAdvanced {title},{author},{year},{isbn},{category}";
+//        // GET api/books/title/author/year/isbn/category
+//        // or GET api/books/title/author/ / /category
+//        [HttpGet("{title?}/{author?}/{year:int?}/{isbn?}/{category?}")]
+//        public ActionResult<string> Get(string title, string author, int? year, string isbn, Category? category)
+//        {
+//            //return $"GetMethodWithAdvanced {title},{author},{year},{isbn},{category}";
+//            return AdvancedSearch(title, author,year, isbn, category);
+//        } 
+        
+        // // GET api/books/title/author/year/isbn/category
+        // // or GET api/books/title/author/ / /category
+        // [HttpGet()]
+        // [Route("api/[controller]/?title={title}&author={author}&year={year}&isbn={isbn}&category={category}")]
+        // public ActionResult<string> Get(string title, string author, int? year, string isbn, Category? category)
+        // {
+        //     //return $"GetMethodWithAdvanced {title},{author},{year},{isbn},{category}";
+        //     return AdvancedSearch(title, author,year, isbn, category);
+        // }
+
+        [HttpGet()]
+        public ActionResult<string> AdvancedSearchRequest(string title, string author, int? year, string isbn, Category? category) {
             return AdvancedSearch(title, author,year, isbn, category);
         }
 
