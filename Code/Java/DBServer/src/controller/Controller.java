@@ -71,4 +71,9 @@ public class Controller implements DBProxy {
 
         return db.advancedSearch(isbn, title, author, year, category);
     }
+
+    public String handleRequest(String request) {
+
+        return "";
+    }
 }
