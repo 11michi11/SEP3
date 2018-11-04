@@ -15,3 +15,5 @@ C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\R
 c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Models.dll
 c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Models.pdb
 c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.csproj.CopyComplete
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Controllers.dll
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Controllers.pdb

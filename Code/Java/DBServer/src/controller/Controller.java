@@ -1,5 +1,6 @@
 package controller;
 
+import communication.DBServer;
 import communication.Request;
 import communication.Response;
 import model.Book;
@@ -10,26 +11,19 @@ import java.util.Map;
 public class Controller implements DBProxy {
 
     private DBProxy db;
+    private DBServer server;
 
     private Controller(DBProxy db) {
         this.db = db;
+        this.server = new DBServer(this);
+        server.start();
     }
 
 
     public static void main(String[] args) {
         DBProxy db = new HibernateAdapter();
         Controller controller = new Controller(db);
-        controller.getAllBooks().forEach(System.out::println);
-        System.out.println("-----------------------");
-        controller.advancedSearch("^&*(", "Lord", "&*()", 1954, Book.Category.Fantasy).forEach(System.out::println);
-        System.out.println("-----------------------");
-        controller.search("Fantasy").forEach(System.out::println);
-        System.out.println("-----------------------");
-        controller.search("Cay").forEach(System.out::println);
-        System.out.println("-----------------------");
-        controller.search("Java").forEach(System.out::println);
-        System.out.println("-----------------------");
-        controller.search("2014").forEach(System.out::println);
+        controller.search("Tolkien").forEach(System.out::println);
     }
 
     public List<Book> getAllBooks() {
@@ -106,8 +100,8 @@ public class Controller implements DBProxy {
         String isbn = (String) arguments.get("isbn");
         String title = (String) arguments.get("title");
         String author = (String) arguments.get("author");
-        int year = (int) arguments.get("year");
-        Book.Category category = (Book.Category) arguments.get("category");
+        int year = ((Double) arguments.get("year")).intValue();
+        Book.Category category = Book.Category.valueOf((String)arguments.get("category"));
 
         List<Book> books = advancedSearch(isbn, title, author, year, category);
 
