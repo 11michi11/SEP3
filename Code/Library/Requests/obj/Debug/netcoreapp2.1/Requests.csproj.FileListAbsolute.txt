@@ -17,3 +17,22 @@ c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\M
 c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.csproj.CopyComplete
 C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Controllers.dll
 C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Controllers.pdb
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Requests.deps.json
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Requests.runtimeconfig.json
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Requests.runtimeconfig.dev.json
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Requests.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Requests.pdb
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Controllers.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Models.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Models.pdb
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\bin\Debug\netcoreapp2.1\Controllers.pdb
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.csprojAssemblyReference.cache
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.csproj.CoreCompileInputs.cache
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.RazorAssemblyInfo.cache
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.RazorAssemblyInfo.cs
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.AssemblyInfoInputs.cache
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.AssemblyInfo.cs
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.RazorTargetAssemblyInfo.cache
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.csproj.CopyComplete
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Requests\obj\Debug\netcoreapp2.1\Requests.pdb

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Controllers.Connections;
 using Models;
 
@@ -22,11 +23,11 @@ namespace Controllers
             return _instance;
         }
 
-        public string Search(string searchTerm)
+        public List<Book> Search(string searchTerm)
         {
             return _proxy.Search(searchTerm);
         }
-        public string AdvancedSearch(string title, string author, int? year, string isbn, Category? category)
+        public List<Book> AdvancedSearch(string title, string author, int? year, string isbn, Category? category)
         {
             return _proxy.AdvancedSearch(title,author,year,isbn,category);
         }
