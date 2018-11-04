@@ -5514,23 +5514,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\misii\\.nuget\\packages\\": {},
+    "C:\\Users\\Michi\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Tests\\Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Tests\\Tests.csproj",
       "projectName": "Tests",
-      "projectPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Tests\\Tests.csproj",
-      "packagesPath": "C:\\Users\\misii\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Tests\\obj\\",
+      "projectPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Tests\\Tests.csproj",
+      "packagesPath": "C:\\Users\\Michi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\misii\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Michi\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -5541,8 +5541,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj": {
-              "projectPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj"
+            "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj": {
+              "projectPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj"
             }
           }
         }
