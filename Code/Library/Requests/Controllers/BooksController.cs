@@ -12,22 +12,48 @@ namespace Requests.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private LibraryController _libraryController = LibraryController.GetInstance();
+        private readonly LibraryController _libraryController = LibraryController.GetInstance();
         
 
-        // GET api/values
-        [HttpGet]
-        public string Get()
+//        // GET api/books
+//        [HttpGet]
+//        public string Get()
+//        {
+//            throw new NotImplementedException();
+//            // return Search(searchTerm);
+//        }
+
+
+        // GET api/books/searchTerm
+        [HttpGet("{searchTerm}")]
+        public ActionResult<string> Get(string searchTerm)
         {
+            //return $"GetMethodWithSearchTerm {searchTerm}";
             return Search(searchTerm);
         }
+        
+//        // GET api/books/title/author/year/isbn/category
+//        // or GET api/books/title/author/ / /category
+//        [HttpGet("{title?}/{author?}/{year:int?}/{isbn?}/{category?}")]
+//        public ActionResult<string> Get(string title, string author, int? year, string isbn, Category? category)
+//        {
+//            //return $"GetMethodWithAdvanced {title},{author},{year},{isbn},{category}";
+//            return AdvancedSearch(title, author,year, isbn, category);
+//        } 
+        
+        // // GET api/books/title/author/year/isbn/category
+        // // or GET api/books/title/author/ / /category
+        // [HttpGet()]
+        // [Route("api/[controller]/?title={title}&author={author}&year={year}&isbn={isbn}&category={category}")]
+        // public ActionResult<string> Get(string title, string author, int? year, string isbn, Category? category)
+        // {
+        //     //return $"GetMethodWithAdvanced {title},{author},{year},{isbn},{category}";
+        //     return AdvancedSearch(title, author,year, isbn, category);
+        // }
 
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
+        [HttpGet()]
+        public ActionResult<string> AdvancedSearchRequest(string title, string author, int? year, string isbn, Category? category) {
+            return AdvancedSearch(title, author,year, isbn, category);
         }
 
         // POST api/values
@@ -53,9 +79,9 @@ namespace Requests.Controllers
            return _libraryController.Search(searchTerm);
         }
 
-        private string AdvanceSearch(string searchTerm)
-        {
-           return _libraryController.AdvanceSearch(searchTerm);
+        private string AdvancedSearch(string title, string author, int? year, string isbn, Category? category)
+        { 
+           return _libraryController.AdvancedSearch(title, author,year, isbn,category);
         }
     }
 }

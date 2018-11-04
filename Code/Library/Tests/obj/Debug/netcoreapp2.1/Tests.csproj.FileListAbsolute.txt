@@ -12,3 +12,27 @@ C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Test
 C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.dll
 C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.pdb
 c:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.csprojAssemblyReference.cache
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Controllers.dll
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Models.dll
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Controllers.pdb
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Models.pdb
+C:\Users\Acer Matej\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.csproj.CopyComplete
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.csprojAssemblyReference.cache
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.csproj.CoreCompileInputs.cache
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.AssemblyInfoInputs.cache
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.AssemblyInfo.cs
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.pdb
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Tests.deps.json
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Tests.runtimeconfig.json
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Tests.runtimeconfig.dev.json
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Tests.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Tests.pdb
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Controllers.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Models.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Controllers.pdb
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Models.pdb
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.csproj.CopyComplete
