@@ -1,29 +1,37 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using Models.obj;
+using System.Runtime.Serialization;
+
 
 namespace Models
 {
+    [DataContract]
     public class Book
     {
-        private string title {get; set;}
-        private string author {get; set;}
-        private int year {get; set;}
-        private string isbn {get; set;}
-        private Category category {get; set;}
+        [DataMember]
+        public string Title {get; set;}
+        [DataMember]
+        public string Author {get; set;}
+        [DataMember]
+        public int Year {get; set;}
+        [DataMember]
+        public string Isbn {get; set;}
+        [DataMember]
+        public Category Category {get; set;}
 
         public Book(string title, string author, int year, string isbn, Category category)
         {
-            this.title = title;
-            this.author = author;
-            this.year = year;
-            this.isbn = isbn;
-            this.category = category;
+            Title = title;
+            Author = author;
+            Year = year;
+            Isbn = isbn;
+            Category = category;
         }
-
-        public string toString()
+        
+        public override string ToString()
         {
-            return "title: " + title + "author: " + author + "year: " + year + "ISBN: " + isbn + "category: "+ category;
+            return "title: " + Title + " author: " + Author;
+            //+ "author: " + Author + "year: " + Year + "ISBN: " + Isbn + "category: "+ Category
         }
     }
 }

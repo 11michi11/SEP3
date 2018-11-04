@@ -1,0 +1,56 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\Requests.csproj",
+    "projectName": "Requests",
+    "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\Requests.csproj",
+    "outputPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.1"
+    ],
+    "frameworks": {
+      "netcoreapp2.1": {
+        "projectReferences": {
+          "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj": {
+            "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj"
+          },
+          "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj": {
+            "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.1": {
+      "dependencies": {
+        "Microsoft.AspNetCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.1.1, )",
+          "autoReferenced": true
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.1.0, )",
+          "autoReferenced": true
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

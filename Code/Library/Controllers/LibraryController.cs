@@ -1,5 +1,6 @@
 ﻿using System;
 using Controllers.Connections;
+using Models;
 
 namespace Controllers
 {
@@ -10,7 +11,9 @@ namespace Controllers
 
         private LibraryController ()
         {
-            _proxy = new DatabaseProxy();
+            // Mock class used temporarilly
+            // _proxy = new DatabaseProxy();
+            _proxy = new MockDatabaseProxy();
         }
 
         public static LibraryController GetInstance() {
@@ -23,9 +26,9 @@ namespace Controllers
         {
             return _proxy.Search(searchTerm);
         }
-        public string AdvancedSearch(string title, string author, int year, string isbn)
+        public string AdvancedSearch(string title, string author, int? year, string isbn, Category? category)
         {
-            return _proxy.AdvancedSearch(title,author,year,isbn);
+            return _proxy.AdvancedSearch(title,author,year,isbn,category);
         }
     }
 }

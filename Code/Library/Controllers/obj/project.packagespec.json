@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
-    "projectName": "Models",
-    "projectPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
-    "outputPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Models\\obj\\",
+    "projectUniqueName": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj",
+    "projectName": "Controllers",
+    "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj",
+    "outputPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -14,7 +14,11 @@
     ],
     "frameworks": {
       "netstandard2.0": {
-        "projectReferences": {}
+        "projectReferences": {
+          "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj": {
+            "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj"
+          }
+        }
       }
     },
     "warningProperties": {
@@ -31,6 +35,10 @@
           "target": "Package",
           "version": "[2.0.3, )",
           "autoReferenced": true
+        },
+        "Newtonsoft.Json": {
+          "target": "Package",
+          "version": "[11.0.2, )"
         }
       },
       "imports": [
