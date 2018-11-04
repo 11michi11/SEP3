@@ -63,16 +63,17 @@ public class DBServer {
         public void run() {
             String clientIP;
             String response, request;
-            try (BufferedWriter out = new BufferedWriter(new OutputStreamWriter(client.getOutputStream(), StandardCharsets.UTF_8));
-                 BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream(), StandardCharsets.UTF_8))) {
+            try (BufferedWriter out = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+                 BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()))) {
 
                 clientIP = client.getInetAddress().getHostAddress();
-
+                in.ready();
                 request = in.readLine();
                 System.out.println("Request from " + clientIP + ": " + request);
 
                 response = controller.handleRequest(request);
-                out.write(response);
+                out.write(response + "\n");
+                out.flush();
                 System.out.println("Response to " + clientIP +": " + response);
 
             } catch (IOException e) {
