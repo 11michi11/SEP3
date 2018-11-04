@@ -1,6 +1,7 @@
 using System;
 using Controllers.Connections;
 using Xunit;
+using Xunit.Sdk;
 
 namespace Tests
 {
@@ -11,9 +12,10 @@ namespace Tests
         {
             var proxy = new MockDatabaseProxy();
 
-            string searchTerm = proxy.Search("LoR");
+            var searchTerm = proxy.Search("LoR");
             var book = "[\r\n  {\r\n    \"Title\": \"LoR\",\r\n    \"Author\" ";
-            Assert.Equal(book, searchTerm);
+            
+            throw new XunitException("Search returns List");
         }
     }
 }

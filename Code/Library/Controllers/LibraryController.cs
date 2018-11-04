@@ -17,10 +17,9 @@ namespace Controllers
             _proxy = new MockDatabaseProxy();
         }
 
-        public static LibraryController GetInstance() {
-            if (_instance == null)
-                _instance = new LibraryController();
-            return _instance;
+        public static LibraryController GetInstance()
+        {
+            return _instance ?? (_instance = new LibraryController());
         }
 
         public List<Book> Search(string searchTerm)
