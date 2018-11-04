@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\Requests.csproj",
+  "TargetFramework": "netcoreapp2.1",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "MVC-2.1",
+    "LanguageVersion": "2.1",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-2.1"
+      }
+    ]
+  }
+}
