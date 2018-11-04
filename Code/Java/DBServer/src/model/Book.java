@@ -1,5 +1,7 @@
 package model;
 
+import com.google.gson.Gson;
+
 import javax.persistence.*;
 
 @Entity
@@ -75,13 +77,8 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "isbn='" + isbn + '\'' +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", year='" + year + '\'' +
-                ", category=" + category +
-                '}';
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 
     @Override

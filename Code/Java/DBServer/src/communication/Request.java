@@ -1,14 +1,13 @@
 package communication;
 
 import com.google.gson.Gson;
-import model.Book;
+import com.google.gson.JsonSyntaxException;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Request {
 
-    public enum Operation{Search, AdvancedSearch}
+    public enum Operation {Search, AdvancedSearch}
 
     private Operation operation;
     private Map<String, Object> args;
@@ -18,32 +17,31 @@ public class Request {
         this.args = args;
     }
 
-    public static void main(String[] args) {
-        Map<String, Object> arguments = new HashMap<>();
-        arguments.put("isbn", "isbn");
-        arguments.put("title", "Lord of the Rings");
-        arguments.put("author", "Tolkien");
-        arguments.put("year", 2000);
-        arguments.put("category", Book.Category.Fantasy);
-        Request request = new Request(Operation.AdvancedSearch, arguments);
-        Gson gson = new Gson();
-        String json = request.toJson();
-        Request request1 = gson.fromJson(json, Request.class);
-        System.out.println(json);
+    public Operation getOperation() {
+        return operation;
     }
 
-    private Map<String, Object> getArguments() {
+    public Map<String, Object> getArguments() {
         return args;
     }
 
-    public String toJson(){
+    public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
     }
 
-    public Request fromJson(String json){
-        Gson gson = new Gson();
-        return gson.fromJson(json, Request.class);
+    public static Request fromJson(String json) throws RequestJsonFormatException {
+        try {
+            Gson gson = new Gson();
+            return gson.fromJson(json, Request.class);
+        }catch(JsonSyntaxException e){
+            throw new RequestJsonFormatException("Wrong format of Request JSON");
+        }
     }
 
+    public static class RequestJsonFormatException extends Exception {
+        RequestJsonFormatException(String msg) {
+            super(msg);
+        }
+    }
 }
