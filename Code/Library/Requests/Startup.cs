@@ -36,11 +36,13 @@ namespace Requests {
 
             // commented in order to avoid security issues with "https"
             // app.UseHttpsRedirection();
+
+            // route configuration for advanced search
             app.UseMvc(routes => routes.MapRoute
                 (
                 "AdvanceSearchRequest", 
                 "api/{controller}/{key}/{group}", 
-                new { controller = "books", action = "AdvanceSearchRequest" }, 
+                new { action = "AdvanceSearchRequest" }, 
                 new { key = @"\d+", group = @"\d+" }
                 ));
         }
