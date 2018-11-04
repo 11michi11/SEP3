@@ -8,6 +8,6 @@ namespace Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Category
     {
-        ScienceFiction, Drama, Action, Romance, Fantasy        
+        Fantasy, ScienceFiction, Criminal, Science, Drama, Children, Horror, Poetry        
     }
 }

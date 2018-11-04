@@ -176,23 +176,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Acer Matej\\.nuget\\packages\\": {},
+    "C:\\Users\\misii\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
+      "projectUniqueName": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
-      "packagesPath": "C:\\Users\\Acer Matej\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\obj\\",
+      "projectPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
+      "packagesPath": "C:\\Users\\misii\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Acer Matej\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\misii\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"

@@ -11,14 +11,19 @@ namespace Models
             books = new List<Book>();
         }
 
-        public void addBook(Book book)
+        public void AddBook(Book book)
         {
             books.Add(book);
         }
 
-        public void deleteBook(Book book)
+        public void DeleteBook(Book book)
         {
             books.Remove(book);
+        }
+
+        public int Size()
+        {
+            return books.Count;
         }
     }
 }
