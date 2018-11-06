@@ -11,6 +11,9 @@ matrix:
     - os: linux
       jdk: oraclejdk8
 
+
+before_script: cd Code/Java/DBServer/pom.xml
+
 script:
   - mvn -q -B -f /Code/Java/DBServer/pom.xml clean verify
   # - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
