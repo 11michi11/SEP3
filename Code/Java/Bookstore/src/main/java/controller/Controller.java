@@ -3,30 +3,33 @@ package controller;
 import com.google.gson.Gson;
 import controller.connection.DatabaseConnection;
 import controller.connection.DatabaseProxy;
+import controller.connection.MockDatabase;
 import model.Book;
+
+import java.util.List;
 
 public class Controller {
 
-    private Controller instance;
+    private static Controller instance;
     private DatabaseProxy db;
     private Gson gson = new Gson();
 
-    private Controller() {
-        this.db = new DatabaseConnection();
+    Controller() {
+        this.db = new MockDatabase();
     }
 
-    public Controller getInstance() {
+    public static Controller getInstance() {
         if (instance == null)
             instance = new Controller();
         return instance;
     }
 
-    public String search(String searchTerm) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException {
-        return gson.toJson(db.search(searchTerm));
+    public List<Book> search(String searchTerm) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException {
+        return db.search(searchTerm);
     }
 
-    public String advancedSearch(String title, String author, int year, String isbn, Book.Category category) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException {
-        return gson.toJson(db.advancedSearch(title, author, year, isbn, category));
+    public List<Book> advancedSearch(String title, String author, int year, String isbn, Book.Category category) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException {
+        return db.advancedSearch(title, author, year, isbn, category);
     }
 
     public static void main(String[] args) {

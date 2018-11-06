@@ -10,7 +10,7 @@ public class Book {
 	private int year;
 	private Category category;
 
-	public enum Category {Fantasy, SciFi, Criminal, Science, Drama, Children, Horror, Poetry}
+	public enum Category {Fantasy, SciFi, Criminal, Science, Drama, Children, Horror, Empty, Poetry}
 
 	public Book(String isbn, String title, String author, int year, Category category) {
 		this.isbn = isbn;
