@@ -107,7 +107,7 @@ public class DatabaseConnection implements DatabaseProxy {
     }
 
 
-    public class ServerOfflineException extends Exception {
+    public class ServerOfflineException extends RuntimeException {
         public ServerOfflineException(String msg) {
             super(msg);
         }
@@ -115,7 +115,7 @@ public class DatabaseConnection implements DatabaseProxy {
 
     private enum ResponseStatus {OK, Error}
 
-    public class SearchException extends Exception {
+    public class SearchException extends RuntimeException {
         public SearchException(String msg) {
             super(msg);
         }
