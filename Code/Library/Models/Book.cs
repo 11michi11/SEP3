@@ -30,8 +30,8 @@ namespace Models
         
         public override string ToString()
         {
-            return "title: " + Title + " author: " + Author;
-            //+ "author: " + Author + "year: " + Year + "ISBN: " + Isbn + "category: "+ Category
+            return "title: " + Title + " author: " + Author + " year: " + Year + " ISBN: " + Isbn + " category: "+ Category;
+            
         }
 
         public override bool Equals(object obj)

@@ -55,3 +55,5 @@ C:\Users\Michi\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Models.dl
 C:\Users\Michi\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Controllers.pdb
 C:\Users\Michi\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Models.pdb
 C:\Users\Michi\Desktop\SEP3\Code\Library\Tests\obj\Debug\netcoreapp2.1\Tests.csproj.CopyComplete
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Mvc.Core.dll
+C:\Users\misii\Desktop\SEP3\Code\Library\Tests\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Mvc.Core.xml

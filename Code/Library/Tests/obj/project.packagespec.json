@@ -30,10 +30,6 @@
   "frameworks": {
     "netcoreapp2.1": {
       "dependencies": {
-        "Microsoft.NET.Test.Sdk": {
-          "target": "Package",
-          "version": "[15.8.0, )"
-        },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
           "target": "Package",
