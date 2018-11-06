@@ -6,6 +6,8 @@
 #     app: bookstore
 #     strategy: git
 
+sudo: false
+
 matrix:
   include:
     - os: linux
@@ -13,7 +15,8 @@ matrix:
 
 
 before_script: cd Code/Java/DBServer/pom.xml
+before_intall: cd Code/Java/DBServer/pom.xml
 
 script:
-  - mvn -q -B -f /Code/Java/DBServer/pom.xml clean verify
+  - mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
   # - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
