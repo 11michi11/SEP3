@@ -1,4 +1,4 @@
-language: java
+ language: java
 # deploy:
 #   provider: heroku
 #   api_key:
@@ -6,7 +6,6 @@ language: java
 #     app: bookstore
 #     strategy: git
 
-# script:
-#   - mvn -q -B -f first/pom.xml clean verify
-#   - mvn -q -B -f second/pom.xml clean verify
-#   - mvn -q -B -f third/pom.xml clean verify
+script:
+  - mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
+  - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
