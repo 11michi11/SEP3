@@ -6,6 +6,11 @@
 #     app: bookstore
 #     strategy: git
 
+matrix:
+  include:
+    - os: linux
+      jdk: oraclejdk8
+
 script:
-  - mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
-  - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
+  - mvn -q -B -f /Code/Java/DBServer/pom.xml clean verify
+  # - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
