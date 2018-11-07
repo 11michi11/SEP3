@@ -15,6 +15,9 @@ matrix:
           - $HOME/.m2
     - language: csahrp
       solution: Code/Library/Library.sln
+      install: 
+        - cd Code/Library
+        - nuget restore Library.sln
 
 
 # deploy:
