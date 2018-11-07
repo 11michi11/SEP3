@@ -9,11 +9,11 @@ matrix:
         - mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
         - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
         - mvn -q -B -f Code/Java/BookService/pom.xml clean verify
-
       cache:
         directories:
           - $HOME/.m2
-    - language: csahrp
+
+    - language: csharp
       solution: Code/Library/Library.sln
       install: 
         - cd Code/Library
