@@ -15,7 +15,7 @@ public class Controller {
     private Gson gson = new Gson();
 
     Controller() {
-        this.db = new MockDatabase();
+        this.db = new DatabaseConnection();
     }
 
     public static Controller getInstance() {
