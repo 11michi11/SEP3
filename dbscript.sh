@@ -22,6 +22,7 @@ do
 done
 
 updateDB() {
+    echo update
     git pull
     pkill - 9 java
     cd Code / Java / DBServer / target
