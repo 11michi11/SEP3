@@ -1,0 +1,33 @@
+language: java
+sudo: false
+os: linux
+jdk: oraclejdk8
+install: 
+script: 
+  - mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
+  - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
+  - mvn -q -B -f Code/Java/BookService/pom.xml clean verify
+
+cache:
+  directories:
+    - $HOME/.m2
+
+    
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: kkvZkyDSS2SmFt15BL2M+EuCzPAb4IviMe1eKwHU6yNeiqDXlZ/zOWjVAs74UNVfXLQ0JgJB/31WQ/rrKFUSRWXS4vcQftUyv2ZgDVvzfLC0OtZ++bOATc+qqbpklaKTF4XfLZWKJbdmo0Angke9TpWF31e3yvdeeQYfPooWWHeQYXBN1DO6iIV/V1+uCyJDGWnqKVLazvm2whNwzlf2whATYCSCgcYXzpM8KwiaENOq7MTkEXTpE5v7W18D/KOF8z0eRAIdPE3qLB9vRcE9IOh/QAvx3htcg7YO4q+6RsaN1shJ3h05QgGgjOsZ8cHKr/mUvNHQWe74Az43+CVMo3Bjnlf4p5RKhe5p4f8CX3c8nP9yt9ZTK6hFHEFjZrx+LOd+hqEtq7wOznHvumbabTJFSEqznhDGKpoiIBaDSOmwyO+iBdridNcxkMuhz+tYWvoB3SpacHfOQba0+FpKfOQmNyoSnL9Jfx3UPBoeTGFsf+v/0+POSOSCB630N2laxhUBtahv1vzZkODKR94ZGpTzEwQcSz/8C91H9X5+oQRMvXnMGVgoqPN9vv33RYH0Vgoe0rwB6exsfD4ELQ9RGSIdaA6zokTEgKupskIqzVgoIQpNHASZT492MntJIs8U2Vyh39Rv7Dl65c7j4GLXm6VDCWMovl5fGTcPB3XuzFg=
+#     app: bookstore
+#     strategy: git
+
+
+
+
+  # jobs:
+  # include:
+  #   - stage: test
+  #     script: ./test 1
+  #   - # stage name not required, will continue to use `test`
+  #     script: ./test 2
+  #   - stage: deploy
+  #     script: ./deploy
