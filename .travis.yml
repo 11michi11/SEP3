@@ -17,9 +17,9 @@ matrix:
       solution: Code/Library/Library.sln
       mono: none
       dotnet: 2.1
-      install: 
-        - cd Code/Library
-        - nuget restore Library.sln
+      # install: 
+      #   - cd Code/Library
+      #   - nuget restore Library.sln
       script:
         - cd Code/Library
         - dotnet restore
