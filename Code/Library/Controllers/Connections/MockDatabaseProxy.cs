@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using Controllers.Resources;
 using Models;
 using Newtonsoft.Json;
 
@@ -11,6 +12,9 @@ namespace Controllers.Connections
     public class MockDatabaseProxy : IDatabaseProxy
     {
         List<Book> books = new List<Book>();
+        // only for manual testing file path to configuration.txt file, can be deleted
+        private readonly byte[] HOST = ConfigurationLoader.GetInstance().DatabaseHost;
+        private readonly int PORT = ConfigurationLoader.GetInstance().DatabasePort;
 
         public MockDatabaseProxy()
         {
