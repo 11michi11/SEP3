@@ -11542,11 +11542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\Requests.csproj",
+      "projectUniqueName": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\Requests.csproj",
       "projectName": "Requests",
-      "projectPath": "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\Requests.csproj",
+      "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\Requests.csproj",
       "packagesPath": "C:\\Users\\Acer Matej\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\obj\\",
+      "outputPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11563,11 +11563,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj": {
-              "projectPath": "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj"
+            "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj": {
+              "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj"
             },
-            "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj": {
-              "projectPath": "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj"
+            "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj"
             }
           }
         }
@@ -11588,6 +11588,7 @@
             "autoReferenced": true
           },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 using Newtonsoft.Json;
 
 namespace Controllers.Resources
@@ -13,7 +15,8 @@ namespace Controllers.Resources
         public int DatabasePort { get; set; }
         private ConfigurationLoader()
         {
-            LoadConfigurationData("../../configuration.txt");  
+            var path = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).ToString();
+            LoadConfigurationData(path+"/configuration.txt");  
         }
 
         public static ConfigurationLoader GetInstance()
@@ -21,25 +24,41 @@ namespace Controllers.Resources
             return _instance ?? (_instance = new ConfigurationLoader());
         }
 
-        private void LoadConfigurationData(string fileName)
+        public void LoadConfigurationData(string fileName)
         {
             try
             {
                 using (var stream = new StreamReader(fileName))
                 {
                     var json = stream.ReadToEnd();
-                    
+
                     var data = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
 
-                    DatabaseHost =  data["DatabaseHost"] as byte[];
-                    DatabasePort = (int)(long) data["DatabasePort"];
+                    DatabaseHost = FromStringToByteArray(data["DatabaseHost"].ToString());
+                    DatabasePort = (int) (long) data["DatabasePort"];
+
+                    stream.Close();
                 }
             }
-            catch (Exception e)
+            catch (FileNotFoundException e)
             {
-                Console.WriteLine("File could not be read");
+                Console.WriteLine("File was not found");
                 Console.WriteLine(e);
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("File could not be read");
+                Console.WriteLine(ex);            }
+        }
+
+        private byte[] FromStringToByteArray(string text)
+        {
+            byte[] byteArray = text.Trim('[', ']')
+                .Split(',')
+                .Select(x => byte.Parse(x))
+                .ToArray();
+
+            return byteArray;
         }
         
     }
