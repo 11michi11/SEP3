@@ -5,10 +5,14 @@ jdk: oraclejdk8
 install: 
 script: 
   - mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
+  - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
+  - mvn -q -B -f Code/Java/BookService/pom.xml clean verify
 
 cache:
   directories:
     - $HOME/.m2
+
+    
 # deploy:
 #   provider: heroku
 #   api_key:
@@ -17,13 +21,7 @@ cache:
 #     strategy: git
 
 
-# before_script: cd Code/Java/DBServer/pom.xml
-# before_intall: cd Code/Java/DBServer/pom.xml
 
-
-
-  # - ./mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
-  # - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
 
   # jobs:
   # include:
