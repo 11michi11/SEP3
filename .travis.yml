@@ -1,4 +1,12 @@
- language: java
+language: java
+sudo: false
+os: linux
+jdk: oraclejdk8
+install: 
+script: ./build.sh
+cache:
+  directories:
+    - $HOME/.m2
 # deploy:
 #   provider: heroku
 #   api_key:
@@ -6,25 +14,14 @@
 #     app: bookstore
 #     strategy: git
 
-sudo: false
-
-matrix:
-  include:
-    - os: linux
-      jdk: oraclejdk8
-
 
 # before_script: cd Code/Java/DBServer/pom.xml
 # before_intall: cd Code/Java/DBServer/pom.xml
 
-script: ./build.sh
+
 
   # - ./mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
   # - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
-
-cache:
-  directories:
-  - $HOME/.m2
 
   # jobs:
   # include:
