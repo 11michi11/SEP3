@@ -35,7 +35,7 @@ public class Controller {
     public static void main(String[] args) {
         Controller controller = new Controller();
         try {
-            System.out.println(controller.advancedSearch("Java", "", 2, "", Book.Category.Science));
+            System.out.println(controller.search("Tolkien"));
         } catch (DatabaseConnection.ServerOfflineException | DatabaseConnection.SearchException e) {
             e.printStackTrace();
         }

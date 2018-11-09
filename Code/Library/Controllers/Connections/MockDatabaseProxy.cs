@@ -20,15 +20,15 @@ namespace Controllers.Connections
             books.Add(new Book("LoR", "Tolkien", 2015, "ISBN3", Category.Fantasy));
         }
 
-        public string Search(string searchTerm)
+        public List<Book> Search(string searchTerm)
         {
             List<Book> tempBooks = books.FindAll(x => x.Title.Equals(searchTerm) || x.Author.Equals(searchTerm));
             string json = JsonConvert.SerializeObject(tempBooks, Formatting.Indented);
             Console.WriteLine(json);
-            return json;
+            return tempBooks;
         }
 
-        public string AdvancedSearch(string title, string author, int? year, string isbn, Category? category)
+        public List<Book> AdvancedSearch(string title, string author, int? year, string isbn, Category? category)
         {
             List<Book> tempBooks = books.FindAll(x =>
                     (title == null || x.Title.Equals(title)) && (author == null || x.Author.Equals(author)) &&
@@ -37,7 +37,7 @@ namespace Controllers.Connections
 
             string json = JsonConvert.SerializeObject(tempBooks, Formatting.Indented);
             Console.WriteLine(json);
-            return json;
+            return tempBooks;
         }
     }
 }
