@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap'
+import axios from 'axios'
 
 class Home extends Component {
 
@@ -13,7 +14,15 @@ class Home extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log(this.props.history.push('/books'));
+        console.log(this.state.searchData);
+        axios.get("http://localhost:8080/searchTerm="+this.state.searchData, {crossdomain: true})
+        .then(res => {
+
+        
+            console.log(res.body);
+        })
+
+
     }
 
     state = { 
