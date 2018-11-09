@@ -18,10 +18,10 @@ namespace Controllers.Connections
 
         public MockDatabaseProxy()
         {
-            books.Add(new Book("Got", "Miska", 2015, "ISBN1", Category.Drama));
-            books.Add(new Book("LoR", "Miska", 2015, "ISBN1", Category.Drama));
-            books.Add(new Book("Blabla", "Miska", 2015, "ISBN2", Category.ScienceFiction));
-            books.Add(new Book("LoR", "Tolkien", 2015, "ISBN3", Category.Fantasy));
+            books.Add(new Book("id1","Got", "Miska", 2015, "ISBN1", Category.Drama));
+            books.Add(new Book("id2","LoR", "Miska", 2015, "ISBN1", Category.Drama));
+            books.Add(new Book("id3","HarryPotter", "Miska", 2015, "ISBN2", Category.ScienceFiction));
+            books.Add(new Book("id4","LoR", "Tolkien", 2015, "ISBN3", Category.Fantasy));
         }
 
         public List<Book> Search(string searchTerm)
@@ -42,6 +42,22 @@ namespace Controllers.Connections
             string json = JsonConvert.SerializeObject(tempBooks, Formatting.Indented);
             Console.WriteLine(json);
             return tempBooks;
+        }
+
+        public void CreateBook(Book book)
+        {
+            books.Add(book);
+        }
+
+        public void DeleteBook(string id)
+        {
+            var book = books.Find(b => b.Id.Equals(id)); 
+            if(book!=null) {
+                books.Remove(book);
+            } else {
+                throw new System.NullReferenceException("Book not found.");
+            }         
+           
         }
     }
 }

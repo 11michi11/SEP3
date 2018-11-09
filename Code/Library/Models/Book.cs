@@ -9,6 +9,8 @@ namespace Models
     public class Book
     {
         [DataMember]
+        public string Id {get;set;}
+        [DataMember]
         public string Title {get; set;}
         [DataMember]
         public string Author {get; set;}
@@ -19,8 +21,9 @@ namespace Models
         [DataMember]
         public Category Category {get; set;}
 
-        public Book(string title, string author, int year, string isbn, Category category)
+        public Book(string id, string title, string author, int year, string isbn, Category category)
         {
+            Id = id;
             Title = title;
             Author = author;
             Year = year;
@@ -30,7 +33,7 @@ namespace Models
         
         public override string ToString()
         {
-            return "title: " + Title + " author: " + Author + " year: " + Year + " ISBN: " + Isbn + " category: "+ Category;
+            return "id: " + Id + "title: " + Title + " author: " + Author + " year: " + Year + " ISBN: " + Isbn + " category: "+ Category;
             
         }
 
@@ -38,7 +41,7 @@ namespace Models
         {
             if (!(obj is Book)) return false;
             var other = (Book) obj;
-            return Isbn.Equals(other.Isbn) && Title.Equals(other.Title) && Author.Equals(other.Author) &&
+            return Id.Equals(other.Id) && Isbn.Equals(other.Isbn) && Title.Equals(other.Title) && Author.Equals(other.Author) &&
                    Year.Equals(other.Year) && Category.Equals(other.Category);
         }
 
