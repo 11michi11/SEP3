@@ -82,6 +82,16 @@ namespace Controllers.Connections
             return response;
         }
 
+        public void CreateBook(Book book)
+        {
+            throw new NotImplementedException();
+            //MISIEK ZROB TO
+        }
+
+        public void DeleteBook(string id)
+        {
+            throw new NotImplementedException();
+        }
 
         protected enum ResponseStatus
         {
