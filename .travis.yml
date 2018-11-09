@@ -1,18 +1,30 @@
-language: java
 sudo: false
 os: linux
-jdk: oraclejdk8
-install: 
-script: 
-  - mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
-  - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
-  - mvn -q -B -f Code/Java/BookService/pom.xml clean verify
+matrix: 
+  include: 
+    - language: java
+      jdk: oraclejdk8
+      install: 
+      script: 
+        - mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
+        - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
+        - mvn -q -B -f Code/Java/BookService/pom.xml clean verify
+      cache:
+        directories:
+          - $HOME/.m2
 
-cache:
-  directories:
-    - $HOME/.m2
+    - language: csharp
+      solution: Code/Library/Library.sln
+      mono: none
+      dotnet: 2.1
+      # install: 
+      #   - cd Code/Library
+      #   - nuget restore Library.sln
+      script:
+        - cd Code/Library
+        - dotnet restore
 
-    
+
 # deploy:
 #   provider: heroku
 #   api_key:
