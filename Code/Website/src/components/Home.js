@@ -15,11 +15,11 @@ class Home extends Component {
     handleSubmit = e => {
         e.preventDefault();
         console.log(this.state.searchData);
-        axios.get("http://localhost:8080/searchTerm="+this.state.searchData, {crossdomain: true})
+        axios.get("http://localhost:8080/search?searchTerm="+this.state.searchData, {crossdomain: true})
         .then(res => {
 
         
-            console.log(res.body);
+            console.log(res.data);
         })
 
 
