@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Tests\\Tests.csproj",
+    "projectUniqueName": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Tests\\Tests.csproj",
     "projectName": "Tests",
-    "projectPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Tests\\Tests.csproj",
-    "outputPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Tests\\obj\\",
+    "projectPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Tests\\Tests.csproj",
+    "outputPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Tests\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -15,8 +15,8 @@
     "frameworks": {
       "netcoreapp2.1": {
         "projectReferences": {
-          "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj": {
-            "projectPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj"
+          "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj": {
+            "projectPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj"
           }
         }
       }
@@ -30,15 +30,15 @@
   "frameworks": {
     "netcoreapp2.1": {
       "dependencies": {
-        "Microsoft.NET.Test.Sdk": {
-          "target": "Package",
-          "version": "[15.8.0, )"
-        },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
           "target": "Package",
           "version": "[2.1.0, )",
           "autoReferenced": true
+        },
+        "Newtonsoft.json": {
+          "target": "Package",
+          "version": "[11.0.2, )"
         },
         "xunit": {
           "target": "Package",

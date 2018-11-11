@@ -1,4 +1,30 @@
- language: java
+sudo: false
+os: linux
+matrix: 
+  include: 
+    - language: java
+      jdk: oraclejdk8
+      install: 
+      script: 
+        - mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
+        - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
+        - mvn -q -B -f Code/Java/BookService/pom.xml clean verify
+      cache:
+        directories:
+          - $HOME/.m2
+
+    - language: csharp
+      solution: Code/Library/Library.sln
+      mono: none
+      dotnet: 2.1
+      # install: 
+      #   - cd Code/Library
+      #   - nuget restore Library.sln
+      script:
+        - cd Code/Library
+        - dotnet restore
+
+
 # deploy:
 #   provider: heroku
 #   api_key:
@@ -6,17 +32,14 @@
 #     app: bookstore
 #     strategy: git
 
-sudo: false
-
-matrix:
-  include:
-    - os: linux
-      jdk: oraclejdk8
 
 
-before_script: cd Code/Java/DBServer/pom.xml
-before_intall: cd Code/Java/DBServer/pom.xml
 
-script:
-  - mvn -q -B -f Code/Java/DBServer/pom.xml clean verify
-  # - mvn -q -B -f Code/Java/Bookstore/pom.xml clean verify
+  # jobs:
+  # include:
+  #   - stage: test
+  #     script: ./test 1
+  #   - # stage name not required, will continue to use `test`
+  #     script: ./test 2
+  #   - stage: deploy
+  #     script: ./deploy
