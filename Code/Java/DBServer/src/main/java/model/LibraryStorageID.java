@@ -1,6 +1,5 @@
 package model;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,36 +10,36 @@ public class LibraryStorageID implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "libraryid")
-    private Library libraryid;
+    private Library library;
 
     @ManyToOne
     @JoinColumn(name = "isbn")
-    private Book isbn;
+    private Book book;
 
     public LibraryStorageID() {
     }
 
-    public Library getLibraryid() {
-        return libraryid;
+    public Library getLibrary() {
+        return library;
     }
 
-    public void setLibraryid(Library libraryid) {
-        this.libraryid = libraryid;
+    public void setLibrary(Library libraryid) {
+        this.library = libraryid;
     }
 
-    public Book getIsbn() {
-        return isbn;
+    public Book getBook() {
+        return book;
     }
 
-    public void setIsbn(Book isbn) {
-        this.isbn = isbn;
+    public void setBook(Book isbn) {
+        this.book = isbn;
     }
 
     @Override
     public String toString() {
         return "LibraryStorageID{" +
-                "libraryid=" + libraryid +
-                ", isbn=" + isbn +
+                "libraryid=" + library +
+                ", isbn=" + book +
                 '}';
     }
 
@@ -51,14 +50,14 @@ public class LibraryStorageID implements Serializable {
 
         LibraryStorageID that = (LibraryStorageID) o;
 
-        if (libraryid != null ? !libraryid.equals(that.libraryid) : that.libraryid != null) return false;
-        return isbn != null ? isbn.equals(that.isbn) : that.isbn == null;
+        if (library != null ? !library.equals(that.library) : that.library != null) return false;
+        return book != null ? book.equals(that.book) : that.book == null;
     }
 
     @Override
     public int hashCode() {
-        int result = libraryid != null ? libraryid.hashCode() : 0;
-        result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
+        int result = library != null ? library.hashCode() : 0;
+        result = 31 * result + (book != null ? book.hashCode() : 0);
         return result;
     }
 }

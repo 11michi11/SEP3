@@ -4,11 +4,12 @@ import communication.DBServer;
 import communication.Request;
 import communication.Response;
 import model.Book;
+import model.DetailedBook;
 
 import java.util.List;
 import java.util.Map;
 
-public class Controller implements DBProxy {
+public class Controller  {
 
     private DBProxy db;
     private DBServer server;
@@ -54,7 +55,6 @@ public class Controller implements DBProxy {
         return db.advancedSearch(searchTerm, searchTerm, searchTerm, year, searchCategory);
     }
 
-    @Override
     public List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category) {
         final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
         if (isbn.equals(""))
@@ -78,12 +78,22 @@ public class Controller implements DBProxy {
                     return handleAdvancedSearch(request);
                 case Search:
                     return handleSearch(request);
+                case BookDetails:
+                    return handleBookDetails(request);
             }
             throw new InvalidOperationException("Wrong operation");
         } catch (Request.RequestJsonFormatException | InvalidOperationException e) {
             //send error
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
+    }
+
+    private String handleBookDetails(Request request) {
+        Map<String, Object> arguments = request.getArguments();
+        String isbn = (String) arguments.get("isbn");
+        DetailedBook book = db.getBookDetails(isbn);
+
+        return new Response(Response.Status.OK, book.toJSON()).toJson();
     }
 
     private String handleSearch(Request request) {

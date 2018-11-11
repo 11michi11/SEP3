@@ -11,7 +11,7 @@ public class BookStoreStorageID implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "bookstoreid")
-    private BookStore bookstoreid;
+    private BookStore bookstore;
 
     @ManyToOne
     @JoinColumn(name = "isbn")
@@ -20,12 +20,12 @@ public class BookStoreStorageID implements Serializable {
     public BookStoreStorageID() {
     }
 
-    public BookStore getBookstoreid() {
-        return bookstoreid;
+    public BookStore getBookstore() {
+        return bookstore;
     }
 
-    public void setBookstoreid(BookStore bookstoreid) {
-        this.bookstoreid = bookstoreid;
+    public void setBookstore(BookStore bookstoreid) {
+        this.bookstore = bookstoreid;
     }
 
     public Book getBook() {
@@ -39,7 +39,7 @@ public class BookStoreStorageID implements Serializable {
     @Override
     public String toString() {
         return "BookStoreStorageID{" +
-                "bookstoreid=" + bookstoreid +
+                "bookstoreid=" + bookstore +
                 ", book=" + book +
                 '}';
     }
@@ -51,13 +51,13 @@ public class BookStoreStorageID implements Serializable {
 
         BookStoreStorageID that = (BookStoreStorageID) o;
 
-        if (bookstoreid != null ? !bookstoreid.equals(that.bookstoreid) : that.bookstoreid != null) return false;
+        if (bookstore != null ? !bookstore.equals(that.bookstore) : that.bookstore != null) return false;
         return book != null ? book.equals(that.book) : that.book == null;
     }
 
     @Override
     public int hashCode() {
-        int result = bookstoreid != null ? bookstoreid.hashCode() : 0;
+        int result = bookstore != null ? bookstore.hashCode() : 0;
         result = 31 * result + (book != null ? book.hashCode() : 0);
         return result;
     }

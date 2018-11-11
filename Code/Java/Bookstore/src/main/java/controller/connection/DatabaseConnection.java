@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import model.Book;
+import model.DetailedBook;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -18,7 +19,8 @@ import java.util.Map;
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
-    private final String IP = "207.154.237.196";
+//    private final String IP = "207.154.237.196";
+    private final String IP = "localhost";
 
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
         Map<String, Object> args = new HashMap<>();
@@ -31,6 +33,28 @@ public class DatabaseConnection implements DatabaseProxy {
     }
 
     private List<Book> handleSearchResponse(String response, ResponseStatus status) throws SearchException {
+        switch (status) {
+            case OK:
+                return getContent(response);
+            case Error:
+                String errorMsg = getContent(response);
+                throw new SearchException("Database returned error: " + errorMsg);
+            default:
+                throw new SearchException("Unknown response status: " + status);
+        }
+    }
+
+    public String getBookDetails(String isbn) throws ServerOfflineException, SearchException {
+        Map<String, Object> args = new HashMap<>();
+        args.put("isbn", isbn);
+        Request request = new Request(Request.Operation.BookDetails, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        return handleBookDetailsResponse(response, status);
+    }
+
+    private String handleBookDetailsResponse(String response, ResponseStatus status) {
         switch (status) {
             case OK:
                 return getContent(response);

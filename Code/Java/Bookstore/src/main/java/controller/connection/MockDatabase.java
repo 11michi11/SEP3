@@ -1,12 +1,18 @@
 package controller.connection;
 
 import model.Book;
+import model.DetailedBook;
 
 import java.lang.reflect.Array;
 import java.util.LinkedList;
 import java.util.List;
 
 public class MockDatabase implements DatabaseProxy {
+    @Override
+    public String getBookDetails(String isbn) {
+        return null;
+    }
+
     @Override
     public List<Book> search(String searchTerm) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException {
         LinkedList<Book> books = new LinkedList<>();

@@ -10,6 +10,6 @@ public class BookstoreMain {
         SpringApplication.run(BookstoreMain.class, args);
 
         Controller controller = new Controller();
-        controller.search("Java");
+        System.out.println(controller.getBookDetails("978-83-8116-1"));
     }
 }

@@ -7,12 +7,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "bookstore")
-public class BookStore {
+public class BookStore implements Institution {
 
     @Id @Column(name = "bookstoreid")
     private String bookstoreid;
 
     public BookStore() {
+    }
+
+    public BookStore(String bookstoreid) {
+        this.bookstoreid = bookstoreid;
     }
 
     public String getBookstoreid() {

@@ -7,13 +7,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "library", schema = "public")
-public class Library {
+public class Library implements Institution {
 
     @Id @Column(name = "libraryid")
     private String libraryID;
 
     public Library(){
-        //change
+    }
+
+    public Library(String libraryID) {
+        this.libraryID = libraryID;
     }
 
     public String getLibraryID() {
