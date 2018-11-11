@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 
 namespace Models
@@ -24,6 +25,15 @@ namespace Models
         public Book(string id, string title, string author, int year, string isbn, Category category)
         {
             Id = id;
+            Title = title;
+            Author = author;
+            Year = year;
+            Isbn = isbn;
+            Category = category;
+        }
+        [JsonConstructor]
+        public Book(string title, string author, int year, string isbn, Category category)
+        {
             Title = title;
             Author = author;
             Year = year;

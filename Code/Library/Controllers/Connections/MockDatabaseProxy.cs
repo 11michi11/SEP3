@@ -22,6 +22,7 @@ namespace Controllers.Connections
             books.Add(new Book("id2","LoR", "Miska", 2015, "ISBN1", Category.Drama));
             books.Add(new Book("id3","HarryPotter", "Miska", 2015, "ISBN2", Category.ScienceFiction));
             books.Add(new Book("id4","LoR", "Tolkien", 2015, "ISBN3", Category.Fantasy));
+            books.Add(new Book("id5","BookToDelete","Unknown",2222,"ISBN 1-1-1",Category.Children));
         }
 
         public List<Book> Search(string searchTerm)

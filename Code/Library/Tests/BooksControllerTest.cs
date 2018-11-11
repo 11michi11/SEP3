@@ -83,12 +83,22 @@ namespace Tests
         [Fact]
         public void TestCreateBook()
         {
-        var book = new Book(null,"HarryPotter","Daniel",2000,"ISBN 2",Category.Science);
-        var json = JsonConvert.SerializeObject(book);
-        var httpContent = new StringContent(json,Encoding.UTF7,"application/json");
-        var str = _client.PostAsync("http://localhost:5000/api/books",httpContent);
-        
-        Assert.Equal("Book created succesfully",str.ToString());
+        //var book = new Book("HarryPotter","Daniel",2000,"ISBN 2",Category.Science);
+        //var json = JsonConvert.SerializeObject(book);
+        var json ="{\"title\": \"Metro\",\"author\": \"Putin\",\"year\": 2018,\"category\": \"Fantasy\",\"isbn\": \"isbn\"}";
+        //var httpContent = new StringContent(json,Encoding.UTF7,"application/json");
+        var str = _client.PostAsync("http://localhost:5000/api/books", new StringContent(
+            json, Encoding.UTF8, "application/json")).GetAwaiter().GetResult().ReasonPhrase;
+        //var str = _client.PostAsJsonAsync("http://localhost:5000/api/books", httpContent);
+        Assert.Equal("OK",str);
+        }
+
+        [Fact]
+        public void TestDeleteBook()
+        {
+            var str = _client.DeleteAsync("http://localhost:5000/api/books/id5").GetAwaiter().GetResult().ReasonPhrase;
+            
+            Assert.Equal("OK",str);
         }
     }
 }
