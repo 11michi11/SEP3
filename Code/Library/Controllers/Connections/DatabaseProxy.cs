@@ -93,6 +93,11 @@ namespace Controllers.Connections
             throw new NotImplementedException();
         }
 
+        public LibraryBook BookDetails(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         protected enum ResponseStatus
         {
             OK,
