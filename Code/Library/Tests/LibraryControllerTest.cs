@@ -77,9 +77,9 @@ namespace Tests
         var book = new Book("Got", "Miska", 2015, "ISBN1", Category.Drama);
         var libraryBookExpected = new LibraryBook(book, "id", true);
         
-        var librayrBookActual = _controller.BookDetails("id");
+        var libraryBookActual = _controller.BookDetails("id");
         
-        Assert.Equal(libraryBookExpected,librayrBookActual);
+        Assert.Equal(libraryBookExpected,libraryBookActual);
         }
     }
 }

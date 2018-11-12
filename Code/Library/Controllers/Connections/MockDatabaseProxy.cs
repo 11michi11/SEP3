@@ -60,13 +60,17 @@ namespace Controllers.Connections
 
         public void DeleteBook(string id)
         {
-            var librarybook = detailedbooks.Find(b => b.Id.Equals(id)); 
-            if(detailedbooks!=null) {
-                detailedbooks.Remove(librarybook);
-            } else {
-                throw new NullReferenceException("Book not found.");
-            }         
-           
+//            var libraryBook = detailedbooks.Find(b => b.Id.Equals(id)); 
+//            if(detailedbooks!=null) {
+//                detailedbooks.Remove(libraryBook);
+//            } else {
+//                throw new NullReferenceException("Book not found.");
+//            }
+            var libraryBook = BookDetails("bookId");
+            if (!libraryBook.Id.Equals(id))
+            {
+                throw new NullReferenceException("Book not found");
+            }
         }
     }
 }

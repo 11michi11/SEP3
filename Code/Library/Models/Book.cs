@@ -19,6 +19,7 @@ namespace Models
         [DataMember]
         public Category Category {get; set;}
        
+        [JsonConstructor]
         public Book(string title, string author, int year, string isbn, Category category)
         {
             Title = title;
