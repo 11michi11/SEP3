@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Models;
-using System.Text;
+
 
 namespace Tests
 {
@@ -25,8 +25,8 @@ namespace Tests
         {
             var books = new List<Book>
             {
-                new Book("id2","LoR", "Miska", 2015, "ISBN1", Category.Drama),
-                new Book("id4","LoR", "Tolkien", 2015, "ISBN3", Category.Fantasy)
+                new Book("LoR", "Miska", 2015, "ISBN1", Category.Drama),
+                new Book("LoR", "Tolkien", 2015, "ISBN3", Category.Fantasy)
             };
             var searchTerm = "LoR";
             var str = _client.GetStringAsync($"http://localhost:5000/api/books/{searchTerm}").GetAwaiter().GetResult();
@@ -41,8 +41,8 @@ namespace Tests
         {
             var books = new List<Book>
             {
-                new Book("id1","Got", "Miska", 2015, "ISBN1", Category.Drama),
-                new Book("id2","LoR", "Miska", 2015, "ISBN1", Category.Drama)
+                new Book("Got", "Miska", 2015, "ISBN1", Category.Drama),
+                new Book("LoR", "Miska", 2015, "ISBN1", Category.Drama)
             };
             var author = "Miska";
             var category = Category.Drama;
@@ -78,27 +78,6 @@ namespace Tests
             var booksFromService = JsonConvert.DeserializeObject<List<Book>>(str);
 
             Assert.Equal(books,booksFromService);
-        }
-
-        [Fact]
-        public void TestCreateBook()
-        {
-        //var book = new Book("HarryPotter","Daniel",2000,"ISBN 2",Category.Science);
-        //var json = JsonConvert.SerializeObject(book);
-        var json ="{\"title\": \"Metro\",\"author\": \"Putin\",\"year\": 2018,\"category\": \"Fantasy\",\"isbn\": \"isbn\"}";
-        //var httpContent = new StringContent(json,Encoding.UTF7,"application/json");
-        var str = _client.PostAsync("http://localhost:5000/api/books", new StringContent(
-            json, Encoding.UTF8, "application/json")).GetAwaiter().GetResult().ReasonPhrase;
-        //var str = _client.PostAsJsonAsync("http://localhost:5000/api/books", httpContent);
-        Assert.Equal("OK",str);
-        }
-
-        [Fact]
-        public void TestDeleteBook()
-        {
-            var str = _client.DeleteAsync("http://localhost:5000/api/books/id5").GetAwaiter().GetResult().ReasonPhrase;
-            
-            Assert.Equal("OK",str);
         }
     }
 }

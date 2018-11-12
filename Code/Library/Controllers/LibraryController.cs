@@ -12,14 +12,18 @@ namespace Controllers
 
         private LibraryController ()
         {
-            // Mock class used temporarilly
+            // moved to Requests/Program.cs
             // _proxy = new DatabaseProxy();
-            _proxy = new MockDatabaseProxy();
+            // _proxy = new MockDatabaseProxy();
         }
 
         public static LibraryController GetInstance()
         {
             return _instance ?? (_instance = new LibraryController());
+        }
+
+        public void SetDatabaseProxy(IDatabaseProxy proxy) {
+            _proxy = proxy;
         }
 
         public List<Book> Search(string searchTerm)
