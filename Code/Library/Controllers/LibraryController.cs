@@ -44,5 +44,9 @@ namespace Controllers
          _proxy.DeleteBook(id);
  
         }
+        public LibraryBook BookDetails(string id) {
+
+            return _proxy.BookDetails(id);
+        }
     }
 }

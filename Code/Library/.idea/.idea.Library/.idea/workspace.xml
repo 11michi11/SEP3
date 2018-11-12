@@ -2,42 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe7660bb-2c08-498f-a3a2-cd3e3b173751" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/LibraryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/LibraryController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Controllers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Controllers.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Controllers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Controllers.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Models.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Models.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/Controllers.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Controllers.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.csprojResolveAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.csprojResolveAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/project.razor.json" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/project.razor.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Book.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/bin/Debug/netstandard2.0/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Models/bin/Debug/netstandard2.0/Models.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/bin/Debug/netstandard2.0/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Models/bin/Debug/netstandard2.0/Models.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/project.razor.json" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/project.razor.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/Requests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/Requests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Requests/Controllers/BooksController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/Controllers/BooksController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Controllers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Controllers.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Controllers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Controllers.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Models.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Models.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.runtimeconfig.dev.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/project.razor.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/project.razor.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/obj/Requests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Requests.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/BooksControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/BooksControllerTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/DatabaseProxyTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/DatabaseProxyTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Controllers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Controllers.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Controllers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Controllers.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Models.dll" afterDir="false" />
@@ -46,9 +37,6 @@
       <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/project.razor.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/project.razor.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.assets.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,32 +83,33 @@
     <session id="-1580701117">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.11" value="1" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="7" />
+          <entry key="cs" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="7" />
+          <entry key="C#" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="440" />
+          <entry key="cs" value="504" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="440" />
+          <entry key="C#" value="504" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -129,25 +118,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tests/BooksControllerTest.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1620">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="1288">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
               <folding>
-                <marker date="1541863220614" expanded="true" signature="6:202" ph="..." />
-                <marker date="1541863220614" expanded="true" signature="219:3626" ph="{...}" />
-                <marker date="1541863220614" expanded="true" signature="258:3624" ph="{...}" />
-                <marker date="1541863220614" expanded="true" signature="347:407" ph="{...}" />
-                <marker date="1541863220614" expanded="true" signature="464:1016" ph="{...}" />
-                <marker date="1541863220614" expanded="true" signature="526:702" ph="{...}" />
-                <marker date="1541863220614" expanded="true" signature="1073:1698" ph="{...}" />
-                <marker date="1541863220614" expanded="true" signature="1135:1307" ph="{...}" />
-                <marker date="1541863220614" expanded="true" signature="1755:2123" ph="{...}" />
-                <marker date="1541863220614" expanded="true" signature="2196:2641" ph="{...}" />
-                <marker date="1541863220614" expanded="true" signature="2694:3376" ph="{...}" />
-                <marker date="1541863220614" expanded="true" signature="2713:2846" ph="/* var book = new Book(&quot;HarryPotter&quot;,&quot;Daniel&quot;,2000,&quot;ISBN 2&quot;,Category.Science); ... */" />
-                <marker date="1541863220614" expanded="true" signature="3429:3618" ph="{...}" />
+                <marker date="1541961318651" expanded="false" signature="6:202" ph="..." />
+                <marker date="1541961318651" expanded="true" signature="219:3626" ph="{...}" />
+                <marker date="1541961318651" expanded="true" signature="258:3624" ph="{...}" />
+                <marker date="1541961318651" expanded="true" signature="347:407" ph="{...}" />
+                <marker date="1541961318651" expanded="true" signature="464:1016" ph="{...}" />
+                <marker date="1541961318651" expanded="true" signature="526:702" ph="{...}" />
+                <marker date="1541961318651" expanded="true" signature="1073:1698" ph="{...}" />
+                <marker date="1541961318651" expanded="true" signature="1135:1307" ph="{...}" />
+                <marker date="1541961318651" expanded="true" signature="1755:2123" ph="{...}" />
+                <marker date="1541961318651" expanded="true" signature="2196:2641" ph="{...}" />
+                <marker date="1541961318651" expanded="true" signature="2694:3376" ph="{...}" />
+                <marker date="1541961318651" expanded="true" signature="2713:2846" ph="/* var book = new Book(&quot;HarryPotter&quot;,&quot;Daniel&quot;,2000,&quot;ISBN 2&quot;,Category.Science); ... */" />
+                <marker date="1541961318651" expanded="true" signature="3429:3618" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -156,18 +145,53 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="24" column="95" selection-start-line="24" selection-start-column="95" selection-end-line="24" selection-end-column="95" />
+            <state relative-caret-position="372">
+              <caret line="63" column="37" selection-start-line="63" selection-start-column="37" selection-end-line="63" selection-end-column="37" />
               <folding>
-                <marker date="1541863220623" expanded="false" signature="6:190" ph="..." />
-                <marker date="1541863220623" expanded="true" signature="225:2498" ph="{...}" />
-                <marker date="1541863220623" expanded="true" signature="279:2496" ph="{...}" />
-                <marker date="1541863220623" expanded="true" signature="624:1110" ph="{...}" />
-                <marker date="1541863220623" expanded="true" signature="1163:1451" ph="{...}" />
-                <marker date="1541863220623" expanded="true" signature="1566:2080" ph="{...}" />
-                <marker date="1541863220623" expanded="true" signature="2123:2172" ph="{...}" />
-                <marker date="1541863220623" expanded="true" signature="2215:2490" ph="{...}" />
-                <marker date="1541863220623" expanded="true" signature="2311:2362" ph="{...}" />
+                <marker date="1542036825234" expanded="false" signature="6:190" ph="..." />
+                <marker date="1542036825234" expanded="true" signature="225:2776" ph="{...}" />
+                <marker date="1542036825234" expanded="true" signature="279:2774" ph="{...}" />
+                <marker date="1542036825234" expanded="true" signature="691:1147" ph="{...}" />
+                <marker date="1542036825234" expanded="true" signature="1200:1488" ph="{...}" />
+                <marker date="1542036825234" expanded="true" signature="1603:2117" ph="{...}" />
+                <marker date="1542036825234" expanded="true" signature="2169:2325" ph="{...}" />
+                <marker date="1542036825234" expanded="true" signature="2369:2418" ph="{...}" />
+                <marker date="1542036825234" expanded="true" signature="2461:2768" ph="{...}" />
+                <marker date="1542036825234" expanded="true" signature="2581:2647" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Models/LibraryBook.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+              <folding>
+                <marker date="1542037046537" expanded="true" signature="54:383" ph="{...}" />
+                <marker date="1542037046537" expanded="true" signature="104:381" ph="{...}" />
+                <marker date="1542037046537" expanded="true" signature="290:370" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/DatabaseProxyTest.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+              <folding>
+                <marker date="1542036385850" expanded="false" signature="6:105" ph="..." />
+                <marker date="1542036385850" expanded="true" signature="122:1973" ph="{...}" />
+                <marker date="1542036385850" expanded="true" signature="175:1971" ph="{...}" />
+                <marker date="1542036385850" expanded="true" signature="264:617" ph="{...}" />
+                <marker date="1542036385850" expanded="true" signature="325:555" ph="{...}" />
+                <marker date="1542036385850" expanded="true" signature="684:1013" ph="{...}" />
+                <marker date="1542036385850" expanded="true" signature="1085:1694" ph="{...}" />
+                <marker date="1542036385850" expanded="true" signature="1146:1382" ph="{...}" />
+                <marker date="1542036385850" expanded="true" signature="1760:1965" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -176,38 +200,74 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+            <state>
+              <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
               <folding>
-                <marker date="1541781115191" expanded="false" signature="6:161" ph="..." />
-                <marker date="1541781115191" expanded="true" signature="193:1832" ph="{...}" />
-                <marker date="1541781115191" expanded="true" signature="297:1830" ph="{...}" />
-                <marker date="1541781115191" expanded="true" signature="544:622" ph="{...}" />
-                <marker date="1541781115191" expanded="true" signature="777:877" ph="{...}" />
-                <marker date="1541781115191" expanded="true" signature="986:1331" ph="{...}" />
-                <marker date="1541781115191" expanded="true" signature="1083:1145" ph="{...}" />
-                <marker date="1541781115191" expanded="true" signature="1443:1463" ph="{...}" />
-                <marker date="1541781115191" expanded="true" signature="1575:1824" ph="{...}" />
-                <marker date="1541781115191" expanded="true" signature="1602:1664" ph="{...}" />
-                <marker date="1541781115191" expanded="true" signature="1705:1773" ph="{...}" />
+                <marker date="1542036437930" expanded="false" signature="6:161" ph="..." />
+                <marker date="1542036437930" expanded="true" signature="193:1990" ph="{...}" />
+                <marker date="1542036437930" expanded="true" signature="297:1988" ph="{...}" />
+                <marker date="1542036437930" expanded="true" signature="544:622" ph="{...}" />
+                <marker date="1542036437930" expanded="true" signature="777:877" ph="{...}" />
+                <marker date="1542036437930" expanded="true" signature="969:1035" ph="{...}" />
+                <marker date="1542036437930" expanded="true" signature="1144:1489" ph="{...}" />
+                <marker date="1542036437930" expanded="true" signature="1241:1303" ph="{...}" />
+                <marker date="1542036437930" expanded="true" signature="1601:1621" ph="{...}" />
+                <marker date="1542036437930" expanded="true" signature="1733:1982" ph="{...}" />
+                <marker date="1542036437930" expanded="true" signature="1760:1822" ph="{...}" />
+                <marker date="1542036437930" expanded="true" signature="1863:1931" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/LibraryController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="874">
+              <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+              <folding>
+                <marker date="1542035242466" expanded="false" signature="6:92" ph="..." />
+                <marker date="1542035242466" expanded="true" signature="115:1219" ph="{...}" />
+                <marker date="1542035242466" expanded="true" signature="152:1217" ph="{...}" />
+                <marker date="1542035242466" expanded="true" signature="287:442" ph="{...}" />
+                <marker date="1542035242466" expanded="true" signature="310:386" ph="/* Mock class used temporarilly ... */" />
+                <marker date="1542035242466" expanded="true" signature="497:588" ph="{...}" />
+                <marker date="1542035242466" expanded="true" signature="641:707" ph="{...}" />
+                <marker date="1542035242466" expanded="true" signature="821:916" ph="{...}" />
+                <marker date="1542035242466" expanded="true" signature="960:1008" ph="{...}" />
+                <marker date="1542035242466" expanded="true" signature="1051:1105" ph="{...}" />
+                <marker date="1542035242466" expanded="true" signature="1156:1211" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+              <folding>
+                <marker date="1542036405834" expanded="false" signature="6:47" ph="..." />
+                <marker date="1542036405834" expanded="true" signature="82:406" ph="{...}" />
+                <marker date="1542036405834" expanded="true" signature="120:404" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Models/Book.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+            <state relative-caret-position="69">
+              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
               <folding>
-                <marker date="1541785458918" expanded="true" signature="6:111" ph="..." />
-                <marker date="1541785458918" expanded="true" signature="130:1701" ph="{...}" />
-                <marker date="1541785458918" expanded="true" signature="173:1699" ph="{...}" />
-                <marker date="1541785458918" expanded="true" signature="645:825" ph="{...}" />
-                <marker date="1541785458918" expanded="true" signature="942:1101" ph="{...}" />
-                <marker date="1541785458918" expanded="true" signature="1152:1324" ph="{...}" />
-                <marker date="1541785458918" expanded="true" signature="1373:1683" ph="{...}" />
+                <marker date="1542037160301" expanded="true" signature="7:59" ph="..." />
+                <marker date="1542037160301" expanded="true" signature="78:1256" ph="{...}" />
+                <marker date="1542037160301" expanded="true" signature="123:1254" ph="{...}" />
+                <marker date="1542037160301" expanded="true" signature="534:693" ph="{...}" />
+                <marker date="1542037160301" expanded="true" signature="744:902" ph="{...}" />
+                <marker date="1542037160301" expanded="true" signature="951:1238" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -229,28 +289,34 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Tests/DatabaseProxyTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Requests/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Tests/BookListTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/LibraryBook.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/BookTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Controllers/LibraryController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/ConfigurationLoaderTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Requests/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/BookListTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/LibraryController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/BooksControllerTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/Book.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" />
         <option value="$PROJECT_DIR$/configuration.txt" />
         <option value="$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs" />
         <option value="$PROJECT_DIR$/Tests/ConfigurationLoaderTest.cs" />
-        <option value="$PROJECT_DIR$/Models/Book.cs" />
-        <option value="$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" />
         <option value="$PROJECT_DIR$/Tests/BooksControllerTest.cs" />
+        <option value="$PROJECT_DIR$/Tests/DatabaseProxyTest.cs" />
+        <option value="$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs" />
+        <option value="$PROJECT_DIR$/Requests/Controllers/BooksController.cs" />
+        <option value="$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" />
+        <option value="$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" />
+        <option value="$PROJECT_DIR$/Models/LibraryBook.cs" />
+        <option value="$PROJECT_DIR$/Models/Book.cs" />
       </list>
     </option>
   </component>
@@ -260,7 +326,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="950" />
     <option name="width" value="980" />
     <option name="height" value="1040" />
@@ -299,6 +365,12 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Requests" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Requests" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
@@ -395,11 +467,14 @@
       <workItem from="1541783982212" duration="3304000" />
       <workItem from="1541848669007" duration="2941000" />
       <workItem from="1541861760847" duration="1717000" />
+      <workItem from="1542025068606" duration="464000" />
+      <workItem from="1542033905752" duration="3000" />
+      <workItem from="1542036318592" duration="842000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29454000" />
+    <option name="totallyTimeSpent" value="30763000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -412,13 +487,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2751678" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2872483" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32850942" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32850942" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39942113" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -524,13 +600,6 @@
     <entry file="file://$PROJECT_DIR$/Tests/BookTest.cs">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/DatabaseProxyTest.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7540A5DA-343D-4E6A-AC2A-6190E339F993/36/e621c141/Dictionary`2.cs" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7540A5DA-343D-4E6A-AC2A-6190E339F993/f2/7f146158/Thread.cs" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/724F386D-8F5B-4395-A7FA-46C7A3A38A2A/26/69fafb28/TestInvoker`1.cs" />
@@ -549,92 +618,168 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs">
+    <entry file="file://$PROJECT_DIR$/Tests/BooksControllerTest.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="15" column="83" selection-start-line="14" selection-start-column="7" selection-end-line="15" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/LibraryController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="21" selection-start-line="21" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        <state relative-caret-position="1288">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
           <folding>
-            <marker date="1541781115191" expanded="false" signature="6:161" ph="..." />
-            <marker date="1541781115191" expanded="true" signature="193:1832" ph="{...}" />
-            <marker date="1541781115191" expanded="true" signature="297:1830" ph="{...}" />
-            <marker date="1541781115191" expanded="true" signature="544:622" ph="{...}" />
-            <marker date="1541781115191" expanded="true" signature="777:877" ph="{...}" />
-            <marker date="1541781115191" expanded="true" signature="986:1331" ph="{...}" />
-            <marker date="1541781115191" expanded="true" signature="1083:1145" ph="{...}" />
-            <marker date="1541781115191" expanded="true" signature="1443:1463" ph="{...}" />
-            <marker date="1541781115191" expanded="true" signature="1575:1824" ph="{...}" />
-            <marker date="1541781115191" expanded="true" signature="1602:1664" ph="{...}" />
-            <marker date="1541781115191" expanded="true" signature="1705:1773" ph="{...}" />
+            <marker date="1541961318651" expanded="false" signature="6:202" ph="..." />
+            <marker date="1541961318651" expanded="true" signature="219:3626" ph="{...}" />
+            <marker date="1541961318651" expanded="true" signature="258:3624" ph="{...}" />
+            <marker date="1541961318651" expanded="true" signature="347:407" ph="{...}" />
+            <marker date="1541961318651" expanded="true" signature="464:1016" ph="{...}" />
+            <marker date="1541961318651" expanded="true" signature="526:702" ph="{...}" />
+            <marker date="1541961318651" expanded="true" signature="1073:1698" ph="{...}" />
+            <marker date="1541961318651" expanded="true" signature="1135:1307" ph="{...}" />
+            <marker date="1541961318651" expanded="true" signature="1755:2123" ph="{...}" />
+            <marker date="1541961318651" expanded="true" signature="2196:2641" ph="{...}" />
+            <marker date="1541961318651" expanded="true" signature="2694:3376" ph="{...}" />
+            <marker date="1541961318651" expanded="true" signature="2713:2846" ph="/* var book = new Book(&quot;HarryPotter&quot;,&quot;Daniel&quot;,2000,&quot;ISBN 2&quot;,Category.Science); ... */" />
+            <marker date="1541961318651" expanded="true" signature="3429:3618" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Book.cs">
+    <entry file="file://$PROJECT_DIR$/Tests/DatabaseProxyTest.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        <state relative-caret-position="322">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
           <folding>
-            <marker date="1541785458918" expanded="true" signature="6:111" ph="..." />
-            <marker date="1541785458918" expanded="true" signature="130:1701" ph="{...}" />
-            <marker date="1541785458918" expanded="true" signature="173:1699" ph="{...}" />
-            <marker date="1541785458918" expanded="true" signature="645:825" ph="{...}" />
-            <marker date="1541785458918" expanded="true" signature="942:1101" ph="{...}" />
-            <marker date="1541785458918" expanded="true" signature="1152:1324" ph="{...}" />
-            <marker date="1541785458918" expanded="true" signature="1373:1683" ph="{...}" />
+            <marker date="1542036385850" expanded="false" signature="6:105" ph="..." />
+            <marker date="1542036385850" expanded="true" signature="122:1973" ph="{...}" />
+            <marker date="1542036385850" expanded="true" signature="175:1971" ph="{...}" />
+            <marker date="1542036385850" expanded="true" signature="264:617" ph="{...}" />
+            <marker date="1542036385850" expanded="true" signature="325:555" ph="{...}" />
+            <marker date="1542036385850" expanded="true" signature="684:1013" ph="{...}" />
+            <marker date="1542036385850" expanded="true" signature="1085:1694" ph="{...}" />
+            <marker date="1542036385850" expanded="true" signature="1146:1382" ph="{...}" />
+            <marker date="1542036385850" expanded="true" signature="1760:1965" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+          <folding>
+            <marker date="1542036405834" expanded="false" signature="6:47" ph="..." />
+            <marker date="1542036405834" expanded="true" signature="82:406" ph="{...}" />
+            <marker date="1542036405834" expanded="true" signature="120:404" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="93" column="9" lean-forward="true" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
+          <folding>
+            <marker date="1542036475742" expanded="false" signature="6:204" ph="..." />
+            <marker date="1542036475742" expanded="true" signature="239:3894" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="289:3892" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="519:921" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="1036:1526" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="1615:2100" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="1653:2090" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="2159:2248" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="2320:2501" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="2554:3091" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="3134:3232" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="3275:3344" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="3395:3464" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="3503:3557" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="3614:3728" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="3690:3718" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="3779:3886" ph="{...}" />
+            <marker date="1542036475742" expanded="true" signature="3848:3876" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="24" column="95" selection-start-line="24" selection-start-column="95" selection-end-line="24" selection-end-column="95" />
+        <state relative-caret-position="372">
+          <caret line="63" column="37" selection-start-line="63" selection-start-column="37" selection-end-line="63" selection-end-column="37" />
           <folding>
-            <marker date="1541863220623" expanded="false" signature="6:190" ph="..." />
-            <marker date="1541863220623" expanded="true" signature="225:2498" ph="{...}" />
-            <marker date="1541863220623" expanded="true" signature="279:2496" ph="{...}" />
-            <marker date="1541863220623" expanded="true" signature="624:1110" ph="{...}" />
-            <marker date="1541863220623" expanded="true" signature="1163:1451" ph="{...}" />
-            <marker date="1541863220623" expanded="true" signature="1566:2080" ph="{...}" />
-            <marker date="1541863220623" expanded="true" signature="2123:2172" ph="{...}" />
-            <marker date="1541863220623" expanded="true" signature="2215:2490" ph="{...}" />
-            <marker date="1541863220623" expanded="true" signature="2311:2362" ph="{...}" />
+            <marker date="1542036825234" expanded="false" signature="6:190" ph="..." />
+            <marker date="1542036825234" expanded="true" signature="225:2776" ph="{...}" />
+            <marker date="1542036825234" expanded="true" signature="279:2774" ph="{...}" />
+            <marker date="1542036825234" expanded="true" signature="691:1147" ph="{...}" />
+            <marker date="1542036825234" expanded="true" signature="1200:1488" ph="{...}" />
+            <marker date="1542036825234" expanded="true" signature="1603:2117" ph="{...}" />
+            <marker date="1542036825234" expanded="true" signature="2169:2325" ph="{...}" />
+            <marker date="1542036825234" expanded="true" signature="2369:2418" ph="{...}" />
+            <marker date="1542036825234" expanded="true" signature="2461:2768" ph="{...}" />
+            <marker date="1542036825234" expanded="true" signature="2581:2647" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/BooksControllerTest.cs">
+    <entry file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1620">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state>
+          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
           <folding>
-            <marker date="1541863220614" expanded="true" signature="6:202" ph="..." />
-            <marker date="1541863220614" expanded="true" signature="219:3626" ph="{...}" />
-            <marker date="1541863220614" expanded="true" signature="258:3624" ph="{...}" />
-            <marker date="1541863220614" expanded="true" signature="347:407" ph="{...}" />
-            <marker date="1541863220614" expanded="true" signature="464:1016" ph="{...}" />
-            <marker date="1541863220614" expanded="true" signature="526:702" ph="{...}" />
-            <marker date="1541863220614" expanded="true" signature="1073:1698" ph="{...}" />
-            <marker date="1541863220614" expanded="true" signature="1135:1307" ph="{...}" />
-            <marker date="1541863220614" expanded="true" signature="1755:2123" ph="{...}" />
-            <marker date="1541863220614" expanded="true" signature="2196:2641" ph="{...}" />
-            <marker date="1541863220614" expanded="true" signature="2694:3376" ph="{...}" />
-            <marker date="1541863220614" expanded="true" signature="2713:2846" ph="/* var book = new Book(&quot;HarryPotter&quot;,&quot;Daniel&quot;,2000,&quot;ISBN 2&quot;,Category.Science); ... */" />
-            <marker date="1541863220614" expanded="true" signature="3429:3618" ph="{...}" />
+            <marker date="1542036437930" expanded="false" signature="6:161" ph="..." />
+            <marker date="1542036437930" expanded="true" signature="193:1990" ph="{...}" />
+            <marker date="1542036437930" expanded="true" signature="297:1988" ph="{...}" />
+            <marker date="1542036437930" expanded="true" signature="544:622" ph="{...}" />
+            <marker date="1542036437930" expanded="true" signature="777:877" ph="{...}" />
+            <marker date="1542036437930" expanded="true" signature="969:1035" ph="{...}" />
+            <marker date="1542036437930" expanded="true" signature="1144:1489" ph="{...}" />
+            <marker date="1542036437930" expanded="true" signature="1241:1303" ph="{...}" />
+            <marker date="1542036437930" expanded="true" signature="1601:1621" ph="{...}" />
+            <marker date="1542036437930" expanded="true" signature="1733:1982" ph="{...}" />
+            <marker date="1542036437930" expanded="true" signature="1760:1822" ph="{...}" />
+            <marker date="1542036437930" expanded="true" signature="1863:1931" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/LibraryController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+          <folding>
+            <marker date="1542035242466" expanded="false" signature="6:92" ph="..." />
+            <marker date="1542035242466" expanded="true" signature="115:1219" ph="{...}" />
+            <marker date="1542035242466" expanded="true" signature="152:1217" ph="{...}" />
+            <marker date="1542035242466" expanded="true" signature="287:442" ph="{...}" />
+            <marker date="1542035242466" expanded="true" signature="310:386" ph="/* Mock class used temporarilly ... */" />
+            <marker date="1542035242466" expanded="true" signature="497:588" ph="{...}" />
+            <marker date="1542035242466" expanded="true" signature="641:707" ph="{...}" />
+            <marker date="1542035242466" expanded="true" signature="821:916" ph="{...}" />
+            <marker date="1542035242466" expanded="true" signature="960:1008" ph="{...}" />
+            <marker date="1542035242466" expanded="true" signature="1051:1105" ph="{...}" />
+            <marker date="1542035242466" expanded="true" signature="1156:1211" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/LibraryBook.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding>
+            <marker date="1542037046537" expanded="true" signature="54:383" ph="{...}" />
+            <marker date="1542037046537" expanded="true" signature="104:381" ph="{...}" />
+            <marker date="1542037046537" expanded="true" signature="290:370" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/Book.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding>
+            <marker date="1542037160301" expanded="true" signature="7:59" ph="..." />
+            <marker date="1542037160301" expanded="true" signature="78:1256" ph="{...}" />
+            <marker date="1542037160301" expanded="true" signature="123:1254" ph="{...}" />
+            <marker date="1542037160301" expanded="true" signature="534:693" ph="{...}" />
+            <marker date="1542037160301" expanded="true" signature="744:902" ph="{...}" />
+            <marker date="1542037160301" expanded="true" signature="951:1238" ph="{...}" />
           </folding>
         </state>
       </provider>
