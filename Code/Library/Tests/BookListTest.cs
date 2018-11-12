@@ -10,7 +10,7 @@ namespace Tests
         public void CreateBookListAddBookTest()
         {
             var booklist = new BookList();
-            var book = new Book("ID1","Book", "Author", 2000, "isbn", Category.Drama);
+            var book = new Book("Book", "Author", 2000, "isbn", Category.Drama);
             booklist.AddBook(book);
             Assert.Equal(1, booklist.Size());
         }
@@ -19,7 +19,7 @@ namespace Tests
         public void DeleteBookFromListTest()
         {
             var booklist = new BookList();
-            var book = new Book("ID1","Book", "Author", 2000, "isbn", Category.Drama);
+            var book = new Book("Book", "Author", 2000, "isbn", Category.Drama);
             booklist.DeleteBook(book);
             Assert.Equal(0, booklist.Size());
         }
@@ -28,9 +28,9 @@ namespace Tests
         public void SizeOfBookListTest()
         {
             var booklist = new BookList();
-            var book = new Book("ID1","Book", "Author", 2000, "isbn", Category.Drama);
-            var booktwo = new Book("ID2","Book", "Author", 2000, "isbn", Category.Drama);
-            var bookthree = new Book("ID3","Book", "Author", 2000, "isbn", Category.Drama);
+            var book = new Book("Book", "Author", 2000, "isbn", Category.Drama);
+            var booktwo = new Book("Book", "Author", 2000, "isbn", Category.Drama);
+            var bookthree = new Book("Book", "Author", 2000, "isbn", Category.Drama);
             booklist.AddBook(book);
             booklist.AddBook(booktwo);
             booklist.AddBook(bookthree);

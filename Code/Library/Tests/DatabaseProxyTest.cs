@@ -35,7 +35,7 @@ namespace Tests
             var list = new List<Book>
             {
                 //id not checked in db, just put in order to build
-                new Book("id1","Lord of the Rings: Fellowship of the Ring", "J.R.R Tolkien", 1954, "978-83-8116-1",
+                new Book("Lord of the Rings: Fellowship of the Ring", "J.R.R Tolkien", 1954, "978-83-8116-1",
                     Category.Fantasy)
             };
             string response =
