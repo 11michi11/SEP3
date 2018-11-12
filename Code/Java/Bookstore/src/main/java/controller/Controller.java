@@ -5,6 +5,7 @@ import controller.connection.DatabaseConnection;
 import controller.connection.DatabaseProxy;
 import controller.connection.MockDatabase;
 import model.Book;
+import model.DetailedBook;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Controller {
     private Gson gson = new Gson();
 
     Controller() {
-        this.db = new MockDatabase();
+        this.db = new DatabaseConnection();
     }
 
     public static Controller getInstance() {
@@ -39,5 +40,9 @@ public class Controller {
         } catch (DatabaseConnection.ServerOfflineException | DatabaseConnection.SearchException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getBookDetails(String isbn) {
+        return db.getBookDetails(isbn);
     }
 }

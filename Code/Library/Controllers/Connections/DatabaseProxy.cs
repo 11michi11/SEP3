@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using Controllers.Resources;
 using Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -11,8 +12,8 @@ namespace Controllers.Connections
 {
     public class DatabaseProxy : IDatabaseProxy
     {
-        private readonly byte[] HOST = {127, 0, 0, 1};
-        private readonly int PORT = 7777;
+        private readonly byte[] HOST = ConfigurationLoader.GetInstance().DatabaseHost;
+        private readonly int PORT = ConfigurationLoader.GetInstance().DatabasePort;
 
         public List<Book> Search(string searchTerm)
         {
@@ -81,6 +82,16 @@ namespace Controllers.Connections
             return response;
         }
 
+        public void CreateBook(Book book)
+        {
+            throw new NotImplementedException();
+            //MISIEK ZROB TO
+        }
+
+        public void DeleteBook(string id)
+        {
+            throw new NotImplementedException();
+        }
 
         protected enum ResponseStatus
         {
