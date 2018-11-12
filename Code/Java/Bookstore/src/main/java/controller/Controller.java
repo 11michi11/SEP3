@@ -45,4 +45,8 @@ public class Controller {
     public String getBookDetails(String isbn) {
         return db.getBookDetails(isbn);
     }
+
+    public Book addBook(Book book){
+        return db.getBook(book);
+    }
 }

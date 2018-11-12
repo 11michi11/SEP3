@@ -5,9 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import model.Book;
-import model.DetailedBook;
 
+
+import java.awt.print.Book;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.net.Socket;
@@ -21,6 +21,13 @@ public class DatabaseConnection implements DatabaseProxy {
     private final int PORT = 7777;
 //    private final String IP = "207.154.237.196";
     private final String IP = "localhost";
+
+
+    public Book addBook(Book book){
+        //add book to db when it's avilabe
+        System.out.println(book.toString());
+        return book;
+    }
 
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
         Map<String, Object> args = new HashMap<>();
