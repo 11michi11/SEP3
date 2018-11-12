@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace Models
 {
-    //[DataContract]
+    [DataContract]
     public class Book
     {
         [DataMember]
