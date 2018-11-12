@@ -5,7 +5,6 @@ import controller.connection.DatabaseConnection;
 import controller.connection.DatabaseProxy;
 import controller.connection.MockDatabase;
 import model.Book;
-import model.DetailedBook;
 
 import java.util.List;
 
@@ -47,6 +46,6 @@ public class Controller {
     }
 
     public Book addBook(Book book){
-        return db.getBook(book);
+        return db.addBook(book);
     }
 }
