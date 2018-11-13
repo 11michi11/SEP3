@@ -23,6 +23,12 @@ public class LibraryStorageID implements Serializable {
     public LibraryStorageID() {
     }
 
+    public LibraryStorageID(Book book, Library library, String bookid) {
+        this.book = book;
+        this.library = library;
+        this.bookid = bookid;
+    }
+
     public Library getLibrary() {
         return library;
     }
