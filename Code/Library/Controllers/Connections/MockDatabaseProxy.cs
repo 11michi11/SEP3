@@ -12,16 +12,18 @@ namespace Controllers.Connections
     public class MockDatabaseProxy : IDatabaseProxy
     {
         List<Book> books = new List<Book>();
+        List<LibraryBook> detailedbooks = new List<LibraryBook>();
         // only for manual testing file path to configuration.txt file, can be deleted
         private readonly byte[] HOST = ConfigurationLoader.GetInstance().DatabaseHost;
         private readonly int PORT = ConfigurationLoader.GetInstance().DatabasePort;
 
         public MockDatabaseProxy()
         {
-            books.Add(new Book("id1","Got", "Miska", 2015, "ISBN1", Category.Drama));
-            books.Add(new Book("id2","LoR", "Miska", 2015, "ISBN1", Category.Drama));
-            books.Add(new Book("id3","HarryPotter", "Miska", 2015, "ISBN2", Category.ScienceFiction));
-            books.Add(new Book("id4","LoR", "Tolkien", 2015, "ISBN3", Category.Fantasy));
+            books.Add(new Book("Got", "Miska", 2015, "ISBN1", Category.Drama));
+            books.Add(new Book("LoR", "Miska", 2015, "ISBN1", Category.Drama));
+            books.Add(new Book("HarryPotter", "Miska", 2015, "ISBN2", Category.ScienceFiction));
+            books.Add(new Book("LoR", "Tolkien", 2015, "ISBN3", Category.Fantasy));
+            books.Add(new Book("BookToDelete","Unknown",2222,"ISBN 1-1-1",Category.Children));
         }
 
         public List<Book> Search(string searchTerm)
@@ -44,6 +46,13 @@ namespace Controllers.Connections
             return tempBooks;
         }
 
+        public LibraryBook BookDetails(string id) {
+            
+            var book = new Book("Got", "Miska", 2015, "ISBN1", Category.Drama);
+            return new LibraryBook(book, id, true);
+        }
+
+
         public void CreateBook(Book book)
         {
             books.Add(book);
@@ -51,13 +60,17 @@ namespace Controllers.Connections
 
         public void DeleteBook(string id)
         {
-            var book = books.Find(b => b.Id.Equals(id)); 
-            if(book!=null) {
-                books.Remove(book);
-            } else {
-                throw new System.NullReferenceException("Book not found.");
-            }         
-           
+//            var libraryBook = detailedbooks.Find(b => b.Id.Equals(id)); 
+//            if(detailedbooks!=null) {
+//                detailedbooks.Remove(libraryBook);
+//            } else {
+//                throw new NullReferenceException("Book not found.");
+//            }
+            var libraryBook = BookDetails("bookId");
+            if (!libraryBook.Id.Equals(id))
+            {
+                throw new NullReferenceException("Book not found");
+            }
         }
     }
 }
