@@ -1,5 +1,6 @@
 package controller;
 
+import com.google.gson.internal.LinkedTreeMap;
 import communication.DBServer;
 import communication.Request;
 import communication.Response;
@@ -25,7 +26,6 @@ public class Controller {
     public static void main(String[] args) {
         DBProxy db = new HibernateAdapter();
         Controller controller = new Controller(db);
-        controller.search("Tolkien").forEach(System.out::println);
     }
 
     public List<Book> getAllBooks() {
@@ -95,7 +95,7 @@ public class Controller {
 
     private String handleAddBook(Request request) {
         Map<String, Object> arguments = request.getArguments();
-        Book book = (Book) arguments.get("book");
+        Book book = parseLinkedTreeMapToBook((LinkedTreeMap<String, Object>) arguments.get("book"));
 
         boolean isLibrary = (boolean) arguments.get("library");
         String institutionId = (String) arguments.get("id");
@@ -116,14 +116,22 @@ public class Controller {
         return new Response(Response.Status.OK, "Added").toJson();
     }
 
+    private Book parseLinkedTreeMapToBook(LinkedTreeMap<String, Object> map){
+        String isbn = (String) map.get("isbn");
+        String title = (String) map.get("title");
+        String author = (String) map.get("author");
+        int year = ((Double) map.get("year")).intValue();
+        Book.Category category = Book.Category.valueOf((String) map.get("category"));
+        return new Book(isbn, title, author, year, category);
+    }
+
     private String handleDeleteBook(Request request) throws HibernateAdapter.BookNotFoundException {
         Map<String, Object> arguments = request.getArguments();
-        String isbn = (String) arguments.get("isbn");
-        Book book = db.getBookByIsbn(isbn);
 
         boolean isLibrary = (boolean) arguments.get("library");
         String institutionId = (String) arguments.get("id");
         if (isLibrary) {
+            Book book = db.getBookByLibraryBookId((String) arguments.get("bookid"));
             Library lib = new Library(institutionId);
             String bookid = (String) arguments.get("bookid");
             LibraryStorageID libId = new LibraryStorageID(book, lib, bookid);
@@ -131,6 +139,8 @@ public class Controller {
 
             db.deleteBookFromLibrary(libraryStorage);
         } else {
+            String isbn = (String) arguments.get("isbn");
+            Book book = db.getBookByIsbn(isbn);
             BookStore bookStore = new BookStore(institutionId);
             BookStoreStorageID bookStoreId = new BookStoreStorageID(book, bookStore);
             BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStoreId);

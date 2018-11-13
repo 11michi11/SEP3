@@ -1,7 +1,7 @@
 package controller.connection;
 
 import model.Book;
-import java.lang.reflect.Array;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,14 +24,15 @@ public class MockDatabase implements DatabaseProxy {
     }
 
 	@Override
-	public Book addBook(Book book) {
+	public String addBook(Book book) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Book deleteBook(Book book) {
+	public String deleteBook(String isbn) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-}
+
+	}

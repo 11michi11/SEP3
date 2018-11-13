@@ -11,12 +11,59 @@ public class Book {
 	private Category category;
 
 	public enum Category {Fantasy, SciFi, Criminal, Science, Drama, Children, Horror, Empty, Poetry}
+	
+	public Book() {
+		
+	}
 
 	public Book(String isbn, String title, String author, int year, Category category) {
+		super();
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
 		this.year = year;
+		this.category = category;
+	}
+	
+	
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 
