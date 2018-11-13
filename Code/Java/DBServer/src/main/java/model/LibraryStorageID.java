@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,7 +17,16 @@ public class LibraryStorageID implements Serializable {
     @JoinColumn(name = "isbn")
     private Book book;
 
+    @Column(name = "bookid")
+    private String bookid;
+
     public LibraryStorageID() {
+    }
+
+    public LibraryStorageID(Book book, Library library, String bookid) {
+        this.book = book;
+        this.library = library;
+        this.bookid = bookid;
     }
 
     public Library getLibrary() {
@@ -35,11 +45,20 @@ public class LibraryStorageID implements Serializable {
         this.book = isbn;
     }
 
+    public String getBookid() {
+        return bookid;
+    }
+
+    public void setBookid(String bookid) {
+        this.bookid = bookid;
+    }
+
     @Override
     public String toString() {
         return "LibraryStorageID{" +
-                "libraryid=" + library +
-                ", isbn=" + book +
+                "library=" + library +
+                ", book=" + book +
+                ", bookid='" + bookid + '\'' +
                 '}';
     }
 
@@ -60,4 +79,6 @@ public class LibraryStorageID implements Serializable {
         result = 31 * result + (book != null ? book.hashCode() : 0);
         return result;
     }
+
+
 }

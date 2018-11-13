@@ -48,4 +48,9 @@ public class Controller {
     public Book addBook(Book book){
         return db.addBook(book);
     }
+
+	public Book deleteBook(String isbn) {
+		
+		return db.deleteBook(isbn);
+	}
 }

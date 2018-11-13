@@ -1,11 +1,14 @@
 package controller;
 
-import com.google.gson.Gson;
 import model.*;
-import org.hibernate.*;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class HibernateAdapter implements DBProxy {
@@ -27,19 +30,16 @@ public class HibernateAdapter implements DBProxy {
         List<LibraryStorage> libraryStorages = getLibrariesStorageByIsbn(isbn);
         List<BookStoreStorage> bookStoreStorages = getBookStoresStorageByIsbn(isbn);
 
+        libraryStorages.forEach(System.out::println);
+
         //There is only one book
         Book book = libraryStorages.get(0).getId().getBook();
-
-
-        List<Library> libraries = libraryStorages.stream()
-                .filter(libraryStorage -> libraryStorage.getId().getBook().getIsbn().equals(book.getIsbn()))
-                .map(libraryStorage -> libraryStorage.getId().getLibrary()).collect(Collectors.toList());
 
         List<BookStore> bookStores = bookStoreStorages.stream()
                 .filter(libraryStorage -> libraryStorage.getId().getBook().getIsbn().equals(book.getIsbn()))
                 .map(libraryStorage -> libraryStorage.getId().getBookstore()).collect(Collectors.toList());
 
-        return new DetailedBook(book, libraries, bookStores);
+        return new DetailedBook(book, libraryStorages, bookStores);
     }
 
     public List<Book> getAllBooks() {
@@ -54,6 +54,21 @@ public class HibernateAdapter implements DBProxy {
             e.printStackTrace();
         }
         return new LinkedList<>();
+    }
+
+    @Override
+    public Book getBookByIsbn(String isbn) throws BookNotFoundException {
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            Book book = (Book) session.createQuery("FROM Book where isbn like :isbn").setParameter("isbn" , isbn).getSingleResult();
+            tx.commit();
+            return book;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        throw new BookNotFoundException("There is no book with isbn: " + isbn);
     }
 
     @SuppressWarnings("unchecked")
@@ -145,13 +160,81 @@ public class HibernateAdapter implements DBProxy {
         return new LinkedList<>();
     }
 
+    @Override
+    public void addBookToLibrary(LibraryStorage libraryBook){
+        updateObject(libraryBook.getId().getBook());
+        addObject(libraryBook);
+    }
+
+    @Override
+    public void addBookToBookStore(BookStoreStorage bookStoreBook){
+        updateObject(bookStoreBook.getId().getBook());
+        addObject(bookStoreBook);
+    }
+
+
+    private void addObject(Object obj){
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            session.save(obj);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteBookFromLibrary(LibraryStorage libraryBook){
+        deleteObject(libraryBook);
+    }
+
+    @Override
+    public void deleteBookFromBookStore(BookStoreStorage bookStoreBook){
+        deleteObject(bookStoreBook);
+    }
+
+    private void deleteObject(Object obj){
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            session.delete(obj);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+    }
+
+    private void updateObject(Object obj){
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            session.update(obj);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+    }
+
+
     public static void main(String[] args) {
         HibernateAdapter db = new HibernateAdapter();
-        DetailedBook detailedBook = db.getBookDetails("978-83-8116-1");
-        Gson gson = new Gson();
-        System.out.println(gson.toJson(detailedBook));
+        try {
+            System.out.println(db.getBookByIsbn("978-83-8116-1"));
+        } catch (BookNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
 
+    class BookNotFoundException extends Exception {
+        public BookNotFoundException(String s) {
+            super(s);
+        }
+    }
 }
