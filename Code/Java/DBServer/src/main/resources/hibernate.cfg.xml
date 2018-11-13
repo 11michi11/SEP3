@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.PostgreSQLDialect
+        </property>
+
+        <property name="hibernate.connection.driver_class">
+            org.postgresql.Driver
+        </property>
+
+        <property name="hibernate.connection.url">
+            jdbc:postgresql://207.154.237.196:5432/books
+        </property>
+
+        <property name="hibernate.connection.username">
+            bookadmin
+        </property>
+
+        <property name="hibernate.connection.password">
+            book
+        </property>
+        <property name="show_sql">true</property>
+
+        <mapping class="model.Book"/>
+        <mapping class="model.Library"/>
+        <mapping class="model.LibraryStorage"/>
+        <mapping class="model.LibraryStorageID"/>
+        <mapping class="model.BookStore"/>
+        <mapping class="model.BookStoreStorage"/>
+        <mapping class="model.BookStoreStorageID"/>
+    </session-factory>
+</hibernate-configuration>

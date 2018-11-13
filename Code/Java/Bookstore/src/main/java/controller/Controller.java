@@ -15,7 +15,7 @@ public class Controller {
     private Gson gson = new Gson();
 
     Controller() {
-        this.db = new MockDatabase();
+        this.db = new DatabaseConnection();
     }
 
     public static Controller getInstance() {
@@ -40,4 +40,17 @@ public class Controller {
             e.printStackTrace();
         }
     }
+
+    public String getBookDetails(String isbn) {
+        return db.getBookDetails(isbn);
+    }
+
+    public Book addBook(Book book){
+        return db.addBook(book);
+    }
+
+	public Book deleteBook(String isbn) {
+		
+		return db.deleteBook(isbn);
+	}
 }

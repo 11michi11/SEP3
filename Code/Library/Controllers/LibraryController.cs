@@ -30,5 +30,15 @@ namespace Controllers
         {
             return _proxy.AdvancedSearch(title,author,year,isbn,category);
         }
+
+        public void CreateBook(Book book) {
+            _proxy.CreateBook(book);
+        }
+
+        public void DeleteBook(string id)
+        {
+         _proxy.DeleteBook(id);
+ 
+        }
     }
 }

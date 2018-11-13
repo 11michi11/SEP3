@@ -6,7 +6,9 @@ Code/Library/\.idea/\.idea\.Library/\.idea/
 Code/Java/DBServer/\.idea/
 Code/Java/DBServer/out/
 Code/Java/Bookstore/\.idea/
-
 Code/Library/\.idea/
+
+
+Code/Java/BookService/\.idea/workspace\.xml
 
 *.class
