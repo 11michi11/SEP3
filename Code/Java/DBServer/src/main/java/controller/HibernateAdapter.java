@@ -27,19 +27,16 @@ public class HibernateAdapter implements DBProxy {
         List<LibraryStorage> libraryStorages = getLibrariesStorageByIsbn(isbn);
         List<BookStoreStorage> bookStoreStorages = getBookStoresStorageByIsbn(isbn);
 
+        libraryStorages.forEach(System.out::println);
+
         //There is only one book
         Book book = libraryStorages.get(0).getId().getBook();
-
-
-        List<Library> libraries = libraryStorages.stream()
-                .filter(libraryStorage -> libraryStorage.getId().getBook().getIsbn().equals(book.getIsbn()))
-                .map(libraryStorage -> libraryStorage.getId().getLibrary()).collect(Collectors.toList());
 
         List<BookStore> bookStores = bookStoreStorages.stream()
                 .filter(libraryStorage -> libraryStorage.getId().getBook().getIsbn().equals(book.getIsbn()))
                 .map(libraryStorage -> libraryStorage.getId().getBookstore()).collect(Collectors.toList());
 
-        return new DetailedBook(book, libraries, bookStores);
+        return new DetailedBook(book, libraryStorages, bookStores);
     }
 
     public List<Book> getAllBooks() {
@@ -147,9 +144,9 @@ public class HibernateAdapter implements DBProxy {
 
     public static void main(String[] args) {
         HibernateAdapter db = new HibernateAdapter();
-        DetailedBook detailedBook = db.getBookDetails("978-83-8116-1");
-        Gson gson = new Gson();
-        System.out.println(gson.toJson(detailedBook));
+        DetailedBook detailedBook = db.getBookDetails("978-83-246-7758-0");
+        System.out.println(detailedBook.toJSON());
+
 
     }
 

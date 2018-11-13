@@ -8,6 +8,7 @@ import model.DetailedBook;
 
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class Controller  {
 
@@ -93,7 +94,7 @@ public class Controller  {
         String isbn = (String) arguments.get("isbn");
         DetailedBook book = db.getBookDetails(isbn);
 
-        return new Response(Response.Status.OK, book.toJSON()).toJson();
+        return new Response(Response.Status.OK, book.toJSON()).toJson();//.replace("\\", "");
     }
 
     private String handleSearch(Request request) {
