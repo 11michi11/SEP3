@@ -30,8 +30,9 @@ public class MockDatabase implements DatabaseProxy {
 	}
 
 	@Override
-	public Book deleteBook(Book book) {
+	public Book deleteBook(String isbn) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-}
+
+	}

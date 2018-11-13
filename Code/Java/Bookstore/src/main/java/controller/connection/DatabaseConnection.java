@@ -155,8 +155,9 @@ public class DatabaseConnection implements DatabaseProxy {
 	}
 
 	@Override
-	public Book deleteBook(Book book) {
-		System.out.println("Deleting book: "+book.toString());
-	  return book;
+	public Book deleteBook(String isbn) {
+		System.out.println("Deleting book: "+isbn);
+		// call database
+	  return null;
 	}
 }
