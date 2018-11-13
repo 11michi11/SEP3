@@ -18,6 +18,11 @@ public class LibraryStorage {
     public LibraryStorage() {
     }
 
+    public LibraryStorage(LibraryStorageID id, boolean available) {
+        this.id = id;
+        this.available = available;
+    }
+
     public LibraryStorageID getId() {
         return id;
     }
