@@ -1,14 +1,17 @@
 package controller;
 
+import com.google.gson.internal.LinkedTreeMap;
 import communication.DBServer;
 import communication.Request;
 import communication.Response;
-import model.Book;
+import model.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+import java.util.regex.Pattern;
 
-public class Controller implements DBProxy {
+public class Controller {
 
     private DBProxy db;
     private DBServer server;
@@ -54,7 +57,6 @@ public class Controller implements DBProxy {
         return db.advancedSearch(searchTerm, searchTerm, searchTerm, year, searchCategory);
     }
 
-    @Override
     public List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category) {
         final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
         if (isbn.equals(""))
@@ -78,12 +80,82 @@ public class Controller implements DBProxy {
                     return handleAdvancedSearch(request);
                 case Search:
                     return handleSearch(request);
+                case BookDetails:
+                    return handleBookDetails(request);
+                case AddBook:
+                    return handleAddBook(request);
+                case DeleteBook:
+                    return handleDeleteBook(request);
             }
             throw new InvalidOperationException("Wrong operation");
-        } catch (Request.RequestJsonFormatException | InvalidOperationException e) {
+        } catch (Request.RequestJsonFormatException | InvalidOperationException | HibernateAdapter.BookNotFoundException e) {
             //send error
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
+    }
+
+    private String handleAddBook(Request request) {
+        Map<String, Object> arguments = request.getArguments();
+        Book book = parseLinkedTreeMapToBook((LinkedTreeMap<String, Object>) arguments.get("book"));
+
+        boolean isLibrary = (boolean) arguments.get("library");
+        String institutionId = (String) arguments.get("id");
+        if (isLibrary) {
+            Library lib = new Library(institutionId);
+            String bookid = UUID.randomUUID().toString();
+            LibraryStorageID libId = new LibraryStorageID(book, lib, bookid);
+            LibraryStorage libraryStorage = new LibraryStorage(libId, true);
+
+            db.addBookToLibrary(libraryStorage);
+        } else {
+            BookStore bookStore = new BookStore(institutionId);
+            BookStoreStorageID bookStoreId = new BookStoreStorageID(book, bookStore);
+            BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStoreId);
+
+            db.addBookToBookStore(bookStoreStorage);
+        }
+        return new Response(Response.Status.OK, "Added").toJson();
+    }
+
+    private Book parseLinkedTreeMapToBook(LinkedTreeMap<String, Object> map){
+        String isbn = (String) map.get("isbn");
+        String title = (String) map.get("title");
+        String author = (String) map.get("author");
+        int year = ((Double) map.get("year")).intValue();
+        Book.Category category = Book.Category.valueOf((String) map.get("category"));
+        return new Book(isbn, title, author, year, category);
+    }
+
+    private String handleDeleteBook(Request request) throws HibernateAdapter.BookNotFoundException {
+        Map<String, Object> arguments = request.getArguments();
+        String isbn = (String) arguments.get("isbn");
+        Book book = db.getBookByIsbn(isbn);
+
+        boolean isLibrary = (boolean) arguments.get("library");
+        String institutionId = (String) arguments.get("id");
+        if (isLibrary) {
+            Library lib = new Library(institutionId);
+            String bookid = (String) arguments.get("bookid");
+            LibraryStorageID libId = new LibraryStorageID(book, lib, bookid);
+            LibraryStorage libraryStorage = new LibraryStorage(libId, true);
+
+            db.deleteBookFromLibrary(libraryStorage);
+        } else {
+            BookStore bookStore = new BookStore(institutionId);
+            BookStoreStorageID bookStoreId = new BookStoreStorageID(book, bookStore);
+            BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStoreId);
+
+            db.deleteBookFromBookStore(bookStoreStorage);
+        }
+        return new Response(Response.Status.OK, "Deleted").toJson();
+    }
+
+    private String handleBookDetails(Request request) {
+        Map<String, Object> arguments = request.getArguments();
+        String isbn = (String) arguments.get("isbn");
+        DetailedBook book = db.getBookDetails(isbn);
+
+        return new Response(Response.Status.OK, book.toJSON()).toJson();//.replace("\\", "");
     }
 
     private String handleSearch(Request request) {
@@ -101,7 +173,7 @@ public class Controller implements DBProxy {
         String title = (String) arguments.get("title");
         String author = (String) arguments.get("author");
         int year = ((Double) arguments.get("year")).intValue();
-        Book.Category category = Book.Category.valueOf((String)arguments.get("category"));
+        Book.Category category = Book.Category.valueOf((String) arguments.get("category"));
 
         List<Book> books = advancedSearch(isbn, title, author, year, category);
 

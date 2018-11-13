@@ -1,9 +1,12 @@
 import React from 'react';
 import {Nav, NavItem, NavLink} from 'reactstrap';
+import {withRouter} from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = (props) => {
 
+  console.log(this);
     return (
+     
     <Nav>
           <NavItem>
             <NavLink href="/">Home</NavLink>
@@ -19,4 +22,4 @@ const Navbar = () => {
 
 }
 
-export default Navbar
+export default withRouter(Navbar)

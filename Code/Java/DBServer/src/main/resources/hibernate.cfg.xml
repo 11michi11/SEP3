@@ -26,5 +26,11 @@
         <property name="show_sql">true</property>
 
         <mapping class="model.Book"/>
+        <mapping class="model.Library"/>
+        <mapping class="model.LibraryStorage"/>
+        <mapping class="model.LibraryStorageID"/>
+        <mapping class="model.BookStore"/>
+        <mapping class="model.BookStoreStorage"/>
+        <mapping class="model.BookStoreStorageID"/>
     </session-factory>
 </hibernate-configuration>

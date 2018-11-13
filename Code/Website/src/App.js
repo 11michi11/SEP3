@@ -9,16 +9,19 @@ class App extends Component {
     return (
       <BrowserRouter>
       <div>
+
       <Navbar/>
       
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/books" component={BookList}></Route>
+          <Route path="/search/:search_term" component={BookList}></Route>
         </Switch>
 
+      </div>
      
 
-      </div>
+      
       </BrowserRouter>
     );
   }
