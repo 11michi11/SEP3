@@ -11,17 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class Search {
 
-	@CrossOrigin
+	
     @RequestMapping("/search")
     public List<Book> search(@RequestParam(value = "searchTerm") String searchTerm) {
         Controller controller = Controller.getInstance();
         return controller.search(searchTerm);
     }
 	
-	@CrossOrigin
+	
     @RequestMapping("/searchAdvanced")
     public List<Book> searchAdvanced(@RequestParam(value = "title", defaultValue = "") String title,
                                      @RequestParam(value = "author", defaultValue = "") String author,

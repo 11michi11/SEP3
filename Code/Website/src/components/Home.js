@@ -5,7 +5,7 @@ import axios from 'axios'
 class Home extends Component {
 
     componentDidMount = () => {
-
+            console.log(this.props);
     }
 
    handleSearch = (event) => {
