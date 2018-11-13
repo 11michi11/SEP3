@@ -7,6 +7,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import model.Book;
+import controller.connection.Request;
 
 import java.io.*;
 import java.lang.reflect.Type;
