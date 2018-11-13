@@ -20,6 +20,11 @@ public class BookStoreStorageID implements Serializable {
     public BookStoreStorageID() {
     }
 
+    public BookStoreStorageID(Book book, BookStore bookstore) {
+        this.book = book;
+        this.bookstore = bookstore;
+    }
+
     public BookStore getBookstore() {
         return bookstore;
     }

@@ -14,6 +14,10 @@ public class BookStoreStorage {
     public BookStoreStorage() {
     }
 
+    public BookStoreStorage(BookStoreStorageID id) {
+        this.id = id;
+    }
+
     public BookStoreStorageID getId() {
         return id;
     }
