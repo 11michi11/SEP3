@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Request {
 
-    public enum Operation {Search, AdvancedSearch, BookDetails}
+    public enum Operation {Search, AdvancedSearch, AddBook, DeleteBook, BookDetails}
 
     private Operation operation;
     private Map<String, Object> args;
@@ -35,7 +35,7 @@ public class Request {
         try {
             Gson gson = new Gson();
             return gson.fromJson(json, Request.class);
-        }catch(JsonSyntaxException e){
+        } catch (JsonSyntaxException e) {
             throw new RequestJsonFormatException("Wrong format of Request JSON");
         }
     }
