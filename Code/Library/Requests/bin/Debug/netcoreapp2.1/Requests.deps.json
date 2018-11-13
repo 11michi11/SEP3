@@ -25,6 +25,7 @@
       "Requests/1.0.0": {
         "dependencies": {
           "Controllers": "1.0.0",
+          "Microsoft.AspNet.WebApi.Client": "5.2.6",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
           "Models": "1.0.0"

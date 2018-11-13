@@ -2,9 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe7660bb-2c08-498f-a3a2-cd3e3b173751" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/DBServer/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/src/main/java/controller/DBProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/DBServer/src/main/java/controller/DBProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/src/main/java/controller/HibernateAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/DBServer/src/main/java/controller/HibernateAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/riderModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Connections/Request.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Connections/Request.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Controllers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Controllers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Controllers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Controllers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Models.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/bin/Debug/netstandard2.0/Models.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/obj/Controllers.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Controllers.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Book.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/bin/Debug/netstandard2.0/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Models/bin/Debug/netstandard2.0/Models.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/bin/Debug/netstandard2.0/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Models/bin/Debug/netstandard2.0/Models.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Requests/obj/Requests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Requests.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Requests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/DatabaseProxyTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/DatabaseProxyTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Controllers.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Controllers.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Controllers.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Controllers.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Models.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Models.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.runtimeconfig.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.packagespec.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,34 +57,35 @@
     <session id="-245115416">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="22" />
+          <entry key="cs" value="36" />
           <entry key="txt" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="22" />
+          <entry key="C#" value="36" />
           <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="2487" />
+          <entry key="cs" value="2742" />
           <entry key="txt" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="2487" />
+          <entry key="C#" value="2742" />
           <entry key="PLAIN_TEXT" value="37" />
         </counts>
       </usages-collector>
@@ -52,43 +93,209 @@
     <session id="-1580701117">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="8" />
+          <entry key="project.open.time.11" value="3" />
+          <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="16" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="16" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="506" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="506" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts" />
+      <usages-collector id="statistics.vcs.git.usages" />
+    </session>
+    <session id="896925177">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="4" />
+          <entry key="txt" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="4" />
+          <entry key="PLAIN_TEXT" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="287" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="287" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages" />
+      <usages-collector id="statistics.js.language.service.starts" />
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Models/Book.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="13" column="67" lean-forward="true" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
+              <folding>
+                <marker date="1542135201912" expanded="false" signature="7:59" ph="..." />
+                <marker date="1542135201912" expanded="true" signature="78:1442" ph="{...}" />
+                <marker date="1542135201912" expanded="true" signature="121:1440" ph="{...}" />
+                <marker date="1542135201912" expanded="true" signature="720:879" ph="{...}" />
+                <marker date="1542135201912" expanded="true" signature="930:1088" ph="{...}" />
+                <marker date="1542135201912" expanded="true" signature="1137:1424" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="104" column="66" selection-start-line="104" selection-start-column="66" selection-end-line="104" selection-end-column="66" />
+              <folding>
+                <marker date="1542135442556" expanded="false" signature="6:204" ph="..." />
+                <marker date="1542135442556" expanded="true" signature="239:4711" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="289:4709" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="605:1007" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="1122:1612" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="1701:2186" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="1739:2176" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="2245:2334" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="2406:2587" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="2640:3177" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="3220:3664" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="3711:4161" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="4212:4281" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="4320:4374" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="4431:4545" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="4507:4535" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="4596:4703" ph="{...}" />
+                <marker date="1542135442556" expanded="true" signature="4665:4693" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Tests/DatabaseProxyTest.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="62" column="37" lean-forward="true" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+              <folding>
+                <marker date="1542135281557" expanded="false" signature="6:105" ph="..." />
+                <marker date="1542135281557" expanded="true" signature="122:2317" ph="{...}" />
+                <marker date="1542135281557" expanded="true" signature="175:2315" ph="{...}" />
+                <marker date="1542135281557" expanded="true" signature="264:617" ph="{...}" />
+                <marker date="1542135281557" expanded="true" signature="325:555" ph="{...}" />
+                <marker date="1542135281557" expanded="true" signature="684:1013" ph="{...}" />
+                <marker date="1542135281557" expanded="true" signature="1085:1688" ph="{...}" />
+                <marker date="1542135281557" expanded="true" signature="1146:1376" ph="{...}" />
+                <marker date="1542135281557" expanded="true" signature="1754:1959" ph="{...}" />
+                <marker date="1542135281557" expanded="true" signature="2009:2165" ph="{...}" />
+                <marker date="1542135281557" expanded="true" signature="2226:2309" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/Connections/Request.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="15" column="72" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
+              <folding>
+                <marker date="1542133774081" expanded="false" signature="6:104" ph="..." />
+                <marker date="1542133774081" expanded="true" signature="139:740" ph="{...}" />
+                <marker date="1542133774081" expanded="true" signature="166:738" ph="{...}" />
+                <marker date="1542133774081" expanded="true" signature="405:458" ph="{...}" />
+                <marker date="1542133774081" expanded="true" signature="536:626" ph="{...}" />
+                <marker date="1542133774081" expanded="true" signature="658:732" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>&quot;</find>
+      <find>'</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>\&quot;</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Tests/BookListTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Tests/ConfigurationLoaderTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7540A5DA-343D-4E6A-AC2A-6190E339F993/f2/7f146158/Thread.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Tests/BookTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/DatabaseProxyTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/724F386D-8F5B-4395-A7FA-46C7A3A38A2A/26/69fafb28/TestInvoker`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Requests/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/LibraryControllerTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tests/BooksControllerTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/LibraryController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/ConfigurationLoaderTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/Book.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7540A5DA-343D-4E6A-AC2A-6190E339F993/36/e621c141/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Requests/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/Connections/Request.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/Category.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/BookTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tests/BookListTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/LibraryBook.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" />
         <option value="$PROJECT_DIR$/configuration.txt" />
         <option value="$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs" />
         <option value="$PROJECT_DIR$/Tests/ConfigurationLoaderTest.cs" />
+        <option value="$PROJECT_DIR$/Tests/BooksControllerTest.cs" />
+        <option value="$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs" />
+        <option value="$PROJECT_DIR$/Requests/Controllers/BooksController.cs" />
+        <option value="$PROJECT_DIR$/Tests/BookListTest.cs" />
         <option value="$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" />
+        <option value="$PROJECT_DIR$/Tests/LibraryControllerTest.cs" />
+        <option value="$PROJECT_DIR$/Models/LibraryBook.cs" />
+        <option value="$PROJECT_DIR$/Tests/BookTest.cs" />
+        <option value="$PROJECT_DIR$/Controllers/Connections/Request.cs" />
+        <option value="$PROJECT_DIR$/Models/Book.cs" />
+        <option value="$PROJECT_DIR$/Tests/DatabaseProxyTest.cs" />
+        <option value="$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" />
       </list>
     </option>
   </component>
@@ -98,9 +305,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="880" />
-    <option name="width" value="1045" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="950" />
+    <option name="width" value="980" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -130,7 +337,18 @@
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Models" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Requests" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Requests" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
@@ -200,13 +418,33 @@
         <option name="Build" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tests" type="DotNetProject" factoryName=".NET Project" temporary="true">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.dll" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Tests/Tests.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.1" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue=".NET Project.Default" />
       <item itemvalue=".NET Project.Requests" />
+      <item itemvalue=".NET Project.Tests" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue=".NET Project.Requests" />
+        <item itemvalue=".NET Project.Tests" />
       </list>
     </recent_temporary>
   </component>
@@ -224,11 +462,20 @@
       <workItem from="1541527755203" duration="6206000" />
       <workItem from="1541536452504" duration="14495000" />
       <workItem from="1541776506415" duration="18000" />
+      <workItem from="1541783557878" duration="390000" />
+      <workItem from="1541783982212" duration="3304000" />
+      <workItem from="1541848669007" duration="2941000" />
+      <workItem from="1541861760847" duration="1717000" />
+      <workItem from="1542025068606" duration="464000" />
+      <workItem from="1542033905752" duration="3000" />
+      <workItem from="1542036318592" duration="1648000" />
+      <workItem from="1542038976860" duration="3820000" />
+      <workItem from="1542133379193" duration="2056000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21102000" />
+    <option name="totallyTimeSpent" value="37445000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -241,26 +488,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25973153" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.295302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32907802" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49395972" weight="0.32765958" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39942113" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="NuGet" order="7" weight="0.32907802" />
+      <window_info anchor="bottom" id="NuGet" order="7" weight="0.32850942" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unit Tests" order="11" weight="0.32907802" />
-      <window_info anchor="bottom" id="REST Client" order="12" />
-      <window_info anchor="bottom" id="Terminal" order="13" weight="0.32907802" />
-      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="15" weight="0.32907802" />
+      <window_info active="true" anchor="bottom" id="Unit Tests" order="11" sideWeight="0.88322145" visible="true" weight="0.22141823" />
+      <window_info anchor="bottom" id="REST Client" order="12" weight="0.3299566" />
+      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49932885" weight="0.36737588" />
+      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.11677852" side_tool="true" weight="0.22141823" />
+      <window_info anchor="bottom" id="Build" order="15" sideWeight="0.49597314" weight="0.32765958" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -284,58 +532,6 @@
           <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs</url>
-          <line>35</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs" initialLine="40">
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs</url>
-          <line>18</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs" initialLine="18">
-            <startOffsets>
-              <option value="531" />
-            </startOffsets>
-            <endOffsets>
-              <option value="580" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Tests/ConfigurationLoaderTest.cs</url>
-          <line>12</line>
-          <properties documentPath="$PROJECT_DIR$/Tests/ConfigurationLoaderTest.cs" initialLine="10">
-            <startOffsets>
-              <option value="350" />
-            </startOffsets>
-            <endOffsets>
-              <option value="397" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Tests/ConfigurationLoaderTest.cs</url>
-          <line>15</line>
-          <properties documentPath="$PROJECT_DIR$/Tests/ConfigurationLoaderTest.cs" initialLine="13">
-            <startOffsets>
-              <option value="648" />
-            </startOffsets>
-            <endOffsets>
-              <option value="704" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -343,69 +539,207 @@
     <entry file="file://$PROJECT_DIR$/Requests/Program.cs">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/BookListTest.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Book.cs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/BooksControllerTest.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="31" selection-start-line="31" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/BookTest.cs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/DatabaseProxyTest.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7540A5DA-343D-4E6A-AC2A-6190E339F993/36/e621c141/Dictionary`2.cs" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7540A5DA-343D-4E6A-AC2A-6190E339F993/f2/7f146158/Thread.cs" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/724F386D-8F5B-4395-A7FA-46C7A3A38A2A/26/69fafb28/TestInvoker`1.cs" />
-    <entry file="file://$PROJECT_DIR$/configuration.txt" />
-    <entry file="file://$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs">
+    <entry file="file://$PROJECT_DIR$/Tests/BookListTest.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        <state relative-caret-position="184">
+          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Symbols/src/Source/03056.00/Source/ndp/fx/src/Configuration/System/Configuration/Configuration.cs" />
+    <entry file="file://$PROJECT_DIR$/Controllers/LibraryController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-376" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/LibraryBook.cs" />
+    <entry file="file://$PROJECT_DIR$/Tests/BookTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/ConfigurationLoaderTest.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="54" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
+        <state relative-caret-position="391">
+          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/LibraryController.cs">
+    <entry file="file://$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="21" selection-start-line="21" selection-end-line="22" />
+        <state relative-caret-position="368">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1334">
+          <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="86" selection-start-line="14" selection-start-column="86" selection-end-line="14" selection-end-column="86" />
+        <state relative-caret-position="380">
+          <caret line="69" column="101" lean-forward="true" selection-start-line="69" selection-start-column="101" selection-end-line="69" selection-end-column="101" />
+          <folding>
+            <marker date="1542134440489" expanded="false" signature="6:190" ph="..." />
+            <marker date="1542134440489" expanded="true" signature="225:2968" ph="{...}" />
+            <marker date="1542134440489" expanded="true" signature="279:2966" ph="{...}" />
+            <marker date="1542134440489" expanded="true" signature="691:1147" ph="{...}" />
+            <marker date="1542134440489" expanded="true" signature="1200:1488" ph="{...}" />
+            <marker date="1542134440489" expanded="true" signature="1603:2117" ph="{...}" />
+            <marker date="1542134440489" expanded="true" signature="2169:2325" ph="{...}" />
+            <marker date="1542134440489" expanded="true" signature="2369:2418" ph="{...}" />
+            <marker date="1542134440489" expanded="true" signature="2465:2960" ph="{...}" />
+            <marker date="1542134440489" expanded="true" signature="2476:2753" ph="/* var libraryBook = detailedbooks.Find(b =&gt; b.Id.Equals(id)); ... */" />
+            <marker date="1542134440489" expanded="true" signature="2854:2950" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/LibraryControllerTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="79" column="62" selection-start-line="79" selection-start-column="62" selection-end-line="79" selection-end-column="62" />
+          <folding>
+            <marker date="1542133291964" expanded="false" signature="6:202" ph="..." />
+            <marker date="1542133291964" expanded="true" signature="219:2527" ph="{...}" />
+            <marker date="1542133291964" expanded="true" signature="260:2525" ph="{...}" />
+            <marker date="1542133291964" expanded="true" signature="362:508" ph="{...}" />
+            <marker date="1542133291964" expanded="true" signature="565:920" ph="{...}" />
+            <marker date="1542133291964" expanded="true" signature="635:799" ph="{...}" />
+            <marker date="1542133291964" expanded="true" signature="977:1464" ph="{...}" />
+            <marker date="1542133291964" expanded="true" signature="1047:1207" ph="{...}" />
+            <marker date="1542133291964" expanded="true" signature="1521:1767" ph="{...}" />
+            <marker date="1542133291964" expanded="true" signature="1840:2158" ph="{...}" />
+            <marker date="1542133291964" expanded="true" signature="2212:2519" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/BooksControllerTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <marker date="1542133291963" expanded="false" signature="6:183" ph="..." />
+            <marker date="1542133291963" expanded="true" signature="201:2607" ph="{...}" />
+            <marker date="1542133291963" expanded="true" signature="240:2605" ph="{...}" />
+            <marker date="1542133291963" expanded="true" signature="329:389" ph="{...}" />
+            <marker date="1542133291963" expanded="true" signature="446:986" ph="{...}" />
+            <marker date="1542133291963" expanded="true" signature="508:672" ph="{...}" />
+            <marker date="1542133291963" expanded="true" signature="1043:1656" ph="{...}" />
+            <marker date="1542133291963" expanded="true" signature="1105:1265" ph="{...}" />
+            <marker date="1542133291963" expanded="true" signature="1713:2081" ph="{...}" />
+            <marker date="1542133291963" expanded="true" signature="2154:2599" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/Connections/Request.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="15" column="72" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
+          <folding>
+            <marker date="1542133774081" expanded="false" signature="6:104" ph="..." />
+            <marker date="1542133774081" expanded="true" signature="139:740" ph="{...}" />
+            <marker date="1542133774081" expanded="true" signature="166:738" ph="{...}" />
+            <marker date="1542133774081" expanded="true" signature="405:458" ph="{...}" />
+            <marker date="1542133774081" expanded="true" signature="536:626" ph="{...}" />
+            <marker date="1542133774081" expanded="true" signature="658:732" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/Category.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding>
+            <marker date="1542125021783" expanded="false" signature="6:56" ph="..." />
+            <marker date="1542125021783" expanded="true" signature="74:415" ph="{...}" />
+            <marker date="1542125021783" expanded="true" signature="81:235" ph="/* added in order to have this enum as string instead of it's numeric value after serialization ... */" />
+            <marker date="1542125021783" expanded="true" signature="309:413" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/Book.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="13" column="67" lean-forward="true" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
+          <folding>
+            <marker date="1542135201912" expanded="false" signature="7:59" ph="..." />
+            <marker date="1542135201912" expanded="true" signature="78:1442" ph="{...}" />
+            <marker date="1542135201912" expanded="true" signature="121:1440" ph="{...}" />
+            <marker date="1542135201912" expanded="true" signature="720:879" ph="{...}" />
+            <marker date="1542135201912" expanded="true" signature="930:1088" ph="{...}" />
+            <marker date="1542135201912" expanded="true" signature="1137:1424" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="15" column="83" selection-start-line="14" selection-start-column="7" selection-end-line="15" selection-end-column="83" />
+        <state relative-caret-position="414">
+          <caret line="104" column="66" selection-start-line="104" selection-start-column="66" selection-end-line="104" selection-end-column="66" />
+          <folding>
+            <marker date="1542135442556" expanded="false" signature="6:204" ph="..." />
+            <marker date="1542135442556" expanded="true" signature="239:4711" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="289:4709" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="605:1007" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="1122:1612" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="1701:2186" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="1739:2176" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="2245:2334" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="2406:2587" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="2640:3177" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="3220:3664" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="3711:4161" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="4212:4281" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="4320:4374" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="4431:4545" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="4507:4535" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="4596:4703" ph="{...}" />
+            <marker date="1542135442556" expanded="true" signature="4665:4693" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/DatabaseProxyTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="62" column="37" lean-forward="true" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+          <folding>
+            <marker date="1542135281557" expanded="false" signature="6:105" ph="..." />
+            <marker date="1542135281557" expanded="true" signature="122:2317" ph="{...}" />
+            <marker date="1542135281557" expanded="true" signature="175:2315" ph="{...}" />
+            <marker date="1542135281557" expanded="true" signature="264:617" ph="{...}" />
+            <marker date="1542135281557" expanded="true" signature="325:555" ph="{...}" />
+            <marker date="1542135281557" expanded="true" signature="684:1013" ph="{...}" />
+            <marker date="1542135281557" expanded="true" signature="1085:1688" ph="{...}" />
+            <marker date="1542135281557" expanded="true" signature="1146:1376" ph="{...}" />
+            <marker date="1542135281557" expanded="true" signature="1754:1959" ph="{...}" />
+            <marker date="1542135281557" expanded="true" signature="2009:2165" ph="{...}" />
+            <marker date="1542135281557" expanded="true" signature="2226:2309" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

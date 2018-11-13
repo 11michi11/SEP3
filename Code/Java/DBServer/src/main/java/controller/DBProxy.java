@@ -13,6 +13,8 @@ public interface DBProxy {
 
     List<Book> getAllBooks();
 
+    Book getBookByLibraryBookId(String bookid) throws HibernateAdapter.BookNotFoundException;
+
     List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category);
 
     void addBookToLibrary(LibraryStorage libraryBook);

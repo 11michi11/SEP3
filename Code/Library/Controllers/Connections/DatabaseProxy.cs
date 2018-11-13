@@ -14,6 +14,7 @@ namespace Controllers.Connections
     {
         private readonly byte[] HOST = ConfigurationLoader.GetInstance().DatabaseHost;
         private readonly int PORT = ConfigurationLoader.GetInstance().DatabasePort;
+        private readonly string  LIBRARY_ID = "ce78ef57-77ec-4bb7-82a2-1a78d3789aef";
 
         public List<Book> Search(string searchTerm)
         {
@@ -84,11 +85,33 @@ namespace Controllers.Connections
 
         public void CreateBook(Book book)
         {
-            throw new NotImplementedException();
-            //MISIEK ZROB TO
+            var ar = new Dictionary<string, object>
+                {{"library", true}, {"id", LIBRARY_ID}, {"book", book}};
+            
+            var request = new Request(Request.Operation.AddBook, ar);
+
+            Console.WriteLine($"Sending request: '{request.ToJSON()}'");
+            var response = SendMessage(request);
+
+            var status = GetResponseStatus(response);   
+            Console.Write(status);
         }
 
-        public void DeleteBook(string id)
+        public void DeleteBook(string bookid)
+        {
+            var ar = new Dictionary<string, object>
+                {{"library", true}, {"id", LIBRARY_ID}, {"bookid",bookid}};
+            
+            var request = new Request(Request.Operation.DeleteBook, ar);
+
+            Console.WriteLine($"Sending request: '{request.ToJSON()}'");
+            var response = SendMessage(request);
+
+            var status = GetResponseStatus(response);   
+            Console.Write(status);
+        }
+
+        public LibraryBook BookDetails(string id)
         {
             throw new NotImplementedException();
         }

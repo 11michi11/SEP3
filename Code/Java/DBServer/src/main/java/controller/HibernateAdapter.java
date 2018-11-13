@@ -71,6 +71,21 @@ public class HibernateAdapter implements DBProxy {
         throw new BookNotFoundException("There is no book with isbn: " + isbn);
     }
 
+    @Override
+    public Book getBookByLibraryBookId(String bookid) throws BookNotFoundException {
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            LibraryStorage libraryStorage = (LibraryStorage) session.createQuery("FROM LibraryStorage where bookid like :bookid").setParameter("bookid" , bookid).getSingleResult();
+            tx.commit();
+            return libraryStorage.getId().getBook();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        throw new BookNotFoundException("There is no book with id: " + bookid);
+    }
+
     @SuppressWarnings("unchecked")
     public List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category) {
         Transaction tx = null;
@@ -223,7 +238,7 @@ public class HibernateAdapter implements DBProxy {
     public static void main(String[] args) {
         HibernateAdapter db = new HibernateAdapter();
         try {
-            System.out.println(db.getBookByIsbn("978-83-8116-1"));
+            System.out.println(db.getBookByLibraryBookId("196690e8-d620-49cb-b404-d049bd25b6de"));
         } catch (BookNotFoundException e) {
             e.printStackTrace();
         }
