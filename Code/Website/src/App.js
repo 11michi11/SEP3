@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <BrowserRouter>
       <div>
+
       <Navbar/>
       
         <Switch>
@@ -16,9 +17,10 @@ class App extends Component {
           <Route path="/books" component={BookList}></Route>
         </Switch>
 
+      </div>
      
 
-      </div>
+      
       </BrowserRouter>
     );
   }

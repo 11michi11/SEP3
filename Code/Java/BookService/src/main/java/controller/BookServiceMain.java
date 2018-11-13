@@ -9,6 +9,5 @@ public class BookServiceMain {
         SpringApplication.run(BookServiceMain.class, args);
 
         Controller controller = new Controller();
-
     }
 }

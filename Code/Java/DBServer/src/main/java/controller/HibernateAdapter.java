@@ -1,11 +1,12 @@
 package controller;
 
-import model.Book;
+import com.google.gson.Gson;
+import model.*;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class HibernateAdapter implements DBProxy {
     private final SessionFactory ourSessionFactory;
@@ -20,8 +21,22 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    public Session getSession() throws HibernateException {
-        return ourSessionFactory.openSession();
+    @Override
+    public DetailedBook getBookDetails(String isbn) {
+
+        List<LibraryStorage> libraryStorages = getLibrariesStorageByIsbn(isbn);
+        List<BookStoreStorage> bookStoreStorages = getBookStoresStorageByIsbn(isbn);
+
+        libraryStorages.forEach(System.out::println);
+
+        //There is only one book
+        Book book = libraryStorages.get(0).getId().getBook();
+
+        List<BookStore> bookStores = bookStoreStorages.stream()
+                .filter(libraryStorage -> libraryStorage.getId().getBook().getIsbn().equals(book.getIsbn()))
+                .map(libraryStorage -> libraryStorage.getId().getBookstore()).collect(Collectors.toList());
+
+        return new DetailedBook(book, libraryStorages, bookStores);
     }
 
     public List<Book> getAllBooks() {
@@ -64,6 +79,76 @@ public class HibernateAdapter implements DBProxy {
         return new LinkedList<>();
     }
 
+
+    public List<LibraryStorage> getLibrariesStorage() {
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<LibraryStorage> storages = session.createQuery("FROM LibraryStorage ").list();
+            tx.commit();
+            return storages;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<LibraryStorage> getLibrariesStorageByIsbn(String isbn) {
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<LibraryStorage> storages = session.createQuery("FROM LibraryStorage where isbn like :isbn")
+                    .setParameter("isbn", isbn)
+                    .list();
+            tx.commit();
+            return storages;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
+    }
+
+    public List<BookStoreStorage> getBookStoresStorage() {
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<BookStoreStorage> storages = session.createQuery("FROM BookStoreStorage ").list();
+            tx.commit();
+            return storages;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<BookStoreStorage> getBookStoresStorageByIsbn(String isbn) {
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<BookStoreStorage> storages = session.createQuery("FROM BookStoreStorage where isbn like :isbn")
+                    .setParameter("isbn", isbn)
+                    .list();
+            tx.commit();
+            return storages;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
+    }
+
+    public static void main(String[] args) {
+        HibernateAdapter db = new HibernateAdapter();
+        DetailedBook detailedBook = db.getBookDetails("978-83-246-7758-0");
+        System.out.println(detailedBook.toJSON());
+
+
+    }
 
 
 }
