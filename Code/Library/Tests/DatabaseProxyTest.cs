@@ -51,5 +51,18 @@ namespace Tests
                 "{\"status\":\"Error\",\"content\":\"Error\"}";
             Assert.Equal(GetContent<string>(response),msg);
         }
+
+        [Fact]
+        public void AddBookTest()
+        {
+            var book = new Book("Effective Java","Joshua Bloch",2017,"978-0134685991", Category.Science);
+            CreateBook(book);
+        }
+        
+        [Fact]
+        public void DeleteBookTest()
+        {
+           DeleteBook("97bb0a09-330e-4939-9e75-cc39d9000240");
+        }
     }
 }

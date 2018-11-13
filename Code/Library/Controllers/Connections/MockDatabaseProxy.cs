@@ -58,7 +58,7 @@ namespace Controllers.Connections
             books.Add(book);
         }
 
-        public void DeleteBook(string id)
+        public void DeleteBook(string bookid)
         {
 //            var libraryBook = detailedbooks.Find(b => b.Id.Equals(id)); 
 //            if(detailedbooks!=null) {
@@ -67,7 +67,7 @@ namespace Controllers.Connections
 //                throw new NullReferenceException("Book not found.");
 //            }
             var libraryBook = BookDetails("bookId");
-            if (!libraryBook.Id.Equals(id))
+            if (!libraryBook.Id.Equals(bookid))
             {
                 throw new NullReferenceException("Book not found");
             }

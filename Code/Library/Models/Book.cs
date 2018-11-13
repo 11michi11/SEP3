@@ -8,14 +8,19 @@ namespace Models
     [DataContract]
     public class Book
     {
+        [JsonProperty("title")]
         [DataMember]
         public string Title {get; set;}
+        [JsonProperty("author")]
         [DataMember]
         public string Author {get; set;}
+        [JsonProperty("year")]
         [DataMember]
         public int Year {get; set;}
+        [JsonProperty("isbn")]
         [DataMember]
         public string Isbn {get; set;}
+        [JsonProperty("category")]
         [DataMember]
         public Category Category {get; set;}
        
