@@ -1,6 +1,6 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 
 namespace Models
@@ -8,22 +8,25 @@ namespace Models
     [DataContract]
     public class Book
     {
-        [DataMember]
-        public string Id {get;set;}
+        [JsonProperty("title")]
         [DataMember]
         public string Title {get; set;}
+        [JsonProperty("author")]
         [DataMember]
         public string Author {get; set;}
+        [JsonProperty("year")]
         [DataMember]
         public int Year {get; set;}
+        [JsonProperty("isbn")]
         [DataMember]
         public string Isbn {get; set;}
+        [JsonProperty("category")]
         [DataMember]
         public Category Category {get; set;}
-
-        public Book(string id, string title, string author, int year, string isbn, Category category)
+       
+        [JsonConstructor]
+        public Book(string title, string author, int year, string isbn, Category category)
         {
-            Id = id;
             Title = title;
             Author = author;
             Year = year;
@@ -33,7 +36,7 @@ namespace Models
         
         public override string ToString()
         {
-            return "id: " + Id + "title: " + Title + " author: " + Author + " year: " + Year + " ISBN: " + Isbn + " category: "+ Category;
+            return "title: " + Title + " author: " + Author + " year: " + Year + " ISBN: " + Isbn + " category: "+ Category;
             
         }
 
@@ -41,7 +44,7 @@ namespace Models
         {
             if (!(obj is Book)) return false;
             var other = (Book) obj;
-            return Id.Equals(other.Id) && Isbn.Equals(other.Isbn) && Title.Equals(other.Title) && Author.Equals(other.Author) &&
+            return Isbn.Equals(other.Isbn) && Title.Equals(other.Title) && Author.Equals(other.Author) &&
                    Year.Equals(other.Year) && Category.Equals(other.Category);
         }
 
