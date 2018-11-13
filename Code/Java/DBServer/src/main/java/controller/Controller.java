@@ -1,5 +1,6 @@
 package controller;
 
+import com.google.gson.internal.LinkedTreeMap;
 import communication.DBServer;
 import communication.Request;
 import communication.Response;
@@ -95,7 +96,7 @@ public class Controller {
 
     private String handleAddBook(Request request) {
         Map<String, Object> arguments = request.getArguments();
-        Book book = (Book) arguments.get("book");
+        Book book = parseLinkedTreeMapToBook((LinkedTreeMap<String, Object>) arguments.get("book"));
 
         boolean isLibrary = (boolean) arguments.get("library");
         String institutionId = (String) arguments.get("id");
@@ -114,6 +115,15 @@ public class Controller {
             db.addBookToBookStore(bookStoreStorage);
         }
         return new Response(Response.Status.OK, "Added").toJson();
+    }
+
+    private Book parseLinkedTreeMapToBook(LinkedTreeMap<String, Object> map){
+        String isbn = (String) map.get("isbn");
+        String title = (String) map.get("title");
+        String author = (String) map.get("author");
+        int year = ((Double) map.get("year")).intValue();
+        Book.Category category = Book.Category.valueOf((String) map.get("category"));
+        return new Book(isbn, title, author, year, category);
     }
 
     private String handleDeleteBook(Request request) throws HibernateAdapter.BookNotFoundException {

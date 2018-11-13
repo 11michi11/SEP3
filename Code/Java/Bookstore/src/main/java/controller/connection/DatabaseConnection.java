@@ -18,11 +18,11 @@ import java.util.Map;
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
-//    private final String IP = "207.154.237.196";
+    //    private final String IP = "207.154.237.196";
     private final String IP = "localhost";
 
+    private final String BOOKSTORE_ID = "eb3777c8-77fe-4acd-962d-6853da2e05e0";
 
-   
 
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
         Map<String, Object> args = new HashMap<>();
@@ -132,32 +132,50 @@ public class DatabaseConnection implements DatabaseProxy {
         return server;
     }
 
+    @Override
+    public String addBook(Book book) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("library", false);
+        args.put("id", BOOKSTORE_ID);
+        args.put("book", book);
+
+        Request request = new Request(Request.Operation.AddBook, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        if (status.equals(ResponseStatus.OK))
+            return "OK";
+        return "Error: " + getContent(response);
+    }
+
+    @Override
+    public String deleteBook(String isbn) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("library", false);
+        args.put("id", BOOKSTORE_ID);
+        args.put("isbn", isbn);
+
+        Request request = new Request(Request.Operation.DeleteBook, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        if (status.equals(ResponseStatus.OK))
+            return "OK";
+        return "Error: " + getContent(response);
+    }
+
+    private enum ResponseStatus {OK, Error}
 
     public class ServerOfflineException extends RuntimeException {
         public ServerOfflineException(String msg) {
             super(msg);
         }
-    }
 
-    private enum ResponseStatus {OK, Error}
+    }
 
     public class SearchException extends RuntimeException {
         public SearchException(String msg) {
             super(msg);
         }
     }
-
-	@Override
-	public Book addBook(Book book) {
-		//add book to db when it's available
-        System.out.println("Adding book: " + book.toString());
-        return book;
-	}
-
-	@Override
-	public Book deleteBook(String isbn) {
-		System.out.println("Deleting book: "+isbn);
-		// call database
-	  return null;
-	}
 }
