@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.6" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\Controllers\Controllers.csproj" />

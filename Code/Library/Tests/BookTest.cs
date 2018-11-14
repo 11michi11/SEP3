@@ -9,7 +9,6 @@ namespace Tests
         public void CreateBookTest()
         {
             var book = new Book("LoR", "Tolkien", 1954, "isbn", Category.Fantasy);
-            Assert.Equal("title: LoR author: Tolkien", book.ToString());
             Assert.NotNull(book);
         }
         
@@ -17,7 +16,7 @@ namespace Tests
         public void ToStringBookTest()
         {
             var book = new Book("LoR", "Tolkien", 1954, "isbn", Category.Fantasy);
-            Assert.Equal("title: LoR author: Tolkien", book.ToString());
+            Assert.Equal("title: LoR author: Tolkien year: 1954 ISBN: isbn category: Fantasy", book.ToString());
         }
         
         
