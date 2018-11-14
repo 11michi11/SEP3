@@ -76,6 +76,7 @@
         <e p="BookTest.cs" t="Include" />
         <e p="ConfigurationLoaderTest.cs" t="Include" />
         <e p="DatabaseProxyTest.cs" t="Include" />
+        <e p="LibraryBookTest.cs" t="Include" />
         <e p="LibraryControllerTest.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
