@@ -12,3 +12,5 @@ Code/Library/\.idea/
 Code/Java/BookService/\.idea/workspace\.xml
 
 *.class
+
+Code/Java/nohup\.out
