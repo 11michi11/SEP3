@@ -28,6 +28,7 @@ namespace Tests
                 new Book("LoR", "Miska", 2015, "ISBN1", Category.Drama),
                 new Book("LoR", "Tolkien", 2015, "ISBN3", Category.Fantasy)
             };
+            
             var searchTerm = "LoR";
             var str = _client.GetStringAsync($"http://localhost:5000/api/books/{searchTerm}").GetAwaiter().GetResult();
             
