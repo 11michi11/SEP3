@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 
 import model.Book;
 import controller.connection.Request;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -16,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
