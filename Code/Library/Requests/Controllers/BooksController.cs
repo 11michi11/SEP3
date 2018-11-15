@@ -26,7 +26,7 @@ namespace Requests.Controllers
             return _libraryController.AdvancedSearch(title, author,year, isbn,category);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public ActionResult<LibraryBook> BookDetails(string id) {
             return _libraryController.BookDetails(id);
         }

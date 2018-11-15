@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="\app" t="IncludeRecursive" />
-    <e p="\ba790786" t="IncludeRecursive" />
-    <e p="C:\Users\Michi\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\netcoreapp1.0\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
-    <e p="C:\Users\Michi\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
-    <e p="C:\Users\Michi\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
-    <e p="C:\Users\Michi\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Michi\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_Library.-1028457697.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Michi\Desktop\SEP3\Code\Library" t="IncludeFlat">
+    <e p="\dd615f15" t="IncludeRecursive" />
+    <e p="C:\Users\misii\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\netcoreapp1.0\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\misii\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\misii\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="C:\Users\misii\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\misii\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_Library.-472671218.00" t="ExcludeRecursive" />
+    <e p="C:\Users\misii\Desktop\SEP3\Code\Library" t="IncludeFlat">
       <e p="Controllers" t="IncludeRecursive">
         <e p="Bin" t="ExcludeRecursive" />
         <e p="Connections" t="Include">
@@ -76,6 +76,7 @@
         <e p="BookTest.cs" t="Include" />
         <e p="ConfigurationLoaderTest.cs" t="Include" />
         <e p="DatabaseProxyTest.cs" t="Include" />
+        <e p="LibraryBookTest.cs" t="Include" />
         <e p="LibraryControllerTest.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
