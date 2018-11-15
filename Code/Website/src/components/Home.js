@@ -14,7 +14,6 @@ class Home extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-<<<<<<< HEAD
         console.log(this.state.searchData);
         axios.get("http://localhost:8080/search?searchTerm="+this.state.searchData, {crossdomain: true})
         .then(res => {
@@ -22,16 +21,6 @@ class Home extends Component {
         
             console.log(res.data);
         })
-=======
-        // axios.get("http://localhost:8080/search?searchTerm="+this.state.searchData, {crossdomain: true})
-        // .then(res => {
-
-        
-        //     console.log(res);
-        // })
-        this.props.history.push('/search/'+this.state.searchData);
-        
->>>>>>> master
 
 
     }
