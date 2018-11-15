@@ -4,7 +4,10 @@ import com.google.gson.Gson;
 import controller.connection.DatabaseConnection;
 import controller.connection.DatabaseProxy;
 import model.Book;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,19 +16,20 @@ import java.util.List;
 public class Controller {
 
     private static Controller instance;
-    @Autowired
+
     private DatabaseProxy db;
     private Gson gson = new Gson();
 
+    @Autowired
     Controller(DatabaseProxy db) {
         this.db = db;
     }
 
-    public static Controller getInstance() {
-        if (instance == null)
-            instance = new Controller(db);
-        return instance;
-    }
+//    public static Controller getInstance() {
+//        if (instance == null)
+//            instance = new Controller(db);
+//        return instance;
+//    }
 
     public List<Book> search(String searchTerm) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException {
         return db.search(searchTerm);
@@ -49,6 +53,7 @@ public class Controller {
 
 
     public static void main(String[] args) {
+        DatabaseConnection db = new DatabaseConnection();
         Controller controller = new Controller(db);
         try {
             Book book = new Book("978-0134685991", "Effective Java", "Joshua Bloch", 2017, Book.Category.Science);
@@ -57,4 +62,6 @@ public class Controller {
             e.printStackTrace();
         }
     }
+
+
 }
