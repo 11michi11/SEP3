@@ -13,8 +13,7 @@ public class DBServer {
     private final int PORT = 7777;
     private Controller controller;
 
-    public DBServer(Controller controller) {
-        this.controller = controller;
+    public DBServer() {
     }
 
     public void start() {
@@ -49,6 +48,10 @@ public class DBServer {
             System.out.println("Could not close server");
             e.printStackTrace();
         }
+    }
+
+    public void setController(Controller controller) {
+        this.controller = controller;
     }
 
     private class HandleClient implements Runnable {

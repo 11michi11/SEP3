@@ -9,23 +9,24 @@ import model.*;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.regex.Pattern;
 
 public class Controller {
 
     private DBProxy db;
     private DBServer server;
 
-    private Controller(DBProxy db) {
+    protected Controller(DBProxy db, DBServer server) {
         this.db = db;
-        this.server = new DBServer(this);
+        this.server = server;
         server.start();
     }
 
 
     public static void main(String[] args) {
         DBProxy db = new HibernateAdapter();
-        Controller controller = new Controller(db);
+        DBServer server = new DBServer();
+        Controller controller = new Controller(db, server);
+        server.setController(controller);
     }
 
     public List<Book> getAllBooks() {
@@ -158,7 +159,7 @@ public class Controller {
         return new Response(Response.Status.OK, book.toJSON()).toJson();//.replace("\\", "");
     }
 
-    private String handleSearch(Request request) {
+    public String handleSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
         String searchTerm = (String) arguments.get("searchTerm");
 
