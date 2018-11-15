@@ -15,8 +15,6 @@ import java.util.List;
 @Component
 public class Controller {
 
-    private static Controller instance;
-
     private DatabaseProxy db;
     private Gson gson = new Gson();
 
