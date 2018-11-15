@@ -4,22 +4,26 @@ import com.google.gson.Gson;
 import controller.connection.DatabaseConnection;
 import controller.connection.DatabaseProxy;
 import model.Book;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class Controller {
 
     private static Controller instance;
+    @Autowired
     private DatabaseProxy db;
     private Gson gson = new Gson();
 
-    Controller() {
-        this.db = new DatabaseConnection();
+    Controller(DatabaseProxy db) {
+        this.db = db;
     }
 
     public static Controller getInstance() {
         if (instance == null)
-            instance = new Controller();
+            instance = new Controller(db);
         return instance;
     }
 
@@ -45,7 +49,7 @@ public class Controller {
 
 
     public static void main(String[] args) {
-        Controller controller = new Controller();
+        Controller controller = new Controller(db);
         try {
             Book book = new Book("978-0134685991", "Effective Java", "Joshua Bloch", 2017, Book.Category.Science);
             System.out.println(controller.deleteBook("978-0134685991"));
