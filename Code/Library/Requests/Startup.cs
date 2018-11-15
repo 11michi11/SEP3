@@ -47,13 +47,13 @@ namespace Requests {
                     new {action = "AdvanceSearchRequest"},
                     new {key = @"\d+", group = @"\d+"}
                 );
-                routes.MapRoute
-                (
-                    "BookDetails",
-                    "api/{controller}/{key}/{group}",
-                    new {action = "BookDetails"},
-                    new {key = @"\d+", group = @"\d+"}
-                );
+//                routes.MapRoute
+//                (
+//                    "BookDetails",
+//                    "api/{controller}/{key}/{group}",
+//                    new {action = "BookDetails"},
+//                    new {key = @"\d+", group = @"\d+"}
+//                );
             });
         }
     }
