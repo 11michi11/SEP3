@@ -7,5 +7,8 @@ namespace Controllers.Connections
     {
          List<Book> Search(string searchTerm);
          List<Book> AdvancedSearch(string title, string author, int? year, string isbn, Category? category);
+        void CreateBook(Book book);
+        void DeleteBook(string bookid);
+        LibraryBook BookDetails(string id);
     }
 }

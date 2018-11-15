@@ -2,11 +2,15 @@ package controller.connection;
 
 import model.Book;
 
-import java.lang.reflect.Array;
 import java.util.LinkedList;
 import java.util.List;
 
 public class MockDatabase implements DatabaseProxy {
+    @Override
+    public String getBookDetails(String isbn) {
+        return null;
+    }
+
     @Override
     public List<Book> search(String searchTerm) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException {
         LinkedList<Book> books = new LinkedList<>();
@@ -18,4 +22,17 @@ public class MockDatabase implements DatabaseProxy {
     public List<Book> advancedSearch(String title, String author, int year, String isbn, Book.Category category) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException {
         return new LinkedList<>();
     }
-}
+
+	@Override
+	public String addBook(Book book) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteBook(String isbn) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	}

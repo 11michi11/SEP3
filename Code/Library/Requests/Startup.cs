@@ -38,13 +38,23 @@ namespace Requests {
             // app.UseHttpsRedirection();
 
             // route configuration for advanced search
-            app.UseMvc(routes => routes.MapRoute
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute
                 (
-                "AdvanceSearchRequest", 
-                "api/{controller}/{key}/{group}", 
-                new { action = "AdvanceSearchRequest" }, 
-                new { key = @"\d+", group = @"\d+" }
-                ));
+                    "AdvanceSearchRequest",
+                    "api/{controller}/{key}/{group}",
+                    new {action = "AdvanceSearchRequest"},
+                    new {key = @"\d+", group = @"\d+"}
+                );
+                routes.MapRoute
+                (
+                    "BookDetails",
+                    "api/{controller}/{key}/{group}",
+                    new {action = "BookDetails"},
+                    new {key = @"\d+", group = @"\d+"}
+                );
+            });
         }
     }
 }

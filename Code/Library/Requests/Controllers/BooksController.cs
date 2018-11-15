@@ -26,10 +26,22 @@ namespace Requests.Controllers
             return _libraryController.AdvancedSearch(title, author,year, isbn,category);
         }
 
+        [HttpGet]
+        public ActionResult<LibraryBook> BookDetails(string id) {
+            return _libraryController.BookDetails(id);
+        }
+
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult CreateBook([FromBody] Book book)
         {
+            //for checking if book can be created
+            if(!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
+            _libraryController.CreateBook(book);
+            return Ok("Book created successfully");
+            // return CreatedAtRoute("GetBook", new {id = book.Id}, book);
         }
 
         // PUT api/values/5
@@ -40,8 +52,15 @@ namespace Requests.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult DeleteBook(string id)
         {
+            try {
+            _libraryController.DeleteBook(id);
+            } catch(System.NullReferenceException ex) {
+                return BadRequest("Book not found");
+            }
+
+            return Ok("Book deleted"); 
         }
     }
 }

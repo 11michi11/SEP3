@@ -5,20 +5,27 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+
 import model.Book;
+import controller.connection.Request;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.lang.reflect.Type;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
-    private final String IP = "localhost";
+        private final String IP = "207.154.237.196";
+//    private final String IP = "localhost";
+
+    private final String BOOKSTORE_ID = "eb3777c8-77fe-4acd-962d-6853da2e05e0";
+
 
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
         Map<String, Object> args = new HashMap<>();
@@ -31,6 +38,28 @@ public class DatabaseConnection implements DatabaseProxy {
     }
 
     private List<Book> handleSearchResponse(String response, ResponseStatus status) throws SearchException {
+        switch (status) {
+            case OK:
+                return getContent(response);
+            case Error:
+                String errorMsg = getContent(response);
+                throw new SearchException("Database returned error: " + errorMsg);
+            default:
+                throw new SearchException("Unknown response status: " + status);
+        }
+    }
+
+    public String getBookDetails(String isbn) throws ServerOfflineException, SearchException {
+        Map<String, Object> args = new HashMap<>();
+        args.put("isbn", isbn);
+        Request request = new Request(Request.Operation.BookDetails, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        return handleBookDetailsResponse(response, status);
+    }
+
+    private String handleBookDetailsResponse(String response, ResponseStatus status) {
         switch (status) {
             case OK:
                 return getContent(response);
@@ -106,14 +135,46 @@ public class DatabaseConnection implements DatabaseProxy {
         return server;
     }
 
+    @Override
+    public String addBook(Book book) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("library", false);
+        args.put("id", BOOKSTORE_ID);
+        args.put("book", book);
+
+        Request request = new Request(Request.Operation.AddBook, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        if (status.equals(ResponseStatus.OK))
+            return "OK";
+        return "Error: " + getContent(response);
+    }
+
+    @Override
+    public String deleteBook(String isbn) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("library", false);
+        args.put("id", BOOKSTORE_ID);
+        args.put("isbn", isbn);
+
+        Request request = new Request(Request.Operation.DeleteBook, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        if (status.equals(ResponseStatus.OK))
+            return "OK";
+        return "Error: " + getContent(response);
+    }
+
+    private enum ResponseStatus {OK, Error}
 
     public class ServerOfflineException extends RuntimeException {
         public ServerOfflineException(String msg) {
             super(msg);
         }
-    }
 
-    private enum ResponseStatus {OK, Error}
+    }
 
     public class SearchException extends RuntimeException {
         public SearchException(String msg) {

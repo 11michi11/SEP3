@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using Controllers.Resources;
 using Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -11,8 +12,9 @@ namespace Controllers.Connections
 {
     public class DatabaseProxy : IDatabaseProxy
     {
-        private readonly byte[] HOST = {127, 0, 0, 1};
-        private readonly int PORT = 7777;
+        private readonly byte[] HOST = ConfigurationLoader.GetInstance().DatabaseHost;
+        private readonly int PORT = ConfigurationLoader.GetInstance().DatabasePort;
+        private readonly string  LIBRARY_ID = "ce78ef57-77ec-4bb7-82a2-1a78d3789aef";
 
         public List<Book> Search(string searchTerm)
         {
@@ -81,6 +83,38 @@ namespace Controllers.Connections
             return response;
         }
 
+        public void CreateBook(Book book)
+        {
+            var ar = new Dictionary<string, object>
+                {{"library", true}, {"id", LIBRARY_ID}, {"book", book}};
+            
+            var request = new Request(Request.Operation.AddBook, ar);
+
+            Console.WriteLine($"Sending request: '{request.ToJSON()}'");
+            var response = SendMessage(request);
+
+            var status = GetResponseStatus(response);   
+            Console.Write(status);
+        }
+
+        public void DeleteBook(string bookid)
+        {
+            var ar = new Dictionary<string, object>
+                {{"library", true}, {"id", LIBRARY_ID}, {"bookid",bookid}};
+            
+            var request = new Request(Request.Operation.DeleteBook, ar);
+
+            Console.WriteLine($"Sending request: '{request.ToJSON()}'");
+            var response = SendMessage(request);
+
+            var status = GetResponseStatus(response);   
+            Console.Write(status);
+        }
+
+        public LibraryBook BookDetails(string id)
+        {
+            throw new NotImplementedException();
+        }
 
         protected enum ResponseStatus
         {

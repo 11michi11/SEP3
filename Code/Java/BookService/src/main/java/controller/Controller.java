@@ -15,7 +15,7 @@ public class Controller {
     private Gson gson = new Gson();
 
     Controller() {
-        this.db = new MockDatabase();
+        this.db = new DatabaseConnection();
     }
 
     public static Controller getInstance() {
@@ -32,12 +32,13 @@ public class Controller {
         return db.advancedSearch(title, author, year, isbn, category);
     }
 
+    public String getBookDetails(String isbn) {
+        return db.getBookDetails(isbn);
+    }
+
+
     public static void main(String[] args) {
         Controller controller = new Controller();
-        try {
-            System.out.println(controller.search("Tolkien"));
-        } catch (DatabaseConnection.ServerOfflineException | DatabaseConnection.SearchException e) {
-            e.printStackTrace();
-        }
+        
     }
 }

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 
 namespace Models
@@ -8,17 +8,23 @@ namespace Models
     [DataContract]
     public class Book
     {
+        [JsonProperty("title")]
         [DataMember]
         public string Title {get; set;}
+        [JsonProperty("author")]
         [DataMember]
         public string Author {get; set;}
+        [JsonProperty("year")]
         [DataMember]
         public int Year {get; set;}
+        [JsonProperty("isbn")]
         [DataMember]
         public string Isbn {get; set;}
+        [JsonProperty("category")]
         [DataMember]
         public Category Category {get; set;}
-
+       
+        [JsonConstructor]
         public Book(string title, string author, int year, string isbn, Category category)
         {
             Title = title;
@@ -30,8 +36,8 @@ namespace Models
         
         public override string ToString()
         {
-            return "title: " + Title + " author: " + Author;
-            //+ "author: " + Author + "year: " + Year + "ISBN: " + Isbn + "category: "+ Category
+            return "title: " + Title + " author: " + Author + " year: " + Year + " ISBN: " + Isbn + " category: "+ Category;
+            
         }
 
         public override bool Equals(object obj)
