@@ -15,7 +15,6 @@ import java.util.List;
 @RestController
 public class Search {
 
-	
     @RequestMapping("/search")
     public List<Book> search(@RequestParam(value = "searchTerm") String searchTerm) {
         Controller controller = Controller.getInstance();

@@ -92,14 +92,14 @@ public class HibernateAdapter implements DBProxy {
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
             List<Book> searchedBooks = session.createQuery("select new model.Book(isbn, title, author, year, category) from Book where " +
-                    "isbn like :isbn or " +
-                    "title like :title or " +
-                    "author like :author or " +
+                    "lower(isbn) like :isbn or " +
+                    "lower(title) like :title or " +
+                    "lower(author) like :author or " +
                     "year = :year or " +
                     "category like :category")
-                    .setParameter("isbn", "%" + isbn + "%")
-                    .setParameter("title", "%" + title + "%")
-                    .setParameter("author", "%" + author + "%")
+                    .setParameter("isbn", "%" + isbn.toLowerCase() + "%")
+                    .setParameter("title", "%" + title.toLowerCase() + "%")
+                    .setParameter("author", "%" + author.toLowerCase() + "%")
                     .setParameter("year", year)
                     .setParameter("category", category)
                     .list();
@@ -237,11 +237,7 @@ public class HibernateAdapter implements DBProxy {
 
     public static void main(String[] args) {
         HibernateAdapter db = new HibernateAdapter();
-        try {
-            System.out.println(db.getBookByLibraryBookId("196690e8-d620-49cb-b404-d049bd25b6de"));
-        } catch (BookNotFoundException e) {
-            e.printStackTrace();
-        }
+            System.out.println(db.advancedSearch("tolkien", "lord", "tolkien", 0, Book.Category.Science));
 
 
     }
