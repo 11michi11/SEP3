@@ -20,7 +20,7 @@ import java.util.Map;
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
-    private final String IP = ConfigurationLoader.getDbAddress();
+    private final String IP = "localhost";//ConfigurationLoader.getDbAddress();
 
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
         Map<String, Object> args = new HashMap<>();
