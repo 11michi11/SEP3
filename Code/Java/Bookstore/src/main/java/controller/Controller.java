@@ -25,12 +25,6 @@ public class Controller {
         this.db = db;
     }
 
-//    public static Controller getInstance() {
-//        if (instance == null)
-//            instance = new Controller(db);
-//        return instance;
-//    }
-
     public List<Book> search(String searchTerm) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException {
         return db.search(searchTerm);
     }
