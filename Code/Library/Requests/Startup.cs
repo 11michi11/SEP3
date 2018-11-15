@@ -42,18 +42,18 @@ namespace Requests {
             {
                 routes.MapRoute
                 (
-                    "AdvanceSearchRequest",
-                    "api/{controller}/{key}/{group}",
-                    new {action = "AdvanceSearchRequest"},
-                    new {key = @"\d+", group = @"\d+"}
+                    name: "advancedSearch",
+                    template: "{action}/{key}/{group}",
+                    defaults: new {action = "advancedSearch"},
+                    constraints: new {key = @"\d+", group = @"\d+"}
                 );
-//                routes.MapRoute
-//                (
-//                    "BookDetails",
-//                    "api/{controller}/{key}/{group}",
-//                    new {action = "BookDetails"},
-//                    new {key = @"\d+", group = @"\d+"}
-//                );
+                routes.MapRoute
+                (
+                    name: "search",
+                    template: "{action}/{key}/{group}",
+                    defaults: new {action = "search"},
+                    constraints: new {key = @"\d+", group = @"\d+"}
+                );
             });
         }
     }
