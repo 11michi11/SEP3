@@ -5,6 +5,7 @@ import axios from 'axios'
 class BookList extends Component {
     state = { 
          books: []
+         
      }
 
      componentDidMount() {
@@ -26,7 +27,7 @@ class BookList extends Component {
                         
                         <div className="card-body">
                             <Link to={'/books/'+ b.isbn}>    
-                            <h5 className="card-title">{b.title}</h5>
+                            <h5 className="card-title"><Link to={"/details/" + b.isbn}>{b.title}</Link></h5>
                             </Link>
                             <div className="card-subtitle text-muted">{b.author} ({b.year}) / <span className=" text-danger">{b.category}</span></div>
                             <p></p>
