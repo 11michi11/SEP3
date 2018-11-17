@@ -5,23 +5,21 @@ import controller.connection.DatabaseConnection;
 import controller.connection.DatabaseProxy;
 import controller.connection.MockDatabase;
 import model.Book;
+import model.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class Controller {
 
-    private static Controller instance;
     private DatabaseProxy db;
     private Gson gson = new Gson();
 
-    Controller() {
-        this.db = new DatabaseConnection();
-    }
-
-    public static Controller getInstance() {
-        if (instance == null)
-            instance = new Controller();
-        return instance;
+    @Autowired
+    Controller(DatabaseProxy db) {
+        this.db = db;
     }
 
     public List<Book> search(String searchTerm) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException {
@@ -36,9 +34,11 @@ public class Controller {
         return db.getBookDetails(isbn);
     }
 
-
+    public String addCustomer(Customer customer){
+        return db.addCustomer(customer);
+    }
     public static void main(String[] args) {
-        Controller controller = new Controller();
-        
+        DatabaseConnection db = new DatabaseConnection();
+        Controller controller = new Controller(db);
     }
 }
