@@ -40,7 +40,6 @@ public class Controller {
     public static void main(String[] args) {
         DatabaseConnection db = new DatabaseConnection();
         Controller controller = new Controller(db);
-        Customer customer = new Customer("Anne Test", "annetest@test.test", "Mock City", 789456123);
-        System.out.println(controller.addCustomer(customer));
+       System.out.println(controller.getBookDetails("978-83-8116-1"));
     }
 }
