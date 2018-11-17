@@ -7,8 +7,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.PersistenceException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class HibernateAdapter implements DBProxy {
@@ -234,18 +236,51 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
+    @Override
+    public List<Customer> getAllCustomers(){
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<Customer> customers = session.createQuery("FROM Customer").list();
+            tx.commit();
+            return customers;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
+    }
 
-    public static void main(String[] args) {
+    @Override
+    public void addCustomer(Customer customer) throws CustomerEmailException {
+        try {
+            addObject(customer);
+        }catch (PersistenceException e){
+            throw new CustomerEmailException("Email already in use");
+        }
+    }
+
+
+
+    public static void main(String[] args) throws CustomerEmailException {
         HibernateAdapter db = new HibernateAdapter();
-            System.out.println(db.advancedSearch("tolkien", "lord", "tolkien", 0, Book.Category.Science));
 
+        Customer customer = new Customer(UUID.randomUUID().toString(), "Anne Test", "annetest@test.test", "Mock City", 789456123);
+        db.addCustomer(customer);
 
+        db.getAllCustomers().forEach(System.out::println);
     }
 
 
     class BookNotFoundException extends Exception {
         public BookNotFoundException(String s) {
             super(s);
+        }
+    }
+
+    public class CustomerEmailException extends Exception{
+        public CustomerEmailException(String msg) {
+            super(msg);
         }
     }
 }

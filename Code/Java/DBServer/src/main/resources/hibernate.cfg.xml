@@ -32,5 +32,6 @@
         <mapping class="model.BookStore"/>
         <mapping class="model.BookStoreStorage"/>
         <mapping class="model.BookStoreStorageID"/>
+        <mapping class="model.Customer"/>
     </session-factory>
 </hibernate-configuration>
