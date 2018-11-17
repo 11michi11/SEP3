@@ -18,6 +18,7 @@ public class Controller {
     protected Controller(DBProxy db, DBServer server) {
         this.db = db;
         this.server = server;
+        server.setController(this);
         server.start();
     }
 
@@ -26,7 +27,6 @@ public class Controller {
         DBProxy db = new HibernateAdapter();
         DBServer server = new DBServer();
         Controller controller = new Controller(db, server);
-        server.setController(controller);
     }
 
     public List<Book> getAllBooks() {
@@ -86,12 +86,35 @@ public class Controller {
                     return handleAddBook(request);
                 case DeleteBook:
                     return handleDeleteBook(request);
+                case RegisterCustomer:
+                    return handleRegisterCustomer(request);
             }
             throw new InvalidOperationException("Wrong operation");
         } catch (Request.RequestJsonFormatException | InvalidOperationException | HibernateAdapter.BookNotFoundException e) {
             //send error
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
+    }
+
+    private String handleRegisterCustomer(Request request) {
+        Customer customer = createCustomerFromArguments(request.getArguments());
+
+        try {
+            db.addCustomer(customer);
+            return new Response(Response.Status.OK,"Customer created" ).toJson();
+        } catch (HibernateAdapter.CustomerEmailException e) {
+            return new Response(Response.Status.Error,e.getMessage()).toJson();
+        }
+    }
+
+
+    private Customer createCustomerFromArguments(Map<String, Object> args){
+        String name = (String) args.get("name");
+        String email = (String) args.get("email");
+        String address = (String) args.get("address");
+        int phoneNum = ((Double) args.get("phoneNum")).intValue();
+
+        return new Customer(UUID.randomUUID().toString(), name, email, address, phoneNum);
     }
 
     private String handleAddBook(Request request) {

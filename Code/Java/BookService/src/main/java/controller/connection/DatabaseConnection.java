@@ -26,8 +26,15 @@ public class DatabaseConnection implements DatabaseProxy {
     private final String IP = "localhost";//ConfigurationLoader.getDbAddress();
 
     public String addCustomer(Customer customer){
-        //addToDB
-        return "Customer "+customer+" added";
+        Map<String, Object> args = new HashMap<>();
+        args.put("name", customer.getName());
+        args.put("email", customer.getEmail());
+        args.put("address", customer.getAddress());
+        args.put("phoneNum", customer.getPhoneNum());
+
+        Request request = new Request(Request.Operation.RegisterCustomer, args);
+
+        return sendMessage(request);
     }
 
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
@@ -93,11 +100,6 @@ public class DatabaseConnection implements DatabaseProxy {
         JsonElement element = parser.parse(response);
         JsonObject obj = element.getAsJsonObject(); //since you know it's a JsonObject
         return ResponseStatus.valueOf(obj.get("status").getAsString());
-        // Getting all keys
-//		Set<Map.Entry<String, JsonElement>> entries = obj.entrySet();//will return members of your object
-//		for (Map.Entry<String, JsonElement> entry: entries) {
-//			System.out.println(entry.getKey());
-//		}
     }
 
     private <T> T getContent(String contentJson) {

@@ -1,0 +1,86 @@
+remote: Compressing source files... done.        
+remote: Building source:        
+remote: 
+remote: -----> Java app detected        
+remote: -----> Installing JDK 1.8... done        
+remote: -----> Installing Maven 3.3.9... done        
+remote: -----> Executing: mvn -DskipTests clean dependency:list install        
+remote:        [INFO] Scanning for projects...        
+remote:        [INFO]                                                                                 
+remote:        [INFO] ------------------------------------------------------------------------        
+remote:        [INFO] Building Bookstore 1.0-SNAPSHOT        
+remote:        [INFO] ------------------------------------------------------------------------        
+remote:        [INFO] Downloading: https://repo.spring.io/libs-release/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.pom        
+remote:        [INFO] Downloaded: https://repo.spring.io/libs-release/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.pom (2 KB at 1.9 KB/sec)        
+remote:        [INFO] Downloading: https://repo.spring.io/libs-release/org/junit/jupiter/junit-jupiter-api/5.3.0-M1/junit-jupiter-api-5.3.0-M1.pom        
+remote:        [INFO] Downloaded: https://repo.spring.io/libs-release/org/junit/jupiter/junit-jupiter-api/5.3.0-M1/junit-jupiter-api-5.3.0-M1.pom (3 KB at 36.3 KB/sec)        
+remote:        [INFO] Downloading: https://repo.spring.io/libs-release/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.pom        
+remote:        [INFO] Downloaded: https://repo.spring.io/libs-release/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.pom (2 KB at 18.4 KB/sec)        
+remote:        [INFO] Downloading: https://repo.spring.io/libs-release/org/opentest4j/opentest4j/1.1.0/opentest4j-1.1.0.pom        
+remote:        [INFO] Downloaded: https://repo.spring.io/libs-release/org/opentest4j/opentest4j/1.1.0/opentest4j-1.1.0.pom (2 KB at 26.5 KB/sec)        
+remote:        [INFO] Downloading: https://repo.spring.io/libs-release/org/junit/platform/junit-platform-commons/1.3.0-M1/junit-platform-commons-1.3.0-M1.pom        
+remote:        [INFO] Downloaded: https://repo.spring.io/libs-release/org/junit/platform/junit-platform-commons/1.3.0-M1/junit-platform-commons-1.3.0-M1.pom (2 KB at 8.3 KB/sec)        
+remote:        [INFO] Downloading: https://repo.spring.io/libs-release/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.jar        
+remote:        [INFO] Downloading: https://repo.spring.io/libs-release/org/junit/jupiter/junit-jupiter-api/5.3.0-M1/junit-jupiter-api-5.3.0-M1.jar        
+remote:        [INFO] Downloading: https://repo.spring.io/libs-release/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar        
+remote:        [INFO] Downloading: https://repo.spring.io/libs-release/org/opentest4j/opentest4j/1.1.0/opentest4j-1.1.0.jar        
+remote:        [INFO] Downloading: https://repo.spring.io/libs-release/org/junit/platform/junit-platform-commons/1.3.0-M1/junit-platform-commons-1.3.0-M1.jar        
+remote:        [INFO] Downloaded: https://repo.spring.io/libs-release/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar (3 KB at 13.5 KB/sec)        
+remote:        [INFO] Downloaded: https://repo.spring.io/libs-release/org/opentest4j/opentest4j/1.1.0/opentest4j-1.1.0.jar (7 KB at 37.6 KB/sec)        
+remote:        [INFO] Downloaded: https://repo.spring.io/libs-release/org/junit/platform/junit-platform-commons/1.3.0-M1/junit-platform-commons-1.3.0-M1.jar (76 KB at 255.9 KB/sec)        
+remote:        [INFO] Downloaded: https://repo.spring.io/libs-release/org/junit/jupiter/junit-jupiter-api/5.3.0-M1/junit-jupiter-api-5.3.0-M1.jar (113 KB at 303.0 KB/sec)        
+remote:        [INFO] Downloaded: https://repo.spring.io/libs-release/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.jar (1545 KB at 2531.2 KB/sec)        
+remote:        [INFO]         
+remote:        [INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ Bookstore ---        
+remote:        [INFO] Deleting /tmp/build_7437a71561549fe835fece7cec165a8e/target        
+remote:        [INFO]         
+remote:        [INFO] --- maven-dependency-plugin:3.0.2:list (default-cli) @ Bookstore ---        
+remote:        [INFO]         
+remote:        [INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ Bookstore ---        
+remote:        [INFO] Using 'UTF-8' encoding to copy filtered resources.        
+remote:        [INFO] skip non existing resourceDirectory /tmp/build_7437a71561549fe835fece7cec165a8e/src/main/resources        
+remote:        [INFO] skip non existing resourceDirectory /tmp/build_7437a71561549fe835fece7cec165a8e/src/main/resources        
+remote:        [INFO]         
+remote:        [INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ Bookstore ---        
+remote:        [INFO] Changes detected - recompiling the module!        
+remote:        [INFO] Compiling 14 source files to /tmp/build_7437a71561549fe835fece7cec165a8e/target/classes        
+remote:        [INFO]         
+remote:        [INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ Bookstore ---        
+remote:        [INFO] Using 'UTF-8' encoding to copy filtered resources.        
+remote:        [INFO] skip non existing resourceDirectory /tmp/build_7437a71561549fe835fece7cec165a8e/src/test/resources        
+remote:        [INFO]         
+remote:        [INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ Bookstore ---        
+remote:        [INFO] Changes detected - recompiling the module!        
+remote:        [INFO] Compiling 1 source file to /tmp/build_7437a71561549fe835fece7cec165a8e/target/test-classes        
+remote:        [INFO]         
+remote:        [INFO] --- maven-surefire-plugin:2.21.0:test (default-test) @ Bookstore ---        
+remote:        [INFO] Tests are skipped.        
+remote:        [INFO]         
+remote:        [INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ Bookstore ---        
+remote:        [INFO] Building jar: /tmp/build_7437a71561549fe835fece7cec165a8e/target/Bookstore-1.0-SNAPSHOT.jar        
+remote:        [INFO]         
+remote:        [INFO] --- spring-boot-maven-plugin:2.0.5.RELEASE:repackage (default) @ Bookstore ---        
+remote:        [INFO]         
+remote:        [INFO] --- maven-install-plugin:2.5.2:install (default-install) @ Bookstore ---        
+remote:        [INFO] Installing /tmp/build_7437a71561549fe835fece7cec165a8e/target/Bookstore-1.0-SNAPSHOT.jar to /app/tmp/cache/.m2/repository/SEP3/Bookstore/1.0-SNAPSHOT/Bookstore-1.0-SNAPSHOT.jar        
+remote:        [INFO] Installing /tmp/build_7437a71561549fe835fece7cec165a8e/pom.xml to /app/tmp/cache/.m2/repository/SEP3/Bookstore/1.0-SNAPSHOT/Bookstore-1.0-SNAPSHOT.pom        
+remote:        [INFO] ------------------------------------------------------------------------        
+remote:        [INFO] BUILD SUCCESS        
+remote:        [INFO] ------------------------------------------------------------------------        
+remote:        [INFO] Total time: 8.277 s        
+remote:        [INFO] Finished at: 2018-11-17T14:50:18+00:00        
+remote:        [INFO] Final Memory: 40M/295M        
+remote:        [INFO] ------------------------------------------------------------------------        
+remote: -----> Discovering process types        
+remote:        Procfile declares types     -> (none)        
+remote:        Default types for buildpack -> web        
+remote: 
+remote: -----> Compressing...        
+remote:        Done: 64.6M        
+remote: -----> Launching...        
+remote:        Released v5        
+remote:        https://sep3-bookstore.herokuapp.com/ deployed to Heroku        
+remote: 
+remote: Verifying deploy... done.        
+To https://git.heroku.com/sep3-bookstore.git
+   a327db1..e4a3d34  master -> master
