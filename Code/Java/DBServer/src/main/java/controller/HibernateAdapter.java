@@ -262,13 +262,10 @@ public class HibernateAdapter implements DBProxy {
 
 
 
-    public static void main(String[] args) throws CustomerEmailException {
+    public static void main(String[] args) {
         HibernateAdapter db = new HibernateAdapter();
 
-        Customer customer = new Customer(UUID.randomUUID().toString(), "Anne Test", "annetest@test.test", "Mock City", 789456123);
-        db.addCustomer(customer);
-
-        db.getAllCustomers().forEach(System.out::println);
+        System.out.println(db.getBookDetails("978-83-8116-1"));
     }
 
 
