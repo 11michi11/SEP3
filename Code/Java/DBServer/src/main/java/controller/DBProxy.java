@@ -1,9 +1,6 @@
 package controller;
 
-import model.Book;
-import model.BookStoreStorage;
-import model.DetailedBook;
-import model.LibraryStorage;
+import model.*;
 
 import java.util.List;
 
@@ -27,4 +24,7 @@ public interface DBProxy {
 
     Book getBookByIsbn(String isbn) throws HibernateAdapter.BookNotFoundException;
 
+    List<Customer> getAllCustomers();
+
+    void addCustomer(Customer customer) throws HibernateAdapter.CustomerEmailException;
 }

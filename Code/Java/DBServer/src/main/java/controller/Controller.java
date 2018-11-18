@@ -9,23 +9,24 @@ import model.*;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.regex.Pattern;
 
 public class Controller {
 
     private DBProxy db;
     private DBServer server;
 
-    private Controller(DBProxy db) {
+    protected Controller(DBProxy db, DBServer server) {
         this.db = db;
-        this.server = new DBServer(this);
+        this.server = server;
+        server.setController(this);
         server.start();
     }
 
 
     public static void main(String[] args) {
         DBProxy db = new HibernateAdapter();
-        Controller controller = new Controller(db);
+        DBServer server = new DBServer();
+        Controller controller = new Controller(db, server);
     }
 
     public List<Book> getAllBooks() {
@@ -85,12 +86,35 @@ public class Controller {
                     return handleAddBook(request);
                 case DeleteBook:
                     return handleDeleteBook(request);
+                case RegisterCustomer:
+                    return handleRegisterCustomer(request);
             }
             throw new InvalidOperationException("Wrong operation");
         } catch (Request.RequestJsonFormatException | InvalidOperationException | HibernateAdapter.BookNotFoundException e) {
             //send error
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
+    }
+
+    private String handleRegisterCustomer(Request request) {
+        Customer customer = createCustomerFromArguments(request.getArguments());
+
+        try {
+            db.addCustomer(customer);
+            return new Response(Response.Status.OK,"Customer created" ).toJson();
+        } catch (HibernateAdapter.CustomerEmailException e) {
+            return new Response(Response.Status.Error,e.getMessage()).toJson();
+        }
+    }
+
+
+    private Customer createCustomerFromArguments(Map<String, Object> args){
+        String name = (String) args.get("name");
+        String email = (String) args.get("email");
+        String address = (String) args.get("address");
+        int phoneNum = ((Double) args.get("phoneNum")).intValue();
+
+        return new Customer(UUID.randomUUID().toString(), name, email, address, phoneNum);
     }
 
     private String handleAddBook(Request request) {
@@ -158,7 +182,7 @@ public class Controller {
         return new Response(Response.Status.OK, book.toJSON()).toJson();//.replace("\\", "");
     }
 
-    private String handleSearch(Request request) {
+    public String handleSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
         String searchTerm = (String) arguments.get("searchTerm");
 

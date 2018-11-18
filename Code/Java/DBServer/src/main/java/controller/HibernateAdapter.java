@@ -7,8 +7,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.PersistenceException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class HibernateAdapter implements DBProxy {
@@ -92,14 +94,14 @@ public class HibernateAdapter implements DBProxy {
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
             List<Book> searchedBooks = session.createQuery("select new model.Book(isbn, title, author, year, category) from Book where " +
-                    "isbn like :isbn or " +
-                    "title like :title or " +
-                    "author like :author or " +
+                    "lower(isbn) like :isbn or " +
+                    "lower(title) like :title or " +
+                    "lower(author) like :author or " +
                     "year = :year or " +
                     "category like :category")
-                    .setParameter("isbn", "%" + isbn + "%")
-                    .setParameter("title", "%" + title + "%")
-                    .setParameter("author", "%" + author + "%")
+                    .setParameter("isbn", "%" + isbn.toLowerCase() + "%")
+                    .setParameter("title", "%" + title.toLowerCase() + "%")
+                    .setParameter("author", "%" + author.toLowerCase() + "%")
                     .setParameter("year", year)
                     .setParameter("category", category)
                     .list();
@@ -234,22 +236,48 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
+    @Override
+    public List<Customer> getAllCustomers(){
+        Transaction tx = null;
+        try (Session session = ourSessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<Customer> customers = session.createQuery("FROM Customer").list();
+            tx.commit();
+            return customers;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
+    }
+
+    @Override
+    public void addCustomer(Customer customer) throws CustomerEmailException {
+        try {
+            addObject(customer);
+        }catch (PersistenceException e){
+            throw new CustomerEmailException("Email already in use");
+        }
+    }
+
+
 
     public static void main(String[] args) {
         HibernateAdapter db = new HibernateAdapter();
-        try {
-            System.out.println(db.getBookByLibraryBookId("196690e8-d620-49cb-b404-d049bd25b6de"));
-        } catch (BookNotFoundException e) {
-            e.printStackTrace();
-        }
 
-
+        System.out.println(db.getBookDetails("978-83-8116-1"));
     }
 
 
     class BookNotFoundException extends Exception {
         public BookNotFoundException(String s) {
             super(s);
+        }
+    }
+
+    public class CustomerEmailException extends Exception{
+        public CustomerEmailException(String msg) {
+            super(msg);
         }
     }
 }
