@@ -22,15 +22,52 @@ public class Controller {
         server.start();
     }
 
-
     public static void main(String[] args) {
         DBProxy db = new HibernateAdapter();
         DBServer server = new DBServer();
         Controller controller = new Controller(db, server);
     }
 
-    public List<Book> getAllBooks() {
-        return db.getAllBooks();
+    public String handleRequest(String json) {
+        try {
+            Request request = Request.fromJson(json);
+
+            switch (request.getOperation()) {
+                case AdvancedSearch:
+                    return handleAdvancedSearch(request);
+                case Search:
+                    return handleSearch(request);
+                case BookDetails:
+                    return handleBookDetails(request);
+                case AddBook:
+                    return handleAddBook(request);
+                case DeleteBook:
+                    return handleDeleteBook(request);
+                case RegisterCustomer:
+                    return handleRegisterCustomer(request);
+                case LibraryAdvancedSearch:
+                    return handleLibraryAdvancedSearch(request);
+                case BookStoreAdvancedSearch:
+                    return handleBookStoreAdvancedSearch(request);
+                case LibrarySearch:
+                    return handleLibrarySearch(request);
+                case BookStoreSearch:
+                    return handleBookStoreSearch(request);
+            }
+            throw new InvalidOperationException("Wrong operation");
+        } catch (Request.RequestJsonFormatException | InvalidOperationException | HibernateAdapter.BookNotFoundException e) {
+            //send error
+            return new Response(Response.Status.Error, e.getMessage()).toJson();
+        }
+    }
+
+    public String handleSearch(Request request) {
+        Map<String, Object> arguments = request.getArguments();
+        String searchTerm = (String) arguments.get("searchTerm");
+
+        List<Book> books = search(searchTerm);
+
+        return new Response(Response.Status.OK, books).toJson();
     }
 
     public List<Book> search(String searchTerm) {
@@ -57,6 +94,67 @@ public class Controller {
         return db.advancedSearch(searchTerm, searchTerm, searchTerm, year, searchCategory);
     }
 
+    public List<Book> searchLibrary(String searchTerm, String libraryId) {
+        final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
+        if (searchTerm.equals(""))
+            searchTerm = emptyStringValue;
+
+        int year;
+        try {
+            year = Integer.parseInt(searchTerm);
+        } catch (NumberFormatException e) {
+            year = 0;
+        }
+
+        String cat = searchTerm.toLowerCase();
+        cat = cat.substring(0, 1).toUpperCase() + cat.substring(1);
+        Book.Category searchCategory;
+        try {
+            searchCategory = Book.Category.valueOf(cat);
+        } catch (IllegalArgumentException e) {
+            searchCategory = Book.Category.Empty;
+        }
+
+        return db.advancedSearchInLibrary(libraryId, searchTerm, searchTerm, searchTerm, year, searchCategory);
+    }
+
+    public List<Book> searchBookStore(String searchTerm, String bookStoreId) {
+        final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
+        if (searchTerm.equals(""))
+            searchTerm = emptyStringValue;
+
+        int year;
+        try {
+            year = Integer.parseInt(searchTerm);
+        } catch (NumberFormatException e) {
+            year = 0;
+        }
+
+        String cat = searchTerm.toLowerCase();
+        cat = cat.substring(0, 1).toUpperCase() + cat.substring(1);
+        Book.Category searchCategory;
+        try {
+            searchCategory = Book.Category.valueOf(cat);
+        } catch (IllegalArgumentException e) {
+            searchCategory = Book.Category.Empty;
+        }
+
+        return db.advancedSearchInBookStore(bookStoreId, searchTerm, searchTerm, searchTerm, year, searchCategory);
+    }
+
+    private String handleAdvancedSearch(Request request) {
+        Map<String, Object> arguments = request.getArguments();
+        String isbn = (String) arguments.get("isbn");
+        String title = (String) arguments.get("title");
+        String author = (String) arguments.get("author");
+        int year = ((Double) arguments.get("year")).intValue();
+        Book.Category category = Book.Category.valueOf((String) arguments.get("category"));
+
+        List<Book> books = advancedSearch(isbn, title, author, year, category);
+
+        return new Response(Response.Status.OK, books).toJson();
+    }
+
     public List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category) {
         final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
         if (isbn.equals(""))
@@ -71,50 +169,56 @@ public class Controller {
         return db.advancedSearch(isbn, title, author, year, category);
     }
 
-    public String handleRequest(String json) {
-        try {
-            Request request = Request.fromJson(json);
+    public String handleLibrarySearch(Request request){
+        Map<String, Object> arguments = request.getArguments();
+        String searchTerm = (String) arguments.get("searchTerm");
+        String libraryId = (String) arguments.get("libraryid");
 
-            switch (request.getOperation()) {
-                case AdvancedSearch:
-                    return handleAdvancedSearch(request);
-                case Search:
-                    return handleSearch(request);
-                case BookDetails:
-                    return handleBookDetails(request);
-                case AddBook:
-                    return handleAddBook(request);
-                case DeleteBook:
-                    return handleDeleteBook(request);
-                case RegisterCustomer:
-                    return handleRegisterCustomer(request);
-            }
-            throw new InvalidOperationException("Wrong operation");
-        } catch (Request.RequestJsonFormatException | InvalidOperationException | HibernateAdapter.BookNotFoundException e) {
-            //send error
-            return new Response(Response.Status.Error, e.getMessage()).toJson();
-        }
+
+        List<Book> books = searchLibrary(searchTerm, libraryId);
+
+        return new Response(Response.Status.OK, books).toJson();
     }
 
-    private String handleRegisterCustomer(Request request) {
-        Customer customer = createCustomerFromArguments(request.getArguments());
+    public String handleBookStoreSearch(Request request){
+        Map<String, Object> arguments = request.getArguments();
+        String searchTerm = (String) arguments.get("searchTerm");
+        String bookStoreId = (String) arguments.get("bookstoreid");
 
-        try {
-            db.addCustomer(customer);
-            return new Response(Response.Status.OK,"Customer created" ).toJson();
-        } catch (HibernateAdapter.CustomerEmailException e) {
-            return new Response(Response.Status.Error,e.getMessage()).toJson();
-        }
+
+        List<Book> books = searchBookStore(searchTerm,bookStoreId);
+
+        return new Response(Response.Status.OK, books).toJson();
     }
 
+    public String handleLibraryAdvancedSearch(Request request){
+        Map<String, Object> arguments = request.getArguments();
+        String isbn = (String) arguments.get("isbn");
+        String title = (String) arguments.get("title");
+        String author = (String) arguments.get("author");
+        int year = ((Double) arguments.get("year")).intValue();
+        Book.Category category = Book.Category.valueOf((String) arguments.get("category"));
 
-    private Customer createCustomerFromArguments(Map<String, Object> args){
-        String name = (String) args.get("name");
-        String email = (String) args.get("email");
-        String address = (String) args.get("address");
-        int phoneNum = ((Double) args.get("phoneNum")).intValue();
+        String libraryid = (String) arguments.get("libraryid");
 
-        return new Customer(UUID.randomUUID().toString(), name, email, address, phoneNum);
+        List<Book> books = db.advancedSearchInLibrary(libraryid, isbn, title, author, year, category);
+
+        return new Response(Response.Status.OK, books).toJson();
+    }
+
+    public String handleBookStoreAdvancedSearch(Request request){
+        Map<String, Object> arguments = request.getArguments();
+        String isbn = (String) arguments.get("isbn");
+        String title = (String) arguments.get("title");
+        String author = (String) arguments.get("author");
+        int year = ((Double) arguments.get("year")).intValue();
+        Book.Category category = Book.Category.valueOf((String) arguments.get("category"));
+
+        String bookstoreid = (String) arguments.get("bookstoreid");
+
+        List<Book> books = db.advancedSearchInLibrary(bookstoreid, isbn, title, author, year, category);
+
+        return new Response(Response.Status.OK, books).toJson();
     }
 
     private String handleAddBook(Request request) {
@@ -138,15 +242,6 @@ public class Controller {
             db.addBookToBookStore(bookStoreStorage);
         }
         return new Response(Response.Status.OK, "Added").toJson();
-    }
-
-    private Book parseLinkedTreeMapToBook(LinkedTreeMap<String, Object> map){
-        String isbn = (String) map.get("isbn");
-        String title = (String) map.get("title");
-        String author = (String) map.get("author");
-        int year = ((Double) map.get("year")).intValue();
-        Book.Category category = Book.Category.valueOf((String) map.get("category"));
-        return new Book(isbn, title, author, year, category);
     }
 
     private String handleDeleteBook(Request request) throws HibernateAdapter.BookNotFoundException {
@@ -174,6 +269,15 @@ public class Controller {
         return new Response(Response.Status.OK, "Deleted").toJson();
     }
 
+    private Book parseLinkedTreeMapToBook(LinkedTreeMap<String, Object> map){
+        String isbn = (String) map.get("isbn");
+        String title = (String) map.get("title");
+        String author = (String) map.get("author");
+        int year = ((Double) map.get("year")).intValue();
+        Book.Category category = Book.Category.valueOf((String) map.get("category"));
+        return new Book(isbn, title, author, year, category);
+    }
+
     private String handleBookDetails(Request request) {
         Map<String, Object> arguments = request.getArguments();
         String isbn = (String) arguments.get("isbn");
@@ -182,30 +286,28 @@ public class Controller {
         return new Response(Response.Status.OK, book.toJSON()).toJson();//.replace("\\", "");
     }
 
-    public String handleSearch(Request request) {
-        Map<String, Object> arguments = request.getArguments();
-        String searchTerm = (String) arguments.get("searchTerm");
+    private String handleRegisterCustomer(Request request) {
+        Customer customer = createCustomerFromArguments(request.getArguments());
 
-        List<Book> books = search(searchTerm);
-
-        return new Response(Response.Status.OK, books).toJson();
+        try {
+            db.addCustomer(customer);
+            return new Response(Response.Status.OK,"Customer created" ).toJson();
+        } catch (HibernateAdapter.CustomerEmailException e) {
+            return new Response(Response.Status.Error,e.getMessage()).toJson();
+        }
     }
 
-    private String handleAdvancedSearch(Request request) {
-        Map<String, Object> arguments = request.getArguments();
-        String isbn = (String) arguments.get("isbn");
-        String title = (String) arguments.get("title");
-        String author = (String) arguments.get("author");
-        int year = ((Double) arguments.get("year")).intValue();
-        Book.Category category = Book.Category.valueOf((String) arguments.get("category"));
+    private Customer createCustomerFromArguments(Map<String, Object> args){
+        String name = (String) args.get("name");
+        String email = (String) args.get("email");
+        String address = (String) args.get("address");
+        int phoneNum = ((Double) args.get("phoneNum")).intValue();
 
-        List<Book> books = advancedSearch(isbn, title, author, year, category);
-
-        return new Response(Response.Status.OK, books).toJson();
+        return new Customer(UUID.randomUUID().toString(), name, email, address, phoneNum);
     }
 
     private class InvalidOperationException extends Exception {
-        public InvalidOperationException(String msg) {
+        InvalidOperationException(String msg) {
             super(msg);
         }
     }

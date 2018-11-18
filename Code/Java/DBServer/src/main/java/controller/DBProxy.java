@@ -6,13 +6,19 @@ import java.util.List;
 
 public interface DBProxy {
 
-    DetailedBook getBookDetails(String isbn);
+    List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category);
 
-    List<Book> getAllBooks();
+    @SuppressWarnings("unchecked")
+    List<Book> advancedSearchInLibrary(String libraryId, String isbn, String title, String author, int year, Book.Category category);
+
+    @SuppressWarnings("unchecked")
+    List<Book> advancedSearchInBookStore(String bookStoreId, String isbn, String title, String author, int year, Book.Category category);
+
+    DetailedBook getBookDetails(String isbn);
 
     Book getBookByLibraryBookId(String bookid) throws HibernateAdapter.BookNotFoundException;
 
-    List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category);
+    Book getBookByIsbn(String isbn) throws HibernateAdapter.BookNotFoundException;
 
     void addBookToLibrary(LibraryStorage libraryBook);
 
@@ -21,10 +27,6 @@ public interface DBProxy {
     void deleteBookFromLibrary(LibraryStorage libraryBook);
 
     void deleteBookFromBookStore(BookStoreStorage bookStoreBook);
-
-    Book getBookByIsbn(String isbn) throws HibernateAdapter.BookNotFoundException;
-
-    List<Customer> getAllCustomers();
 
     void addCustomer(Customer customer) throws HibernateAdapter.CustomerEmailException;
 }
