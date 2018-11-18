@@ -47,12 +47,7 @@ public class Controller {
     public static void main(String[] args) {
         DatabaseConnection db = new DatabaseConnection();
         Controller controller = new Controller(db);
-        try {
-            Book book = new Book("978-0134685991", "Effective Java", "Joshua Bloch", 2017, Book.Category.Science);
-            System.out.println(controller.deleteBook("978-0134685991"));
-        } catch (DatabaseConnection.ServerOfflineException | DatabaseConnection.SearchException e) {
-            e.printStackTrace();
-        }
+        System.out.println(controller.search("978-83-246-7758-0"));
     }
 
 
