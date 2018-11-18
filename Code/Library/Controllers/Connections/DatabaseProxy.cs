@@ -18,8 +18,8 @@ namespace Controllers.Connections
 
         public List<Book> Search(string searchTerm)
         {
-            var ar = new Dictionary<string, object> {{"searchTerm", searchTerm}};
-            var request = new Request(Request.Operation.Search, ar);
+            var ar = new Dictionary<string, object> {{"searchTerm", searchTerm}, {"libraryid",LIBRARY_ID}};
+            var request = new Request(Request.Operation.LibrarySearch, ar);
 
             Console.WriteLine($"Sending request: '{searchTerm}'");
             var response = SendMessage(request);
@@ -31,8 +31,8 @@ namespace Controllers.Connections
         public List<Book> AdvancedSearch(string title, string author, int? year, string isbn, Category? category)
         {
             var ar = new Dictionary<string, object>
-                {{"title", title}, {"author", author}, {"year", year}, {"isbn", isbn}, {"category", category}};
-            var request = new Request(Request.Operation.Search, ar);
+                {{"title", title}, {"author", author}, {"year", year}, {"isbn", isbn}, {"category", category},{"libraryid",LIBRARY_ID}};
+            var request = new Request(Request.Operation.LibraryAdvancedSearch, ar);
 
             Console.WriteLine($"Sending request: '{request.ToJSON()}'");
             var response = SendMessage(request);
