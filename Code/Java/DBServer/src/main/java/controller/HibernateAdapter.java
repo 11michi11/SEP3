@@ -236,7 +236,7 @@ public class HibernateAdapter implements DBProxy {
     @Override
     public void addBookToBookStore(BookStoreStorage bookStoreBook){
         updateObject(bookStoreBook.getId().getBook());
-        addObject(bookStoreBook);
+	    addObject(bookStoreBook);
     }
 
     @Override
@@ -274,7 +274,7 @@ public class HibernateAdapter implements DBProxy {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
-            session.update(obj);
+            session.saveOrUpdate(obj);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
@@ -297,9 +297,14 @@ public class HibernateAdapter implements DBProxy {
     public static void main(String[] args) {
         HibernateAdapter db = new HibernateAdapter();
 
-        List<LibraryStorage> storage = db.getLibrariesStorageByIsbnAndLibrary("978-83-246-7758-0", "ce78ef57-77ec-4bb7-82a2-1a78d3789aef");
+        Book book = new Book("isbn6425", "title", "author", 234, Book.Category.Fantasy);
+        BookStore bs = new BookStore("eb3777c8-77fe-4acd-962d-6853da2e05e0");
 
-        System.out.println(storage);
+        BookStoreStorageID id = new BookStoreStorageID(book, bs);
+
+        BookStoreStorage storage = new BookStoreStorage(id);
+
+        db.addBookToBookStore(storage);
     }
 
     class BookNotFoundException extends Exception {
