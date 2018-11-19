@@ -113,7 +113,17 @@ namespace Controllers.Connections
 
         public string BookDetails(string isbn)
         {
-            throw new NotImplementedException();
+            var ar = new Dictionary<string, object>
+                {{"libraryid", LIBRARY_ID}, {"isbn",isbn}};
+            
+            var request = new Request(Request.Operation.LibraryBookDetails, ar);
+
+            Console.WriteLine($"Sending request: '{request.ToJSON()}'");
+            var response = SendMessage(request);
+
+            var status = GetResponseStatus(response);
+            
+            return GetContent<string>(response);
         }
 
         protected enum ResponseStatus
