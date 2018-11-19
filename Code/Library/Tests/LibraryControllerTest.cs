@@ -76,10 +76,11 @@ namespace Tests
         {
         var book = new Book("Got", "Miska", 2015, "ISBN1", Category.Drama);
         var libraryBookExpected = new LibraryBook(book, "id", true);
+        var json = JsonConvert.SerializeObject(libraryBookExpected);
         
         var libraryBookActual = _controller.BookDetails("id");
         
-        Assert.Equal(libraryBookExpected,libraryBookActual);
+        Assert.Equal(json,libraryBookActual);
         }
     }
 }
