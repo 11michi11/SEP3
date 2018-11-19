@@ -300,7 +300,7 @@ public class Controller {
 
         LibraryBook libraryBook = new LibraryBook(book);
         libraryBook.loadLibraryBooksFromStorages(storage);
-        return new Response(Response.Status.OK, libraryBook.toJson()).toJson().replace("\\", "");
+        return new Response(Response.Status.OK, libraryBook.toJson()).toJson();//.replace("\\", "");
     }
 
     private String handleRegisterCustomer(Request request) {
