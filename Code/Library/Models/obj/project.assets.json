@@ -176,23 +176,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Michi\\.nuget\\packages\\": {},
+    "C:\\Users\\misii\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
+      "projectUniqueName": "c:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
-      "packagesPath": "C:\\Users\\Michi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Models\\obj\\",
+      "projectPath": "c:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
+      "packagesPath": "C:\\Users\\misii\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Michi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\misii\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
