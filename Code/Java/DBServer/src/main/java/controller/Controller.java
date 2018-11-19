@@ -6,6 +6,7 @@ import communication.Request;
 import communication.Response;
 import model.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -15,7 +16,7 @@ public class Controller {
     private DBProxy db;
     private DBServer server;
 
-    protected Controller(DBProxy db, DBServer server) {
+    private Controller(DBProxy db, DBServer server) {
         this.db = db;
         this.server = server;
         server.setController(this);
@@ -53,6 +54,9 @@ public class Controller {
                     return handleLibrarySearch(request);
                 case BookStoreSearch:
                     return handleBookStoreSearch(request);
+                case LibraryBookDetails:
+                    return handleLibraryBookDetails(request);
+
             }
             throw new InvalidOperationException("Wrong operation");
         } catch (Request.RequestJsonFormatException | InvalidOperationException | HibernateAdapter.BookNotFoundException e) {
@@ -284,6 +288,19 @@ public class Controller {
         DetailedBook book = db.getBookDetails(isbn);
 
         return new Response(Response.Status.OK, book.toJSON()).toJson();//.replace("\\", "");
+    }
+
+    private String handleLibraryBookDetails(Request request) {
+        Map<String, Object> arguments = request.getArguments();
+        String isbn = (String) arguments.get("isbn");
+        String libraryid = (String) arguments.get("libraryid");
+
+        List<LibraryStorage> storage = db.getLibrariesStorageByIsbnAndLibrary(isbn, libraryid);
+        Book book = storage.get(0).getId().getBook();
+
+        LibraryBook libraryBook = new LibraryBook(book);
+        libraryBook.loadLibraryBooksFromStorages(storage);
+        return new Response(Response.Status.OK, libraryBook.toJson()).toJson().replace("\\", "");
     }
 
     private String handleRegisterCustomer(Request request) {
