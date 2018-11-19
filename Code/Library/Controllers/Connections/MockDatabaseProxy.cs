@@ -46,10 +46,11 @@ namespace Controllers.Connections
             return tempBooks;
         }
 
-        public string BookDetails(string id) {
+        public string BookDetails(string isbn) {
             
-            var book = new Book("Got", "Miska", 2015, "ISBN1", Category.Drama);
-            var json = JsonConvert.SerializeObject(new LibraryBook(book, id, true));
+            var book = new Book("Got", "Miska", 2015, isbn, Category.Drama);
+            var json = JsonConvert.SerializeObject(new LibraryBook(book, "bookId", true));
+            Console.WriteLine(json);
             return json;
         }
 

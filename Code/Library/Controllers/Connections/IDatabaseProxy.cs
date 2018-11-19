@@ -9,6 +9,6 @@ namespace Controllers.Connections
          List<Book> AdvancedSearch(string title, string author, int? year, string isbn, Category? category);
         void CreateBook(Book book);
         void DeleteBook(string bookid);
-        string BookDetails(string id);
+        string BookDetails(string isbn);
     }
 }

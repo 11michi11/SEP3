@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Controllers;
+using Newtonsoft.Json;
 
 namespace Requests.Controllers
 {
@@ -29,12 +30,13 @@ namespace Requests.Controllers
             return _libraryController.AdvancedSearch(title, author,year, isbn,category);
         }
 
-        // GET books/{id}
+        // GET books/isbn
         [HttpGet]
-        [Route("[controller]/{id}")]
-        public ActionResult<string> BookDetails(string id) {
-            return _libraryController.BookDetails(id);
+        [Route("[controller]/{isbn}")]
+        public ActionResult<string> BookDetails(string isbn) {
+            return _libraryController.BookDetails(isbn);
         }
+
 
         // POST create
         [HttpPost]
@@ -50,14 +52,14 @@ namespace Requests.Controllers
             // return CreatedAtRoute("GetBook", new {id = book.Id}, book);
         }
 
-        // DELETE delete/{id}
+        // DELETE delete/id
         [HttpDelete]
         [Route("delete/{id}")]
         public IActionResult DeleteBook(string id)
         {
             try {
             _libraryController.DeleteBook(id);
-            } catch(System.NullReferenceException ex) {
+            } catch(NullReferenceException ex) {
                 return BadRequest("Book not found");
             }
 
