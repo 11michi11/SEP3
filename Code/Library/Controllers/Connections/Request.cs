@@ -13,7 +13,8 @@ namespace Controllers.Connections
         [JsonProperty]
         private readonly Dictionary<string, object> args;
         
-        public enum Operation{LibrarySearch, LibraryAdvancedSearch,AddBook, DeleteBook
+        public enum Operation{LibrarySearch, LibraryAdvancedSearch,AddBook, DeleteBook,
+            LibraryBookDetails
         }
 
         public Request(Operation operation, Dictionary<string, object> args)
