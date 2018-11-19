@@ -32,7 +32,7 @@ namespace Requests.Controllers
         // GET books/{id}
         [HttpGet]
         [Route("[controller]/{id}")]
-        public ActionResult<LibraryBook> BookDetails(string id) {
+        public ActionResult<string> BookDetails(string id) {
             return _libraryController.BookDetails(id);
         }
 
