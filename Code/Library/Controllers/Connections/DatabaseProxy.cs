@@ -111,7 +111,7 @@ namespace Controllers.Connections
             Console.Write(status);
         }
 
-        public LibraryBook BookDetails(string id)
+        public string BookDetails(string isbn)
         {
             throw new NotImplementedException();
         }
