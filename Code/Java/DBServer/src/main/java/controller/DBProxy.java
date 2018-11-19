@@ -20,6 +20,9 @@ public interface DBProxy {
 
     Book getBookByIsbn(String isbn) throws HibernateAdapter.BookNotFoundException;
 
+    @SuppressWarnings("unchecked")
+    List<LibraryStorage> getLibrariesStorageByIsbnAndLibrary(String isbn, String libraryid);
+
     void addBookToLibrary(LibraryStorage libraryBook);
 
     void addBookToBookStore(BookStoreStorage bookStoreBook);

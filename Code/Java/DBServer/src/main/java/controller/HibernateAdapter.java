@@ -158,11 +158,18 @@ public class HibernateAdapter implements DBProxy {
         throw new BookNotFoundException("There is no book with id: " + bookid);
     }
 
-    public List<LibraryStorage> getLibrariesStorage() {
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<LibraryStorage> getLibrariesStorageByIsbnAndLibrary(String isbn, String libraryid) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
-            List<LibraryStorage> storages = session.createQuery("FROM LibraryStorage ").list();
+            List<LibraryStorage> storages = session.createQuery("FROM LibraryStorage as s where " +
+                    "s.id.book.isbn like :isbn and " +
+                    "s.id.library.libraryID like :libraryid")
+                    .setParameter("isbn" , isbn)
+                    .setParameter("libraryid",libraryid)
+                    .list();
             tx.commit();
             return storages;
         } catch (HibernateException e) {
@@ -290,9 +297,9 @@ public class HibernateAdapter implements DBProxy {
     public static void main(String[] args) {
         HibernateAdapter db = new HibernateAdapter();
 
-        List<Book> books = db.advancedSearchInBookStore("eb3777c8-77fe-4acd-962d-6853da2e05e0", "978-83-8116-1", "title", "authoe", 0, Book.Category.Empty);
+        List<LibraryStorage> storage = db.getLibrariesStorageByIsbnAndLibrary("978-83-246-7758-0", "ce78ef57-77ec-4bb7-82a2-1a78d3789aef");
 
-        System.out.println(books);
+        System.out.println(storage);
     }
 
     class BookNotFoundException extends Exception {
