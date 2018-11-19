@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios'
+import LoadingCanvas from './../canvas/LoadingCanvas'
 
 class BookList extends Component {
     state = { 
@@ -21,7 +22,7 @@ class BookList extends Component {
      }
     render() { 
         const {books} = this.state;
-        const booksList =  books.map(b => {
+        const booksList =  this.state.books.length > 0 ? (books.map(b => {
             return (
                  <div key={b.isbn} className="card">
                         
@@ -34,7 +35,12 @@ class BookList extends Component {
                         </div>
                     </div>
             )
-        })
+        })) : (
+        <div className="row p-5 m-5">
+            <div className="offset-sm-5 col-sm-2 text-center">
+            <span className="text-grey r">Loading...</span>
+            </div>
+        </div> )
         return ( 
 
             <div className="container">
