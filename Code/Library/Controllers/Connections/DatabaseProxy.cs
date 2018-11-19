@@ -121,8 +121,9 @@ namespace Controllers.Connections
             Console.WriteLine($"Sending request: '{request.ToJSON()}'");
             var response = SendMessage(request);
 
-            var status = GetResponseStatus(response);   
-            Console.Write(status);
+            var status = GetResponseStatus(response);
+            
+            return GetContent<string>(response);
         }
 
         protected enum ResponseStatus
