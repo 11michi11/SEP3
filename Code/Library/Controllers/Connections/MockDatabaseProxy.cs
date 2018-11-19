@@ -46,10 +46,12 @@ namespace Controllers.Connections
             return tempBooks;
         }
 
-        public LibraryBook BookDetails(string id) {
+        public string BookDetails(string isbn) {
             
-            var book = new Book("Got", "Miska", 2015, "ISBN1", Category.Drama);
-            return new LibraryBook(book, id, true);
+            var book = new Book("Got", "Miska", 2015, isbn, Category.Drama);
+            var json = JsonConvert.SerializeObject(new LibraryBook(book, "bookId", true));
+            Console.WriteLine(json);
+            return json;
         }
 
 
@@ -66,7 +68,8 @@ namespace Controllers.Connections
 //            } else {
 //                throw new NullReferenceException("Book not found.");
 //            }
-            var libraryBook = BookDetails("bookId");
+            var book = new Book("Got", "Miska", 2015, "ISBN1", Category.Drama);
+            var libraryBook = new LibraryBook(book, "bookId", true);
             if (!libraryBook.Id.Equals(bookid))
             {
                 throw new NullReferenceException("Book not found");
