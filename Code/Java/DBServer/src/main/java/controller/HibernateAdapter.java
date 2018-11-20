@@ -54,7 +54,7 @@ public class HibernateAdapter implements DBProxy {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Book> advancedSearchInLibrary(String libraryId, String isbn, String title, String author, int year, Book.Category category){
+    public List<Book> advancedSearchInLibrary(String libraryId, String isbn, String title, String author, int year, Book.Category category) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
@@ -70,7 +70,7 @@ public class HibernateAdapter implements DBProxy {
                     .setParameter("author", "%" + author.toLowerCase() + "%")
                     .setParameter("year", year)
                     .setParameter("category", category)
-                    .setParameter("libraryid" , libraryId)
+                    .setParameter("libraryid", libraryId)
                     .list();
             tx.commit();
             return searchedBooks;
@@ -83,7 +83,7 @@ public class HibernateAdapter implements DBProxy {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Book> advancedSearchInBookStore(String bookStoreId, String isbn, String title, String author, int year, Book.Category category){
+    public List<Book> advancedSearchInBookStore(String bookStoreId, String isbn, String title, String author, int year, Book.Category category) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
@@ -99,7 +99,7 @@ public class HibernateAdapter implements DBProxy {
                     .setParameter("author", "%" + author.toLowerCase() + "%")
                     .setParameter("year", year)
                     .setParameter("category", category)
-                    .setParameter("libraryid" , bookStoreId)
+                    .setParameter("libraryid", bookStoreId)
                     .list();
             tx.commit();
             return searchedBooks;
@@ -133,7 +133,7 @@ public class HibernateAdapter implements DBProxy {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
-            Book book = (Book) session.createQuery("FROM Book where isbn like :isbn").setParameter("isbn" , isbn).getSingleResult();
+            Book book = (Book) session.createQuery("FROM Book where isbn like :isbn").setParameter("isbn", isbn).getSingleResult();
             tx.commit();
             return book;
         } catch (HibernateException e) {
@@ -148,7 +148,7 @@ public class HibernateAdapter implements DBProxy {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
-            LibraryStorage libraryStorage = (LibraryStorage) session.createQuery("FROM LibraryStorage where bookid like :bookid").setParameter("bookid" , bookid).getSingleResult();
+            LibraryStorage libraryStorage = (LibraryStorage) session.createQuery("FROM LibraryStorage where bookid like :bookid").setParameter("bookid", bookid).getSingleResult();
             tx.commit();
             return libraryStorage.getId().getBook();
         } catch (HibernateException e) {
@@ -167,8 +167,8 @@ public class HibernateAdapter implements DBProxy {
             List<LibraryStorage> storages = session.createQuery("FROM LibraryStorage as s where " +
                     "s.id.book.isbn like :isbn and " +
                     "s.id.library.libraryID like :libraryid")
-                    .setParameter("isbn" , isbn)
-                    .setParameter("libraryid",libraryid)
+                    .setParameter("isbn", isbn)
+                    .setParameter("libraryid", libraryid)
                     .list();
             tx.commit();
             return storages;
@@ -228,24 +228,24 @@ public class HibernateAdapter implements DBProxy {
     }
 
     @Override
-    public void addBookToLibrary(LibraryStorage libraryBook){
+    public void addBookToLibrary(LibraryStorage libraryBook) {
         updateObject(libraryBook.getId().getBook());
         addObject(libraryBook);
     }
 
     @Override
-    public void addBookToBookStore(BookStoreStorage bookStoreBook){
+    public void addBookToBookStore(BookStoreStorage bookStoreBook) {
         updateObject(bookStoreBook.getId().getBook());
 	    addObject(bookStoreBook);
     }
 
     @Override
-    public void deleteBookFromLibrary(LibraryStorage libraryBook){
+    public void deleteBookFromLibrary(LibraryStorage libraryBook) {
         deleteObject(libraryBook);
     }
 
     @Override
-    public void deleteBookFromBookStore(BookStoreStorage bookStoreBook){
+    public void deleteBookFromBookStore(BookStoreStorage bookStoreBook) {
         deleteObject(bookStoreBook);
     }
 
@@ -253,12 +253,12 @@ public class HibernateAdapter implements DBProxy {
     public void addCustomer(Customer customer) throws CustomerEmailException {
         try {
             addObject(customer);
-        }catch (PersistenceException e){
+        } catch (PersistenceException e) {
             throw new CustomerEmailException("Email already in use");
         }
     }
 
-    private void addObject(Object obj){
+    private void addObject(Object obj) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
@@ -270,7 +270,7 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    private void updateObject(Object obj){
+    private void updateObject(Object obj) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
@@ -282,7 +282,7 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    private void deleteObject(Object obj){
+    private void deleteObject(Object obj) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
@@ -313,7 +313,7 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    class CustomerEmailException extends Exception{
+    class CustomerEmailException extends Exception {
         public CustomerEmailException(String msg) {
             super(msg);
         }

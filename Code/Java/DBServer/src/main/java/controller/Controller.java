@@ -287,7 +287,7 @@ public class Controller {
         String isbn = (String) arguments.get("isbn");
         DetailedBook book = db.getBookDetails(isbn);
 
-        return new Response(Response.Status.OK, book.toJSON()).toJson();//.replace("\\", "");
+        return new Response(Response.Status.OK, book.toJSON()).toJson();
     }
 
     private String handleLibraryBookDetails(Request request) {
@@ -300,7 +300,7 @@ public class Controller {
 
         LibraryBook libraryBook = new LibraryBook(book);
         libraryBook.loadLibraryBooksFromStorages(storage);
-        return new Response(Response.Status.OK, libraryBook.toJson()).toJson();//.replace("\\", "");
+        return new Response(Response.Status.OK, libraryBook.toJson()).toJson();
     }
 
     private String handleRegisterCustomer(Request request) {
