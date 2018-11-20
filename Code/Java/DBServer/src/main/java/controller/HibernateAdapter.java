@@ -10,13 +10,12 @@ import org.hibernate.cfg.Configuration;
 import javax.persistence.PersistenceException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class HibernateAdapter implements DBProxy {
-    private final SessionFactory ourSessionFactory;
+    private static final SessionFactory ourSessionFactory;
 
-    public HibernateAdapter() {
+    static {
         try {
             Configuration configuration = new Configuration();
             configuration.configure();
@@ -24,6 +23,10 @@ public class HibernateAdapter implements DBProxy {
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
         }
+    }
+
+    public static SessionFactory getSessionFactory() {
+        return ourSessionFactory;
     }
 
     @SuppressWarnings("unchecked")
@@ -88,18 +91,18 @@ public class HibernateAdapter implements DBProxy {
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
             List<Book> searchedBooks = session.createQuery("select new model.Book(s.id.book.isbn, s.id.book.title, s.id.book.author, s.id.book.year, s.id.book.category) from BookStoreStorage as s where " +
-                    "s.id.book.isbn like :isbn and " +
-                    "lower(s.id.book.title) like :title and " +
-                    "lower(s.id.book.author) like :author and " +
-                    "s.id.book.year = :year and " +
-                    "s.id.book.category like :category and " +
-                    "s.id.bookstore.bookstoreid like :libraryid")
+                    "s.id.book.isbn like :isbn or " +
+                    "lower(s.id.book.title) like :title or " +
+                    "lower(s.id.book.author) like :author or " +
+                    "s.id.book.year = :year or " +
+                    "s.id.book.category like :category or " +
+                    "s.id.bookstore.bookstoreid like :bookStoreId")
                     .setParameter("isbn", "%" + isbn + "%")
                     .setParameter("title", "%" + title.toLowerCase() + "%")
                     .setParameter("author", "%" + author.toLowerCase() + "%")
                     .setParameter("year", year)
                     .setParameter("category", category)
-                    .setParameter("libraryid", bookStoreId)
+                    .setParameter("bookStoreId", bookStoreId)
                     .list();
             tx.commit();
             return searchedBooks;
@@ -119,7 +122,7 @@ public class HibernateAdapter implements DBProxy {
         libraryStorages.forEach(System.out::println);
 
         //There is only one book
-        try{
+        try {
             Book book = libraryStorages.get(0).getId().getBook();
 
             List<BookStore> bookStores = bookStoreStorages.stream()
@@ -127,7 +130,7 @@ public class HibernateAdapter implements DBProxy {
                     .map(libraryStorage -> libraryStorage.getId().getBookstore()).collect(Collectors.toList());
 
             return new DetailedBook(book, libraryStorages, bookStores);
-        }catch(IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             throw new BookNotFoundException("There is no book with isbn:" + isbn);
         }
     }
@@ -240,7 +243,7 @@ public class HibernateAdapter implements DBProxy {
     @Override
     public void addBookToBookStore(BookStoreStorage bookStoreBook) {
         updateObject(bookStoreBook.getId().getBook());
-	    addObject(bookStoreBook);
+        addObject(bookStoreBook);
     }
 
     @Override
@@ -262,7 +265,7 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    private void addObject(Object obj) {
+    public static void addObject(Object obj) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
@@ -274,7 +277,7 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    private void updateObject(Object obj) {
+    public static void updateObject(Object obj) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
@@ -286,7 +289,7 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    private void deleteObject(Object obj) {
+    public static void deleteObject(Object obj) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();

@@ -56,4 +56,7 @@ public class LibraryBook {
         return new JsonParser().parse(sb.toString());
     }
 
+    public Book getBook() {
+        return book;
+    }
 }

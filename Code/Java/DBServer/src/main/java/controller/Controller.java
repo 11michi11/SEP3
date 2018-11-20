@@ -6,7 +6,6 @@ import communication.Request;
 import communication.Response;
 import model.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -219,6 +218,17 @@ public class Controller {
         Book.Category category = Book.Category.valueOf((String) arguments.get("category"));
 
         String bookstoreid = (String) arguments.get("bookstoreid");
+
+        final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
+        if (isbn.equals(""))
+            isbn = emptyStringValue;
+
+        if (title.equals(""))
+            title = emptyStringValue;
+
+        if (author.equals(""))
+            author = emptyStringValue;
+
 
         List<Book> books = db.advancedSearchInBookStore(bookstoreid, isbn, title, author, year, category);
 
