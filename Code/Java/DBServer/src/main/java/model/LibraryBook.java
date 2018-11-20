@@ -1,11 +1,11 @@
 package model;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LibraryBook {
@@ -38,7 +38,7 @@ public class LibraryBook {
                 '}';
     }
 
-    public String toJson() {
+    public JsonElement toJson() {
         Gson gson = new Gson();
         StringBuilder sb = new StringBuilder("{");
 
@@ -52,8 +52,8 @@ public class LibraryBook {
                         .append("},"));
 
         sb.delete(sb.length() - 1, sb.length());
-
-        return sb.append("]}").toString();
+        sb.append("]}");
+        return new JsonParser().parse(sb.toString());
     }
 
 }

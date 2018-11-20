@@ -14,7 +14,7 @@ public interface DBProxy {
     @SuppressWarnings("unchecked")
     List<Book> advancedSearchInBookStore(String bookStoreId, String isbn, String title, String author, int year, Book.Category category);
 
-    DetailedBook getBookDetails(String isbn);
+    DetailedBook getBookDetails(String isbn) throws HibernateAdapter.BookNotFoundException;
 
     Book getBookByLibraryBookId(String bookid) throws HibernateAdapter.BookNotFoundException;
 

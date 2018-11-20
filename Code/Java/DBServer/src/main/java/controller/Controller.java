@@ -220,7 +220,7 @@ public class Controller {
 
         String bookstoreid = (String) arguments.get("bookstoreid");
 
-        List<Book> books = db.advancedSearchInLibrary(bookstoreid, isbn, title, author, year, category);
+        List<Book> books = db.advancedSearchInBookStore(bookstoreid, isbn, title, author, year, category);
 
         return new Response(Response.Status.OK, books).toJson();
     }
@@ -282,25 +282,30 @@ public class Controller {
         return new Book(isbn, title, author, year, category);
     }
 
-    private String handleBookDetails(Request request) {
+    private String handleBookDetails(Request request) throws HibernateAdapter.BookNotFoundException {
         Map<String, Object> arguments = request.getArguments();
         String isbn = (String) arguments.get("isbn");
         DetailedBook book = db.getBookDetails(isbn);
 
-        return new Response(Response.Status.OK, book.toJSON()).toJson();//.replace("\\", "");
+        return new Response(Response.Status.OK, book.toJSON()).toJson();
     }
 
-    private String handleLibraryBookDetails(Request request) {
+    private String handleLibraryBookDetails(Request request) throws HibernateAdapter.BookNotFoundException {
         Map<String, Object> arguments = request.getArguments();
         String isbn = (String) arguments.get("isbn");
         String libraryid = (String) arguments.get("libraryid");
 
         List<LibraryStorage> storage = db.getLibrariesStorageByIsbnAndLibrary(isbn, libraryid);
-        Book book = storage.get(0).getId().getBook();
 
-        LibraryBook libraryBook = new LibraryBook(book);
-        libraryBook.loadLibraryBooksFromStorages(storage);
-        return new Response(Response.Status.OK, libraryBook.toJson()).toJson();//.replace("\\", "");
+        try{
+            Book book = storage.get(0).getId().getBook();
+
+            LibraryBook libraryBook = new LibraryBook(book);
+            libraryBook.loadLibraryBooksFromStorages(storage);
+            return new Response(Response.Status.OK, libraryBook.toJson()).toJson();
+        }catch(IndexOutOfBoundsException e){
+            throw new HibernateAdapter.BookNotFoundException("There is no book with isbn: " + isbn);
+        }
     }
 
     private String handleRegisterCustomer(Request request) {
