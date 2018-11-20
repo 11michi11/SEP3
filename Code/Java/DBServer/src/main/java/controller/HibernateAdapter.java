@@ -88,10 +88,10 @@ public class HibernateAdapter implements DBProxy {
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
             List<Book> searchedBooks = session.createQuery("select new model.Book(s.id.book.isbn, s.id.book.title, s.id.book.author, s.id.book.year, s.id.book.category) from BookStoreStorage as s where " +
-                    "s.id.book.isbn like :isbn or " +
-                    "lower(s.id.book.title) like :title or " +
-                    "lower(s.id.book.author) like :author or " +
-                    "s.id.book.year = :year or " +
+                    "s.id.book.isbn like :isbn and " +
+                    "lower(s.id.book.title) like :title and " +
+                    "lower(s.id.book.author) like :author and " +
+                    "s.id.book.year = :year and " +
                     "s.id.book.category like :category and " +
                     "s.id.bookstore.bookstoreid like :libraryid")
                     .setParameter("isbn", "%" + isbn + "%")
@@ -111,7 +111,7 @@ public class HibernateAdapter implements DBProxy {
     }
 
     @Override
-    public DetailedBook getBookDetails(String isbn) {
+    public DetailedBook getBookDetails(String isbn) throws BookNotFoundException {
 
         List<LibraryStorage> libraryStorages = getLibrariesStorageByIsbn(isbn);
         List<BookStoreStorage> bookStoreStorages = getBookStoresStorageByIsbn(isbn);
@@ -119,13 +119,17 @@ public class HibernateAdapter implements DBProxy {
         libraryStorages.forEach(System.out::println);
 
         //There is only one book
-        Book book = libraryStorages.get(0).getId().getBook();
+        try{
+            Book book = libraryStorages.get(0).getId().getBook();
 
-        List<BookStore> bookStores = bookStoreStorages.stream()
-                .filter(libraryStorage -> libraryStorage.getId().getBook().getIsbn().equals(book.getIsbn()))
-                .map(libraryStorage -> libraryStorage.getId().getBookstore()).collect(Collectors.toList());
+            List<BookStore> bookStores = bookStoreStorages.stream()
+                    .filter(libraryStorage -> libraryStorage.getId().getBook().getIsbn().equals(book.getIsbn()))
+                    .map(libraryStorage -> libraryStorage.getId().getBookstore()).collect(Collectors.toList());
 
-        return new DetailedBook(book, libraryStorages, bookStores);
+            return new DetailedBook(book, libraryStorages, bookStores);
+        }catch(IndexOutOfBoundsException e){
+            throw new BookNotFoundException("There is no book with isbn:" + isbn);
+        }
     }
 
     @Override
@@ -297,17 +301,22 @@ public class HibernateAdapter implements DBProxy {
     public static void main(String[] args) {
         HibernateAdapter db = new HibernateAdapter();
 
-        Book book = new Book("isbn6425", "title", "author", 234, Book.Category.Fantasy);
+        Book book = new Book("642554546", "title", "author", 234, Book.Category.Fantasy);
         BookStore bs = new BookStore("eb3777c8-77fe-4acd-962d-6853da2e05e0");
 
         BookStoreStorageID id = new BookStoreStorageID(book, bs);
 
         BookStoreStorage storage = new BookStoreStorage(id);
 
-        db.addBookToBookStore(storage);
+        try {
+            db.getBookDetails("doesnotexist");
+        } catch (BookNotFoundException e) {
+            e.printStackTrace();
+        }
+//        db.deleteBookFromBookStore(storage);
     }
 
-    class BookNotFoundException extends Exception {
+    static class BookNotFoundException extends Exception {
         public BookNotFoundException(String s) {
             super(s);
         }
