@@ -7,10 +7,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BookController implements ApplicationContextAware {
@@ -27,8 +24,8 @@ public class BookController implements ApplicationContextAware {
       
     }
     
-    @RequestMapping(method=RequestMethod.DELETE, value="/book")
-    public String deleteBook(@RequestBody String isbn) {
+    @RequestMapping(method=RequestMethod.DELETE, value="/book/{isbn}")
+    public String deleteBook(@PathVariable String isbn) {
     	
     	Controller controller = context.getBean(Controller.class);
     	return controller.deleteBook(isbn); 
