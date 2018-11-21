@@ -31,10 +31,14 @@ public class LibraryRepository implements LibraryRepo {
             tx = session.beginTransaction();
             Library library = (Library) session.createQuery("FROM Library where libraryID like :libraryid").setParameter("libraryid", libraryId).getSingleResult();
             tx.commit();
+            if (library == null)
+                throw new LibraryNotFoundException("There is no library with id: " + libraryId);
             return library;
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
+        }catch(javax.persistence.NoResultException e){
+            throw new LibraryNotFoundException("There is no library with id: " + libraryId);
         }
         throw new LibraryNotFoundException("There is no library with id: " + libraryId);
     }

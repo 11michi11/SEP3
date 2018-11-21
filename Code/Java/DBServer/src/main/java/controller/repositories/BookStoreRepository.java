@@ -34,6 +34,8 @@ public class BookStoreRepository implements BookStoreRepo {
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
+        }catch(javax.persistence.NoResultException e){
+            throw new BookStoreNotFoundException("There is no library with id: " + bookStoreId);
         }
         throw new BookStoreNotFoundException("There is no book store with id: " + bookStoreId);
     }

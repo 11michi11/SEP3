@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.persistence.NoResultException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -80,13 +81,35 @@ public class BookRepository implements BookRepo{
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
+        }catch (NoResultException e1){
+            throw new BookNotFoundException("There is no book with isbn: " + isbn);
         }
         throw new BookNotFoundException("There is no book with isbn: " + isbn);
     }
 
     @Override
     public List<Book> search(String searchTerm) {
-        throw new NotImplementedException();
+        final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
+        if (searchTerm.equals(""))
+            searchTerm = emptyStringValue;
+
+        int year;
+        try {
+            year = Integer.parseInt(searchTerm);
+        } catch (NumberFormatException e) {
+            year = 0;
+        }
+
+        String cat = searchTerm.toLowerCase();
+        cat = cat.substring(0, 1).toUpperCase() + cat.substring(1);
+        Book.Category searchCategory;
+        try {
+            searchCategory = Book.Category.valueOf(cat);
+        } catch (IllegalArgumentException e) {
+            searchCategory = Book.Category.Empty;
+        }
+
+        return advancedSearch(searchTerm, searchTerm, searchTerm, year, searchCategory);
     }
 
     @SuppressWarnings("unchecked")

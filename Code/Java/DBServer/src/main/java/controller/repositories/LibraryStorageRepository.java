@@ -6,7 +6,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -33,7 +32,7 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
     }
 
     @Override
-    public void addBookToLibrary(Book book, String libraryId) throws LibraryRepository.LibraryNotFoundException {
+    public String addBookToLibrary(Book book, String libraryId) throws LibraryRepository.LibraryNotFoundException {
         //Save book to Book table
         bookRepo.saveOrUpdate(book);
 
@@ -43,6 +42,8 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
 
         LibraryStorage libraryStorage = new LibraryStorage(id, true);
         HibernateAdapter.addObject(libraryStorage);
+
+        return bookId;
     }
 
     @Override
@@ -76,8 +77,28 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
     }
 
     @Override
-    public List<LibraryBook> search(String libraryId, String searchTerm) {
-        throw new NotImplementedException();
+    public List<Book> search(String libraryId, String searchTerm) {
+        final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
+        if (searchTerm.equals(""))
+            searchTerm = emptyStringValue;
+
+        int year;
+        try {
+            year = Integer.parseInt(searchTerm);
+        } catch (NumberFormatException e) {
+            year = 0;
+        }
+
+        String cat = searchTerm.toLowerCase();
+        cat = cat.substring(0, 1).toUpperCase() + cat.substring(1);
+        Book.Category searchCategory;
+        try {
+            searchCategory = Book.Category.valueOf(cat);
+        } catch (IllegalArgumentException e) {
+            searchCategory = Book.Category.Empty;
+        }
+
+        return advancedSearch(libraryId, searchTerm, searchTerm, searchTerm, year, searchCategory);
     }
 
     @Override
