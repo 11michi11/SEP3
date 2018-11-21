@@ -48,7 +48,7 @@ public class LibraryBook {
 
         libraryBooks.forEach((bookid, availability) ->
                 sb.append("{\"bookid\":\"").append(bookid)
-                        .append("\",\"availability\":").append(availability)
+                        .append("\",\"available\":").append(availability)
                         .append("},"));
 
         sb.delete(sb.length() - 1, sb.length());
