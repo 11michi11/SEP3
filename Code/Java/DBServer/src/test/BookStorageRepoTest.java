@@ -40,6 +40,8 @@ public class BookStorageRepoTest {
             bookStoreStorageRepo.addBookToBookStore(book, BOOK_STORE_ID);
         } catch (LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException e) {
             fail("Adding failed, that's bad");
+        } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
+            fail("Should not throw");
         }
 
         LibraryStorageID libID1 = new LibraryStorageID(book, new Library(LIBRARY_ID), bookid1);
@@ -69,8 +71,12 @@ public class BookStorageRepoTest {
 
         try {
             //Clean up
-            libraryStorageRepo.deleteBookFromLibrary(bookid1, LIBRARY_ID);
-            libraryStorageRepo.deleteBookFromLibrary(bookid2, LIBRARY_ID);
+            try {
+                libraryStorageRepo.deleteBookFromLibrary(bookid1, LIBRARY_ID);
+                libraryStorageRepo.deleteBookFromLibrary(bookid2, LIBRARY_ID);
+            } catch (LibraryStorageRepository.BookAlreadyDeletedException bookAlreadyDeletedExcetion) {
+                fail("Should not throw");
+            }
             bookStoreStorageRepo.deleteBookFromBookStore("testisbn", BOOK_STORE_ID);
             bookRepo.delete("testisbn");
         } catch (LibraryRepository.LibraryNotFoundException e) {

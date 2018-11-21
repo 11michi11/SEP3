@@ -34,6 +34,11 @@ public class HibernateAdapter implements DBProxy {
         return ourSessionFactory;
     }
 
+    @Override
+    public List<Book> search(String searchTerm) {
+        return null;
+    }
+
     @SuppressWarnings("unchecked")
     public List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category) {
         Transaction tx = null;

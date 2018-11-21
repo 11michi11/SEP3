@@ -37,7 +37,7 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
     }
 
     @Override
-    public void addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException {
+    public void addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException, BookAlreadyInBookStoreException {
         //Save book to Book table
         bookRepo.saveOrUpdate(book);
 
@@ -45,7 +45,11 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
         BookStoreStorageID id = new BookStoreStorageID(book, bookStore);
 
         BookStoreStorage bookStoreStorage = new BookStoreStorage(id);
-        HibernateAdapter.addObject(bookStoreStorage);
+        try {
+            HibernateAdapter.addObject(bookStoreStorage);
+        } catch (javax.persistence.PersistenceException e) {
+            throw new BookAlreadyInBookStoreException("Book is already in that bookstore");
+        }
     }
 
     @Override
@@ -107,5 +111,11 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
             e.printStackTrace();
         }
         return new LinkedList<>();
+    }
+
+    public class BookAlreadyInBookStoreException extends Exception {
+        public BookAlreadyInBookStoreException(String msg) {
+            super(msg);
+        }
     }
 }
