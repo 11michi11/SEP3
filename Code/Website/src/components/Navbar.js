@@ -1,23 +1,29 @@
 import React from 'react';
-import {Nav, NavItem, NavLink} from 'reactstrap';
-import {withRouter} from 'react-router-dom'
+import {withRouter, NavLink} from 'react-router-dom'
 
 const Navbar = (props) => {
 
   console.log(this);
     return (
      
-    <Nav>
-          <NavItem>
-            <NavLink href="/">Home</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/contact">Contact</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/about">About us</NavLink>
-          </NavItem>
-        </Nav>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <a className="navbar-brand" href="/">Navbar</a>
+  <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav">
+      <li className="nav-item active">
+      <span className="nav-link"><NavLink to="/">Home</NavLink></span>
+      </li>
+      <li className="nav-item">
+      <span className="nav-link"><NavLink to="/login">Login</NavLink></span>
+      
+      </li>
+      <li className="nav-item">
+      <span className="nav-link"><NavLink to="/registration">Join us</NavLink></span>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
     )
 
 }
