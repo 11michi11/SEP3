@@ -16,7 +16,9 @@ public interface LibraryStorageRepo {
 
     List<LibraryBook> search(String libraryId, String searchTerm);
 
-    List<LibraryBook> advancedSearch(String libraryId, String isbn, String title, String author, int year, Book.Category category);
+    List<Book> advancedSearch(String libraryId, String isbn, String title, String author, int year, Book.Category category);
 
     List<LibraryStorage> getStoragesByIsbnAndLibrary(String isbn, String libraryId);
+
+    List<LibraryStorage> getLibrariesStorageByIsbn(String isbn);
 }

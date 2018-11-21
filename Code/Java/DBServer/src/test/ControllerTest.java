@@ -1,22 +1,22 @@
 import communication.DBServer;
 import communication.Request;
-import communication.Response;
 import controller.Controller;
 import controller.DBProxy;
+import controller.repositories.LibraryRepository;
 import model.Book;
-import model.Library;
-import model.LibraryStorage;
-import model.LibraryStorageID;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.when;
 
 public class ControllerTest {
@@ -90,11 +90,11 @@ public class ControllerTest {
     public void addBookToLibraryTest() {
         Book book = new Book("isbn", "title", "author", 1974, Book.Category.Fantasy);
         String institutionId = "id";
-        Library lib = new Library(institutionId);
-        String bookid = UUID.randomUUID().toString();
-        LibraryStorageID libId = new LibraryStorageID(book, lib, bookid);
-        LibraryStorage libraryStorage = new LibraryStorage(libId, true);
-        db.addBookToLibrary(libraryStorage);
+        try {
+            db.addBookToLibrary(book, institutionId);
+        } catch (LibraryRepository.LibraryNotFoundException e) {
+            fail(e.getMessage());
+        }
 
         //Request request = new Request(Request.Operation.AddBook, );
 

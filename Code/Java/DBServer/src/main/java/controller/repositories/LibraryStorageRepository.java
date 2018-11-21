@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.UUID;
 
 public class LibraryStorageRepository implements LibraryStorageRepo {
 
+    private static LibraryStorageRepository instance;
     private SessionFactory sessionFactory;
     private LibraryRepo libraryRepo;
     private BookRepo bookRepo;
@@ -20,8 +22,15 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
     public LibraryStorageRepository() {
         this.sessionFactory = HibernateAdapter.getSessionFactory();
         this.bookRepo = BookRepository.getInstance();
+        this.libraryRepo = LibraryRepository.getInstance();
     }
 
+    public static LibraryStorageRepository getInstance() {
+        if (instance == null) {
+            instance = new LibraryStorageRepository();
+        }
+        return instance;
+    }
 
     @Override
     public void addBookToLibrary(Book book, String libraryId) throws LibraryRepository.LibraryNotFoundException {
@@ -68,16 +77,71 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
 
     @Override
     public List<LibraryBook> search(String libraryId, String searchTerm) {
-        return null;
+        throw new NotImplementedException();
     }
 
     @Override
-    public List<LibraryBook> advancedSearch(String libraryId, String isbn, String title, String author, int year, Book.Category category) {
-        return null;
+    public List<Book> advancedSearch(String libraryId, String isbn, String title, String author, int year, Book.Category category) {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<Book> searchedBooks = session.createQuery("select new model.Book(s.id.book.isbn, s.id.book.title, s.id.book.author, s.id.book.year, s.id.book.category) from LibraryStorage as s where " +
+                    "s.id.book.isbn like :isbn or " +
+                    "lower(s.id.book.title) like :title or " +
+                    "lower(s.id.book.author) like :author or " +
+                    "s.id.book.year = :year or " +
+                    "s.id.book.category like :category and " +
+                    "s.id.library.libraryID like :libraryid")
+                    .setParameter("isbn", "%" + isbn + "%")
+                    .setParameter("title", "%" + title.toLowerCase() + "%")
+                    .setParameter("author", "%" + author.toLowerCase() + "%")
+                    .setParameter("year", year)
+                    .setParameter("category", category)
+                    .setParameter("libraryid", libraryId)
+                    .list();
+            tx.commit();
+            return searchedBooks;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
     }
 
     @Override
     public List<LibraryStorage> getStoragesByIsbnAndLibrary(String isbn, String libraryId) {
-        return null;
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<LibraryStorage> storages = session.createQuery("FROM LibraryStorage as s where " +
+                    "s.id.book.isbn like :isbn and " +
+                    "s.id.library.libraryID like :libraryid")
+                    .setParameter("isbn", isbn)
+                    .setParameter("libraryid", libraryId)
+                    .list();
+            tx.commit();
+            return storages;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
+    }
+
+    @Override
+    public List<LibraryStorage> getLibrariesStorageByIsbn(String isbn) {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<LibraryStorage> storages = session.createQuery("FROM LibraryStorage where isbn like :isbn")
+                    .setParameter("isbn", isbn)
+                    .list();
+            tx.commit();
+            return storages;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
     }
 }

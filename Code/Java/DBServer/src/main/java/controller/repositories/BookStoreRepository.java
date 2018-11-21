@@ -9,10 +9,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 public class BookStoreRepository implements BookStoreRepo {
+    private static BookStoreRepository instance;
     private SessionFactory sessionFactory;
 
-    public BookStoreRepository(SessionFactory sessionFactory) {
+    public BookStoreRepository() {
         this.sessionFactory = HibernateAdapter.getSessionFactory();
+    }
+
+    public static BookStoreRepository getInstance() {
+        if (instance == null) {
+            instance = new BookStoreRepository();
+        }
+        return instance;
     }
 
     @Override

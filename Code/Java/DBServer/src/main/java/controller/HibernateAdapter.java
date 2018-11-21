@@ -1,5 +1,9 @@
 package controller;
 
+import controller.repositories.BookRepository;
+import controller.repositories.BookRepository.BookNotFoundException;
+import controller.repositories.CustomerRepository;
+import controller.repositories.CustomerRepository.CustomerEmailException;
 import model.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -10,6 +14,7 @@ import org.hibernate.cfg.Configuration;
 import javax.persistence.PersistenceException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class HibernateAdapter implements DBProxy {
@@ -235,25 +240,44 @@ public class HibernateAdapter implements DBProxy {
     }
 
     @Override
-    public void addBookToLibrary(LibraryStorage libraryBook) {
-        updateObject(libraryBook.getId().getBook());
-        addObject(libraryBook);
+    public void addBookToLibrary(Book book, String libraryid) {
+        Library lib = new Library(libraryid);
+        String bookid = UUID.randomUUID().toString();
+        LibraryStorageID libId = new LibraryStorageID(book, lib, bookid);
+        LibraryStorage libraryStorage = new LibraryStorage(libId, true);
+
+        updateObject(book);
+        addObject(libraryStorage);
     }
 
     @Override
-    public void addBookToBookStore(BookStoreStorage bookStoreBook) {
-        updateObject(bookStoreBook.getId().getBook());
-        addObject(bookStoreBook);
+    public void addBookToBookStore(Book book, String institutionId) {
+        BookStore bookStore = new BookStore(institutionId);
+        BookStoreStorageID bookStoreId = new BookStoreStorageID(book, bookStore);
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStoreId);
+
+        updateObject(book);
+        addObject(bookStoreStorage);
     }
 
     @Override
-    public void deleteBookFromLibrary(LibraryStorage libraryBook) {
-        deleteObject(libraryBook);
+    public void deleteBookFromLibrary(String bookId, String libraryId) throws BookNotFoundException {
+        Book book = getBookByLibraryBookId("bookid");
+        Library lib = new Library(libraryId);
+        LibraryStorageID libId = new LibraryStorageID(book, lib, bookId);
+        LibraryStorage libraryStorage = new LibraryStorage(libId, true);
+
+        deleteObject(libraryStorage);
     }
 
     @Override
-    public void deleteBookFromBookStore(BookStoreStorage bookStoreBook) {
-        deleteObject(bookStoreBook);
+    public void deleteBookFromBookStore(String isbn, String bookStoreId) throws BookNotFoundException {
+        Book book = getBookByIsbn(isbn);
+        BookStore bookStore = new BookStore(bookStoreId);
+        BookStoreStorageID id = new BookStoreStorageID(book, bookStore);
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(id);
+
+        deleteObject(bookStoreStorage);
     }
 
     @Override
@@ -319,15 +343,4 @@ public class HibernateAdapter implements DBProxy {
 //        db.deleteBookFromBookStore(storage);
     }
 
-    static class BookNotFoundException extends Exception {
-        public BookNotFoundException(String s) {
-            super(s);
-        }
-    }
-
-    class CustomerEmailException extends Exception {
-        public CustomerEmailException(String msg) {
-            super(msg);
-        }
-    }
 }

@@ -117,7 +117,7 @@ public class BookRepository implements BookRepo{
     }
 
 
-    static class BookNotFoundException extends Exception {
+    public static class BookNotFoundException extends Exception {
         public BookNotFoundException(String s) {
             super(s);
         }

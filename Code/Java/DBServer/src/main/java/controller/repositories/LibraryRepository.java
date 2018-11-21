@@ -10,10 +10,18 @@ import org.hibernate.Transaction;
 
 public class LibraryRepository implements LibraryRepo {
 
+    private static LibraryRepository instance;
     private SessionFactory sessionFactory;
 
-    public LibraryRepository(SessionFactory sessionFactory) {
+    public LibraryRepository() {
         this.sessionFactory = HibernateAdapter.getSessionFactory();
+    }
+
+    public static LibraryRepository getInstance() {
+        if (instance == null) {
+            instance = new LibraryRepository();
+        }
+        return instance;
     }
 
     @Override

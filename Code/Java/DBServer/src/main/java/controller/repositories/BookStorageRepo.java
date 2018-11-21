@@ -4,6 +4,6 @@ import model.DetailedBook;
 
 public interface BookStorageRepo {
 
-    DetailedBook getBookDetails(String isbn);
+    DetailedBook getBookDetails(String isbn) throws BookRepository.BookNotFoundException;
 
 }

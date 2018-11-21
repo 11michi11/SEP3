@@ -4,6 +4,10 @@ import com.google.gson.internal.LinkedTreeMap;
 import communication.DBServer;
 import communication.Request;
 import communication.Response;
+import controller.repositories.BookRepository;
+import controller.repositories.BookStoreRepository;
+import controller.repositories.CustomerRepository;
+import controller.repositories.LibraryRepository;
 import model.*;
 
 import java.util.List;
@@ -58,7 +62,11 @@ public class Controller {
 
             }
             throw new InvalidOperationException("Wrong operation");
-        } catch (Request.RequestJsonFormatException | InvalidOperationException | HibernateAdapter.BookNotFoundException e) {
+        } catch (Request.RequestJsonFormatException |
+                InvalidOperationException |
+                BookRepository.BookNotFoundException |
+                LibraryRepository.LibraryNotFoundException |
+                BookStoreRepository.BookStoreNotFoundException e) {
             //send error
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
@@ -235,50 +243,31 @@ public class Controller {
         return new Response(Response.Status.OK, books).toJson();
     }
 
-    private String handleAddBook(Request request) {
+    private String handleAddBook(Request request) throws LibraryRepository.LibraryNotFoundException, BookStoreRepository.BookStoreNotFoundException {
         Map<String, Object> arguments = request.getArguments();
         Book book = parseLinkedTreeMapToBook((LinkedTreeMap<String, Object>) arguments.get("book"));
 
         boolean isLibrary = (boolean) arguments.get("library");
         String institutionId = (String) arguments.get("id");
         if (isLibrary) {
-            Library lib = new Library(institutionId);
-            String bookid = UUID.randomUUID().toString();
-            LibraryStorageID libId = new LibraryStorageID(book, lib, bookid);
-            LibraryStorage libraryStorage = new LibraryStorage(libId, true);
-
-            db.addBookToLibrary(libraryStorage);
+            db.addBookToLibrary(book, institutionId);
         } else {
-            BookStore bookStore = new BookStore(institutionId);
-            BookStoreStorageID bookStoreId = new BookStoreStorageID(book, bookStore);
-            BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStoreId);
-
-            db.addBookToBookStore(bookStoreStorage);
+            db.addBookToBookStore(book, institutionId);
         }
         return new Response(Response.Status.OK, "Added").toJson();
     }
 
-    private String handleDeleteBook(Request request) throws HibernateAdapter.BookNotFoundException {
+    private String handleDeleteBook(Request request) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, BookStoreRepository.BookStoreNotFoundException {
         Map<String, Object> arguments = request.getArguments();
 
         boolean isLibrary = (boolean) arguments.get("library");
         String institutionId = (String) arguments.get("id");
         if (isLibrary) {
-            Book book = db.getBookByLibraryBookId((String) arguments.get("bookid"));
-            Library lib = new Library(institutionId);
-            String bookid = (String) arguments.get("bookid");
-            LibraryStorageID libId = new LibraryStorageID(book, lib, bookid);
-            LibraryStorage libraryStorage = new LibraryStorage(libId, true);
-
-            db.deleteBookFromLibrary(libraryStorage);
+            String bookId = (String) arguments.get("bookid");
+            db.deleteBookFromLibrary(bookId, institutionId);
         } else {
             String isbn = (String) arguments.get("isbn");
-            Book book = db.getBookByIsbn(isbn);
-            BookStore bookStore = new BookStore(institutionId);
-            BookStoreStorageID bookStoreId = new BookStoreStorageID(book, bookStore);
-            BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStoreId);
-
-            db.deleteBookFromBookStore(bookStoreStorage);
+            db.deleteBookFromBookStore(isbn, institutionId);
         }
         return new Response(Response.Status.OK, "Deleted").toJson();
     }
@@ -292,7 +281,7 @@ public class Controller {
         return new Book(isbn, title, author, year, category);
     }
 
-    private String handleBookDetails(Request request) throws HibernateAdapter.BookNotFoundException {
+    private String handleBookDetails(Request request) throws BookRepository.BookNotFoundException {
         Map<String, Object> arguments = request.getArguments();
         String isbn = (String) arguments.get("isbn");
         DetailedBook book = db.getBookDetails(isbn);
@@ -300,7 +289,7 @@ public class Controller {
         return new Response(Response.Status.OK, book.toJSON()).toJson();
     }
 
-    private String handleLibraryBookDetails(Request request) throws HibernateAdapter.BookNotFoundException {
+    private String handleLibraryBookDetails(Request request) throws BookRepository.BookNotFoundException {
         Map<String, Object> arguments = request.getArguments();
         String isbn = (String) arguments.get("isbn");
         String libraryid = (String) arguments.get("libraryid");
@@ -314,7 +303,7 @@ public class Controller {
             libraryBook.loadLibraryBooksFromStorages(storage);
             return new Response(Response.Status.OK, libraryBook.toJson()).toJson();
         }catch(IndexOutOfBoundsException e){
-            throw new HibernateAdapter.BookNotFoundException("There is no book with isbn: " + isbn);
+            throw new BookRepository.BookNotFoundException("There is no book with isbn: " + isbn);
         }
     }
 
@@ -324,7 +313,7 @@ public class Controller {
         try {
             db.addCustomer(customer);
             return new Response(Response.Status.OK,"Customer created" ).toJson();
-        } catch (HibernateAdapter.CustomerEmailException e) {
+        } catch (CustomerRepository.CustomerEmailException e) {
             return new Response(Response.Status.Error,e.getMessage()).toJson();
         }
     }
