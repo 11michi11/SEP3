@@ -100,6 +100,30 @@ public class DatabaseConnection implements DatabaseProxy {
         return handleSearchResponse(response, status);
     }
 
+    @Override
+    public String borrowBook(String isbn, String libraryID, String customerID) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("isbn", isbn);
+        args.put("libraryID", libraryID);
+        args.put("customerID", customerID);
+        Request request = new Request(Request.Operation.Borrow, args);
+
+        return sendMessage(request);
+    }
+
+
+    @Override
+    public String buyBook(String isbn, String bookstoreID, String customerID) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("isbn", isbn);
+        args.put("libraryID", bookstoreID);
+        args.put("customerID", customerID);
+        Request request = new Request(Request.Operation.Buy, args);
+
+        return sendMessage(request);
+    }
+
+
     private ResponseStatus getResponseStatus(String response) {
         JsonParser parser = new JsonParser();
         JsonElement element = parser.parse(response);
