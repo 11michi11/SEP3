@@ -357,9 +357,9 @@ public class HibernateAdapter implements DBProxy {
         QueryBuilder qb = fullTextEntityManager.getSearchFactory()
                 .buildQueryBuilder().forEntity(Book.class).get();
         org.apache.lucene.search.Query luceneQuery = qb.keyword()
-                .onFields("title", "bookIsbn", "author", "year")
+                .onFields("title", "bookIsbn", "author", "year", "category")
                 .ignoreFieldBridge()
-                .matching("java fantasy")
+                .matching("fantasy 2014")
                 .createQuery();
 
 // wrap Lucene query in a javax.persistence.Query
