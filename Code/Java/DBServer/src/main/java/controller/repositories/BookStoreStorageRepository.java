@@ -4,6 +4,7 @@ import controller.HibernateAdapter;
 import model.Book;
 import model.BookStore;
 import model.BookStoreStorage;
+import model.LibraryStorage;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -111,8 +112,33 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
         return new LinkedList<>();
     }
 
+    @Override
+    public BookStoreStorage getStorageByBookId(String isbn) throws BookStoreStorageNotFoundException {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            BookStoreStorage ids = (BookStoreStorage) session.createQuery("FROM BookStoreStorage as s where " +
+                    "s.book.isbn like :isbn")
+                    .setParameter("isbn", isbn)
+                    .getSingleResult();
+            tx.commit();
+            return ids;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        throw new BookStoreStorageNotFoundException("There is no bookstore storage with isbn: " + isbn);
+
+    }
+
     public class BookAlreadyInBookStoreException extends Exception {
         public BookAlreadyInBookStoreException(String msg) {
+            super(msg);
+        }
+    }
+
+    public class BookStoreStorageNotFoundException extends Throwable {
+        public BookStoreStorageNotFoundException(String msg) {
             super(msg);
         }
     }

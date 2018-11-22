@@ -194,12 +194,13 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
         Transaction tx = null;
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
-            LibraryStorage ids = (LibraryStorage) session.createQuery("FROM LibraryStorage as s where " +
+            LibraryStorage libraryStorage
+                    = (LibraryStorage) session.createQuery("FROM LibraryStorage as s where " +
                     "s.bookid like :bookId")
                     .setParameter("bookId", bookId)
                     .getSingleResult();
             tx.commit();
-            return ids;
+            return libraryStorage;
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();

@@ -43,5 +43,6 @@
         <mapping class="model.BookStoreStorage"/>
         <mapping class="model.Customer"/>
         <mapping class="model.LibraryOrder"/>
+        <mapping class="model.BookStoreOrder"/>
     </session-factory>
 </hibernate-configuration>
