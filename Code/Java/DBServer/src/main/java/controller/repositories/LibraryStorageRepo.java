@@ -20,4 +20,6 @@ public interface LibraryStorageRepo {
     List<LibraryStorage> getStoragesByIsbnAndLibrary(String isbn, String libraryId);
 
     List<LibraryStorage> getLibrariesStorageByIsbn(String isbn);
+
+    List<String> getAvailableBooks(String isbn, String libraryID);
 }

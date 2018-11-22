@@ -164,5 +164,15 @@ public class LibraryStorageRepoTest {
         }
     }
 
+    @Test
+    public void getIdsOfAvalaibleBooks() {
+
+        String bookid = "961af2c5-a57b-4855-bf40-d6d64fbd5f96";
+        List<String> ids= Collections.singletonList(bookid);
+        assertEquals(ids,libraryStorageRepo.getAvailableBooks("978-83-8116-1", LIBRARY_ID) );
+
+    }
+
+
 
 }

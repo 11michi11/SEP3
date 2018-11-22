@@ -46,6 +46,8 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
         return bookId;
     }
 
+
+
     @Override
     public void deleteBookFromLibrary(String bookId, String libraryId) throws LibraryRepository.LibraryNotFoundException, BookRepository.BookNotFoundException, BookAlreadyDeletedException {
         try {
@@ -163,6 +165,27 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
                     .list();
             tx.commit();
             return storages;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
+    }
+
+    @Override
+    public List<String> getAvailableBooks(String isbn, String libraryID) {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<String> ids = session.createQuery("select s.id.bookid FROM LibraryStorage as s where " +
+                    "s.id.book.isbn like :isbn and " +
+                    "s.id.library.libraryID like :libraryid and " +
+                    "s.available = TRUE ")
+                    .setParameter("isbn", isbn)
+                    .setParameter("libraryid", libraryID)
+                    .list();
+            tx.commit();
+            return ids;
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
