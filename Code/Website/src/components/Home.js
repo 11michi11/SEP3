@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Form, FormGroup, Label, Input, Button} from 'reactstrap'
-import axios from 'axios'
+import {Form, FormGroup, Input, Button} from 'reactstrap'
+
 
 class Home extends Component {
 
@@ -10,29 +10,20 @@ class Home extends Component {
 
    handleSearch = (event) => {
     this.setState({searchData: event.target.value});
+    
     }
 
     handleSubmit = e => {
         e.preventDefault();
-<<<<<<< HEAD
-        console.log(this.state.searchData);
-        axios.get("http://localhost:8080/search?searchTerm="+this.state.searchData, {crossdomain: true})
-        .then(res => {
-
         
-            console.log(res.data);
-        })
-=======
+        // console.log(this.state.searchData);
         // axios.get("http://localhost:8080/search?searchTerm="+this.state.searchData, {crossdomain: true})
         // .then(res => {
 
         
-        //     console.log(res);
+        //     console.log(res.data);
         // })
         this.props.history.push('/search/'+this.state.searchData);
-        
->>>>>>> master
-
 
     }
 

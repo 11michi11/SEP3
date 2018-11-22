@@ -47,14 +47,18 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
     }
 
     @Override
-    public void deleteBookFromLibrary(String bookId, String libraryId) throws LibraryRepository.LibraryNotFoundException, BookRepository.BookNotFoundException {
-        Book book = getBookByBookId(bookId);
+    public void deleteBookFromLibrary(String bookId, String libraryId) throws LibraryRepository.LibraryNotFoundException, BookRepository.BookNotFoundException, BookAlreadyDeletedException {
+        try {
+            Book book = getBookByBookId(bookId);
+            Library library = libraryRepo.get(libraryId);
+            LibraryStorageID id = new LibraryStorageID(book, library, bookId);
 
-        Library library = libraryRepo.get(libraryId);
-        LibraryStorageID id = new LibraryStorageID(book, library, bookId);
+            LibraryStorage libraryStorage = new LibraryStorage(id, true);
+            HibernateAdapter.deleteObject(libraryStorage);
+        } catch (javax.persistence.NoResultException e) {
+            throw new BookAlreadyDeletedException("Book already deleted from library");
+        }
 
-        LibraryStorage libraryStorage = new LibraryStorage(id, true);
-        HibernateAdapter.deleteObject(libraryStorage);
     }
 
     @Override
@@ -154,7 +158,7 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
         Transaction tx = null;
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
-            List<LibraryStorage> storages = session.createQuery("FROM LibraryStorage where isbn like :isbn")
+            List<LibraryStorage> storages = session.createQuery("FROM LibraryStorage as s where s.id.book.isbn like :isbn")
                     .setParameter("isbn", isbn)
                     .list();
             tx.commit();
@@ -164,5 +168,11 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
             e.printStackTrace();
         }
         return new LinkedList<>();
+    }
+
+    public class BookAlreadyDeletedException extends Throwable {
+        public BookAlreadyDeletedException(String msg) {
+            super(msg);
+        }
     }
 }

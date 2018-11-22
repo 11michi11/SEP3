@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios'
+import LoadingCanvas from './../canvas/LoadingCanvas'
 
 class BookList extends Component {
     state = { 
          books: []
+         
      }
 
      componentDidMount() {
@@ -20,20 +22,25 @@ class BookList extends Component {
      }
     render() { 
         const {books} = this.state;
-        const booksList =  books.map(b => {
+        const booksList =  this.state.books.length > 0 ? (books.map(b => {
             return (
                  <div key={b.isbn} className="card">
                         
                         <div className="card-body">
                             <Link to={'/books/'+ b.isbn}>    
-                            <h5 className="card-title">{b.title}</h5>
+                            <h5 className="card-title"><Link to={"/details/" + b.isbn}>{b.title}</Link></h5>
                             </Link>
                             <div className="card-subtitle text-muted">{b.author} ({b.year}) / <span className=" text-danger">{b.category}</span></div>
                             <p></p>
                         </div>
                     </div>
             )
-        })
+        })) : (
+        <div className="row p-5 m-5">
+            <div className="offset-sm-5 col-sm-2 text-center">
+            <span className="text-grey r">Loading...</span>
+            </div>
+        </div> )
         return ( 
 
             <div className="container">

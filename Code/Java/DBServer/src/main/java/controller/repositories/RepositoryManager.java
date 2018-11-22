@@ -17,7 +17,7 @@ public class RepositoryManager implements DBProxy {
 
     private static RepositoryManager ourInstance = new RepositoryManager();
 
-    public static RepositoryManager getInstance() {
+    public static DBProxy getInstance() {
         return ourInstance;
     }
 
@@ -29,6 +29,11 @@ public class RepositoryManager implements DBProxy {
         bookStoreStorageRepo = BookStoreStorageRepository.getInstance();
         bookStorageRepo = BookStorageRepository.getInstance();
         custormerRepo = CustomerRepository.getInstance();
+    }
+
+    @Override
+    public List<Book> search(String searchTerm){
+        return bookRepo.search(searchTerm);
     }
 
     @Override
@@ -72,12 +77,12 @@ public class RepositoryManager implements DBProxy {
     }
 
     @Override
-    public void addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException {
+    public void addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookAlreadyInBookStoreException {
         bookStoreStorageRepo.addBookToBookStore(book, bookStoreId);
     }
 
     @Override
-    public void deleteBookFromLibrary(String bookId, String libraryId) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException {
+    public void deleteBookFromLibrary(String bookId, String libraryId) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException {
         libraryStorageRepo.deleteBookFromLibrary(bookId,libraryId);
     }
 

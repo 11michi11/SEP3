@@ -10,7 +10,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.search.FullTextSession;
+import org.hibernate.search.Search;
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.query.dsl.QueryBuilder;
 
+import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,6 +37,11 @@ public class HibernateAdapter implements DBProxy {
 
     public static SessionFactory getSessionFactory() {
         return ourSessionFactory;
+    }
+
+    @Override
+    public List<Book> search(String searchTerm) {
+        return null;
     }
 
     @SuppressWarnings("unchecked")
@@ -325,22 +335,45 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    public static void main(String[] args) {
+    private static void rebuildLuceneIndex() throws InterruptedException {
         HibernateAdapter db = new HibernateAdapter();
+        SessionFactory sessionFactory = HibernateAdapter.getSessionFactory();
+        FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.openSession());
+        fullTextSession.createIndexer().startAndWait();
+    }
 
-        Book book = new Book("642554546", "title", "author", 234, Book.Category.Fantasy);
-        BookStore bs = new BookStore("eb3777c8-77fe-4acd-962d-6853da2e05e0");
+    public static void main(String[] args) throws InterruptedException {
+        SessionFactory sessionFactory = HibernateAdapter.getSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        EntityManager em = session.getEntityManagerFactory().createEntityManager();
+        FullTextEntityManager fullTextEntityManager =
+                org.hibernate.search.jpa.Search.getFullTextEntityManager(em);
+        em.getTransaction().begin();
 
-        BookStoreStorageID id = new BookStoreStorageID(book, bs);
+// create native Lucene query unsing the query DSL
+// alternatively you can write the Lucene query using the Lucene query parser
+// or the Lucene programmatic API. The Hibernate Search DSL is recommended though
+        QueryBuilder qb = fullTextEntityManager.getSearchFactory()
+                .buildQueryBuilder().forEntity(Book.class).get();
+        org.apache.lucene.search.Query luceneQuery = qb.keyword()
+                .onFields("title", "bookIsbn", "author", "year")
+                .ignoreFieldBridge()
+                .matching("java fantasy")
+                .createQuery();
 
-        BookStoreStorage storage = new BookStoreStorage(id);
+// wrap Lucene query in a javax.persistence.Query
+        javax.persistence.Query jpaQuery =
+                fullTextEntityManager.createFullTextQuery(luceneQuery, Book.class);
 
-        try {
-            db.getBookDetails("doesnotexist");
-        } catch (BookNotFoundException e) {
-            e.printStackTrace();
-        }
-//        db.deleteBookFromBookStore(storage);
+// execute search
+        List result = jpaQuery.getResultList();
+
+        em.getTransaction().commit();
+        em.close();
+
+        System.out.println(result);
+//      HibernateAdapter.rebuildLuceneIndex();
     }
 
 }
