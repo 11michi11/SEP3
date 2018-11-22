@@ -25,6 +25,16 @@
         </property>
         <property name="show_sql">true</property>
 
+        <property name="hibernate.search.default.directory_provider">
+            filesystem
+        </property>
+
+        <property name="hibernate.search.default.indexBase">
+            /var/lucene/indexes
+        </property>
+
+        <property name="hibernate.current_session_context_class">thread</property>
+
         <mapping class="model.Book"/>
         <mapping class="model.Library"/>
         <mapping class="model.LibraryStorage"/>
@@ -32,5 +42,6 @@
         <mapping class="model.BookStore"/>
         <mapping class="model.BookStoreStorage"/>
         <mapping class="model.BookStoreStorageID"/>
+        <mapping class="model.Customer"/>
     </session-factory>
 </hibernate-configuration>

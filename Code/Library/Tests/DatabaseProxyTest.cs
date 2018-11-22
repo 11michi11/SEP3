@@ -64,5 +64,12 @@ namespace Tests
         {
            DeleteBook("97bb0a09-330e-4939-9e75-cc39d9000240");
         }
+
+        [Fact]
+        public void BookDetailsTest()
+        {
+            var json = "{\"book\":{\"isbn\":\"978-83-246-7758-0\",\"title\":\"Core Java\",\"author\":\"Cay S. Horstmann, Gary Cornell\",\"year\":2014,\"category\":\"Science\"},\"libraryBooks\":[{\"bookid\":\"196690e8-d620-49cb-b404-d049bd25b6de\",\"availability\":true},{\"bookid\":\"efea4877-ff0a-44f6-96da-2d9294428c79\",\"availability\":true}]}";
+            Assert.Equal(json, BookDetails("978-83-246-7758-0"));
+        }
     }
 }

@@ -3,7 +3,6 @@ package controller;
 import com.google.gson.Gson;
 import controller.connection.DatabaseConnection;
 import controller.connection.DatabaseProxy;
-import controller.connection.MockDatabase;
 import model.Book;
 import model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +36,10 @@ public class Controller {
     public String addCustomer(Customer customer){
         return db.addCustomer(customer);
     }
+
     public static void main(String[] args) {
         DatabaseConnection db = new DatabaseConnection();
         Controller controller = new Controller(db);
+       System.out.println(controller.getBookDetails("978-83-8116-1"));
     }
 }

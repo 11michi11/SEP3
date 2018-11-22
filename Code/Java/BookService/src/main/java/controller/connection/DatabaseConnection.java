@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 import controller.ConfigurationLoader;
 import model.Book;
@@ -23,11 +24,19 @@ import java.util.Map;
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
-    private final String IP = "localhost";//ConfigurationLoader.getDbAddress();
+    private final String IP ="localhost";// ConfigurationLoader.getDbAddress();
+    private Gson gson = new Gson();
 
     public String addCustomer(Customer customer){
-        //addToDB
-        return "Customer "+customer+" added";
+        Map<String, Object> args = new HashMap<>();
+        args.put("name", customer.getName());
+        args.put("email", customer.getEmail());
+        args.put("address", customer.getAddress());
+        args.put("phoneNum", customer.getPhoneNum());
+
+        Request request = new Request(Request.Operation.RegisterCustomer, args);
+
+        return sendMessage(request);
     }
 
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
@@ -65,7 +74,10 @@ public class DatabaseConnection implements DatabaseProxy {
     private String handleBookDetailsResponse(String response, ResponseStatus status) {
         switch (status) {
             case OK:
-                return getContent(response);
+                LinkedTreeMap content = getContent(response);
+                JsonElement jsonElement = gson.toJsonTree(content);
+                String asString = jsonElement.toString();
+                return asString;
             case Error:
                 String errorMsg = getContent(response);
                 throw new SearchException("Database returned error: " + errorMsg);
@@ -93,11 +105,6 @@ public class DatabaseConnection implements DatabaseProxy {
         JsonElement element = parser.parse(response);
         JsonObject obj = element.getAsJsonObject(); //since you know it's a JsonObject
         return ResponseStatus.valueOf(obj.get("status").getAsString());
-        // Getting all keys
-//		Set<Map.Entry<String, JsonElement>> entries = obj.entrySet();//will return members of your object
-//		for (Map.Entry<String, JsonElement> entry: entries) {
-//			System.out.println(entry.getKey());
-//		}
     }
 
     private <T> T getContent(String contentJson) {
@@ -107,7 +114,6 @@ public class DatabaseConnection implements DatabaseProxy {
         String content = obj.get("content").toString();
         Type type = new TypeToken<T>() {
         }.getType();
-        Gson gson = new Gson();
         return gson.fromJson(content, type);
     }
 
@@ -136,6 +142,14 @@ public class DatabaseConnection implements DatabaseProxy {
         Socket server = new Socket(IP, PORT);
         System.out.println("Connected!");
         return server;
+    }
+
+    public static void main(String[] args) {
+        String json = "{\"status\":\"OK\",\"content\":{\"book\":{\"isbn\":\"978-83-246-7758-0\",\"title\":\"Core Java\",\"author\":\"Cay S. Horstmann, Gary Cornell\",\"year\":2014,\"category\":\"Science\"},\"libraries\":[{\"libraryName\":\"First Library\",\"libraryid\":\"ce78ef57-77ec-4bb7-82a2-1a78d3789aef\",\"bookid\":\"efea4877-ff0a-44f6-96da-2d9294428c79\",\"available\":true},{\"libraryName\":\"First Library\",\"libraryid\":\"ce78ef57-77ec-4bb7-82a2-1a78d3789aef\",\"bookid\":\"196690e8-d620-49cb-b404-d049bd25b6de\",\"available\":true}],\"bookstores\":[{\"bookstoreid\":\"eb3777c8-77fe-4acd-962d-6853da2e05e0\",\"name\":\"First Book Store\"}]}}";
+
+        DatabaseConnection db = new DatabaseConnection();
+        ResponseStatus status = db.getResponseStatus(json);
+        db.handleBookDetailsResponse(json, status);
     }
 
 
