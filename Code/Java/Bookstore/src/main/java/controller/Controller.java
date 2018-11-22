@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import controller.connection.DatabaseConnection;
 import controller.connection.DatabaseProxy;
 import model.Book;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -47,7 +44,8 @@ public class Controller {
     public static void main(String[] args) {
         DatabaseConnection db = new DatabaseConnection();
         Controller controller = new Controller(db);
-        System.out.println(controller.search("978-83-246-7758-0"));
+        Book book = new Book("isbn21354", "title", "author", 23, Book.Category.Fantasy);
+        System.out.println(controller.addBook(book));
     }
 
 

@@ -66,7 +66,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.17.Final</version>
+            <version>5.3.7.Final</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -94,6 +94,16 @@
             <version>1.1.1</version>
         </dependency>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search-orm</artifactId>
+            <version>5.10.4.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.12.1.GA</version>
+        </dependency>
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>2.23.0</version>
@@ -106,5 +116,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
 </project>

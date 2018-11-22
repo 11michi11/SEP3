@@ -30,17 +30,17 @@ namespace Requests.Controllers
             return _libraryController.AdvancedSearch(title, author,year, isbn,category);
         }
 
-        // GET books/isbn
+        // GET bookDetails/isbn
         [HttpGet]
-        [Route("[controller]/{isbn}")]
+        [Route("bookDetails/{isbn}")]
         public ActionResult<string> BookDetails(string isbn) {
             return _libraryController.BookDetails(isbn);
         }
 
 
-        // POST create
+        // POST book
         [HttpPost]
-        [Route("create")]
+        [Route("book")]
         public IActionResult CreateBook([FromBody] Book book)
         {
             //for checking if book can be created
@@ -52,9 +52,9 @@ namespace Requests.Controllers
             // return CreatedAtRoute("GetBook", new {id = book.Id}, book);
         }
 
-        // DELETE delete/id
+        // DELETE book/id
         [HttpDelete]
-        [Route("delete/{id}")]
+        [Route("book/{id}")]
         public IActionResult DeleteBook(string id)
         {
             try {

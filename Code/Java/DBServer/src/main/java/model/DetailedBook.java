@@ -57,6 +57,27 @@ public class DetailedBook {
         //{"book":{"isbn":"978-83-246-7758-0","title":"Core Java","author":"Cay S. Horstmann, Gary Cornell","year":2014,"category":"Science"},"libraries":[{"libraryid":"ce78ef57-77ec-4bb7-82a2-1a78d3789aef","bookid":"978-83-246-7758-0","available":true},{"libraryid":"ce78ef57-77ec-4bb7-82a2-1a78d3789aef","bookid":"978-83-246-7758-0","available":true}],"bookstores":[{"bookstoreid":"eb3777c8-77fe-4acd-962d-6853da2e05e0"}]}
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DetailedBook that = (DetailedBook) o;
+
+        if (book != null ? !book.equals(that.book) : that.book != null) return false;
+        if (libraryStorages != null ? !libraryStorages.equals(that.libraryStorages) : that.libraryStorages != null)
+            return false;
+        return bookStores != null ? bookStores.equals(that.bookStores) : that.bookStores == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = book != null ? book.hashCode() : 0;
+        result = 31 * result + (libraryStorages != null ? libraryStorages.hashCode() : 0);
+        result = 31 * result + (bookStores != null ? bookStores.hashCode() : 0);
+        return result;
+    }
+
     public static void main(String[] args) {
         Book book = new Book("isbn", "title", "author", 0, Book.Category.Science);
         Library lib = new Library("libid");

@@ -17,8 +17,8 @@ namespace Requests
         public static void Main(string[] args)
         {
             // temporarilly used mocked class
-            // LibraryController.GetInstance().SetDatabaseProxy(new DatabaseProxy());
-            LibraryController.GetInstance().SetDatabaseProxy(new MockDatabaseProxy());
+            LibraryController.GetInstance().SetDatabaseProxy(new DatabaseProxy());
+//            LibraryController.GetInstance().SetDatabaseProxy(new MockDatabaseProxy());
             CreateWebHostBuilder(args).Build().Run();
         }
 

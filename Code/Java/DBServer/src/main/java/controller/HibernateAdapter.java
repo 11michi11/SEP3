@@ -1,12 +1,21 @@
 package controller;
 
+import controller.repositories.BookRepository;
+import controller.repositories.BookRepository.BookNotFoundException;
+import controller.repositories.CustomerRepository;
+import controller.repositories.CustomerRepository.CustomerEmailException;
 import model.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.search.FullTextSession;
+import org.hibernate.search.Search;
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.query.dsl.QueryBuilder;
 
+import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,9 +23,9 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class HibernateAdapter implements DBProxy {
-    private final SessionFactory ourSessionFactory;
+    private static final SessionFactory ourSessionFactory;
 
-    public HibernateAdapter() {
+    static {
         try {
             Configuration configuration = new Configuration();
             configuration.configure();
@@ -24,6 +33,15 @@ public class HibernateAdapter implements DBProxy {
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
         }
+    }
+
+    public static SessionFactory getSessionFactory() {
+        return ourSessionFactory;
+    }
+
+    @Override
+    public List<Book> search(String searchTerm) {
+        return null;
     }
 
     @SuppressWarnings("unchecked")
@@ -92,14 +110,14 @@ public class HibernateAdapter implements DBProxy {
                     "lower(s.id.book.title) like :title or " +
                     "lower(s.id.book.author) like :author or " +
                     "s.id.book.year = :year or " +
-                    "s.id.book.category like :category and " +
-                    "s.id.bookstore.bookstoreid like :libraryid")
+                    "s.id.book.category like :category or " +
+                    "s.id.bookstore.bookstoreid like :bookStoreId")
                     .setParameter("isbn", "%" + isbn + "%")
                     .setParameter("title", "%" + title.toLowerCase() + "%")
                     .setParameter("author", "%" + author.toLowerCase() + "%")
                     .setParameter("year", year)
                     .setParameter("category", category)
-                    .setParameter("libraryid", bookStoreId)
+                    .setParameter("bookStoreId", bookStoreId)
                     .list();
             tx.commit();
             return searchedBooks;
@@ -111,7 +129,7 @@ public class HibernateAdapter implements DBProxy {
     }
 
     @Override
-    public DetailedBook getBookDetails(String isbn) {
+    public DetailedBook getBookDetails(String isbn) throws BookNotFoundException {
 
         List<LibraryStorage> libraryStorages = getLibrariesStorageByIsbn(isbn);
         List<BookStoreStorage> bookStoreStorages = getBookStoresStorageByIsbn(isbn);
@@ -119,13 +137,17 @@ public class HibernateAdapter implements DBProxy {
         libraryStorages.forEach(System.out::println);
 
         //There is only one book
-        Book book = libraryStorages.get(0).getId().getBook();
+        try {
+            Book book = libraryStorages.get(0).getId().getBook();
 
-        List<BookStore> bookStores = bookStoreStorages.stream()
-                .filter(libraryStorage -> libraryStorage.getId().getBook().getIsbn().equals(book.getIsbn()))
-                .map(libraryStorage -> libraryStorage.getId().getBookstore()).collect(Collectors.toList());
+            List<BookStore> bookStores = bookStoreStorages.stream()
+                    .filter(libraryStorage -> libraryStorage.getId().getBook().getIsbn().equals(book.getIsbn()))
+                    .map(libraryStorage -> libraryStorage.getId().getBookstore()).collect(Collectors.toList());
 
-        return new DetailedBook(book, libraryStorages, bookStores);
+            return new DetailedBook(book, libraryStorages, bookStores);
+        } catch (IndexOutOfBoundsException e) {
+            throw new BookNotFoundException("There is no book with isbn:" + isbn);
+        }
     }
 
     @Override
@@ -228,25 +250,44 @@ public class HibernateAdapter implements DBProxy {
     }
 
     @Override
-    public void addBookToLibrary(LibraryStorage libraryBook) {
-        updateObject(libraryBook.getId().getBook());
-        addObject(libraryBook);
+    public void addBookToLibrary(Book book, String libraryid) {
+        Library lib = new Library(libraryid);
+        String bookid = UUID.randomUUID().toString();
+        LibraryStorageID libId = new LibraryStorageID(book, lib, bookid);
+        LibraryStorage libraryStorage = new LibraryStorage(libId, true);
+
+        updateObject(book);
+        addObject(libraryStorage);
     }
 
     @Override
-    public void addBookToBookStore(BookStoreStorage bookStoreBook) {
-        updateObject(bookStoreBook.getId().getBook());
-        addObject(bookStoreBook);
+    public void addBookToBookStore(Book book, String institutionId) {
+        BookStore bookStore = new BookStore(institutionId);
+        BookStoreStorageID bookStoreId = new BookStoreStorageID(book, bookStore);
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStoreId);
+
+        updateObject(book);
+        addObject(bookStoreStorage);
     }
 
     @Override
-    public void deleteBookFromLibrary(LibraryStorage libraryBook) {
-        deleteObject(libraryBook);
+    public void deleteBookFromLibrary(String bookId, String libraryId) throws BookNotFoundException {
+        Book book = getBookByLibraryBookId("bookid");
+        Library lib = new Library(libraryId);
+        LibraryStorageID libId = new LibraryStorageID(book, lib, bookId);
+        LibraryStorage libraryStorage = new LibraryStorage(libId, true);
+
+        deleteObject(libraryStorage);
     }
 
     @Override
-    public void deleteBookFromBookStore(BookStoreStorage bookStoreBook) {
-        deleteObject(bookStoreBook);
+    public void deleteBookFromBookStore(String isbn, String bookStoreId) throws BookNotFoundException {
+        Book book = getBookByIsbn(isbn);
+        BookStore bookStore = new BookStore(bookStoreId);
+        BookStoreStorageID id = new BookStoreStorageID(book, bookStore);
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(id);
+
+        deleteObject(bookStoreStorage);
     }
 
     @Override
@@ -258,7 +299,7 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    private void addObject(Object obj) {
+    public static void addObject(Object obj) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
@@ -270,11 +311,11 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    private void updateObject(Object obj) {
+    public static void updateObject(Object obj) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
-            session.update(obj);
+            session.saveOrUpdate(obj);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
@@ -282,7 +323,7 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    private void deleteObject(Object obj) {
+    public static void deleteObject(Object obj) {
         Transaction tx = null;
         try (Session session = ourSessionFactory.openSession()) {
             tx = session.beginTransaction();
@@ -294,21 +335,45 @@ public class HibernateAdapter implements DBProxy {
         }
     }
 
-    public static void main(String[] args) {
+    private static void rebuildLuceneIndex() throws InterruptedException {
         HibernateAdapter db = new HibernateAdapter();
-
-        System.out.println(db.getBookDetails("978-83-8116-1"));
+        SessionFactory sessionFactory = HibernateAdapter.getSessionFactory();
+        FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.openSession());
+        fullTextSession.createIndexer().startAndWait();
     }
 
-    class BookNotFoundException extends Exception {
-        public BookNotFoundException(String s) {
-            super(s);
-        }
+    public static void main(String[] args) throws InterruptedException {
+        SessionFactory sessionFactory = HibernateAdapter.getSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        EntityManager em = session.getEntityManagerFactory().createEntityManager();
+        FullTextEntityManager fullTextEntityManager =
+                org.hibernate.search.jpa.Search.getFullTextEntityManager(em);
+        em.getTransaction().begin();
+
+// create native Lucene query unsing the query DSL
+// alternatively you can write the Lucene query using the Lucene query parser
+// or the Lucene programmatic API. The Hibernate Search DSL is recommended though
+        QueryBuilder qb = fullTextEntityManager.getSearchFactory()
+                .buildQueryBuilder().forEntity(Book.class).get();
+        org.apache.lucene.search.Query luceneQuery = qb.keyword()
+                .onFields("title", "bookIsbn", "author", "year")
+                .ignoreFieldBridge()
+                .matching("java fantasy")
+                .createQuery();
+
+// wrap Lucene query in a javax.persistence.Query
+        javax.persistence.Query jpaQuery =
+                fullTextEntityManager.createFullTextQuery(luceneQuery, Book.class);
+
+// execute search
+        List result = jpaQuery.getResultList();
+
+        em.getTransaction().commit();
+        em.close();
+
+        System.out.println(result);
+//      HibernateAdapter.rebuildLuceneIndex();
     }
 
-    class CustomerEmailException extends Exception {
-        public CustomerEmailException(String msg) {
-            super(msg);
-        }
-    }
 }
