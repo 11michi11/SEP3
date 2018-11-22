@@ -39,8 +39,8 @@ public class BookStorageRepository implements BookStorageRepo {
             Book book = libraryStorages.get(0).getBook();
 
             List<BookStore> bookStores = bookStoreStorages.stream()
-                    .filter(libraryStorage -> libraryStorage.getId().getBook().getIsbn().equals(book.getIsbn()))
-                    .map(libraryStorage -> libraryStorage.getId().getBookstore()).collect(Collectors.toList());
+                    .filter(libraryStorage -> libraryStorage.getBook().getIsbn().equals(book.getIsbn()))
+                    .map(BookStoreStorage::getBookstore).collect(Collectors.toList());
 
             return new DetailedBook(book, libraryStorages, bookStores);
         } catch (IndexOutOfBoundsException e) {

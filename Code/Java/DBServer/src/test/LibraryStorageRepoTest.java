@@ -1,5 +1,7 @@
 import controller.repositories.*;
 import model.Book;
+import model.Library;
+import model.LibraryStorage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -170,6 +172,39 @@ public class LibraryStorageRepoTest {
         String bookid = "961af2c5-a57b-4855-bf40-d6d64fbd5f96";
         List<String> ids= Collections.singletonList(bookid);
         assertEquals(ids,libraryStorageRepo.getAvailableBooks("978-83-8116-1", LIBRARY_ID) );
+
+    }
+
+    @Test
+    void getStorageByBookIdTest(){
+        Book book = new Book("testisbn", "testtitle", "testauthor", 999, Book.Category.Poetry);
+        List<Book> books = Collections.singletonList(book);
+        bookRepo.add(book);
+        String bookid = null;
+        try {
+            bookid = libraryStorageRepo.addBookToLibrary(book, LIBRARY_ID);
+        } catch (LibraryRepository.LibraryNotFoundException e) {
+            fail("Adding to library failed");
+        }
+
+        LibraryStorage libraryStorage = new LibraryStorage(bookid, new Library(LIBRARY_ID), book, true);
+
+
+        try {
+            assertEquals(libraryStorage,  libraryStorageRepo.getStorageByBookId(bookid)) ;
+        } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
+            fail("No such library storage");
+        }
+
+        try {
+            libraryStorageRepo.deleteBookFromLibrary(bookid, LIBRARY_ID);
+            bookRepo.delete("testisbn");
+        } catch (BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException e) {
+            fail("Deleting failed, really bad");
+        } catch (LibraryStorageRepository.BookAlreadyDeletedException e) {
+            fail("Should not throw");
+        }
+
 
     }
 

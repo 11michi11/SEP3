@@ -189,8 +189,32 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
         return new LinkedList<>();
     }
 
+    @Override
+    public LibraryStorage getStorageByBookId(String bookId) throws LibraryStorageNotFoundException {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            LibraryStorage ids = (LibraryStorage) session.createQuery("FROM LibraryStorage as s where " +
+                    "s.bookid like :bookId")
+                    .setParameter("bookId", bookId)
+                    .getSingleResult();
+            tx.commit();
+            return ids;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        throw new LibraryStorageNotFoundException("There is no library storage with bookId: " + bookId);
+    }
+
     public class BookAlreadyDeletedException extends Exception {
         public BookAlreadyDeletedException(String msg) {
+            super(msg);
+        }
+    }
+
+    public class LibraryStorageNotFoundException extends Exception{
+        public LibraryStorageNotFoundException(String msg) {
             super(msg);
         }
     }

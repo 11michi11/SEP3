@@ -6,8 +6,11 @@ import java.util.List;
 
 public interface LibraryOrderRepo {
 
-    void add(String bookId, String libraryId, String customerId);
+    String add(String bookId, String customerId) throws LibraryRepository.LibraryNotFoundException, LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException;
+
+    void delete(String orderId) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException;
 
     List<LibraryOrder> get();
 
+    LibraryOrder get(String orderId);
 }
