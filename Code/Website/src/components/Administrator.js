@@ -3,6 +3,8 @@ import {Form, FormGroup, Input, Button} from 'reactstrap'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 
+// Admin for Bookstore
+
 class Administrator extends Component {
     state = { 
         books: [],
@@ -29,10 +31,17 @@ class Administrator extends Component {
             this.setState({books: res.data});
             console.log(res.data);
         })
+    }
+
+        handleDelete = e => {
+            e.preventDefault();
+
+            console.log("delete "+ e.target.value);
+        }
 
         // 
 
-    }
+    
 
     render() { 
         const {books} = this.state;
@@ -45,6 +54,7 @@ class Administrator extends Component {
                             <h5 className="card-title">{b.title}</h5>
                             </Link>
                             <div className="card-subtitle text-muted">{b.author} ({b.year}) / <span className=" text-danger">{b.category}</span></div>
+                            <button type="button" class="btn btn-danger" onClick={this.handleDelete} value={b.isbn}>Delete</button>
                             <p></p>
                         </div>
                     </div>
