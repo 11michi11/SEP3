@@ -12,7 +12,6 @@ C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\reposito
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\LibraryRepo.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookStoreStorageRepository.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\CustomerRepo.java
-C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\LibraryOrderID.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\BookStoreStorageID.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\Customer.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\communication\Request.java
@@ -30,7 +29,6 @@ C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\LibraryOrder.
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookStoreStorageRepo.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\Book.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\communication\Response.java
-C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\LibraryStorageID.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\LibraryStorageRepo.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\DetailedBook.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookRepository.java
