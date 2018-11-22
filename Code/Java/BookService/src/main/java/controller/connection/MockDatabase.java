@@ -30,4 +30,16 @@ public class MockDatabase implements DatabaseProxy {
     public String addCustomer(Customer customer) {
         return null;
     }
+
+	@Override
+	public String borrowBook(String bookID, String libraryID, String customerID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String buyBook(String isbn, String bookstoreID, String customerID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
