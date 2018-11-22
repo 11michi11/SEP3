@@ -30,7 +30,8 @@
         </property>
 
         <property name="hibernate.search.default.indexBase">
-            /var/lucene/indexes
+            resources
+            <!--/var/lucene/indexes-->
         </property>
 
         <property name="hibernate.current_session_context_class">thread</property>
@@ -43,5 +44,7 @@
         <mapping class="model.BookStoreStorage"/>
         <mapping class="model.BookStoreStorageID"/>
         <mapping class="model.Customer"/>
+        <mapping class="model.LibraryOrder"/>
+        <mapping class="model.LibraryOrderID"/>
     </session-factory>
 </hibernate-configuration>
