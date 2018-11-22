@@ -42,4 +42,12 @@ public class Controller {
         Controller controller = new Controller(db);
        System.out.println(controller.getBookDetails("978-83-8116-1"));
     }
+
+	public String borrowBook(String isbn, String libraryID, String customerID) {
+	    return db.borrowBook(isbn, libraryID, customerID);
+    }
+
+    public String buyBook(String isbn, String bookstoreID, String customerID) {
+        return db.buyBook(isbn, bookstoreID, customerID);
+    }
 }
