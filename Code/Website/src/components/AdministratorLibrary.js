@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import {Form, FormGroup, Input, Button} from 'reactstrap'
-import {Link} from 'react-router-dom'
-import axios from 'axios'
 
-// Admin for Bookstore
-
-class Administrator extends Component {
+class AdministratorLibrary extends Component {
     state = { 
         books: [],
         searchData: ""
@@ -65,7 +60,7 @@ class Administrator extends Component {
             <div className="container">
                 <div className="row p-5">
                     <div className="col text-center">
-                    <h1 className="display-4"> Bookstore Admin Panel </h1>
+                    <h1 className="display-2"> Library Admin Panel </h1>
                     </div>
                     </div>
                 <div className="row">
@@ -89,4 +84,4 @@ class Administrator extends Component {
     }
 }
  
-export default Administrator;
+export default AdministratorLibrary;
