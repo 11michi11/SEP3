@@ -1,6 +1,7 @@
 package controller.connection;
 
 import model.Book;
+import model.Customer;
 import model.DetailedBook;
 
 import java.lang.reflect.Array;
@@ -24,4 +25,21 @@ public class MockDatabase implements DatabaseProxy {
     public List<Book> advancedSearch(String title, String author, int year, String isbn, Book.Category category) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException {
         return new LinkedList<>();
     }
+
+    @Override
+    public String addCustomer(Customer customer) {
+        return null;
+    }
+
+	@Override
+	public String borrowBook(String bookID, String libraryID, String customerID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String buyBook(String isbn, String bookstoreID, String customerID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

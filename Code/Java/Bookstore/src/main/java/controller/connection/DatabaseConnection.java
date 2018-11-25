@@ -7,7 +7,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import model.Book;
-import controller.connection.Request;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -16,10 +16,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
-    //    private final String IP = "207.154.237.196";
+//        private final String IP = "207.154.237.196";
     private final String IP = "localhost";
 
     private final String BOOKSTORE_ID = "eb3777c8-77fe-4acd-962d-6853da2e05e0";
@@ -28,7 +29,9 @@ public class DatabaseConnection implements DatabaseProxy {
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
         Map<String, Object> args = new HashMap<>();
         args.put("searchTerm", searchTerm);
-        Request request = new Request(Request.Operation.Search, args);
+        args.put("bookstoreid", BOOKSTORE_ID);
+
+        Request request = new Request(Request.Operation.BookStoreSearch, args);
 
         String response = sendMessage(request);
         ResponseStatus status = getResponseStatus(response);
@@ -76,7 +79,9 @@ public class DatabaseConnection implements DatabaseProxy {
         args.put("author", author);
         args.put("year", year);
         args.put("category", category);
-        Request request = new Request(Request.Operation.AdvancedSearch, args);
+
+        args.put("bookstoreid", BOOKSTORE_ID);
+        Request request = new Request(Request.Operation.BookStoreAdvancedSearch, args);
 
         String response = sendMessage(request);
         ResponseStatus status = getResponseStatus(response);

@@ -12,11 +12,15 @@ public class Library implements Institution {
     @Id @Column(name = "libraryid")
     private String libraryID;
 
+    @Column(name = "name")
+    private String name;
+
     public Library(){
     }
 
     public Library(String libraryID) {
         this.libraryID = libraryID;
+        this.name = "First Library";
     }
 
     public String getLibraryID() {
@@ -31,6 +35,7 @@ public class Library implements Institution {
     public String toString() {
         return "Library{" +
                 "libraryID='" + libraryID + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 
@@ -47,5 +52,13 @@ public class Library implements Institution {
     @Override
     public int hashCode() {
         return libraryID != null ? libraryID.hashCode() : 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -22,6 +22,7 @@ namespace Models
         public override string ToString()
         {
             return $"BookId: {Id}\n{Book}\nAvailable: {Available}";
+//            return "title: " + Book.Title + " id: " + Id + " availability: " + Available;
         }
 
         public override bool Equals(object obj)
