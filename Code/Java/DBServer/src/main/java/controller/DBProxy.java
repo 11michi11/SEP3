@@ -36,4 +36,6 @@ public interface DBProxy {
     void deleteBookFromBookStore(String isbn, String bookStoreId) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException;
 
     void addCustomer(Customer customer) throws CustomerRepository.CustomerEmailException;
+
+    void borrowBook(String isbn,String libraryID, String customerID);
 }

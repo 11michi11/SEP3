@@ -18,7 +18,7 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
     private LibraryRepo libraryRepo;
     private BookRepo bookRepo;
 
-    public LibraryStorageRepository() {
+    private LibraryStorageRepository() {
         this.sessionFactory = HibernateAdapter.getSessionFactory();
         this.bookRepo = BookRepository.getInstance();
         this.libraryRepo = LibraryRepository.getInstance();

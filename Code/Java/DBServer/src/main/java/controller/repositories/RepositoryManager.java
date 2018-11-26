@@ -14,6 +14,7 @@ public class RepositoryManager implements DBProxy {
     private BookStoreStorageRepo bookStoreStorageRepo;
     private BookStorageRepo bookStorageRepo;
     private CustomerRepo custormerRepo;
+    private LibraryOrderRepo libraryOrderRepo;
 
     private static RepositoryManager ourInstance = new RepositoryManager();
 
@@ -29,6 +30,7 @@ public class RepositoryManager implements DBProxy {
         bookStoreStorageRepo = BookStoreStorageRepository.getInstance();
         bookStorageRepo = BookStorageRepository.getInstance();
         custormerRepo = CustomerRepository.getInstance();
+        libraryOrderRepo = LibraryOrderRepository.getInstance();
     }
 
     @Override
@@ -94,5 +96,11 @@ public class RepositoryManager implements DBProxy {
     @Override
     public void addCustomer(Customer customer) throws CustomerRepository.CustomerEmailException {
         custormerRepo.add(customer);
+    }
+
+    @Override
+    public void borrowBook(String isbn, String libraryID, String customerID) {
+        List<String> ids = libraryStorageRepo.getAvailableBooks(isbn,libraryID);
+        libraryOrderRepo.add(ids.get(0),libraryID,customerID);
     }
 }
