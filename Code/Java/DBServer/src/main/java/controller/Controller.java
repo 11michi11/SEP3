@@ -270,7 +270,7 @@ public class Controller {
         List<LibraryStorage> storage = db.getLibrariesStorageByIsbnAndLibrary(isbn, libraryid);
 
         try {
-            Book book = storage.get(0).getId().getBook();
+            Book book = storage.get(0).getBook();
 
             LibraryBook libraryBook = new LibraryBook(book);
             libraryBook.loadLibraryBooksFromStorages(storage);

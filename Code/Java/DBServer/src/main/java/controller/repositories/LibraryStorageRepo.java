@@ -22,4 +22,6 @@ public interface LibraryStorageRepo {
     List<LibraryStorage> getLibrariesStorageByIsbn(String isbn);
 
     List<String> getAvailableBooks(String isbn, String libraryID);
+
+    LibraryStorage getStorageByBookId(String bookId) throws LibraryStorageRepository.LibraryStorageNotFoundException;
 }

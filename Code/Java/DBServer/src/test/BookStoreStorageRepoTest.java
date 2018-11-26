@@ -1,6 +1,5 @@
 import controller.repositories.*;
-import model.Book;
-import model.BookStoreStorage;
+import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -162,6 +161,41 @@ public class BookStoreStorageRepoTest {
             e.printStackTrace();
             fail("There is not such a book");
         }
+    }
+
+    @Test
+    void getStorageByIsbnTest(){
+        Book book = new Book("testisbn", "testtitle", "testauthor", 999, Book.Category.Poetry);
+        List<Book> books = Collections.singletonList(book);
+        bookRepo.add(book);
+
+        try {
+            bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
+        } catch (BookStoreRepository.BookStoreNotFoundException e) {
+            fail("No bookstore");
+        } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
+            fail("Book already there");
+        }
+
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(new BookStore(BOOKSTORE_ID),book);
+
+
+        try {
+            assertEquals(bookStoreStorage,  bookStoreStorageRepo.getStorageByBookId(book.getIsbn())) ;
+        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+           fail("No book store storage");
+        }
+
+        try {
+            bookStoreStorageRepo.deleteBookFromBookStore(book.getIsbn(), BOOKSTORE_ID);
+            bookRepo.delete("testisbn");
+        } catch (BookRepository.BookNotFoundException  e) {
+            fail("No book");
+        }  catch (BookStoreRepository.BookStoreNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 
