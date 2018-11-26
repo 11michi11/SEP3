@@ -22,9 +22,9 @@ public class MakeOrder implements ApplicationContextAware {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value ="/buy")
-	public String buyBook(@RequestBody String isbn, String bookstoreID, String customerID) {
+	public String buyBook(@RequestBody String bookstoreID, String customerID) {
 		Controller controller = context.getBean(Controller.class);
-		return controller.buyBook(isbn, bookstoreID, customerID);
+		return controller.buyBook(bookstoreID, customerID);
 	}
 
 	@Override

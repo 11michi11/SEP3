@@ -21,7 +21,6 @@ communication\Response$Status.class
 model\BookStoreStorage.class
 communication\Request.class
 model\Book.class
-model\BookStoreStorageID.class
 controller\repositories\LibraryRepository.class
 model\DetailedBook.class
 controller\repositories\BookRepo.class
@@ -47,3 +46,4 @@ controller\repositories\CustomerRepository.class
 communication\Response.class
 controller\repositories\BookStorageRepo.class
 model\LibraryOrder.class
+controller\repositories\LibraryStorageRepository$LibraryStorageNotFoundException.class
