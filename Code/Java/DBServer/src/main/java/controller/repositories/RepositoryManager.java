@@ -13,7 +13,9 @@ public class RepositoryManager implements DBProxy {
     private LibraryStorageRepo libraryStorageRepo;
     private BookStoreStorageRepo bookStoreStorageRepo;
     private BookStorageRepo bookStorageRepo;
-    private CustomerRepo custormerRepo;
+    private CustomerRepo customerRepo;
+    private LibraryOrderRepo libraryOrderRepo;
+    private BookStoreOrderRepo bookStoreOrderRepo;
 
     private static RepositoryManager ourInstance = new RepositoryManager();
 
@@ -28,7 +30,10 @@ public class RepositoryManager implements DBProxy {
         libraryStorageRepo = LibraryStorageRepository.getInstance();
         bookStoreStorageRepo = BookStoreStorageRepository.getInstance();
         bookStorageRepo = BookStorageRepository.getInstance();
-        custormerRepo = CustomerRepository.getInstance();
+        customerRepo = CustomerRepository.getInstance();
+        libraryOrderRepo = LibraryOrderRepository.getInstance();
+        bookStoreOrderRepo = BookStoreOrderRepository.getInstance();
+
     }
 
     @Override
@@ -93,6 +98,17 @@ public class RepositoryManager implements DBProxy {
 
     @Override
     public void addCustomer(Customer customer) throws CustomerRepository.CustomerEmailException {
-        custormerRepo.add(customer);
+        customerRepo.add(customer);
+    }
+
+    @Override
+    public void borrowBook(String isbn, String libraryID, String customerID) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException, LibraryRepository.LibraryNotFoundException {
+        List<String> ids = libraryStorageRepo.getAvailableBooks(isbn,libraryID);
+        libraryOrderRepo.add(ids.get(0),customerID);
+    }
+
+    @Override
+    public void buyBook(String bookstoreId, String customerId) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, CustomerRepository.CustomerNotFoundException, BookStoreRepository.BookStoreNotFoundException {
+        bookStoreOrderRepo.add(bookstoreId, customerId);
     }
 }

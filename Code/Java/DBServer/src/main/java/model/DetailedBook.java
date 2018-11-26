@@ -41,9 +41,9 @@ public class DetailedBook {
 
         List<LibraryBook> libraries = libraryStorages.stream()
                 .map(libraryStorage -> new LibraryBook(
-                        libraryStorage.getId().getLibrary().getLibraryID(),
-                        libraryStorage.getId().getLibrary().getName(),
-                        libraryStorage.getId().getBookid(),
+                        libraryStorage.getLibrary().getLibraryID(),
+                        libraryStorage.getLibrary().getName(),
+                        libraryStorage.getBookid(),
                         libraryStorage.isAvailable()))
                 .collect(Collectors.toList());
 
@@ -76,25 +76,6 @@ public class DetailedBook {
         result = 31 * result + (libraryStorages != null ? libraryStorages.hashCode() : 0);
         result = 31 * result + (bookStores != null ? bookStores.hashCode() : 0);
         return result;
-    }
-
-    public static void main(String[] args) {
-        Book book = new Book("isbn", "title", "author", 0, Book.Category.Science);
-        Library lib = new Library("libid");
-        LibraryStorageID id = new LibraryStorageID();
-        id.setBook(book);
-        id.setLibrary(lib);
-        id.setBookid("bookid");
-        LibraryStorage libs = new LibraryStorage();
-        libs.setId(id);
-        libs.setAvailable(true);
-
-        DetailedBook detailedBook = new DetailedBook(book, Collections.singletonList(libs), Collections.singletonList(new BookStore("bid")));
-
-        Gson gson = new Gson();
-        JsonElement json = detailedBook.toJSON();
-        System.out.println(json);
-
     }
 
     private class LibraryBook {

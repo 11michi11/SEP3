@@ -35,7 +35,7 @@ namespace Requests {
             }
 
             // commented in order to avoid security issues with "https"
-            // app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             // route configuration for advanced search
             app.UseMvc(routes =>

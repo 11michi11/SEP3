@@ -7,11 +7,12 @@ import org.hibernate.search.bridge.builtin.EnumBridge;
 import org.hibernate.search.bridge.builtin.IntegerBridge;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Indexed
 @Entity
 @Table(name = "books", schema = "public")
-public class Book {
+public class Book implements Serializable {
 
     @Field(name = "bookIsbn")
     @Id
