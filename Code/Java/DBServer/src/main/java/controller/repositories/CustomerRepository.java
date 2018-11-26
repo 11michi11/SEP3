@@ -1,9 +1,14 @@
 package controller.repositories;
 
 import controller.HibernateAdapter;
+import model.Book;
 import model.Customer;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 
 public class CustomerRepository implements CustomerRepo {
@@ -32,10 +37,33 @@ public class CustomerRepository implements CustomerRepo {
         }
     }
 
+    @Override
+    public Customer get(String customerId) throws CustomerNotFoundException {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            Customer customer = (Customer) session.createQuery("FROM Customer where id like :customerId").setParameter("customerId", customerId).getSingleResult();
+            tx.commit();
+            return customer;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }catch (NoResultException e1){
+            throw new CustomerNotFoundException("There is no customer with id:" + customerId);
+        }
+        throw new CustomerNotFoundException("There is no customer with id:" + customerId);
+
+    }
+
     public static class CustomerEmailException extends Exception {
         public CustomerEmailException(String msg) {
             super(msg);
         }
     }
 
+    public class CustomerNotFoundException extends Exception {
+        public CustomerNotFoundException(String msg) {
+            super(msg);
+        }
+    }
 }

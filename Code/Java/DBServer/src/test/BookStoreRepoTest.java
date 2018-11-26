@@ -1,12 +1,10 @@
-import controller.repositories.*;
+import controller.repositories.BookStoreRepo;
+import controller.repositories.BookStoreRepository;
 import model.BookStore;
-import model.Library;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BookStoreRepoTest {
 

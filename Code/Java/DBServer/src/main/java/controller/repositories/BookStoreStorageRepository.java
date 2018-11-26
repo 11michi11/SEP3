@@ -4,7 +4,7 @@ import controller.HibernateAdapter;
 import model.Book;
 import model.BookStore;
 import model.BookStoreStorage;
-import model.BookStoreStorageID;
+import model.LibraryStorage;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,6 +13,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 public class BookStoreStorageRepository implements BookStoreStorageRepo {
 
@@ -42,9 +43,8 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
         bookRepo.saveOrUpdate(book);
 
         BookStore bookStore = bookStoreRepo.get(bookStoreId);
-        BookStoreStorageID id = new BookStoreStorageID(book, bookStore);
 
-        BookStoreStorage bookStoreStorage = new BookStoreStorage(id);
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStore, book);
         try {
             HibernateAdapter.addObject(bookStoreStorage);
         } catch (javax.persistence.PersistenceException e) {
@@ -52,14 +52,13 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
         }
     }
 
+
     @Override
     public void deleteBookFromBookStore(String isbn, String bookStoreId) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException {
         Book book = bookRepo.get(isbn);
 
         BookStore bookStore = bookStoreRepo.get(bookStoreId);
-        BookStoreStorageID id = new BookStoreStorageID(book, bookStore);
-
-        BookStoreStorage bookStoreStorage = new BookStoreStorage(id);
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStore, book);
         HibernateAdapter.deleteObject(bookStoreStorage);
     }
 
@@ -73,13 +72,13 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
         Transaction tx = null;
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
-            List<Book> searchedBooks = session.createQuery("select new model.Book(s.id.book.isbn, s.id.book.title, s.id.book.author, s.id.book.year, s.id.book.category) from BookStoreStorage as s where " +
-                    "s.id.book.isbn like :isbn or " +
-                    "lower(s.id.book.title) like :title or " +
-                    "lower(s.id.book.author) like :author or " +
-                    "s.id.book.year = :year or " +
-                    "s.id.book.category like :category or " +
-                    "s.id.bookstore.bookstoreid like :bookStoreId")
+            List<Book> searchedBooks = session.createQuery("select new model.Book(s.book.isbn, s.book.title, s.book.author, s.book.year, s.book.category) from BookStoreStorage as s where " +
+                    "s.book.isbn like :isbn or " +
+                    "lower(s.book.title) like :title or " +
+                    "lower(s.book.author) like :author or " +
+                    "s.book.year = :year or " +
+                    "s.book.category like :category or " +
+                    "s.bookstore.bookstoreid like :bookStoreId")
                     .setParameter("isbn", "%" + isbn + "%")
                     .setParameter("title", "%" + title.toLowerCase() + "%")
                     .setParameter("author", "%" + author.toLowerCase() + "%")
@@ -101,7 +100,7 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
         Transaction tx = null;
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
-            List<BookStoreStorage> storages = session.createQuery("FROM BookStoreStorage where isbn like :isbn")
+            List<BookStoreStorage> storages = session.createQuery("FROM BookStoreStorage as s where s.book.isbn like :isbn")
                     .setParameter("isbn", isbn)
                     .list();
             tx.commit();
@@ -113,8 +112,33 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
         return new LinkedList<>();
     }
 
+    @Override
+    public BookStoreStorage getStorageByBookId(String isbn) throws BookStoreStorageNotFoundException {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            BookStoreStorage ids = (BookStoreStorage) session.createQuery("FROM BookStoreStorage as s where " +
+                    "s.book.isbn like :isbn")
+                    .setParameter("isbn", isbn)
+                    .getSingleResult();
+            tx.commit();
+            return ids;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        throw new BookStoreStorageNotFoundException("There is no bookstore storage with isbn: " + isbn);
+
+    }
+
     public class BookAlreadyInBookStoreException extends Exception {
         public BookAlreadyInBookStoreException(String msg) {
+            super(msg);
+        }
+    }
+
+    public class BookStoreStorageNotFoundException extends Throwable {
+        public BookStoreStorageNotFoundException(String msg) {
             super(msg);
         }
     }

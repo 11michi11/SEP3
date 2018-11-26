@@ -44,11 +44,9 @@ public class BookStorageRepoTest {
             fail("Should not throw");
         }
 
-        LibraryStorageID libID1 = new LibraryStorageID(book, new Library(LIBRARY_ID), bookid1);
-        LibraryStorage libraryStorage1 = new LibraryStorage(libID1, true);
+        LibraryStorage libraryStorage1 = new LibraryStorage(bookid1, new Library(LIBRARY_ID), book , true);
 
-        LibraryStorageID libID2 = new LibraryStorageID(book, new Library(LIBRARY_ID), bookid2);
-        LibraryStorage libraryStorage2 = new LibraryStorage(libID2, true);
+        LibraryStorage libraryStorage2 = new LibraryStorage(bookid2, new Library(LIBRARY_ID), book , true);
 
         List<BookStore> bookStoreStorages = Collections.singletonList(new BookStore(BOOK_STORE_ID));
         List<LibraryStorage> libraryStorages = Arrays.asList(libraryStorage1, libraryStorage2);
@@ -87,6 +85,7 @@ public class BookStorageRepoTest {
             fail("No bookstore");
         }
     }
+
 
 
 
