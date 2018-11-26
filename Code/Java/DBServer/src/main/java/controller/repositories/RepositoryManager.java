@@ -99,8 +99,8 @@ public class RepositoryManager implements DBProxy {
     }
 
     @Override
-    public void borrowBook(String isbn, String libraryID, String customerID) {
+    public void borrowBook(String isbn, String libraryID, String customerID) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException, LibraryRepository.LibraryNotFoundException {
         List<String> ids = libraryStorageRepo.getAvailableBooks(isbn,libraryID);
-        libraryOrderRepo.add(ids.get(0),libraryID,customerID);
+        libraryOrderRepo.add(ids.get(0),customerID);
     }
 }
