@@ -28,8 +28,8 @@ public class BookStoreOrderRepository implements BookStoreOrderRepo {
     }
 
     @Override
-    public String add(String isbn, String bookstoreId, String customerId) throws CustomerRepository.CustomerNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
-        BookStoreOrder bookStoreOrder = createBookStoreOrder(isbn, bookstoreId, customerId);
+    public String add(String bookId, String boookstoreId,  String customerId) throws CustomerRepository.CustomerNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
+        BookStoreOrder bookStoreOrder = createBookStoreOrder(bookId, customerId);
 
         HibernateAdapter.addObject(bookStoreOrder);
         return bookStoreOrder.getOrderid();
@@ -74,8 +74,8 @@ public class BookStoreOrderRepository implements BookStoreOrderRepo {
         return null;
     }
 
-    private BookStoreOrder createBookStoreOrder(String isbn, String bookstoreId, String customerId) throws CustomerRepository.CustomerNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
-        BookStoreStorage bookStoreStorage = bookStoreStorageRepo.getStorageByBookId(isbn, bookstoreId);
+    private BookStoreOrder createBookStoreOrder(String bookId, String customerId) throws CustomerRepository.CustomerNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
+        BookStoreStorage bookStoreStorage = bookStoreStorageRepo.getStorageByBookId(bookId);
         Book book = bookStoreStorage.getBook();
         BookStore bookstore = bookStoreStorage.getBookstore();
         Customer customer = customerRepo.get(customerId);

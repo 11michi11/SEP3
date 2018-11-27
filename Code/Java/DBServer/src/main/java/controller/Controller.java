@@ -62,7 +62,7 @@ public class Controller {
 	            	return handleMakeBookstoreOrder(request);
             }
             throw new InvalidOperationException("Wrong operation");
-        } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+        } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException e) {
             //send error
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
