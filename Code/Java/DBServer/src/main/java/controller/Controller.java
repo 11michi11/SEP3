@@ -296,10 +296,11 @@ public class Controller {
     }
 	private String handleMakeBookstoreOrder(Request request) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, BookStoreRepository.BookStoreNotFoundException, CustomerRepository.CustomerNotFoundException {
 		Map<String, Object> arguments = request.getArguments();
-		String bookstoreId = (String) arguments.get("bookstoreId");
-		String customerId = (String) arguments.get("customerId");
+        String isbn = (String) arguments.get("isbn");
+        String bookstoreId = (String) arguments.get("bookstoreId");
+        String customerId = (String) arguments.get("customerId");
 
-		db.buyBook(bookstoreId, customerId);
+		db.buyBook(isbn, bookstoreId, customerId);
 		return new Response(Response.Status.OK, "Added").toJson();
 
 	}
