@@ -62,9 +62,9 @@ public class Controller {
 	            	return handleMakeBookstoreOrder(request);
             }
             throw new InvalidOperationException("Wrong operation");
-        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException| CustomerRepository.CustomerNotFoundException| LibraryStorageRepository.LibraryStorageNotFoundException | Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException e) {
-	        //send error
-	        return new Response(Response.Status.Error, e.getMessage()).toJson();
+        } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+            //send error
+            return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
     }
 
@@ -235,17 +235,17 @@ public class Controller {
         return new Response(Response.Status.OK, "Added").toJson();
     }
 
-    private String handleDeleteBook(Request request) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, BookStoreRepository.BookStoreNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException {
+    private String handleDeleteBook(Request request) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, BookStoreRepository.BookStoreNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException, LibraryStorageRepository.LibraryStorageNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
         Map<String, Object> arguments = request.getArguments();
 
         boolean isLibrary = (boolean) arguments.get("library");
         String institutionId = (String) arguments.get("id");
         if (isLibrary) {
             String bookId = (String) arguments.get("bookid");
-            db.deleteBookFromLibrary(bookId, institutionId);
+            db.deleteBookFromLibrary(bookId);
         } else {
             String isbn = (String) arguments.get("isbn");
-            db.deleteBookFromBookStore(isbn, institutionId);
+            db.deleteBookFromBookStore(isbn);
         }
         return new Response(Response.Status.OK, "Deleted").toJson();
     }

@@ -34,10 +34,11 @@ public class BookStorageRepoTest {
         Book book = new Book("testisbn", "testtitle", "testauthor", 999, Book.Category.Poetry);
         String bookid1 = null;
         String bookid2 = null;
+        String bookid3 = null;
         try {
             bookid1 = libraryStorageRepo.addBookToLibrary(book, LIBRARY_ID);
             bookid2 = libraryStorageRepo.addBookToLibrary(book, LIBRARY_ID);
-            bookStoreStorageRepo.addBookToBookStore(book, BOOK_STORE_ID);
+            bookid3 = bookStoreStorageRepo.addBookToBookStore(book, BOOK_STORE_ID);
         } catch (LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException e) {
             fail("Adding failed, that's bad");
         } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
@@ -70,12 +71,14 @@ public class BookStorageRepoTest {
         try {
             //Clean up
             try {
-                libraryStorageRepo.deleteBookFromLibrary(bookid1, LIBRARY_ID);
-                libraryStorageRepo.deleteBookFromLibrary(bookid2, LIBRARY_ID);
+                libraryStorageRepo.deleteBookFromLibrary(bookid1);
+                libraryStorageRepo.deleteBookFromLibrary(bookid2);
             } catch (LibraryStorageRepository.BookAlreadyDeletedException bookAlreadyDeletedExcetion) {
                 fail("Should not throw");
+            } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
+                fail("No library storage");
             }
-            bookStoreStorageRepo.deleteBookFromBookStore("testisbn", BOOK_STORE_ID);
+            bookStoreStorageRepo.deleteBookFromBookStore(bookid3);
             bookRepo.delete("testisbn");
         } catch (LibraryRepository.LibraryNotFoundException e) {
             fail("No library");
@@ -83,6 +86,8 @@ public class BookStorageRepoTest {
             fail("Book not created");
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("No bookstore");
+        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+            fail("No bookstore storage");
         }
     }
 

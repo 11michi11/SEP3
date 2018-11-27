@@ -46,10 +46,11 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
     }
 
     @Override
-    public void deleteBookFromLibrary(String bookId, String libraryId) throws LibraryRepository.LibraryNotFoundException, BookRepository.BookNotFoundException, BookAlreadyDeletedException {
+    public void deleteBookFromLibrary(String bookId) throws BookAlreadyDeletedException, LibraryStorageNotFoundException {
         try {
-            Book book = getBookByBookId(bookId);
-            Library library = libraryRepo.get(libraryId);
+            LibraryStorage storage = getStorageByBookId(bookId);
+            Book book = storage.getBook();
+            Library library = storage.getLibrary();
 
             LibraryStorage libraryStorage = new LibraryStorage(bookId, library, book, true);
             HibernateAdapter.deleteObject(libraryStorage);

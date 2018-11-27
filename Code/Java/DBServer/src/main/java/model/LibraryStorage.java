@@ -1,21 +1,30 @@
 package model;
 
+import org.hibernate.search.annotations.ContainedIn;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "librarystorage", schema = "public")
+@Indexed
 public class LibraryStorage {
 
     @Id
     @Column(name = "bookid")
+    @Field(name = "id")
     private String bookid;
 
     @ManyToOne
     @JoinColumn(name = "libraryid")
+    @IndexedEmbedded(depth = 1)
     private Library library;
 
     @ManyToOne
     @JoinColumn(name = "isbn")
+    @IndexedEmbedded(depth = 1)
     private Book book;
 
     @Column(name = "available")

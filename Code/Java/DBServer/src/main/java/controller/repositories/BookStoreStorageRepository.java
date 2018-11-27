@@ -38,28 +38,51 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
     }
 
     @Override
-    public void addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException, BookAlreadyInBookStoreException {
+    public String addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException, BookAlreadyInBookStoreException {
         //Save book to Book table
         bookRepo.saveOrUpdate(book);
 
         BookStore bookStore = bookStoreRepo.get(bookStoreId);
 
-        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStore, book);
+        String id = UUID.randomUUID().toString();
+
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(id, bookStore, book);
         try {
             HibernateAdapter.addObject(bookStoreStorage);
         } catch (javax.persistence.PersistenceException e) {
             throw new BookAlreadyInBookStoreException("Book is already in that bookstore");
         }
+        return id;
     }
 
+    @Override
+    public void deleteBookFromBookStore(String bookid) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageNotFoundException {
+        BookStoreStorage storage = getStorageByBookId(bookid);
+        Book book = storage.getBook();
+
+        BookStore bookStore = storage.getBookstore();
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookid, bookStore, book);
+        HibernateAdapter.deleteObject(bookStoreStorage);
+    }
 
     @Override
-    public void deleteBookFromBookStore(String isbn, String bookStoreId) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException {
-        Book book = bookRepo.get(isbn);
-
-        BookStore bookStore = bookStoreRepo.get(bookStoreId);
-        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStore, book);
-        HibernateAdapter.deleteObject(bookStoreStorage);
+    public List<BookStoreStorage> getStoragesByIsbnAndBookstore(String isbn, String bookstoreId) {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<BookStoreStorage> storages = session.createQuery("FROM BookStoreStorage as s where " +
+                    "s.book.isbn like :isbn and " +
+                    "s.bookstore.bookstoreid like :bookstoreid")
+                    .setParameter("isbn", isbn)
+                    .setParameter("bookstoreid", bookstoreId)
+                    .list();
+            tx.commit();
+            return storages;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return new LinkedList<>();
     }
 
     @Override
@@ -113,15 +136,13 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
     }
 
     @Override
-    public BookStoreStorage getStorageByBookId(String isbn, String bookstoreId) throws BookStoreStorageNotFoundException {
+    public BookStoreStorage getStorageByBookId(String bookid) throws BookStoreStorageNotFoundException {
         Transaction tx = null;
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
             BookStoreStorage ids = (BookStoreStorage) session.createQuery("FROM BookStoreStorage as s where " +
-                    "s.book.isbn like :isbn and " +
-                    "s.bookstore.bookstoreid like :bookstoreid")
-                    .setParameter("isbn", isbn)
-                    .setParameter("bookstoreid", bookstoreId)
+                    "s.bookid like :bookid")
+                    .setParameter("bookid", bookid)
                     .getSingleResult();
             tx.commit();
             return ids;
@@ -129,7 +150,7 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
             if (tx != null) tx.rollback();
             e.printStackTrace();
         }
-        throw new BookStoreStorageNotFoundException("There is no bookstore storage with isbn: " + isbn);
+        throw new BookStoreStorageNotFoundException("There is no bookstore storage with isbn: " + bookid);
 
     }
 
