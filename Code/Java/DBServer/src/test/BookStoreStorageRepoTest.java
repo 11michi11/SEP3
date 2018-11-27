@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -29,9 +30,9 @@ public class BookStoreStorageRepoTest {
         Book book = new Book("isbn", "title", "author", 0, Book.Category.Empty);
 
         try {
-            bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
+            String bookId = bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
 
-            bookStoreStorageRepo.deleteBookFromBookStore(book.getIsbn(), BOOKSTORE_ID);
+            bookStoreStorageRepo.deleteBookFromBookStore(bookId);
             bookRepo.delete("isbn");
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("No Bookstore");
@@ -39,6 +40,8 @@ public class BookStoreStorageRepoTest {
             fail("There is not such a book");
         } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
             fail("Should not throw");
+        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+            fail("No bookstore storage");
         }
     }
 
@@ -48,9 +51,9 @@ public class BookStoreStorageRepoTest {
         bookRepo.add(book);
 
         try {
-            bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
+            String bookId = bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
 
-            bookStoreStorageRepo.deleteBookFromBookStore(book.getIsbn(), BOOKSTORE_ID);
+            bookStoreStorageRepo.deleteBookFromBookStore(bookId);
             bookRepo.delete("isbn");
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("No Bookstore");
@@ -59,6 +62,8 @@ public class BookStoreStorageRepoTest {
             fail("There is not such a book");
         } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
             fail("Should not throw");
+        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+            fail("No bookstore storage");
         }
     }
 
@@ -69,10 +74,10 @@ public class BookStoreStorageRepoTest {
 
 
         try {
-            bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
+            String bookId = bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
             //assertEquals(, bookStoreStorageRepo.getBookStoresStorageByIsbn("isbn"));
 
-            bookStoreStorageRepo.deleteBookFromBookStore(book.getIsbn(), BOOKSTORE_ID);
+            bookStoreStorageRepo.deleteBookFromBookStore(bookId);
             bookRepo.delete("isbn");
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("No Bookstore");
@@ -80,6 +85,8 @@ public class BookStoreStorageRepoTest {
             fail("There is no such a book");
         } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
             fail("Should not throw");
+        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+            fail("No bookstore storage");
         }
 
 
@@ -90,9 +97,9 @@ public class BookStoreStorageRepoTest {
         Book book = new Book("isbn", "title", "author", 0, Book.Category.Empty);
         List<Book> books = Collections.singletonList(book);
         bookRepo.add(book);
-
+        String bookId = null;
         try {
-            bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
+            bookId = bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
 
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("No Bookstore");
@@ -105,12 +112,14 @@ public class BookStoreStorageRepoTest {
         assertEquals(books, bookStoreStorageRepo.search("0"));
         assertEquals(books, bookStoreStorageRepo.search("Empty"));
         try {
-            bookStoreStorageRepo.deleteBookFromBookStore(book.getIsbn(), BOOKSTORE_ID);
+            bookStoreStorageRepo.deleteBookFromBookStore(bookId);
             bookRepo.delete("isbn");
         } catch (BookRepository.BookNotFoundException e) {
             fail("No Bookstore");
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("There is no such a book");
+        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+            fail("No bookstore storage");
         }
     }
 
@@ -120,8 +129,9 @@ public class BookStoreStorageRepoTest {
         List<Book> books = Collections.singletonList(book);
         bookRepo.add(book);
 
+        String bookId = null;
         try {
-            bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
+            bookId = bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
 
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("No Bookstore");
@@ -130,12 +140,14 @@ public class BookStoreStorageRepoTest {
         }
         assertEquals(books, bookStoreStorageRepo.advancedSearch("", "isbn", "title", "author", 0, Book.Category.Empty));
         try {
-            bookStoreStorageRepo.deleteBookFromBookStore(book.getIsbn(), BOOKSTORE_ID);
+            bookStoreStorageRepo.deleteBookFromBookStore(bookId);
             bookRepo.delete("isbn");
         } catch (BookRepository.BookNotFoundException e) {
             fail("No Bookstore");
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("There is no such a book");
+        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+            fail("No bookstore storage");
         }
     }
 
@@ -143,7 +155,7 @@ public class BookStoreStorageRepoTest {
     void doubleAddBookToBookstoreExceptionTest() {
         Book book = new Book("isbn", "title", "author", 0, Book.Category.Empty);
         bookRepo.add(book);
-
+        String bookId = null;
         try {
             try {
                 bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
@@ -153,46 +165,51 @@ public class BookStoreStorageRepoTest {
 
             assertThrows(BookStoreStorageRepository.BookAlreadyInBookStoreException.class, () -> bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID));
 
-            bookStoreStorageRepo.deleteBookFromBookStore(book.getIsbn(), BOOKSTORE_ID);
+            bookStoreStorageRepo.deleteBookFromBookStore(bookId);
             bookRepo.delete("isbn");
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("No Bookstore");
         } catch (BookRepository.BookNotFoundException e) {
             e.printStackTrace();
             fail("There is not such a book");
+        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+            fail("No bookstore storage");
         }
     }
 
     @Test
-    void getStorageByIsbnTest(){
+    void getStorageByIsbnTest() {
         Book book = new Book("testisbn", "testtitle", "testauthor", 999, Book.Category.Poetry);
         List<Book> books = Collections.singletonList(book);
         bookRepo.add(book);
 
+        String bookId = null;
         try {
-            bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
+            bookId = bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("No bookstore");
         } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
             fail("Book already there");
         }
 
-        BookStoreStorage bookStoreStorage = new BookStoreStorage(new BookStore(BOOKSTORE_ID),book);
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookId, new BookStore(BOOKSTORE_ID), book);
 
 
         try {
-            assertEquals(bookStoreStorage,  bookStoreStorageRepo.getStorageByBookId(book.getIsbn())) ;
+            assertEquals(bookStoreStorage, bookStoreStorageRepo.getStorageByBookId(bookId));
         } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
-           fail("No book store storage");
+            fail("No book store storage");
         }
 
         try {
-            bookStoreStorageRepo.deleteBookFromBookStore(book.getIsbn(), BOOKSTORE_ID);
+            bookStoreStorageRepo.deleteBookFromBookStore(bookId);
             bookRepo.delete("testisbn");
-        } catch (BookRepository.BookNotFoundException  e) {
+        } catch (BookRepository.BookNotFoundException e) {
             fail("No book");
-        }  catch (BookStoreRepository.BookStoreNotFoundException e) {
-            e.printStackTrace();
+        } catch (BookStoreRepository.BookStoreNotFoundException e) {
+            fail("No bookstore");
+        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+            fail("No bookstore storage");
         }
 
 

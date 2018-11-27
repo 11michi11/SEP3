@@ -75,7 +75,7 @@ public class LibraryOrderRepoTest {
     @AfterEach
     private void cleanUp(){
         try {
-            libraryStorageRepo.deleteBookFromLibrary(bookId, LIBRARY_ID);
+            libraryStorageRepo.deleteBookFromLibrary(bookId);
             bookRepo.delete("testisbn");
         } catch (LibraryStorageRepository.BookAlreadyDeletedException bookAlreadyDeletedException) {
             fail("Should not throw");
@@ -83,6 +83,8 @@ public class LibraryOrderRepoTest {
             fail("No book");
         } catch (LibraryRepository.LibraryNotFoundException e) {
             fail("No library");
+        } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
+            fail("No library storage");
         }
     }
 }
