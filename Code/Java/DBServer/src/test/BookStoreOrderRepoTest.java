@@ -31,7 +31,7 @@ public class BookStoreOrderRepoTest {
     @Test
     void addTest(){
         try {
-            String orderId = bookStoreOrderRepo.add("testisbn", CUSTOMER_ID);
+            String orderId = bookStoreOrderRepo.add("testisbn", BOOK_STORE_ID, CUSTOMER_ID);
 
             bookStoreOrderRepo.delete(orderId);
         } catch (CustomerRepository.CustomerNotFoundException e) {

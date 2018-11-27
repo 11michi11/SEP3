@@ -181,7 +181,7 @@ public class BookStoreStorageRepoTest {
 
 
         try {
-            assertEquals(bookStoreStorage,  bookStoreStorageRepo.getStorageByBookId(book.getIsbn())) ;
+            assertEquals(bookStoreStorage,  bookStoreStorageRepo.getStorageByBookId(book.getIsbn(), BOOKSTORE_ID)) ;
         } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
            fail("No book store storage");
         }

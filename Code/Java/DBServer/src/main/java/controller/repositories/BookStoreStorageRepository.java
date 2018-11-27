@@ -113,13 +113,15 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
     }
 
     @Override
-    public BookStoreStorage getStorageByBookId(String isbn) throws BookStoreStorageNotFoundException {
+    public BookStoreStorage getStorageByBookId(String isbn, String bookstoreId) throws BookStoreStorageNotFoundException {
         Transaction tx = null;
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
             BookStoreStorage ids = (BookStoreStorage) session.createQuery("FROM BookStoreStorage as s where " +
-                    "s.book.isbn like :isbn")
+                    "s.book.isbn like :isbn and " +
+                    "s.bookstore.bookstoreid like :bookstoreid")
                     .setParameter("isbn", isbn)
+                    .setParameter("bookstoreid", bookstoreId)
                     .getSingleResult();
             tx.commit();
             return ids;
