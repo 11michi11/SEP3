@@ -7,9 +7,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class LibraryStorageRepository implements LibraryStorageRepo {
 
@@ -81,55 +84,25 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
 
     @Override
     public List<Book> search(String libraryId, String searchTerm) {
-        final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
-        if (searchTerm.equals(""))
-            searchTerm = emptyStringValue;
+        if(searchTerm.equals(""))
+            return Collections.emptyList();
 
-        int year;
-        try {
-            year = Integer.parseInt(searchTerm);
-        } catch (NumberFormatException e) {
-            year = 0;
-        }
-
-        String cat = searchTerm.toLowerCase();
-        cat = cat.substring(0, 1).toUpperCase() + cat.substring(1);
-        Book.Category searchCategory;
-        try {
-            searchCategory = Book.Category.valueOf(cat);
-        } catch (IllegalArgumentException e) {
-            searchCategory = Book.Category.Empty;
-        }
-
-        return advancedSearch(libraryId, searchTerm, searchTerm, searchTerm, year, searchCategory);
+        List<LibraryStorage> list = HibernateAdapter.searchInLibrary(searchTerm, libraryId);
+        return list.stream().map(LibraryStorage::getBook).collect(Collectors.toList());
     }
 
     @Override
     public List<Book> advancedSearch(String libraryId, String isbn, String title, String author, int year, Book.Category category) {
-        Transaction tx = null;
-        try (Session session = sessionFactory.openSession()) {
-            tx = session.beginTransaction();
-            List<Book> searchedBooks = session.createQuery("select new model.Book(s.book.isbn, s.book.title, s.book.author, s.book.year, s.book.category) from LibraryStorage as s where " +
-                    "s.book.isbn like :isbn or " +
-                    "lower(s.book.title) like :title or " +
-                    "lower(s.book.author) like :author or " +
-                    "s.book.year = :year or " +
-                    "s.book.category like :category and " +
-                    "s.library.libraryID like :libraryid")
-                    .setParameter("isbn", "%" + isbn + "%")
-                    .setParameter("title", "%" + title.toLowerCase() + "%")
-                    .setParameter("author", "%" + author.toLowerCase() + "%")
-                    .setParameter("year", year)
-                    .setParameter("category", category)
-                    .setParameter("libraryid", libraryId)
-                    .list();
-            tx.commit();
-            return searchedBooks;
-        } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        }
-        return new LinkedList<>();
+        String noMatchString = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
+        if (isbn.equals(""))
+            isbn = noMatchString;
+        if (title.equals(""))
+            title = noMatchString;
+        if (author.equals(""))
+            author = noMatchString;
+
+        List<LibraryStorage> list = HibernateAdapter.advancedSearchInLibrary(libraryId, isbn, title, author, year,category);
+        return list.stream().map(LibraryStorage::getBook).collect(Collectors.toList());
     }
 
     @Override

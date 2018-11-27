@@ -13,7 +13,7 @@ public interface BookStoreStorageRepo {
 
     List<BookStoreStorage> getStoragesByIsbnAndBookstore(String isbn, String bookstoreId);
 
-    List<Book> search(String searchTerm);
+    List<Book> search(String searchTerm, String bookstoreId);
 
     List<Book> advancedSearch(String bookStoreId, String isbn, String title, String author, int year, Book.Category category);
 

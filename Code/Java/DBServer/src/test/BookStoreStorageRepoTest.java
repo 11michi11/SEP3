@@ -106,11 +106,11 @@ public class BookStoreStorageRepoTest {
         } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
             fail("Should not throw");
         }
-        assertEquals(books, bookStoreStorageRepo.search("isbn"));
-        assertEquals(books, bookStoreStorageRepo.search("book"));
-        assertEquals(books, bookStoreStorageRepo.search("author"));
-        assertEquals(books, bookStoreStorageRepo.search("0"));
-        assertEquals(books, bookStoreStorageRepo.search("Empty"));
+        assertEquals(books, bookStoreStorageRepo.search("isbn", BOOKSTORE_ID));
+        assertEquals(books, bookStoreStorageRepo.search("book", BOOKSTORE_ID));
+        assertEquals(books, bookStoreStorageRepo.search("author", BOOKSTORE_ID));
+        assertEquals(books, bookStoreStorageRepo.search("0", BOOKSTORE_ID));
+        assertEquals(books, bookStoreStorageRepo.search("Empty", BOOKSTORE_ID));
         try {
             bookStoreStorageRepo.deleteBookFromBookStore(bookId);
             bookRepo.delete("isbn");
@@ -138,7 +138,7 @@ public class BookStoreStorageRepoTest {
         } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
             fail("Should not throw");
         }
-        assertEquals(books, bookStoreStorageRepo.advancedSearch("", "isbn", "title", "author", 0, Book.Category.Empty));
+        assertEquals(books, bookStoreStorageRepo.advancedSearch(BOOKSTORE_ID, "isbn", "title", "author", 0, Book.Category.Empty));
         try {
             bookStoreStorageRepo.deleteBookFromBookStore(bookId);
             bookRepo.delete("isbn");
@@ -155,17 +155,19 @@ public class BookStoreStorageRepoTest {
     void doubleAddBookToBookstoreExceptionTest() {
         Book book = new Book("isbn", "title", "author", 0, Book.Category.Empty);
         bookRepo.add(book);
-        String bookId = null;
+        String bookId1 = null;
         try {
             try {
-                bookId = bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
+                bookId1 = bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
             } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
                 fail("should not throw now");
             }
 
-            assertThrows(BookStoreStorageRepository.BookAlreadyInBookStoreException.class, () -> bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID));
+            assertThrows(BookStoreStorageRepository.BookAlreadyInBookStoreException.class, () -> {
+                bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
+            });
 
-            bookStoreStorageRepo.deleteBookFromBookStore(bookId);
+            bookStoreStorageRepo.deleteBookFromBookStore(bookId1);
             bookRepo.delete("isbn");
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("No Bookstore");
