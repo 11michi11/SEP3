@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BookStoreOrderRepo {
 
-    String add(String isbn, String bookstoreId, String customerId) throws BookStoreRepository.BookStoreNotFoundException, CustomerRepository.CustomerNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException;
+    String add(String bookId, String bookstoreId, String customerId) throws BookStoreRepository.BookStoreNotFoundException, CustomerRepository.CustomerNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException;
 
     void delete(String orderId) throws CustomerRepository.CustomerNotFoundException;
 
