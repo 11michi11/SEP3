@@ -2,7 +2,17 @@ import React, { Component } from 'react';
 
 import {Form, FormGroup, Input, Button} from 'reactstrap'
 class Registration extends Component {
-    state = {  }
+
+    handleSubmit = e => {
+
+    }
+    state = { 
+        name: "",
+        password: "",
+        address: "",
+        phoneNo: ""
+
+     }
     render() { 
         return (  <div className="container">
 

@@ -47,7 +47,7 @@ public class Controller {
 	    return db.borrowBook(isbn, libraryID, customerID);
     }
 
-    public String buyBook(String isbn, String bookstoreID, String customerID) {
+    public String buyBook(String isbn,String bookstoreID, String customerID) {
         return db.buyBook(isbn, bookstoreID, customerID);
     }
 }

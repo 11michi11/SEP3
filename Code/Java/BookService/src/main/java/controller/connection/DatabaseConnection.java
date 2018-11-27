@@ -104,9 +104,9 @@ public class DatabaseConnection implements DatabaseProxy {
     public String borrowBook(String isbn, String libraryID, String customerID) {
         Map<String, Object> args = new HashMap<>();
         args.put("isbn", isbn);
-        args.put("libraryID", libraryID);
-        args.put("customerID", customerID);
-        Request request = new Request(Request.Operation.Borrow, args);
+        args.put("libraryId", libraryID);
+        args.put("customerId", customerID);
+        Request request = new Request(Request.Operation.MakeLibraryOrder, args);
 
         return sendMessage(request);
     }
@@ -115,10 +115,10 @@ public class DatabaseConnection implements DatabaseProxy {
     @Override
     public String buyBook(String isbn, String bookstoreID, String customerID) {
         Map<String, Object> args = new HashMap<>();
+        args.put("bookstoreId", bookstoreID);
         args.put("isbn", isbn);
-        args.put("libraryID", bookstoreID);
-        args.put("customerID", customerID);
-        Request request = new Request(Request.Operation.Buy, args);
+        args.put("customerId", customerID);
+        Request request = new Request(Request.Operation.MakeBookStoreOrder, args);
 
         return sendMessage(request);
     }
@@ -169,11 +169,8 @@ public class DatabaseConnection implements DatabaseProxy {
     }
 
     public static void main(String[] args) {
-        String json = "{\"status\":\"OK\",\"content\":{\"book\":{\"isbn\":\"978-83-246-7758-0\",\"title\":\"Core Java\",\"author\":\"Cay S. Horstmann, Gary Cornell\",\"year\":2014,\"category\":\"Science\"},\"libraries\":[{\"libraryName\":\"First Library\",\"libraryid\":\"ce78ef57-77ec-4bb7-82a2-1a78d3789aef\",\"bookid\":\"efea4877-ff0a-44f6-96da-2d9294428c79\",\"available\":true},{\"libraryName\":\"First Library\",\"libraryid\":\"ce78ef57-77ec-4bb7-82a2-1a78d3789aef\",\"bookid\":\"196690e8-d620-49cb-b404-d049bd25b6de\",\"available\":true}],\"bookstores\":[{\"bookstoreid\":\"eb3777c8-77fe-4acd-962d-6853da2e05e0\",\"name\":\"First Book Store\"}]}}";
-
         DatabaseConnection db = new DatabaseConnection();
-        ResponseStatus status = db.getResponseStatus(json);
-        db.handleBookDetailsResponse(json, status);
+        db.borrowBook("978-83-8116-1","ce78ef57-77ec-4bb7-82a2-1a78d3789aef","0227f11c-8f66-4835-8283-021f0df8b558");
     }
 
 

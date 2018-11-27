@@ -25,6 +25,8 @@ class App extends Component {
           <Route path="/login" component={Login}></Route>
           <Route path="/details/:search_term" component={Details}></Route>
           <Route path="/admin" component={Administrator}></Route>
+         
+          
         </Switch>
 
       </div>
