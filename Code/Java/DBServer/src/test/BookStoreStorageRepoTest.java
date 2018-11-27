@@ -158,7 +158,7 @@ public class BookStoreStorageRepoTest {
         String bookId = null;
         try {
             try {
-                bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
+                bookId = bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
             } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
                 fail("should not throw now");
             }
