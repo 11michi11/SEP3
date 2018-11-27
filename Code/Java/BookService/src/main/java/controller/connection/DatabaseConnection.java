@@ -113,9 +113,10 @@ public class DatabaseConnection implements DatabaseProxy {
 
 
     @Override
-    public String buyBook(String bookstoreID, String customerID) {
+    public String buyBook(String isbn, String bookstoreID, String customerID) {
         Map<String, Object> args = new HashMap<>();
         args.put("bookstoreId", bookstoreID);
+        args.put("isbn", isbn);
         args.put("customerId", customerID);
         Request request = new Request(Request.Operation.MakeBookStoreOrder, args);
 

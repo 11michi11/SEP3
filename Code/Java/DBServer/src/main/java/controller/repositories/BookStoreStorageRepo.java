@@ -17,5 +17,5 @@ public interface BookStoreStorageRepo {
 
     List<BookStoreStorage> getBookStoresStorageByIsbn(String isbn);
 
-    BookStoreStorage getStorageByBookId(String isbn) throws BookStoreStorageRepository.BookStoreStorageNotFoundException;
+    BookStoreStorage getStorageByBookId(String isbn, String bookstoreId) throws BookStoreStorageRepository.BookStoreStorageNotFoundException;
 }

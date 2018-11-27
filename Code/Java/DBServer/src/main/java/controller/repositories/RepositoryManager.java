@@ -108,7 +108,7 @@ public class RepositoryManager implements DBProxy {
     }
 
     @Override
-    public void buyBook(String bookstoreId, String customerId) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, CustomerRepository.CustomerNotFoundException, BookStoreRepository.BookStoreNotFoundException {
-        bookStoreOrderRepo.add(bookstoreId, customerId);
+    public void buyBook(String isbn, String bookstoreId, String customerId) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, CustomerRepository.CustomerNotFoundException, BookStoreRepository.BookStoreNotFoundException {
+        bookStoreOrderRepo.add(isbn, bookstoreId, customerId);
     }
 }
