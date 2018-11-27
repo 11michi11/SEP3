@@ -47,8 +47,18 @@ public class RepositoryManager implements DBProxy {
     }
 
     @Override
+    public List<Book> searchInLibrary(String searchTerm, String libraryId) {
+        return libraryStorageRepo.search(searchTerm, libraryId);
+    }
+
+    @Override
     public List<Book> advancedSearchInLibrary(String libraryId, String isbn, String title, String author, int year, Book.Category category) {
         return libraryStorageRepo.advancedSearch(libraryId, isbn, title, author, year, category);
+    }
+
+    @Override
+    public List<Book> searchInBookStore(String searchTerm, String bookStoreId) {
+        return bookStoreStorageRepo.search(searchTerm, bookStoreId);
     }
 
     @Override
