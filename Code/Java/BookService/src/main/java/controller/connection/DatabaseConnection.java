@@ -27,22 +27,24 @@ public class DatabaseConnection implements DatabaseProxy {
     private final String IP ="localhost";// ConfigurationLoader.getDbAddress();
     private Gson gson = new Gson();
 
-    public String addCustomer(Customer customer){
-        Map<String, Object> args = new HashMap<>();
-        args.put("name", customer.getName());
-        args.put("email", customer.getEmail());
-        args.put("address", customer.getAddress());
-        args.put("phoneNum", customer.getPhoneNum());
-
-        Request request = new Request(Request.Operation.RegisterCustomer, args);
-
-        return sendMessage(request);
-    }
-
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
         Map<String, Object> args = new HashMap<>();
         args.put("searchTerm", searchTerm);
         Request request = new Request(Request.Operation.Search, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        return handleSearchResponse(response, status);
+    }
+
+    public List<Book> advancedSearch(String title, String author, int year, String isbn, Book.Category category) throws ServerOfflineException, SearchException {
+        Map<String, Object> args = new HashMap<>();
+        args.put("isbn", isbn);
+        args.put("title", title);
+        args.put("author", author);
+        args.put("year", year);
+        args.put("category", category);
+        Request request = new Request(Request.Operation.AdvancedSearch, args);
 
         String response = sendMessage(request);
         ResponseStatus status = getResponseStatus(response);
@@ -86,20 +88,6 @@ public class DatabaseConnection implements DatabaseProxy {
         }
     }
 
-    public List<Book> advancedSearch(String title, String author, int year, String isbn, Book.Category category) throws ServerOfflineException, SearchException {
-        Map<String, Object> args = new HashMap<>();
-        args.put("isbn", isbn);
-        args.put("title", title);
-        args.put("author", author);
-        args.put("year", year);
-        args.put("category", category);
-        Request request = new Request(Request.Operation.AdvancedSearch, args);
-
-        String response = sendMessage(request);
-        ResponseStatus status = getResponseStatus(response);
-        return handleSearchResponse(response, status);
-    }
-
     @Override
     public String borrowBook(String isbn, String libraryID, String customerID) {
         Map<String, Object> args = new HashMap<>();
@@ -110,7 +98,6 @@ public class DatabaseConnection implements DatabaseProxy {
 
         return sendMessage(request);
     }
-
 
     @Override
     public String buyBook(String isbn, String bookstoreID, String customerID) {
@@ -123,6 +110,17 @@ public class DatabaseConnection implements DatabaseProxy {
         return sendMessage(request);
     }
 
+    public String addCustomer(Customer customer){
+        Map<String, Object> args = new HashMap<>();
+        args.put("name", customer.getName());
+        args.put("email", customer.getEmail());
+        args.put("address", customer.getAddress());
+        args.put("phoneNum", customer.getPhoneNum());
+
+        Request request = new Request(Request.Operation.RegisterCustomer, args);
+
+        return sendMessage(request);
+    }
 
     private ResponseStatus getResponseStatus(String response) {
         JsonParser parser = new JsonParser();
@@ -172,7 +170,6 @@ public class DatabaseConnection implements DatabaseProxy {
         DatabaseConnection db = new DatabaseConnection();
         db.borrowBook("978-83-8116-1","ce78ef57-77ec-4bb7-82a2-1a78d3789aef","0227f11c-8f66-4835-8283-021f0df8b558");
     }
-
 
     public class ServerOfflineException extends RuntimeException {
         public ServerOfflineException(String msg) {

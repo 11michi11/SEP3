@@ -58,7 +58,7 @@ public class Controller {
                     return handleLibraryBookDetails(request);
                 case MakeLibraryOrder:
                     return handleMakeLibraryOrder(request);
-	            case MakeBookstoreOrder:
+	            case MakeBookStoreOrder:
 	            	return handleMakeBookstoreOrder(request);
             }
             throw new InvalidOperationException("Wrong operation");
@@ -67,8 +67,6 @@ public class Controller {
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
     }
-
-
 
 	public String handleSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
@@ -294,6 +292,7 @@ public class Controller {
         db.borrowBook(isbn, libraryId, customerId);
         return new Response(Response.Status.OK, "Added").toJson();
     }
+
 	private String handleMakeBookstoreOrder(Request request) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, BookStoreRepository.BookStoreNotFoundException, CustomerRepository.CustomerNotFoundException {
 		Map<String, Object> arguments = request.getArguments();
         String isbn = (String) arguments.get("isbn");

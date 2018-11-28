@@ -146,7 +146,10 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
+        }catch(javax.persistence.NoResultException e){
+            throw new BookStoreStorageNotFoundException("There is no such book in that bookstore/ isbn: " + bookid);
         }
+
         throw new BookStoreStorageNotFoundException("There is no bookstore storage with isbn: " + bookid);
 
     }
@@ -157,7 +160,7 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
         }
     }
 
-    public class BookStoreStorageNotFoundException extends Throwable {
+    public static class BookStoreStorageNotFoundException extends Exception {
         public BookStoreStorageNotFoundException(String msg) {
             super(msg);
         }
