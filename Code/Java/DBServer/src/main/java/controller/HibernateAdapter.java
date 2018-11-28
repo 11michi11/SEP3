@@ -31,7 +31,6 @@ public class HibernateAdapter {
         return sessionFactory;
     }
 
-
     public static List executeQuery(String searchTerm, Class classObj, String... fields) {
         SessionFactory sessionFactory = HibernateAdapter.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
