@@ -38,40 +38,6 @@ public class DatabaseConnection implements DatabaseProxy {
         return handleSearchResponse(response, status);
     }
 
-    private List<Book> handleSearchResponse(String response, ResponseStatus status) throws SearchException {
-        switch (status) {
-            case OK:
-                return getContent(response);
-            case Error:
-                String errorMsg = getContent(response);
-                throw new SearchException("Database returned error: " + errorMsg);
-            default:
-                throw new SearchException("Unknown response status: " + status);
-        }
-    }
-
-    public String getBookDetails(String isbn) throws ServerOfflineException, SearchException {
-        Map<String, Object> args = new HashMap<>();
-        args.put("isbn", isbn);
-        Request request = new Request(Request.Operation.BookDetails, args);
-
-        String response = sendMessage(request);
-        ResponseStatus status = getResponseStatus(response);
-        return handleBookDetailsResponse(response, status);
-    }
-
-    private String handleBookDetailsResponse(String response, ResponseStatus status) {
-        switch (status) {
-            case OK:
-                return getContent(response);
-            case Error:
-                String errorMsg = getContent(response);
-                throw new SearchException("Database returned error: " + errorMsg);
-            default:
-                throw new SearchException("Unknown response status: " + status);
-        }
-    }
-
     public List<Book> advancedSearch(String title, String author, int year, String isbn, Book.Category category) throws ServerOfflineException, SearchException {
         Map<String, Object> args = new HashMap<>();
         args.put("isbn", isbn);
@@ -88,6 +54,18 @@ public class DatabaseConnection implements DatabaseProxy {
         return handleSearchResponse(response, status);
     }
 
+    private List<Book> handleSearchResponse(String response, ResponseStatus status) throws SearchException {
+        switch (status) {
+            case OK:
+                return getContent(response);
+            case Error:
+                String errorMsg = getContent(response);
+                throw new SearchException("Database returned error: " + errorMsg);
+            default:
+                throw new SearchException("Unknown response status: " + status);
+        }
+    }
+
     private ResponseStatus getResponseStatus(String response) {
         JsonParser parser = new JsonParser();
         JsonElement element = parser.parse(response);
@@ -98,6 +76,38 @@ public class DatabaseConnection implements DatabaseProxy {
 //		for (Map.Entry<String, JsonElement> entry: entries) {
 //			System.out.println(entry.getKey());
 //		}
+    }
+
+    @Override
+    public String addBook(Book book) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("library", false);
+        args.put("id", BOOKSTORE_ID);
+        args.put("book", book);
+
+        Request request = new Request(Request.Operation.AddBook, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        if (status.equals(ResponseStatus.OK))
+            return "OK";
+        return "Error: " + getContent(response);
+    }
+
+    @Override
+    public String deleteBook(String isbn) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("library", false);
+        args.put("id", BOOKSTORE_ID);
+        args.put("isbn", isbn);
+
+        Request request = new Request(Request.Operation.DeleteBook, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        if (status.equals(ResponseStatus.OK))
+            return "OK";
+        return "Error: " + getContent(response);
     }
 
     private <T> T getContent(String contentJson) {
@@ -136,38 +146,6 @@ public class DatabaseConnection implements DatabaseProxy {
         Socket server = new Socket(IP, PORT);
         System.out.println("Connected!");
         return server;
-    }
-
-    @Override
-    public String addBook(Book book) {
-        Map<String, Object> args = new HashMap<>();
-        args.put("library", false);
-        args.put("id", BOOKSTORE_ID);
-        args.put("book", book);
-
-        Request request = new Request(Request.Operation.AddBook, args);
-
-        String response = sendMessage(request);
-        ResponseStatus status = getResponseStatus(response);
-        if (status.equals(ResponseStatus.OK))
-            return "OK";
-        return "Error: " + getContent(response);
-    }
-
-    @Override
-    public String deleteBook(String isbn) {
-        Map<String, Object> args = new HashMap<>();
-        args.put("library", false);
-        args.put("id", BOOKSTORE_ID);
-        args.put("isbn", isbn);
-
-        Request request = new Request(Request.Operation.DeleteBook, args);
-
-        String response = sendMessage(request);
-        ResponseStatus status = getResponseStatus(response);
-        if (status.equals(ResponseStatus.OK))
-            return "OK";
-        return "Error: " + getContent(response);
     }
 
     private enum ResponseStatus {OK, Error}

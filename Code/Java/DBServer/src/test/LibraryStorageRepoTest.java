@@ -179,6 +179,32 @@ public class LibraryStorageRepoTest {
     }
 
     @Test
+    void notObviousAdvancedSearchTest() {
+        Book book = new Book("testisbn", "testtitle", "testauthor", 999, Book.Category.Poetry);
+        List<Book> books = Collections.singletonList(book);
+        bookRepo.add(book);
+        String bookid = null;
+        try {
+            bookid = libraryStorageRepo.addBookToLibrary(book, LIBRARY_ID);
+        } catch (LibraryRepository.LibraryNotFoundException e) {
+            fail("Adding to library failed");
+        }
+
+        assertEquals(books, libraryStorageRepo.advancedSearch(LIBRARY_ID, "zzzzzzzzzzzzzzzzzzzzzz", "testtitle", "zzzzzzzzzzzzzzzzzzzzzzzz", 0, Book.Category.Fantasy));
+
+        try {
+            libraryStorageRepo.deleteBookFromLibrary(bookid);
+            bookRepo.delete("testisbn");
+        } catch (BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException e) {
+            fail("Deleting failed, really bad");
+        } catch (LibraryStorageRepository.BookAlreadyDeletedException e) {
+            fail("Should not throw");
+        } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     public void getIdsOfAvalaibleBooks() {
 
         String bookid = "961af2c5-a57b-4855-bf40-d6d64fbd5f96";

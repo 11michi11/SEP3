@@ -102,7 +102,7 @@ public class Controller {
             searchCategory = Book.Category.Empty;
         }
 
-        return db.advancedSearchInLibrary(libraryId, searchTerm, searchTerm, searchTerm, year, searchCategory);
+        return db.searchInLibrary(searchTerm, libraryId);
     }
 
     public List<Book> searchBookStore(String searchTerm, String bookStoreId) {
@@ -243,7 +243,7 @@ public class Controller {
             db.deleteBookFromLibrary(bookId);
         } else {
             String isbn = (String) arguments.get("isbn");
-            db.deleteBookFromBookStore(isbn);
+            db.deleteBookFromBookStore(isbn, institutionId);
         }
         return new Response(Response.Status.OK, "Deleted").toJson();
     }

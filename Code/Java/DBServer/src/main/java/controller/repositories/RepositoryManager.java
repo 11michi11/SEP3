@@ -102,8 +102,8 @@ public class RepositoryManager implements DBProxy {
     }
 
     @Override
-    public void deleteBookFromBookStore(String bookid) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
-        bookStoreStorageRepo.deleteBookFromBookStore(bookid);
+    public void deleteBookFromBookStore(String isbn, String bookstoreid) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
+        bookStoreStorageRepo.deleteBookFromBookStore(isbn, bookstoreid);
     }
 
     @Override

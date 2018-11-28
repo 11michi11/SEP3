@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Request {
 
-    public enum Operation {BookStoreSearch, BookStoreAdvancedSearch, AddBook, DeleteBook, BookDetails}
+    public enum Operation {BookStoreSearch, BookStoreAdvancedSearch, AddBook, DeleteBook}
 
     private Operation operation;
     private Map<String, Object> args;
