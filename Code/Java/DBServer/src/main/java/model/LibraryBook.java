@@ -1,11 +1,11 @@
 package model;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LibraryBook {
@@ -24,7 +24,7 @@ public class LibraryBook {
 
     public void loadLibraryBooksFromStorages(List<LibraryStorage> storages) {
         Map<String, Boolean> map = storages.stream()
-                .collect(Collectors.toMap(storage -> storage.getId().getBookid(),
+                .collect(Collectors.toMap(LibraryStorage::getBookid,
                         LibraryStorage::isAvailable));
 
         this.libraryBooks = map;
@@ -38,7 +38,7 @@ public class LibraryBook {
                 '}';
     }
 
-    public String toJson() {
+    public JsonElement toJson() {
         Gson gson = new Gson();
         StringBuilder sb = new StringBuilder("{");
 
@@ -48,12 +48,15 @@ public class LibraryBook {
 
         libraryBooks.forEach((bookid, availability) ->
                 sb.append("{\"bookid\":\"").append(bookid)
-                        .append("\",\"availability\":").append(availability)
+                        .append("\",\"available\":").append(availability)
                         .append("},"));
 
         sb.delete(sb.length() - 1, sb.length());
-
-        return sb.append("]}").toString();
+        sb.append("]}");
+        return new JsonParser().parse(sb.toString());
     }
 
+    public Book getBook() {
+        return book;
+    }
 }

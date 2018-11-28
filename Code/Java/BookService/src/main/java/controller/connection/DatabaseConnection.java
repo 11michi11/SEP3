@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 import controller.ConfigurationLoader;
 import model.Book;
@@ -23,24 +24,27 @@ import java.util.Map;
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
-    private final String IP = ConfigurationLoader.getDbAddress();
-
-    public String addCustomer(Customer customer){
-        Map<String, Object> args = new HashMap<>();
-        args.put("name", customer.getName());
-        args.put("email", customer.getEmail());
-        args.put("address", customer.getAddress());
-        args.put("phoneNum", customer.getPhoneNum());
-
-        Request request = new Request(Request.Operation.RegisterCustomer, args);
-
-        return sendMessage(request);
-    }
+    private final String IP ="localhost";// ConfigurationLoader.getDbAddress();
+    private Gson gson = new Gson();
 
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
         Map<String, Object> args = new HashMap<>();
         args.put("searchTerm", searchTerm);
         Request request = new Request(Request.Operation.Search, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        return handleSearchResponse(response, status);
+    }
+
+    public List<Book> advancedSearch(String title, String author, int year, String isbn, Book.Category category) throws ServerOfflineException, SearchException {
+        Map<String, Object> args = new HashMap<>();
+        args.put("isbn", isbn);
+        args.put("title", title);
+        args.put("author", author);
+        args.put("year", year);
+        args.put("category", category);
+        Request request = new Request(Request.Operation.AdvancedSearch, args);
 
         String response = sendMessage(request);
         ResponseStatus status = getResponseStatus(response);
@@ -72,7 +76,10 @@ public class DatabaseConnection implements DatabaseProxy {
     private String handleBookDetailsResponse(String response, ResponseStatus status) {
         switch (status) {
             case OK:
-                return getContent(response);
+                LinkedTreeMap content = getContent(response);
+                JsonElement jsonElement = gson.toJsonTree(content);
+                String asString = jsonElement.toString();
+                return asString;
             case Error:
                 String errorMsg = getContent(response);
                 throw new SearchException("Database returned error: " + errorMsg);
@@ -81,18 +88,38 @@ public class DatabaseConnection implements DatabaseProxy {
         }
     }
 
-    public List<Book> advancedSearch(String title, String author, int year, String isbn, Book.Category category) throws ServerOfflineException, SearchException {
+    @Override
+    public String borrowBook(String isbn, String libraryID, String customerID) {
         Map<String, Object> args = new HashMap<>();
         args.put("isbn", isbn);
-        args.put("title", title);
-        args.put("author", author);
-        args.put("year", year);
-        args.put("category", category);
-        Request request = new Request(Request.Operation.AdvancedSearch, args);
+        args.put("libraryId", libraryID);
+        args.put("customerId", customerID);
+        Request request = new Request(Request.Operation.MakeLibraryOrder, args);
 
-        String response = sendMessage(request);
-        ResponseStatus status = getResponseStatus(response);
-        return handleSearchResponse(response, status);
+        return sendMessage(request);
+    }
+
+    @Override
+    public String buyBook(String isbn, String bookstoreID, String customerID) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("bookstoreId", bookstoreID);
+        args.put("isbn", isbn);
+        args.put("customerId", customerID);
+        Request request = new Request(Request.Operation.MakeBookStoreOrder, args);
+
+        return sendMessage(request);
+    }
+
+    public String addCustomer(Customer customer){
+        Map<String, Object> args = new HashMap<>();
+        args.put("name", customer.getName());
+        args.put("email", customer.getEmail());
+        args.put("address", customer.getAddress());
+        args.put("phoneNum", customer.getPhoneNum());
+
+        Request request = new Request(Request.Operation.RegisterCustomer, args);
+
+        return sendMessage(request);
     }
 
     private ResponseStatus getResponseStatus(String response) {
@@ -109,7 +136,6 @@ public class DatabaseConnection implements DatabaseProxy {
         String content = obj.get("content").toString();
         Type type = new TypeToken<T>() {
         }.getType();
-        Gson gson = new Gson();
         return gson.fromJson(content, type);
     }
 
@@ -140,6 +166,10 @@ public class DatabaseConnection implements DatabaseProxy {
         return server;
     }
 
+    public static void main(String[] args) {
+        DatabaseConnection db = new DatabaseConnection();
+        db.borrowBook("978-83-8116-1","ce78ef57-77ec-4bb7-82a2-1a78d3789aef","0227f11c-8f66-4835-8283-021f0df8b558");
+    }
 
     public class ServerOfflineException extends RuntimeException {
         public ServerOfflineException(String msg) {

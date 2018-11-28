@@ -1,22 +1,38 @@
 package model;
 
 import com.google.gson.Gson;
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.bridge.builtin.EnumBridge;
+import org.hibernate.search.bridge.builtin.IntegerBridge;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
+@Indexed
 @Entity
 @Table(name = "books", schema = "public")
-public class Book {
+public class Book implements Serializable {
 
+    @Field(name = "bookIsbn")
     @Id
     @Column(name = "isbn")
     private String isbn;
+
+    @Field
     @Column(name = "title")
     private String title;
+
+    @Field
     @Column(name = "author")
     private String author;
+
+    @Field
+    @FieldBridge(impl = IntegerBridge.class)
     @Column(name = "year")
     private int year;
+
+    @Field(bridge=@FieldBridge(impl=EnumBridge.class))
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
     private Category category;
