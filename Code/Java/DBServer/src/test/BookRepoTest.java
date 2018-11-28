@@ -38,7 +38,7 @@ public class BookRepoTest {
     }
 
     @Test
-    public void serachTest(){
+    public void searchTest(){
         Book book = new Book("978-83-8116-1", "Lord of the Rings: Fellowship of the Ring", "J.R.R Tolkien", 1954, Book.Category.Fantasy);
 
         List<Book> books = Collections.singletonList(book);
@@ -53,6 +53,13 @@ public class BookRepoTest {
 
     @Test
     public void advancedSearchTest(){
+        Book book = new Book("978-83-8116-1", "Lord of the Rings: Fellowship of the Ring", "J.R.R Tolkien", 1954, Book.Category.Fantasy);
+
+        List<Book> books = Collections.singletonList(book);
+
+        assertEquals(books, bookRepo.advancedSearch("978-83-8116-1","Tolkien","J.R.R Tolkien", 1954, Book.Category.Fantasy));
+        assertEquals(books, bookRepo.advancedSearch("","","J.R.R Tolkien", 0, Book.Category.Fantasy));
+
 
     }
 

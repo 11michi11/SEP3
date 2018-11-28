@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Request {
 
-    public enum Operation {Search, AdvancedSearch, BookDetails, AddBook, DeleteBook, LibrarySearch, BookStoreSearch, BookStoreAdvancedSearch, LibraryAdvancedSearch, LibraryBookDetails, MakeLibraryOrder, MakeBookstoreOrder, RegisterCustomer}
+    public enum Operation {Search, AdvancedSearch, BookDetails, AddBook, DeleteBook, LibrarySearch, BookStoreSearch, BookStoreAdvancedSearch, LibraryAdvancedSearch, LibraryBookDetails, MakeLibraryOrder, MakeBookStoreOrder, RegisterCustomer}
 
     private Operation operation;
     private Map<String, Object> args;

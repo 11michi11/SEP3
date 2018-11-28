@@ -11,10 +11,16 @@ public interface DBProxy {
 
     //
     List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category);
-//
+
+    List<Book> searchInLibrary(String searchTerm, String libraryId);
+
+    //
     @SuppressWarnings("unchecked")
     List<Book> advancedSearchInLibrary(String libraryId, String isbn, String title, String author, int year, Book.Category category);
-//
+
+    List<Book> searchInBookStore(String searchTerm, String bookStoreId);
+
+    //
     @SuppressWarnings("unchecked")
     List<Book> advancedSearchInBookStore(String bookStoreId, String isbn, String title, String author, int year, Book.Category category);
 //
@@ -31,9 +37,9 @@ public interface DBProxy {
 
     void addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookAlreadyInBookStoreException;
 
-    void deleteBookFromLibrary(String bookId, String libraryId) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException;
+    void deleteBookFromLibrary(String bookid) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException, LibraryStorageRepository.LibraryStorageNotFoundException;
 
-    void deleteBookFromBookStore(String isbn, String bookStoreId) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException;
+    void deleteBookFromBookStore(String isbn) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException;
 
     void addCustomer(Customer customer) throws CustomerRepository.CustomerEmailException;
 

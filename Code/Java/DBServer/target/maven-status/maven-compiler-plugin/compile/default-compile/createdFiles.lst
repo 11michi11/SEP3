@@ -2,6 +2,7 @@ controller\repositories\LibraryRepository$LibraryNotFoundException.class
 controller\repositories\BookStorageRepository.class
 controller\repositories\LibraryOrderRepository.class
 controller\repositories\BookStoreRepository.class
+model\BookStoreOrder.class
 model\BookStore.class
 controller\repositories\LibraryStorageRepository.class
 model\DetailedBook$1.class
@@ -13,10 +14,12 @@ communication\DBServer.class
 model\Customer.class
 controller\repositories\LibraryStorageRepo.class
 model\LibraryStorage.class
+controller\repositories\CustomerRepository$CustomerNotFoundException.class
 controller\repositories\BookRepository.class
 controller\repositories\LibraryStorageRepository$BookAlreadyDeletedException.class
 controller\HibernateAdapter.class
 controller\DBProxy.class
+controller\repositories\BookStoreOrderRepo.class
 communication\Response$Status.class
 model\BookStoreStorage.class
 communication\Request.class
@@ -27,6 +30,7 @@ controller\repositories\BookRepo.class
 controller\Controller.class
 controller\repositories\BookStoreStorageRepository$BookAlreadyInBookStoreException.class
 model\LibraryBook.class
+model\BookBridge.class
 communication\Request$Operation.class
 model\Institution.class
 controller\repositories\RepositoryManager.class
@@ -45,5 +49,7 @@ controller\repositories\BookStoreStorageRepository.class
 controller\repositories\CustomerRepository.class
 communication\Response.class
 controller\repositories\BookStorageRepo.class
+controller\repositories\BookStoreStorageRepository$BookStoreStorageNotFoundException.class
 model\LibraryOrder.class
 controller\repositories\LibraryStorageRepository$LibraryStorageNotFoundException.class
+controller\repositories\BookStoreOrderRepository.class

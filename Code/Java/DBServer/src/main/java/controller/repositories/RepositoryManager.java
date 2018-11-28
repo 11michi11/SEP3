@@ -47,8 +47,18 @@ public class RepositoryManager implements DBProxy {
     }
 
     @Override
+    public List<Book> searchInLibrary(String searchTerm, String libraryId) {
+        return libraryStorageRepo.search(searchTerm, libraryId);
+    }
+
+    @Override
     public List<Book> advancedSearchInLibrary(String libraryId, String isbn, String title, String author, int year, Book.Category category) {
         return libraryStorageRepo.advancedSearch(libraryId, isbn, title, author, year, category);
+    }
+
+    @Override
+    public List<Book> searchInBookStore(String searchTerm, String bookStoreId) {
+        return bookStoreStorageRepo.search(searchTerm, bookStoreId);
     }
 
     @Override
@@ -87,13 +97,13 @@ public class RepositoryManager implements DBProxy {
     }
 
     @Override
-    public void deleteBookFromLibrary(String bookId, String libraryId) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException {
-        libraryStorageRepo.deleteBookFromLibrary(bookId,libraryId);
+    public void deleteBookFromLibrary(String bookId) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException, LibraryStorageRepository.LibraryStorageNotFoundException {
+        libraryStorageRepo.deleteBookFromLibrary(bookId);
     }
 
     @Override
-    public void deleteBookFromBookStore(String isbn, String bookStoreId) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException {
-        bookStoreStorageRepo.deleteBookFromBookStore(isbn,bookStoreId);
+    public void deleteBookFromBookStore(String bookid) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
+        bookStoreStorageRepo.deleteBookFromBookStore(bookid);
     }
 
     @Override

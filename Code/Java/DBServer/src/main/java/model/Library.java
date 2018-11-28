@@ -1,17 +1,23 @@
 package model;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+@Indexed
 @Table(name = "library", schema = "public")
 public class Library implements Institution {
 
     @Id @Column(name = "libraryid")
+    @Field(name = "library")
     private String libraryID;
 
+    @Field
     @Column(name = "name")
     private String name;
 

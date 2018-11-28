@@ -1,17 +1,25 @@
 package model;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.FieldBridge;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.bridge.builtin.EnumBridge;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Indexed
 @Entity
 @Table(name = "bookstore")
 public class BookStore implements Institution {
 
+    @Field(name = "bookstore")
     @Id @Column(name = "bookstoreid")
     private String bookstoreid;
 
+    @Field
     @Column(name = "name")
     private String name;
 

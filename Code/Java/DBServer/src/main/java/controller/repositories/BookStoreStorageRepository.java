@@ -11,9 +11,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class BookStoreStorageRepository implements BookStoreStorageRepo {
 
@@ -38,61 +41,78 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
     }
 
     @Override
-    public void addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException, BookAlreadyInBookStoreException {
+    public String addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException, BookAlreadyInBookStoreException {
         //Save book to Book table
         bookRepo.saveOrUpdate(book);
 
         BookStore bookStore = bookStoreRepo.get(bookStoreId);
 
-        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStore, book);
+        List<BookStoreStorage> storagesByIsbnAndBookstore = getStoragesByIsbnAndBookstore(book.getIsbn(), bookStoreId);
+        if (storagesByIsbnAndBookstore.size() > 0)
+            throw new BookAlreadyInBookStoreException("Book is already in that bookstore");
+
+        String id = UUID.randomUUID().toString();
+
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(id, bookStore, book);
         try {
             HibernateAdapter.addObject(bookStoreStorage);
         } catch (javax.persistence.PersistenceException e) {
             throw new BookAlreadyInBookStoreException("Book is already in that bookstore");
         }
+        return id;
     }
 
-
     @Override
-    public void deleteBookFromBookStore(String isbn, String bookStoreId) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException {
-        Book book = bookRepo.get(isbn);
+    public void deleteBookFromBookStore(String bookid) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageNotFoundException {
+        BookStoreStorage storage = getStorageByBookId(bookid);
+        Book book = storage.getBook();
 
-        BookStore bookStore = bookStoreRepo.get(bookStoreId);
-        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookStore, book);
+        BookStore bookStore = storage.getBookstore();
+        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookid, bookStore, book);
         HibernateAdapter.deleteObject(bookStoreStorage);
     }
 
     @Override
-    public List<Book> search(String searchTerm) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public List<Book> advancedSearch(String bookStoreId, String isbn, String title, String author, int year, Book.Category category) {
+    public List<BookStoreStorage> getStoragesByIsbnAndBookstore(String isbn, String bookstoreId) {
         Transaction tx = null;
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
-            List<Book> searchedBooks = session.createQuery("select new model.Book(s.book.isbn, s.book.title, s.book.author, s.book.year, s.book.category) from BookStoreStorage as s where " +
-                    "s.book.isbn like :isbn or " +
-                    "lower(s.book.title) like :title or " +
-                    "lower(s.book.author) like :author or " +
-                    "s.book.year = :year or " +
-                    "s.book.category like :category or " +
-                    "s.bookstore.bookstoreid like :bookStoreId")
-                    .setParameter("isbn", "%" + isbn + "%")
-                    .setParameter("title", "%" + title.toLowerCase() + "%")
-                    .setParameter("author", "%" + author.toLowerCase() + "%")
-                    .setParameter("year", year)
-                    .setParameter("category", category)
-                    .setParameter("bookStoreId", bookStoreId)
+            List<BookStoreStorage> storages = session.createQuery("FROM BookStoreStorage as s where " +
+                    "s.book.isbn like :isbn and " +
+                    "s.bookstore.bookstoreid like :bookstoreid")
+                    .setParameter("isbn", isbn)
+                    .setParameter("bookstoreid", bookstoreId)
                     .list();
             tx.commit();
-            return searchedBooks;
+            return storages;
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
         }
         return new LinkedList<>();
+    }
+
+    @Override
+    public List<Book> search(String searchTerm, String  bookstoreId) {
+        if(searchTerm.equals(""))
+            return Collections.emptyList();
+
+        List<BookStoreStorage> list = HibernateAdapter.searchInBookStore(searchTerm, bookstoreId);
+        return list.stream().map(BookStoreStorage::getBook).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Book> advancedSearch(String bookStoreId, String isbn, String title, String author, int year, Book.Category category) {
+        String noMatchString = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
+        if (isbn.equals(""))
+            isbn = noMatchString;
+        if (title.equals(""))
+            title = noMatchString;
+        if (author.equals(""))
+            author = noMatchString;
+
+        List<BookStoreStorage> list = HibernateAdapter.advancedSearchInBookStore(bookStoreId, isbn, title, author, year,category);
+        return list.stream().map(BookStoreStorage::getBook).collect(Collectors.toList());
     }
 
     @Override
@@ -113,23 +133,24 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
     }
 
     @Override
-    public BookStoreStorage getStorageByBookId(String isbn, String bookstoreId) throws BookStoreStorageNotFoundException {
+    public BookStoreStorage getStorageByBookId(String bookid) throws BookStoreStorageNotFoundException {
         Transaction tx = null;
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
             BookStoreStorage ids = (BookStoreStorage) session.createQuery("FROM BookStoreStorage as s where " +
-                    "s.book.isbn like :isbn and " +
-                    "s.bookstore.bookstoreid like :bookstoreid")
-                    .setParameter("isbn", isbn)
-                    .setParameter("bookstoreid", bookstoreId)
+                    "s.bookid like :bookid")
+                    .setParameter("bookid", bookid)
                     .getSingleResult();
             tx.commit();
             return ids;
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
+        }catch(javax.persistence.NoResultException e){
+            throw new BookStoreStorageNotFoundException("There is no such book in that bookstore/ isbn: " + bookid);
         }
-        throw new BookStoreStorageNotFoundException("There is no bookstore storage with isbn: " + isbn);
+
+        throw new BookStoreStorageNotFoundException("There is no bookstore storage with isbn: " + bookid);
 
     }
 
@@ -139,7 +160,7 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
         }
     }
 
-    public class BookStoreStorageNotFoundException extends Throwable {
+    public static class BookStoreStorageNotFoundException extends Exception {
         public BookStoreStorageNotFoundException(String msg) {
             super(msg);
         }
