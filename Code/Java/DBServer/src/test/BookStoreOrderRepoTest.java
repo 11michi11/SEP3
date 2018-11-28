@@ -61,7 +61,7 @@ public class BookStoreOrderRepoTest {
     @AfterEach
     private void cleanUp(){
         try {
-            bookStoreStorageRepo.deleteBookFromBookStore(bookId);
+            bookStoreStorageRepo.deleteBookFromBookStore("testisbn", BOOK_STORE_ID);
             bookRepo.delete("testisbn");
         }  catch (BookRepository.BookNotFoundException e) {
             fail("No book");

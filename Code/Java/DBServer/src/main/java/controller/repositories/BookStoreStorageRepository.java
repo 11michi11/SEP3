@@ -4,18 +4,15 @@ import controller.HibernateAdapter;
 import model.Book;
 import model.BookStore;
 import model.BookStoreStorage;
-import model.LibraryStorage;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class BookStoreStorageRepository implements BookStoreStorageRepo {
@@ -63,13 +60,13 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
     }
 
     @Override
-    public void deleteBookFromBookStore(String bookid) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageNotFoundException {
-        BookStoreStorage storage = getStorageByBookId(bookid);
-        Book book = storage.getBook();
-
-        BookStore bookStore = storage.getBookstore();
-        BookStoreStorage bookStoreStorage = new BookStoreStorage(bookid, bookStore, book);
-        HibernateAdapter.deleteObject(bookStoreStorage);
+    public void deleteBookFromBookStore(String isbn, String bookstoreid) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageNotFoundException {
+        try {
+            BookStoreStorage storage = getStoragesByIsbnAndBookstore(isbn, bookstoreid).get(0);
+            HibernateAdapter.deleteObject(storage);
+        }catch (IndexOutOfBoundsException e){
+            throw new BookStoreStorageNotFoundException("There is no such book in that bookstore");
+        }
     }
 
     @Override
