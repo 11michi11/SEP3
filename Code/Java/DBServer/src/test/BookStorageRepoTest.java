@@ -78,7 +78,7 @@ public class BookStorageRepoTest {
             } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
                 fail("No library storage");
             }
-            bookStoreStorageRepo.deleteBookFromBookStore(bookid3);
+            bookStoreStorageRepo.deleteBookFromBookStore("testisbn", BOOK_STORE_ID);
             bookRepo.delete("testisbn");
         } catch (LibraryRepository.LibraryNotFoundException e) {
             fail("No library");
