@@ -102,7 +102,7 @@ public class Controller {
             searchCategory = Book.Category.Empty;
         }
 
-        return db.advancedSearchInLibrary(libraryId, searchTerm, searchTerm, searchTerm, year, searchCategory);
+        return db.searchInLibrary(searchTerm, libraryId);
     }
 
     public List<Book> searchBookStore(String searchTerm, String bookStoreId) {

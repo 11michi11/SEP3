@@ -83,7 +83,7 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
     }
 
     @Override
-    public List<Book> search(String libraryId, String searchTerm) {
+    public List<Book> search(String searchTerm, String libraryId) {
         if(searchTerm.equals(""))
             return Collections.emptyList();
 
