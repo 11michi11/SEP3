@@ -74,12 +74,14 @@ namespace Tests
         [Fact]
         public void TestBookDetails()
         {
-        var book = new Book("Got", "Miska", 2015, "ISBN1", Category.Drama);
-        var libraryBookExpected = new LibraryBook(book, "id", true);
-        
-        var libraryBookActual = _controller.BookDetails("id");
-        
-        Assert.Equal(libraryBookExpected,libraryBookActual);
+            var isbn = "ISBN";
+            var book = new Book("Got", "Miska", 2015, isbn, Category.Drama);
+            var libraryBookExpected = new LibraryBook(book, "bookId", true);
+            var json = JsonConvert.SerializeObject(libraryBookExpected);
+            
+            var libraryBookActual = _controller.BookDetails(isbn);
+            
+            Assert.Equal(json,libraryBookActual);
         }
     }
 }

@@ -24,8 +24,8 @@ public class Search implements ApplicationContextAware {
         return controller.search(searchTerm);
     }
 
-    @RequestMapping("/searchAdvanced")
-    public List<Book> searchAdvanced(@RequestParam(value = "title", defaultValue = "") String title,
+    @RequestMapping("/advancedSearch")
+    public List<Book> advancedSearch(@RequestParam(value = "title", defaultValue = "") String title,
                                      @RequestParam(value = "author", defaultValue = "") String author,
                                      @RequestParam(value = "year", required = false) Integer year,
                                      @RequestParam(value = "isbn", defaultValue = "") String isbn,

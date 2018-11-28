@@ -24,10 +24,10 @@ namespace Tests
         public void TestDetailedBook()
         {
             var book = new Book("Got", "Miska", 2015, "ISBN1", Category.Drama);
-            var detailedBook = new LibraryBook(book, "id", true);
+            var detailedBook = new LibraryBook(book, "bookId", true);
 
-            var searchId = "id";
-            var str = _client.GetStringAsync($"http://localhost:5000/books/{searchId}").GetAwaiter().GetResult();
+            var searchIsbn = "ISBN1";
+            var str = _client.GetStringAsync($"http://localhost:5000/books/{searchIsbn}").GetAwaiter().GetResult();
             
             var booksFromService = JsonConvert.DeserializeObject<LibraryBook>(str);
 

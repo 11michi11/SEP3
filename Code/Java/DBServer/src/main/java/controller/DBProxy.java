@@ -1,30 +1,49 @@
 package controller;
 
-import model.Book;
-import model.BookStoreStorage;
-import model.DetailedBook;
-import model.LibraryStorage;
+import controller.repositories.*;
+import model.*;
 
 import java.util.List;
 
 public interface DBProxy {
 
-    DetailedBook getBookDetails(String isbn);
+    List<Book> search(String searchTerm);
 
-    List<Book> getAllBooks();
-
-    Book getBookByLibraryBookId(String bookid) throws HibernateAdapter.BookNotFoundException;
-
+    //
     List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category);
 
-    void addBookToLibrary(LibraryStorage libraryBook);
+    List<Book> searchInLibrary(String searchTerm, String libraryId);
 
-    void addBookToBookStore(BookStoreStorage bookStoreBook);
+    //
+    @SuppressWarnings("unchecked")
+    List<Book> advancedSearchInLibrary(String libraryId, String isbn, String title, String author, int year, Book.Category category);
 
-    void deleteBookFromLibrary(LibraryStorage libraryBook);
+    List<Book> searchInBookStore(String searchTerm, String bookStoreId);
 
-    void deleteBookFromBookStore(BookStoreStorage bookStoreBook);
+    //
+    @SuppressWarnings("unchecked")
+    List<Book> advancedSearchInBookStore(String bookStoreId, String isbn, String title, String author, int year, Book.Category category);
+//
+    DetailedBook getBookDetails(String isbn) throws  BookRepository.BookNotFoundException;
+//
+    Book getBookByLibraryBookId(String bookid) throws  BookRepository.BookNotFoundException;
+//
+    Book getBookByIsbn(String isbn) throws BookRepository.BookNotFoundException;
 
-    Book getBookByIsbn(String isbn) throws HibernateAdapter.BookNotFoundException;
+    @SuppressWarnings("unchecked")
+    List<LibraryStorage> getLibrariesStorageByIsbnAndLibrary(String isbn, String libraryid);
 
+    void addBookToLibrary(Book book, String libraryid) throws LibraryRepository.LibraryNotFoundException;
+
+    void addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookAlreadyInBookStoreException;
+
+    void deleteBookFromLibrary(String bookid) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException, LibraryStorageRepository.LibraryStorageNotFoundException;
+
+    void deleteBookFromBookStore(String isbn) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException;
+
+    void addCustomer(Customer customer) throws CustomerRepository.CustomerEmailException;
+
+    void borrowBook(String isbn,String libraryID, String customerID) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException, LibraryRepository.LibraryNotFoundException;
+
+	void buyBook(String isbn, String bookstoreId, String customerId) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, CustomerRepository.CustomerNotFoundException, BookStoreRepository.BookStoreNotFoundException;
 }

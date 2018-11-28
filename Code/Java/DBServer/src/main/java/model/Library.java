@@ -1,22 +1,32 @@
 package model;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+@Indexed
 @Table(name = "library", schema = "public")
 public class Library implements Institution {
 
     @Id @Column(name = "libraryid")
+    @Field(name = "library")
     private String libraryID;
+
+    @Field
+    @Column(name = "name")
+    private String name;
 
     public Library(){
     }
 
     public Library(String libraryID) {
         this.libraryID = libraryID;
+        this.name = "First Library";
     }
 
     public String getLibraryID() {
@@ -31,6 +41,7 @@ public class Library implements Institution {
     public String toString() {
         return "Library{" +
                 "libraryID='" + libraryID + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 
@@ -47,5 +58,13 @@ public class Library implements Institution {
     @Override
     public int hashCode() {
         return libraryID != null ? libraryID.hashCode() : 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
