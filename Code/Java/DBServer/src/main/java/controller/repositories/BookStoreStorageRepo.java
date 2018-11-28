@@ -9,7 +9,7 @@ public interface BookStoreStorageRepo {
 
     String addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookAlreadyInBookStoreException;
 
-    void deleteBookFromBookStore(String bookid) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException;
+    void deleteBookFromBookStore(String isbn, String bookstoreid) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException;
 
     List<BookStoreStorage> getStoragesByIsbnAndBookstore(String isbn, String bookstoreId);
 
