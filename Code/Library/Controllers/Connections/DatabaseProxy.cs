@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using Controllers.Resources;
 using Models;
 using Newtonsoft.Json;
@@ -14,11 +16,11 @@ namespace Controllers.Connections
     {
         private readonly byte[] HOST = ConfigurationLoader.GetInstance().DatabaseHost;
         private readonly int PORT = ConfigurationLoader.GetInstance().DatabasePort;
-        private readonly string  LIBRARY_ID = "ce78ef57-77ec-4bb7-82a2-1a78d3789aef";
+        private readonly string LIBRARY_ID = "ce78ef57-77ec-4bb7-82a2-1a78d3789aef";
 
         public List<Book> Search(string searchTerm)
         {
-            var ar = new Dictionary<string, object> {{"searchTerm", searchTerm}, {"libraryid",LIBRARY_ID}};
+            var ar = new Dictionary<string, object> {{"searchTerm", searchTerm}, {"libraryid", LIBRARY_ID}};
             var request = new Request(Request.Operation.LibrarySearch, ar);
 
             Console.WriteLine($"Sending request: '{searchTerm}'");
@@ -31,7 +33,10 @@ namespace Controllers.Connections
         public List<Book> AdvancedSearch(string title, string author, int? year, string isbn, Category? category)
         {
             var ar = new Dictionary<string, object>
-                {{"title", title}, {"author", author}, {"year", year}, {"isbn", isbn}, {"category", category},{"libraryid",LIBRARY_ID}};
+            {
+                {"title", title}, {"author", author}, {"year", year}, {"isbn", isbn}, {"category", category},
+                {"libraryid", LIBRARY_ID}
+            };
             var request = new Request(Request.Operation.LibraryAdvancedSearch, ar);
 
             Console.WriteLine($"Sending request: '{request.ToJSON()}'");
@@ -60,6 +65,19 @@ namespace Controllers.Connections
             return JObject.Parse(response)["content"].ToObject<T>();
         }
 
+        protected static string GetContent(string response)
+        {
+            var content = JObject.Parse(response)["content"].ToString();
+            content = Regex.Replace(content, @"\r\n  ", "");
+            content = Regex.Replace(content, @"\r\n", "");
+            content = Regex.Replace(content, @"  ", "");
+            content = Regex.Replace(content, @"   ", "");
+            content = Regex.Replace(content, "\": \"", "\":\"");
+            content = Regex.Replace(content, "\": {", "\":{");
+            content = Regex.Replace(content, "\": ", "\":");
+            return content;
+        }
+        
         protected static ResponseStatus GetResponseStatus(string json)
         {
             var jToken = JObject.Parse(json)["status"];
@@ -73,11 +91,11 @@ namespace Controllers.Connections
             var toSend = Encoding.ASCII.GetBytes(request.ToJSON() + "\n");
 
             var bytes = new byte[1024];
-            TcpClient client = new TcpClient("127.0.0.1",7777);  
+            TcpClient client = new TcpClient("127.0.0.1", 7777);
             NetworkStream ns = client.GetStream();
-            
+
             ns.Write(toSend, 0, toSend.Length);
-            
+
             var bytesRec = ns.Read(bytes, 0, bytes.Length);
             var response = Encoding.ASCII.GetString(bytes, 0, bytesRec);
             return response;
@@ -87,43 +105,43 @@ namespace Controllers.Connections
         {
             var ar = new Dictionary<string, object>
                 {{"library", true}, {"id", LIBRARY_ID}, {"book", book}};
-            
+
             var request = new Request(Request.Operation.AddBook, ar);
 
             Console.WriteLine($"Sending request: '{request.ToJSON()}'");
             var response = SendMessage(request);
 
-            var status = GetResponseStatus(response);   
+            var status = GetResponseStatus(response);
             Console.Write(status);
         }
 
         public void DeleteBook(string bookid)
         {
             var ar = new Dictionary<string, object>
-                {{"library", true}, {"id", LIBRARY_ID}, {"bookid",bookid}};
-            
+                {{"library", true}, {"id", LIBRARY_ID}, {"bookid", bookid}};
+
             var request = new Request(Request.Operation.DeleteBook, ar);
 
             Console.WriteLine($"Sending request: '{request.ToJSON()}'");
             var response = SendMessage(request);
 
-            var status = GetResponseStatus(response);   
+            var status = GetResponseStatus(response);
             Console.Write(status);
         }
 
         public string BookDetails(string isbn)
         {
             var ar = new Dictionary<string, object>
-                {{"libraryid", LIBRARY_ID}, {"isbn",isbn}};
-            
+                {{"libraryid", LIBRARY_ID}, {"isbn", isbn}};
+
             var request = new Request(Request.Operation.LibraryBookDetails, ar);
 
             Console.WriteLine($"Sending request: '{request.ToJSON()}'");
             var response = SendMessage(request);
 
             var status = GetResponseStatus(response);
-            
-            return GetContent<string>(response);
+            Console.WriteLine(response);
+            return GetContent(response);
         }
 
         protected enum ResponseStatus
