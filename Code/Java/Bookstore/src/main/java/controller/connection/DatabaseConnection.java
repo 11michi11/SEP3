@@ -20,8 +20,8 @@ import java.util.Map;
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
-//        private final String IP = "207.154.237.196";
-    private final String IP = "localhost";
+        private final String IP = "207.154.237.196";
+//    private final String IP = "localhost";
 
     private final String BOOKSTORE_ID = "eb3777c8-77fe-4acd-962d-6853da2e05e0";
 
