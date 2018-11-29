@@ -11537,23 +11537,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Acer Matej\\.nuget\\packages\\": {},
+    "C:\\Users\\Michal Ciebien\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\Requests.csproj",
+      "projectUniqueName": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Requests\\Requests.csproj",
       "projectName": "Requests",
-      "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\Requests.csproj",
-      "packagesPath": "C:\\Users\\Acer Matej\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Requests\\obj\\",
+      "projectPath": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Requests\\Requests.csproj",
+      "packagesPath": "C:\\Users\\Michal Ciebien\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Requests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Acer Matej\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Michal Ciebien\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -11564,11 +11564,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj": {
-              "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj"
+            "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Controllers\\Controllers.csproj": {
+              "projectPath": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Controllers\\Controllers.csproj"
             },
-            "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj"
+            "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Models\\Models.csproj": {
+              "projectPath": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Models\\Models.csproj"
             }
           }
         }
