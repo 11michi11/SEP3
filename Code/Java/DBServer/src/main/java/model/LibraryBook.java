@@ -24,7 +24,7 @@ public class LibraryBook {
 
     public void loadLibraryBooksFromStorages(List<LibraryStorage> storages) {
         Map<String, Boolean> map = storages.stream()
-                .collect(Collectors.toMap(storage -> storage.getId().getBookid(),
+                .collect(Collectors.toMap(LibraryStorage::getBookid,
                         LibraryStorage::isAvailable));
 
         this.libraryBooks = map;

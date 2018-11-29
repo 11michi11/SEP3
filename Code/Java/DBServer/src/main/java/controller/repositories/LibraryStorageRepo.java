@@ -9,7 +9,7 @@ public interface LibraryStorageRepo {
 
     String addBookToLibrary(Book book, String libraryId) throws LibraryRepository.LibraryNotFoundException;
 
-    void deleteBookFromLibrary(String bookId, String libraryId) throws LibraryRepository.LibraryNotFoundException, BookRepository.BookNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException;
+    void deleteBookFromLibrary(String bookId) throws LibraryRepository.LibraryNotFoundException, BookRepository.BookNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException, LibraryStorageRepository.LibraryStorageNotFoundException;
 
     Book getBookByBookId(String bookId) throws BookRepository.BookNotFoundException;
 
@@ -20,4 +20,8 @@ public interface LibraryStorageRepo {
     List<LibraryStorage> getStoragesByIsbnAndLibrary(String isbn, String libraryId);
 
     List<LibraryStorage> getLibrariesStorageByIsbn(String isbn);
+
+    List<String> getAvailableBooks(String isbn, String libraryID);
+
+    LibraryStorage getStorageByBookId(String bookId) throws LibraryStorageRepository.LibraryStorageNotFoundException;
 }

@@ -39,12 +39,10 @@
         <mapping class="model.Book"/>
         <mapping class="model.Library"/>
         <mapping class="model.LibraryStorage"/>
-        <mapping class="model.LibraryStorageID"/>
         <mapping class="model.BookStore"/>
         <mapping class="model.BookStoreStorage"/>
-        <mapping class="model.BookStoreStorageID"/>
         <mapping class="model.Customer"/>
         <mapping class="model.LibraryOrder"/>
-        <mapping class="model.LibraryOrderID"/>
+        <mapping class="model.BookStoreOrder"/>
     </session-factory>
 </hibernate-configuration>

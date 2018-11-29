@@ -56,16 +56,19 @@ public class Controller {
                     return handleBookStoreSearch(request);
                 case LibraryBookDetails:
                     return handleLibraryBookDetails(request);
-
+                case MakeLibraryOrder:
+                    return handleMakeLibraryOrder(request);
+	            case MakeBookStoreOrder:
+	            	return handleMakeBookstoreOrder(request);
             }
             throw new InvalidOperationException("Wrong operation");
-        } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException e) {
+        } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException e) {
             //send error
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
     }
 
-    public String handleSearch(Request request) {
+	public String handleSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
         String searchTerm = (String) arguments.get("searchTerm");
 
@@ -99,7 +102,7 @@ public class Controller {
             searchCategory = Book.Category.Empty;
         }
 
-        return db.advancedSearchInLibrary(libraryId, searchTerm, searchTerm, searchTerm, year, searchCategory);
+        return db.searchInLibrary(searchTerm, libraryId);
     }
 
     public List<Book> searchBookStore(String searchTerm, String bookStoreId) {
@@ -230,14 +233,14 @@ public class Controller {
         return new Response(Response.Status.OK, "Added").toJson();
     }
 
-    private String handleDeleteBook(Request request) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, BookStoreRepository.BookStoreNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException {
+    private String handleDeleteBook(Request request) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, BookStoreRepository.BookStoreNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException, LibraryStorageRepository.LibraryStorageNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
         Map<String, Object> arguments = request.getArguments();
 
         boolean isLibrary = (boolean) arguments.get("library");
         String institutionId = (String) arguments.get("id");
         if (isLibrary) {
             String bookId = (String) arguments.get("bookid");
-            db.deleteBookFromLibrary(bookId, institutionId);
+            db.deleteBookFromLibrary(bookId);
         } else {
             String isbn = (String) arguments.get("isbn");
             db.deleteBookFromBookStore(isbn, institutionId);
@@ -270,7 +273,7 @@ public class Controller {
         List<LibraryStorage> storage = db.getLibrariesStorageByIsbnAndLibrary(isbn, libraryid);
 
         try {
-            Book book = storage.get(0).getId().getBook();
+            Book book = storage.get(0).getBook();
 
             LibraryBook libraryBook = new LibraryBook(book);
             libraryBook.loadLibraryBooksFromStorages(storage);
@@ -279,6 +282,27 @@ public class Controller {
             throw new BookRepository.BookNotFoundException("There is no book with isbn: " + isbn);
         }
     }
+
+    private String handleMakeLibraryOrder(Request request) throws LibraryStorageRepository.LibraryStorageNotFoundException, LibraryRepository.LibraryNotFoundException, CustomerRepository.CustomerNotFoundException {
+        Map<String, Object> arguments = request.getArguments();
+        String isbn = (String) arguments.get("isbn");
+        String libraryId = (String) arguments.get("libraryId");
+        String customerId = (String) arguments.get("customerId");
+
+        db.borrowBook(isbn, libraryId, customerId);
+        return new Response(Response.Status.OK, "Added").toJson();
+    }
+
+	private String handleMakeBookstoreOrder(Request request) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, BookStoreRepository.BookStoreNotFoundException, CustomerRepository.CustomerNotFoundException {
+		Map<String, Object> arguments = request.getArguments();
+        String isbn = (String) arguments.get("isbn");
+        String bookstoreId = (String) arguments.get("bookstoreId");
+        String customerId = (String) arguments.get("customerId");
+
+		db.buyBook(isbn, bookstoreId, customerId);
+		return new Response(Response.Status.OK, "Added").toJson();
+
+	}
 
     private String handleRegisterCustomer(Request request) {
         Customer customer = createCustomerFromArguments(request.getArguments());

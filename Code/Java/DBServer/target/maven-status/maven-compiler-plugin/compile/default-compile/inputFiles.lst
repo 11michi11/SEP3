@@ -3,6 +3,7 @@ C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\reposito
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\communication\DBServer.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookStorageRepository.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\BookStoreStorage.java
+C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\BookBridge.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\Institution.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\LibraryBook.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookRepo.java
@@ -12,10 +13,9 @@ C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\reposito
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\LibraryRepo.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookStoreStorageRepository.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\CustomerRepo.java
-C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\LibraryOrderID.java
-C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\BookStoreStorageID.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\Customer.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\communication\Request.java
+C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookStoreOrderRepository.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookStoreRepo.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookStoreRepository.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\HibernateAdapter.java
@@ -28,9 +28,10 @@ C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\reposito
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\LibraryRepository.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\LibraryOrder.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookStoreStorageRepo.java
+C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookStoreOrderRepo.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\Book.java
+C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\BookStoreOrder.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\communication\Response.java
-C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\LibraryStorageID.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\LibraryStorageRepo.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\model\DetailedBook.java
 C:\Users\Michi\Desktop\SEP3\Code\Java\DBServer\src\main\java\controller\repositories\BookRepository.java

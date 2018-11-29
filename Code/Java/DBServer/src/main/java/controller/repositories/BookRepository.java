@@ -2,17 +2,18 @@ package controller.repositories;
 
 import controller.HibernateAdapter;
 import model.Book;
+import org.apache.lucene.search.Query;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.query.dsl.QueryBuilder;
 
 import javax.persistence.NoResultException;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-public class BookRepository implements BookRepo{
+public class BookRepository implements BookRepo {
 
     private SessionFactory sessionFactory;
 
@@ -58,7 +59,7 @@ public class BookRepository implements BookRepo{
     }
 
     @Override
-    public void saveOrUpdate(Book book){
+    public void saveOrUpdate(Book book) {
         Transaction tx = null;
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
@@ -81,7 +82,7 @@ public class BookRepository implements BookRepo{
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
-        }catch (NoResultException e1){
+        } catch (NoResultException e1) {
             throw new BookNotFoundException("There is no book with isbn: " + isbn);
         }
         throw new BookNotFoundException("There is no book with isbn: " + isbn);
@@ -89,54 +90,40 @@ public class BookRepository implements BookRepo{
 
     @Override
     public List<Book> search(String searchTerm) {
-        final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
-        if (searchTerm.equals(""))
-            searchTerm = emptyStringValue;
+        if(searchTerm.equals(""))
+            return Collections.emptyList();
 
-        int year;
-        try {
-            year = Integer.parseInt(searchTerm);
-        } catch (NumberFormatException e) {
-            year = 0;
-        }
+        String[] fields = {"bookIsbn", "title", "author", "year", "category"};
 
-        String cat = searchTerm.toLowerCase();
-        cat = cat.substring(0, 1).toUpperCase() + cat.substring(1);
-        Book.Category searchCategory;
-        try {
-            searchCategory = Book.Category.valueOf(cat);
-        } catch (IllegalArgumentException e) {
-            searchCategory = Book.Category.Empty;
-        }
-
-        return advancedSearch(searchTerm, searchTerm, searchTerm, year, searchCategory);
+        return (List<Book>) HibernateAdapter.executeQuery(searchTerm, Book.class, fields);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category) {
-        Transaction tx = null;
-        try (Session session = sessionFactory.openSession()) {
-            tx = session.beginTransaction();
-            List<Book> searchedBooks = session.createQuery("select new model.Book(isbn, title, author, year, category) from Book where " +
-                    "isbn like :isbn or " +
-                    "lower(title) like :title or " +
-                    "lower(author) like :author or " +
-                    "year = :year or " +
-                    "category like :category")
-                    .setParameter("isbn", "%" + isbn + "%")
-                    .setParameter("title", "%" + title.toLowerCase() + "%")
-                    .setParameter("author", "%" + author.toLowerCase() + "%")
-                    .setParameter("year", year)
-                    .setParameter("category", category)
-                    .list();
-            tx.commit();
-            return searchedBooks;
-        } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        }
-        return new LinkedList<>();
+        if(isbn.equals(""))
+            isbn = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
+        if(title.equals(""))
+            title = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
+        if(author.equals(""))
+            author = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
+
+
+        List<Book> isbnBooks = HibernateAdapter.executeQuery(isbn, Book.class, "isbn");
+        List<Book> titleBooks = HibernateAdapter.executeQuery(title, Book.class, "title");
+        List<Book> authorBooks = HibernateAdapter.executeQuery(author, Book.class, "author");
+        List<Book> yearBooks = HibernateAdapter.executeQuery(Integer.toString(year), Book.class, "year");
+        List<Book> categoryBooks = HibernateAdapter.executeQuery(category.toString(), Book.class, "category");
+
+
+        Set<Book> books = new HashSet<>(isbnBooks);
+        books.addAll(titleBooks);
+        books.addAll(authorBooks);
+        books.addAll(yearBooks);
+        books.addAll(categoryBooks);
+
+
+        return new LinkedList<>(books);
     }
 
 
