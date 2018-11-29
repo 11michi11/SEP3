@@ -5249,23 +5249,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Michal Ciebien\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Michi\\.nuget\\packages\\": {},
+>>>>>>> master
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Tests\\Tests.csproj",
       "projectName": "Tests",
       "projectPath": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Tests\\Tests.csproj",
       "packagesPath": "C:\\Users\\Michal Ciebien\\.nuget\\packages\\",
       "outputPath": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Tests\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Tests\\Tests.csproj",
+      "projectName": "Tests",
+      "projectPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Tests\\Tests.csproj",
+      "packagesPath": "C:\\Users\\Michi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Tests\\obj\\",
+>>>>>>> master
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\Michal Ciebien\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
+        "C:\\Users\\Michi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> master
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -5276,8 +5292,13 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
+<<<<<<< HEAD
             "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Controllers\\Controllers.csproj": {
               "projectPath": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Controllers\\Controllers.csproj"
+=======
+            "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj": {
+              "projectPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj"
+>>>>>>> master
             }
           }
         }

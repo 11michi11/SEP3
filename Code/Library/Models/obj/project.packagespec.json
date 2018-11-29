@@ -1,10 +1,17 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
+<<<<<<< HEAD
     "projectUniqueName": "C:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Models\\Models.csproj",
     "projectName": "Models",
     "projectPath": "C:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Models\\Models.csproj",
     "outputPath": "C:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Models\\obj\\",
+=======
+    "projectUniqueName": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
+    "projectName": "Models",
+    "projectPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
+    "outputPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Models\\obj\\",
+>>>>>>> master
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

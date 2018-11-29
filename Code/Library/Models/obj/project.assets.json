@@ -176,23 +176,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Michal Ciebien\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Michi\\.nuget\\packages\\": {},
+>>>>>>> master
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Models\\Models.csproj",
       "projectName": "Models",
       "projectPath": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Models\\Models.csproj",
       "packagesPath": "C:\\Users\\Michal Ciebien\\.nuget\\packages\\",
       "outputPath": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Models\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
+      "projectName": "Models",
+      "projectPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj",
+      "packagesPath": "C:\\Users\\Michi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Models\\obj\\",
+>>>>>>> master
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\Michal Ciebien\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
+        "C:\\Users\\Michi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> master
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
