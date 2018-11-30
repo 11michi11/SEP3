@@ -1,17 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-<<<<<<< HEAD
-    "projectUniqueName": "C:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Controllers\\Controllers.csproj",
+    "projectUniqueName": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj",
     "projectName": "Controllers",
-    "projectPath": "C:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Controllers\\Controllers.csproj",
-    "outputPath": "C:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Controllers\\obj\\",
-=======
-    "projectUniqueName": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj",
-    "projectName": "Controllers",
-    "projectPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj",
-    "outputPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Controllers\\obj\\",
->>>>>>> master
+    "projectPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj",
+    "outputPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Controllers\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -22,13 +15,8 @@
     "frameworks": {
       "netstandard2.0": {
         "projectReferences": {
-<<<<<<< HEAD
-          "C:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Models\\Models.csproj": {
-            "projectPath": "C:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Models\\Models.csproj"
-=======
-          "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj": {
-            "projectPath": "C:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj"
->>>>>>> master
+          "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj": {
+            "projectPath": "C:\\Users\\misii\\Desktop\\SEP3\\Code\\Library\\Models\\Models.csproj"
           }
         }
       }
