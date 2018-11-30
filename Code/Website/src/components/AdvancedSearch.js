@@ -1,31 +1,11 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, Input, Button, Collapse, CardBody, Card} from 'reactstrap'
 
-
-class Home extends Component {
-
-    componentDidMount = () => {
-            console.log(this.props);
-    }
-
-   handleSearch = (event) => {
-    this.setState({searchData: event.target.value});
-    
-    }
-
-    handleSubmit = e => {
-        e.preventDefault();
-        
-        // console.log(this.state.searchData);
-        // axios.get("http://localhost:8080/search?searchTerm="+this.state.searchData, {crossdomain: true})
-        // .then(res => {
-
-        
-        //     console.log(res.data);
-        // })
-        this.props.history.push('/search/'+this.state.searchData);
-    }
-    constructor(props) {
+class AdvancedSearch extends Component {
+    state = { 
+        searchData: ''
+     }
+     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.state = { collapse: false };
@@ -35,9 +15,6 @@ class Home extends Component {
         this.setState({ collapse: !this.state.collapse });
       }
 
-    state = { 
-        searchData: ''
-     }
     render() { 
         return (
             <div className="container">
@@ -71,9 +48,6 @@ class Home extends Component {
                                          <Input type="text" value={this.state.value} onChange={this.handleSearch} name="advancedSearch" id="title" 
                                          placeholder="title" />
                                          <p/>
-                                         <Input type="text" value={this.state.value} onChange={this.handleSearch} name="advancedSearch" id="category" 
-                                         placeholder="category" />
-                                         <p/>
                                         <Input type="text" value={this.state.value} onChange={this.handleSearch} name="advancedSearch" id="year" 
                                         placeholder="year" />
                                         <p/>
@@ -95,5 +69,5 @@ class Home extends Component {
          );
     }
 }
- 
-export default Home;
+
+export default AdvancedSearch;

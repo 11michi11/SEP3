@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
+  "ProjectFilePath": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Tests\\Tests.csproj",
+=======
   "ProjectFilePath": "c:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Tests\\Tests.csproj",
+>>>>>>> master
   "TargetFramework": "netcoreapp2.1",
   "TagHelpers": [],
   "Configuration": {
