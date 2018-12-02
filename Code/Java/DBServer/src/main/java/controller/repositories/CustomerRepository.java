@@ -1,7 +1,6 @@
 package controller.repositories;
 
 import controller.HibernateAdapter;
-import model.Book;
 import model.Customer;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -53,6 +52,11 @@ public class CustomerRepository implements CustomerRepo {
         }
         throw new CustomerNotFoundException("There is no customer with id:" + customerId);
 
+    }
+
+    @Override
+    public void delete(Customer customer) {
+        HibernateAdapter.deleteObject(customer);
     }
 
     public static class CustomerEmailException extends Exception {
