@@ -64,14 +64,5 @@ public class ControllerTest {
         assertEquals(json,controller.deleteBook(book.getIsbn()));
 
     }
-    @Test
-    public void detialBook() {
-        Book book = new Book("978-83-8116-1", "Lord of the Rings: Fellowship of the Ring", "J.R.R Tolkien",1954 , Book.Category.Fantasy );
-        db.addBook(book);
-        String json = "{\"book\":{\"isbn\":\"978-83-8116-1\",\"title\":\"Lord of the Rings: Fellowship of the Ring\",\"author\":\"J.R.R Tolkien\",\"year\":1954,\"category\":\"Fantasy\"},\"libraries\":[{\"libraryid\":\"ce78ef57-77ec-4bb7-82a2-1a78d3789aef\",\"bookid\":\"978-83-246-7758-0\",\"available\":true},{\"libraryid\":\"ce78ef57-77ec-4bb7-82a2-1a78d3789aef\",\"bookid\":\"978-83-246-7758-0\",\"available\":true}],\"bookstores\":[{\"bookstoreid\":\"eb3777c8-77fe-4acd-962d-6853da2e05e0\"}]}";
-        when(db.getBookDetails("978-83-8116-1")).thenReturn("{\"book\":{\"isbn\":\"978-83-8116-1\",\"title\":\"Lord of the Rings: Fellowship of the Ring\",\"author\":\"J.R.R Tolkien\",\"year\":1954,\"category\":\"Fantasy\"},\"libraries\":[{\"libraryid\":\"ce78ef57-77ec-4bb7-82a2-1a78d3789aef\",\"bookid\":\"978-83-246-7758-0\",\"available\":true},{\"libraryid\":\"ce78ef57-77ec-4bb7-82a2-1a78d3789aef\",\"bookid\":\"978-83-246-7758-0\",\"available\":true}],\"bookstores\":[{\"bookstoreid\":\"eb3777c8-77fe-4acd-962d-6853da2e05e0\"}]}");
-        assertEquals(json,controller.getBookDetails(book.getIsbn()));
-
-    }
 
 }

@@ -58,17 +58,15 @@ public class Controller {
                     return handleLibraryBookDetails(request);
                 case MakeLibraryOrder:
                     return handleMakeLibraryOrder(request);
-	            case MakeBookstoreOrder:
+	            case MakeBookStoreOrder:
 	            	return handleMakeBookstoreOrder(request);
             }
             throw new InvalidOperationException("Wrong operation");
-        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException| CustomerRepository.CustomerNotFoundException| LibraryStorageRepository.LibraryStorageNotFoundException | Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException e) {
-	        //send error
-	        return new Response(Response.Status.Error, e.getMessage()).toJson();
+        } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException e) {
+            //send error
+            return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
     }
-
-
 
 	public String handleSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
@@ -104,7 +102,7 @@ public class Controller {
             searchCategory = Book.Category.Empty;
         }
 
-        return db.advancedSearchInLibrary(libraryId, searchTerm, searchTerm, searchTerm, year, searchCategory);
+        return db.searchInLibrary(searchTerm, libraryId);
     }
 
     public List<Book> searchBookStore(String searchTerm, String bookStoreId) {
@@ -235,14 +233,14 @@ public class Controller {
         return new Response(Response.Status.OK, "Added").toJson();
     }
 
-    private String handleDeleteBook(Request request) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, BookStoreRepository.BookStoreNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException {
+    private String handleDeleteBook(Request request) throws BookRepository.BookNotFoundException, LibraryRepository.LibraryNotFoundException, BookStoreRepository.BookStoreNotFoundException, LibraryStorageRepository.BookAlreadyDeletedException, LibraryStorageRepository.LibraryStorageNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
         Map<String, Object> arguments = request.getArguments();
 
         boolean isLibrary = (boolean) arguments.get("library");
         String institutionId = (String) arguments.get("id");
         if (isLibrary) {
             String bookId = (String) arguments.get("bookid");
-            db.deleteBookFromLibrary(bookId, institutionId);
+            db.deleteBookFromLibrary(bookId);
         } else {
             String isbn = (String) arguments.get("isbn");
             db.deleteBookFromBookStore(isbn, institutionId);
@@ -294,6 +292,7 @@ public class Controller {
         db.borrowBook(isbn, libraryId, customerId);
         return new Response(Response.Status.OK, "Added").toJson();
     }
+
 	private String handleMakeBookstoreOrder(Request request) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, BookStoreRepository.BookStoreNotFoundException, CustomerRepository.CustomerNotFoundException {
 		Map<String, Object> arguments = request.getArguments();
         String isbn = (String) arguments.get("isbn");
@@ -321,8 +320,9 @@ public class Controller {
         String email = (String) args.get("email");
         String address = (String) args.get("address");
         int phoneNum = ((Double) args.get("phoneNum")).intValue();
+        String password = (String) args.get("password");
 
-        return new Customer(UUID.randomUUID().toString(), name, email, address, phoneNum);
+        return new Customer(UUID.randomUUID().toString(), name, email, address, phoneNum, password);
     }
 
     private class InvalidOperationException extends Exception {

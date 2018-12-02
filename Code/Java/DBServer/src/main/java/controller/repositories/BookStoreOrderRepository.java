@@ -28,8 +28,8 @@ public class BookStoreOrderRepository implements BookStoreOrderRepo {
     }
 
     @Override
-    public String add(String isbn, String bookstoreId, String customerId) throws CustomerRepository.CustomerNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
-        BookStoreOrder bookStoreOrder = createBookStoreOrder(isbn, bookstoreId, customerId);
+    public String add(String isbn, String boookstoreId, String customerId) throws CustomerRepository.CustomerNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
+        BookStoreOrder bookStoreOrder = createBookStoreOrder(isbn, boookstoreId, customerId);
 
         HibernateAdapter.addObject(bookStoreOrder);
         return bookStoreOrder.getOrderid();
@@ -75,12 +75,16 @@ public class BookStoreOrderRepository implements BookStoreOrderRepo {
     }
 
     private BookStoreOrder createBookStoreOrder(String isbn, String bookstoreId, String customerId) throws CustomerRepository.CustomerNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
-        BookStoreStorage bookStoreStorage = bookStoreStorageRepo.getStorageByBookId(isbn, bookstoreId);
-        Book book = bookStoreStorage.getBook();
-        BookStore bookstore = bookStoreStorage.getBookstore();
-        Customer customer = customerRepo.get(customerId);
+       try {
+           BookStoreStorage bookStoreStorage = bookStoreStorageRepo.getStoragesByIsbnAndBookstore(isbn, bookstoreId).get(0);
+           Book book = bookStoreStorage.getBook();
+           BookStore bookstore = bookStoreStorage.getBookstore();
+           Customer customer = customerRepo.get(customerId);
 
-        String orderId = UUID.randomUUID().toString();
-        return new BookStoreOrder(orderId, bookstore, book, customer);
+           String orderId = UUID.randomUUID().toString();
+           return new BookStoreOrder(orderId, bookstore, book, customer);
+       }catch (IndexOutOfBoundsException e) {
+           throw new BookStoreStorageRepository.BookStoreStorageNotFoundException("There is no such book in that bookstore");
+       }
     }
 }

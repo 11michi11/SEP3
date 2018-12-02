@@ -7,15 +7,17 @@ import java.util.List;
 
 public interface BookStoreStorageRepo {
 
-    void addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookAlreadyInBookStoreException;
+    String addBookToBookStore(Book book, String bookStoreId) throws BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookAlreadyInBookStoreException;
 
-    void deleteBookFromBookStore(String isbn, String bookStoreId) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException;
+    void deleteBookFromBookStore(String isbn, String bookstoreid) throws BookRepository.BookNotFoundException, BookStoreRepository.BookStoreNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException;
 
-    List<Book> search(String searchTerm);
+    List<BookStoreStorage> getStoragesByIsbnAndBookstore(String isbn, String bookstoreId);
+
+    List<Book> search(String searchTerm, String bookstoreId);
 
     List<Book> advancedSearch(String bookStoreId, String isbn, String title, String author, int year, Book.Category category);
 
     List<BookStoreStorage> getBookStoresStorageByIsbn(String isbn);
 
-    BookStoreStorage getStorageByBookId(String isbn, String bookstoreId) throws BookStoreStorageRepository.BookStoreStorageNotFoundException;
+    BookStoreStorage getStorageByBookId(String isbn) throws BookStoreStorageRepository.BookStoreStorageNotFoundException;
 }

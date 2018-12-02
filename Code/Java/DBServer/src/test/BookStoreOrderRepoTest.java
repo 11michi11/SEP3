@@ -15,9 +15,11 @@ public class BookStoreOrderRepoTest {
     private BookStoreStorageRepo bookStoreStorageRepo;
     private CustomerRepo customerRepo;
     private BookRepo bookRepo;
+    private String bookId;
 
     private static final String BOOK_STORE_ID = "eb3777c8-77fe-4acd-962d-6853da2e05e0";
     private static final String CUSTOMER_ID = "0227f11c-8f66-4835-8283-021f0df8b558";
+
 
     @BeforeEach
     void setup(){
@@ -31,7 +33,7 @@ public class BookStoreOrderRepoTest {
     @Test
     void addTest(){
         try {
-            String orderId = bookStoreOrderRepo.add("testisbn", BOOK_STORE_ID, CUSTOMER_ID);
+            String orderId = bookStoreOrderRepo.add(bookId, BOOK_STORE_ID, CUSTOMER_ID);
 
             bookStoreOrderRepo.delete(orderId);
         } catch (CustomerRepository.CustomerNotFoundException e) {
@@ -48,7 +50,7 @@ public class BookStoreOrderRepoTest {
         List<Book> books = Collections.singletonList(book);
         bookRepo.add(book);
         try {
-            bookStoreStorageRepo.addBookToBookStore(book, BOOK_STORE_ID);
+            bookId = bookStoreStorageRepo.addBookToBookStore(book, BOOK_STORE_ID);
         } catch (BookStoreStorageRepository.BookAlreadyInBookStoreException e) {
             fail("Book already there");
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
@@ -65,6 +67,8 @@ public class BookStoreOrderRepoTest {
             fail("No book");
         }  catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("No bookstore");
+        } catch (BookStoreStorageRepository.BookStoreStorageNotFoundException e) {
+            fail("No bookstore storage");
         }
     }
 

@@ -1,5 +1,9 @@
 {
-  "ProjectFilePath": "c:\\Users\\Acer Matej\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj",
+<<<<<<< HEAD
+  "ProjectFilePath": "c:\\Users\\Michal Ciebien\\Desktop\\sep3github\\Code\\Library\\Controllers\\Controllers.csproj",
+=======
+  "ProjectFilePath": "c:\\Users\\Michi\\Desktop\\SEP3\\Code\\Library\\Controllers\\Controllers.csproj",
+>>>>>>> master
   "TargetFramework": "netstandard2.0",
   "TagHelpers": [],
   "Configuration": {
