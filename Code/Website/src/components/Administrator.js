@@ -46,6 +46,16 @@ class Administrator extends Component {
   handleDelete = e => {
     e.preventDefault();
 
+    axios
+      .delete("http://localhost:8080/book/" + e.target.value)
+      .then(res => {
+        console.log(res);
+        window.alert("Succesfuly deleted a book!");
+      })
+      .catch(error => {
+        window.alert(error + "Cannot delete a book");
+      });
+
     console.log("delete " + e.target.value);
   };
 

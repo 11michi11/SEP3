@@ -34,7 +34,7 @@ public class LibraryStorageRepoTest {
 
             //Clean up
             try {
-                libraryStorageRepo.deleteBookFromLibrary(bookid, LIBRARY_ID);
+                libraryStorageRepo.deleteBookFromLibrary(bookid);
             } catch (LibraryStorageRepository.BookAlreadyDeletedException bookAlreadyDeletedException) {
                 fail("Should not throw");
             }
@@ -43,6 +43,8 @@ public class LibraryStorageRepoTest {
             fail("No library");
         } catch (BookRepository.BookNotFoundException e) {
             fail("Book not created");
+        } catch(LibraryStorageRepository.LibraryStorageNotFoundException e){
+            fail("No library storage");
         }
     }
 
@@ -54,7 +56,7 @@ public class LibraryStorageRepoTest {
         try {
             String bookid = libraryStorageRepo.addBookToLibrary(book, LIBRARY_ID);
             //Clean up
-            libraryStorageRepo.deleteBookFromLibrary(bookid, LIBRARY_ID);
+            libraryStorageRepo.deleteBookFromLibrary(bookid);
             bookRepo.delete("testisbn");
         } catch (LibraryRepository.LibraryNotFoundException e) {
             fail("No library");
@@ -62,6 +64,8 @@ public class LibraryStorageRepoTest {
             fail("Book not created");
         } catch (LibraryStorageRepository.BookAlreadyDeletedException e) {
             fail("Should not throw");
+        } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -75,12 +79,14 @@ public class LibraryStorageRepoTest {
             //set up end
 
             try {
-                libraryStorageRepo.deleteBookFromLibrary(bookid, LIBRARY_ID);
+                libraryStorageRepo.deleteBookFromLibrary(bookid);
             } catch (LibraryStorageRepository.BookAlreadyDeletedException e) {
                 fail("Should not throw");
+            } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
+                fail("No library storage");
             }
 
-            assertThrows(LibraryStorageRepository.BookAlreadyDeletedException.class, () -> libraryStorageRepo.deleteBookFromLibrary(bookid, LIBRARY_ID));
+            assertThrows(LibraryStorageRepository.BookAlreadyDeletedException.class, () -> libraryStorageRepo.deleteBookFromLibrary(bookid));
 
             bookRepo.delete("testisbn");
         } catch (LibraryRepository.LibraryNotFoundException e) {
@@ -103,7 +109,7 @@ public class LibraryStorageRepoTest {
 
 
             //Clean up
-            libraryStorageRepo.deleteBookFromLibrary(bookid, LIBRARY_ID);
+            libraryStorageRepo.deleteBookFromLibrary(bookid);
             bookRepo.delete("testisbn");
         } catch (LibraryRepository.LibraryNotFoundException e) {
             fail("No library");
@@ -111,6 +117,8 @@ public class LibraryStorageRepoTest {
             fail("Book not created");
         } catch (LibraryStorageRepository.BookAlreadyDeletedException e) {
             fail("Should not thorw");
+        } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
+            fail("No library storage");
         }
     }
 
@@ -133,12 +141,14 @@ public class LibraryStorageRepoTest {
         assertEquals(books, libraryStorageRepo.search(LIBRARY_ID, "Poetry"));
 
         try {
-            libraryStorageRepo.deleteBookFromLibrary(bookid, LIBRARY_ID);
+            libraryStorageRepo.deleteBookFromLibrary(bookid);
             bookRepo.delete("testisbn");
         } catch (BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException e) {
             fail("Deleting failed, really bad");
         } catch (LibraryStorageRepository.BookAlreadyDeletedException e) {
             fail("Should not throw");
+        } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
+            fail("No library storage");
         }
     }
 
@@ -157,12 +167,40 @@ public class LibraryStorageRepoTest {
         assertEquals(books, libraryStorageRepo.advancedSearch(LIBRARY_ID, "testisbn", "testtitle", "testauthor", 999, Book.Category.Poetry));
 
         try {
-            libraryStorageRepo.deleteBookFromLibrary(bookid, LIBRARY_ID);
+            libraryStorageRepo.deleteBookFromLibrary(bookid);
             bookRepo.delete("testisbn");
         } catch (BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException e) {
             fail("Deleting failed, really bad");
         } catch (LibraryStorageRepository.BookAlreadyDeletedException e) {
             fail("Should not throw");
+        } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void notObviousAdvancedSearchTest() {
+        Book book = new Book("testisbn", "testtitle", "testauthor", 999, Book.Category.Poetry);
+        List<Book> books = Collections.singletonList(book);
+        bookRepo.add(book);
+        String bookid = null;
+        try {
+            bookid = libraryStorageRepo.addBookToLibrary(book, LIBRARY_ID);
+        } catch (LibraryRepository.LibraryNotFoundException e) {
+            fail("Adding to library failed");
+        }
+
+        assertEquals(books, libraryStorageRepo.advancedSearch(LIBRARY_ID, "zzzzzzzzzzzzzzzzzzzzzz", "testtitle", "zzzzzzzzzzzzzzzzzzzzzzzz", 0, Book.Category.Fantasy));
+
+        try {
+            libraryStorageRepo.deleteBookFromLibrary(bookid);
+            bookRepo.delete("testisbn");
+        } catch (BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException e) {
+            fail("Deleting failed, really bad");
+        } catch (LibraryStorageRepository.BookAlreadyDeletedException e) {
+            fail("Should not throw");
+        } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -197,12 +235,14 @@ public class LibraryStorageRepoTest {
         }
 
         try {
-            libraryStorageRepo.deleteBookFromLibrary(bookid, LIBRARY_ID);
+            libraryStorageRepo.deleteBookFromLibrary(bookid);
             bookRepo.delete("testisbn");
         } catch (BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException e) {
             fail("Deleting failed, really bad");
         } catch (LibraryStorageRepository.BookAlreadyDeletedException e) {
             fail("Should not throw");
+        } catch (LibraryStorageRepository.LibraryStorageNotFoundException e) {
+            fail("No library storage");
         }
 
 

@@ -7,4 +7,6 @@ public interface CustomerRepo {
     void add(Customer customer) throws CustomerRepository.CustomerEmailException;
 
     Customer get(String customerId) throws CustomerRepository.CustomerNotFoundException;
+
+	void delete(Customer customer);
 }

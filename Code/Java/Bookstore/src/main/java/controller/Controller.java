@@ -28,10 +28,6 @@ public class Controller {
         return db.advancedSearch(title, author, year, isbn, category);
     }
 
-    public String getBookDetails(String isbn) {
-        return db.getBookDetails(isbn);
-    }
-
     public String addBook(Book book){
         return db.addBook(book);
     }
