@@ -24,15 +24,19 @@ public class Customer {
     @Column(name = "phonenum")
     private int phoneNum;
 
+    @Column(name = "password")
+    private String password;
+
     public Customer() {
     }
 
-    public Customer(String id, String name, String email, String address, int phoneNum) {
+    public Customer(String id, String name, String email, String address, int phoneNum, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
         this.phoneNum = phoneNum;
+        this.password = password;
     }
 
     public String getId() {
@@ -75,6 +79,14 @@ public class Customer {
         this.phoneNum = phoneNum;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -83,13 +95,14 @@ public class Customer {
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", phoneNum=" + phoneNum +
+                ", password='" + password + '\'' +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Customer)) return false;
 
         Customer customer = (Customer) o;
 
@@ -97,7 +110,8 @@ public class Customer {
         if (id != null ? !id.equals(customer.id) : customer.id != null) return false;
         if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
         if (email != null ? !email.equals(customer.email) : customer.email != null) return false;
-        return address != null ? address.equals(customer.address) : customer.address == null;
+        if (address != null ? !address.equals(customer.address) : customer.address != null) return false;
+        return password != null ? password.equals(customer.password) : customer.password == null;
     }
 
     @Override
@@ -107,6 +121,7 @@ public class Customer {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + phoneNum;
+        result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
 }
