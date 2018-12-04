@@ -10,8 +10,10 @@ import controller.ConfigurationLoader;
 import model.Book;
 import model.Customer;
 import model.DetailedBook;
+import model.LogInResponse;
 import org.springframework.stereotype.Component;
 
+import javax.security.auth.login.LoginException;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.net.Socket;
@@ -108,6 +110,30 @@ public class DatabaseConnection implements DatabaseProxy {
         Request request = new Request(Request.Operation.MakeBookStoreOrder, args);
 
         return sendMessage(request);
+    }
+
+    @Override
+    public LogInResponse logIn(String email, String password) throws LoginException {
+        Map<String, Object> args = new HashMap<>();
+        args.put("email", email);
+        args.put("password", password);
+        Request request = new Request(Request.Operation.LogIn, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        return handleLogInResponse(response, status);
+    }
+
+    private LogInResponse handleLogInResponse(String response, ResponseStatus status) throws LoginException {
+        switch (status) {
+            case OK:
+                return getContent(response);
+            case Error:
+                String errorMsg = getContent(response);
+                throw new LoginException("Database returned error: " + errorMsg);
+            default:
+                throw new LoginException("Unknown response status: " + status);
+        }
     }
 
     public String addCustomer(Customer customer){

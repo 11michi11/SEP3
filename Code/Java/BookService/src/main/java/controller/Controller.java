@@ -5,9 +5,11 @@ import controller.connection.DatabaseConnection;
 import controller.connection.DatabaseProxy;
 import model.Book;
 import model.Customer;
+import model.LogInResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.security.auth.login.LoginException;
 import java.util.List;
 
 @Component
@@ -50,4 +52,10 @@ public class Controller {
     public String buyBook(String isbn,String bookstoreID, String customerID) {
         return db.buyBook(isbn, bookstoreID, customerID);
     }
+
+	public LogInResponse logIn(String email, String password) throws LoginException {
+        LogInResponse logInResponse = db.logIn(email,password);
+        logInResponse.setSessionKey(SessionKeyManager.generateSK());
+        return logInResponse;
+	}
 }
