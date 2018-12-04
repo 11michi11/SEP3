@@ -7,6 +7,8 @@ import com.google.gson.JsonParser;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.groupingBy;
+
 public class DetailedBook {
 
     private static final String KEY = "Institutions";
@@ -39,13 +41,15 @@ public class DetailedBook {
         sb.append(gson.toJson(book));
         sb.append(",\"libraries\":");
 
-        List<LibraryBook> libraries = libraryStorages.stream()
-                .map(libraryStorage -> new LibraryBook(
-                        libraryStorage.getLibrary().getLibraryID(),
-                        libraryStorage.getLibrary().getName(),
-                        libraryStorage.getBookid(),
-                        libraryStorage.isAvailable()))
-                .collect(Collectors.toList());
+        Map<String, List<LibraryStorage>> listMap = libraryStorages.stream()
+                .collect(groupingBy(libraryStorages -> libraryStorages.getLibrary().getLibraryID()));
+
+        List<LibraryBook> libraries = new LinkedList<>();
+
+        listMap.forEach((key, value) -> {
+            int quantity = (int) value.stream().filter(LibraryStorage::isAvailable).count();
+            libraries.add(new LibraryBook(key,value.get(0).getLibrary().getName(), quantity));
+        });
 
         sb.append(gson.toJson(libraries));
 
@@ -82,14 +86,12 @@ public class DetailedBook {
 
         private final String libraryName;
         public String libraryid;
-        public String bookid;
-        public boolean available;
+        public int quantity;
 
-        private LibraryBook(String libraryid, String libraryName, String bookid, boolean available) {
+        private LibraryBook(String libraryid, String libraryName, int quantity) {
             this.libraryid = libraryid;
             this.libraryName = libraryName;
-            this.bookid = bookid;
-            this.available = available;
+            this.quantity = quantity;
         }
     }
 }
