@@ -1,13 +1,19 @@
 package controller;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class SessionKeyManager {
-	static HashMap<String,Calendar> sessionKeys;
+	static HashMap<String,Calendar> sessionKeys = new HashMap<>();
 
 	public static String generateSK() {
-		return "New session key";
+		String sessionKey = UUID.randomUUID().toString();
+		Calendar expirationDate = GregorianCalendar.getInstance();
+		expirationDate.add(Calendar.HOUR,1);
+		sessionKeys.put(sessionKey, expirationDate);
+		return sessionKey;
 	}
 
 	public static Calendar checkSK(String sessionKey) throws SessionKeyIsNotValidException {
@@ -18,7 +24,7 @@ public class SessionKeyManager {
 		return expDate;
 	}
 
-	public static class SessionKeyIsNotValidException extends Throwable {
+	public static class SessionKeyIsNotValidException extends RuntimeException {
 
 		public SessionKeyIsNotValidException(String message) {
 			super(message);

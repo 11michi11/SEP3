@@ -10,6 +10,12 @@ public class BookstoreMain {
         ConfigurableApplicationContext context = SpringApplication.run(BookstoreMain.class, args);
 
         Controller controller = context.getBean(Controller.class);
-//        System.out.println(controller.getBookDetails("978-83-8116-1"));
+
+        SessionKeyManager sessionKeyManager = context.getBean(SessionKeyManager.class);
+        try {
+            System.out.println(sessionKeyManager.isSKValid("a168c083-c574-4113-ab99-1d82a3a1303c"));
+        } catch (SessionKeyManager.SessionKeyInvalidException e) {
+            e.printStackTrace();
+        }
     }
 }
