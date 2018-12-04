@@ -116,6 +116,7 @@ public class DatabaseConnection implements DatabaseProxy {
         args.put("email", customer.getEmail());
         args.put("address", customer.getAddress());
         args.put("phoneNum", customer.getPhoneNum());
+        args.put("password", customer.getPassword());
 
         Request request = new Request(Request.Operation.RegisterCustomer, args);
 
