@@ -57,7 +57,7 @@ class Home extends Component {
                                     placeholder="Book name, isbn, year, author etc." />
                                  </div>
                                 <div className="col-sm-2 p-1" >
-                                    <Button outline color="secondary" size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>More</Button>
+                                    <Button outline color="secondary" size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Advanced search</Button>
                                 </div>
                             </div>
                             <Collapse isOpen={this.state.collapse}>
