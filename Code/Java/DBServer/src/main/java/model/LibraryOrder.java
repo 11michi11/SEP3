@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 @Entity
 @Table(name = "libraryorder", schema = "public")
-public class LibraryOrder {
+public class  LibraryOrder {
 
     @Id @Column(name = "orderid")
     private String orderid;
