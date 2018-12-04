@@ -1,9 +1,11 @@
 package controller.requests;
 
 import controller.Controller;
+import controller.SessionKeyManager;
 import controller.connection.DatabaseConnection;
 import model.Book;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -17,9 +19,17 @@ import java.util.List;
 public class Search implements ApplicationContextAware {
 
     private ConfigurableApplicationContext context;
+    private SessionKeyManager sessionKeyManager;
+
+    @Autowired
+    public Search(SessionKeyManager sessionKeyManager) {
+        this.sessionKeyManager = sessionKeyManager;
+    }
 
     @RequestMapping("/search")
     public List<Book> search(@RequestParam(value = "searchTerm") String searchTerm) {
+//        sessionKeyManager.isSKValid()
+
         Controller controller = context.getBean(Controller.class);
         return controller.search(searchTerm);
     }

@@ -20,12 +20,13 @@ public class CheckSessionKey implements ApplicationContextAware {
 
 	@CrossOrigin
 	@GetMapping("/checkSK/{sessionKey}")
-	public Calendar checkSK(@PathVariable String sessionKey) throws SessionKeyManager.SessionKeyIsNotValidException {
+	public Calendar checkSK(@PathVariable String sessionKey) {
 		return SessionKeyManager.checkSK(sessionKey);
 	}
 
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		context=(ConfigurableApplicationContext) applicationContext;
 
 	}
 }
