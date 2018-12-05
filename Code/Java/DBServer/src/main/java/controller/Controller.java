@@ -60,6 +60,10 @@ public class Controller {
                     return handleMakeLibraryOrder(request);
 	            case MakeBookStoreOrder:
 	            	return handleMakeBookstoreOrder(request);
+                case AddBookStoreAdministrator:
+                    return handleAddBookStoreAdministrator(request);
+                case AddLibraryAdministrator:
+                    return handleAddLibraryAdministrator(request);
             }
             throw new InvalidOperationException("Wrong operation");
         } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException e) {
@@ -68,7 +72,7 @@ public class Controller {
         }
     }
 
-	public String handleSearch(Request request) {
+    public String handleSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
         String searchTerm = (String) arguments.get("searchTerm");
 
@@ -323,6 +327,38 @@ public class Controller {
         String password = (String) args.get("password");
 
         return new Customer(UUID.randomUUID().toString(), name, email, address, phoneNum, password);
+    }
+
+    private String handleAddLibraryAdministrator(Request request) {
+        Map<String, Object> args = request.getArguments();
+        String libraryId = (String) args.get("libraryId");
+        String name = (String) args.get("name");
+        String email = (String) args.get("email");
+        String password = (String) args.get("password");
+
+        try {
+            db.addLibraryAdministrator(libraryId, name, email, password);
+            return new Response(Response.Status.OK, "Library administrator created").toJson();
+        } catch (LibraryRepository.LibraryNotFoundException e) {
+            return new Response(Response.Status.Error, e.getMessage()).toJson();
+        }
+
+    }
+
+    private String handleAddBookStoreAdministrator(Request request) {
+        Map<String, Object> args = request.getArguments();
+        String bookstoreId = (String) args.get("libraryId");
+        String name = (String) args.get("name");
+        String email = (String) args.get("email");
+        String password = (String) args.get("password");
+
+        try {
+            db.addBookStoreAdministrator(bookstoreId, name, email, password);
+            return new Response(Response.Status.OK, "Bookstore administrator created").toJson();
+        } catch (BookStoreRepository.BookStoreNotFoundException e) {
+            return new Response(Response.Status.Error, e.getMessage()).toJson();
+        }
+
     }
 
     private class InvalidOperationException extends Exception {
