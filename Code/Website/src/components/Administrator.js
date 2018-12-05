@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import https from 'https';
 
 // Admin for Bookstore
 
@@ -33,9 +34,13 @@ class Administrator extends Component {
 
     this.setState({ displayAdd: false });
     console.log(this.state.searchData);
+    const agent = new https.Agent({
+      rejectUnauthorized: false
+    });
     axios
-      .get("http://localhost:8080/search?searchTerm=" + this.state.searchData, {
-        crossdomain: true
+      .get("https://localhost:8080/search?searchTerm=" + this.state.searchData, {
+        crossdomain: true,
+        httpsAgent: agent
       })
       .then(res => {
         this.setState({ books: res.data });
@@ -45,9 +50,11 @@ class Administrator extends Component {
 
   handleDelete = e => {
     e.preventDefault();
-
+    const agent = new https.Agent({
+      rejectUnauthorized: false
+    });
     axios
-      .delete("http://localhost:8080/book/" + e.target.value)
+      .delete("https://localhost:8080/book/" + e.target.value, {httpsAgent: agent})
       .then(res => {
         console.log(res);
         window.alert("Succesfuly deleted a book!");
@@ -106,10 +113,12 @@ class Administrator extends Component {
 
   sendAddBookRequest = e => {
     e.preventDefault();
-
+    const agent = new https.Agent({
+      rejectUnauthorized: false
+    });
     axios
       .post(
-        "http://localhost:8080/book",
+        "https://localhost:8080/book",
         {
           title: this.state.newBook.title,
           author: this.state.newBook.author,
@@ -117,7 +126,8 @@ class Administrator extends Component {
           isbn: this.state.newBook.isbn,
           category: this.state.newBook.category
         },
-        { crossdomain: true }
+        { crossdomain: true, 
+          httpsAgent: agent }
       )
       .then(res => {
         var str = "SUCCESS!";
