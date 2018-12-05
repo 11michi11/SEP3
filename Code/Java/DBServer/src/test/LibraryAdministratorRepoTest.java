@@ -27,7 +27,7 @@ public class LibraryAdministratorRepoTest {
         libraryAdminRepo.add(admin);
 
         try {
-            assertEquals(admin, libraryAdminRepo.get("adminID"));
+            assertEquals(admin, libraryAdminRepo.getLibraryAdmin("adminID"));
         } catch (LibraryAdminRepository.LibraryAdminNotFoundException e) {
             fail("Admin can not be added");
         }
