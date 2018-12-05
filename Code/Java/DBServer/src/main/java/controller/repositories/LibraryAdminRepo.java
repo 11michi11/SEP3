@@ -6,6 +6,7 @@ public interface LibraryAdminRepo {
 
     LibraryAdmin get(String id) throws LibraryAdminRepository.LibraryAdminNotFoundException;
 
-    void save(LibraryAdmin admin);
+    void add(LibraryAdmin admin);
+    void delete(LibraryAdmin admin);
 
 }

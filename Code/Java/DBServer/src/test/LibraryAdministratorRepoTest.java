@@ -4,6 +4,8 @@ import model.Library;
 import model.LibraryAdmin;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class LibraryAdministratorRepoTest {
 
@@ -14,13 +16,22 @@ public class LibraryAdministratorRepoTest {
     @BeforeEach
     void setup(){
         libraryAdminRepo = LibraryAdminRepository.getInstance();
-        Library lib = new Library("ce78ef57-77ec-4bb7-82a2-1a78d3789aef");
     }
 
 
     @Test
     void AddDeleteTest(){
-        LibraryAdmin admin;
-    }
+        Library lib = new Library("ce78ef57-77ec-4bb7-82a2-1a78d3789aef");
+        LibraryAdmin admin = new LibraryAdmin("adminID", lib, "name", "email", "password");
 
+        libraryAdminRepo.add(admin);
+
+        try {
+            assertEquals(admin, libraryAdminRepo.get("adminID"));
+        } catch (LibraryAdminRepository.LibraryAdminNotFoundException e) {
+            fail("Admin can not be added");
+        }
+
+        libraryAdminRepo.delete(admin);
+    }
 }

@@ -41,8 +41,13 @@ public class LibraryAdminRepository implements LibraryAdminRepo {
     }
 
     @Override
-    public void save(LibraryAdmin admin) {
+    public void add(LibraryAdmin admin) {
         HibernateAdapter.addObject(admin);
+    }
+
+    @Override
+    public void delete(LibraryAdmin admin) {
+        HibernateAdapter.deleteObject(admin);
     }
 
     public class LibraryAdminNotFoundException extends Throwable {
