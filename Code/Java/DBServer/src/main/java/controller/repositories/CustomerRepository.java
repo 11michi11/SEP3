@@ -59,6 +59,25 @@ public class CustomerRepository implements CustomerRepo {
         HibernateAdapter.deleteObject(customer);
     }
 
+    @Override
+    public Customer getByEmail(String email) throws CustomerNotFoundException {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            Customer customer = (Customer) session.createQuery("FROM Customer where email like :email").setParameter("email", email).getSingleResult();
+            tx.commit();
+            return customer;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }catch (NoResultException e1){
+            throw new CustomerNotFoundException("There is no customer with email:" + email);
+        }
+        throw new CustomerNotFoundException("There is no customer with email:" + email);
+
+
+    }
+
     public static class CustomerEmailException extends Exception {
         public CustomerEmailException(String msg) {
             super(msg);

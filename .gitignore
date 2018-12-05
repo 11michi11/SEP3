@@ -122,12 +122,16 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 pom.properties
-Code/Java/BookService/nohup\.out
-
 *.class
 
-Code/Java/Bookstore/\.idea/
+Code/Java/DBServer/\.idea/
+
+Code/Java/BookService/nohup\.out
 
 Code/Java/Bookstore/nohup\.out
 
-Code/Java/DBServer/\.idea/
+Code/Library/\.idea/\.idea\.Library/\.idea/workspace\.xml
+
+Code/Java/BookService/\.idea/workspace\.xml
+
+Code/Java/Bookstore/\.idea/
