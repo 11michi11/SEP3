@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import https from 'https';
 
 class AdministratorLibrary extends Component {
   state = {
@@ -20,9 +21,13 @@ class AdministratorLibrary extends Component {
     e.preventDefault();
 
     console.log(this.state.searchData);
+    const agent = new https.Agent({
+      rejectUnauthorized: false
+    });
     axios
-      .get("http://localhost:8080/search?searchTerm=" + this.state.searchData, {
-        crossdomain: true
+      .get("https://localhost:8080/search?searchTerm=" + this.state.searchData, {
+        crossdomain: true,
+        httpsAgent: agent
       })
       .then(res => {
         this.setState({ books: res.data });

@@ -6,18 +6,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
-import controller.ConfigurationLoader;
 import model.Book;
 import model.Customer;
-import model.DetailedBook;
 import model.LogInResponse;
 import org.springframework.stereotype.Component;
 
-import javax.security.auth.login.LoginException;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +23,7 @@ public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
     private final String IP = "localhost";//ConfigurationLoader.getDbAddress();
-    private Gson gson = new Gson();
+    private static Gson gson = new Gson();
 
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
         Map<String, Object> args = new HashMap<>();
@@ -117,7 +113,7 @@ public class DatabaseConnection implements DatabaseProxy {
         Map<String, Object> args = new HashMap<>();
         args.put("email", email);
         args.put("password", password);
-        Request request = new Request(Request.Operation.LogIn, args);
+        Request request = new Request(Request.Operation.Authenticate, args);
 
         String response = sendMessage(request);
         ResponseStatus status = getResponseStatus(response);
@@ -127,10 +123,17 @@ public class DatabaseConnection implements DatabaseProxy {
     private LogInResponse handleLogInResponse(String response, ResponseStatus status) throws LoginException {
         switch (status) {
             case OK:
-                return getContent(response);
+                JsonParser parser = new JsonParser();
+                JsonElement element = parser.parse(response);
+                JsonObject obj = element.getAsJsonObject(); //since you know it's a JsonObject
+                String content = obj.get("content").toString();
+                Type type = new TypeToken<LogInResponse>() {
+                }.getType();
+                LogInResponse res = gson.fromJson(content, type);
+                return res;
             case Error:
                 String errorMsg = getContent(response);
-                throw new LoginException("Database returned error: " + errorMsg);
+                throw new LoginException(errorMsg);
             default:
                 throw new LoginException("Unknown response status: " + status);
         }
@@ -156,7 +159,7 @@ public class DatabaseConnection implements DatabaseProxy {
         return ResponseStatus.valueOf(obj.get("status").getAsString());
     }
 
-    private <T> T getContent(String contentJson) {
+    private static <T> T getContent(String contentJson) {
         JsonParser parser = new JsonParser();
         JsonElement element = parser.parse(contentJson);
         JsonObject obj = element.getAsJsonObject(); //since you know it's a JsonObject
@@ -193,11 +196,6 @@ public class DatabaseConnection implements DatabaseProxy {
         return server;
     }
 
-    public static void main(String[] args) {
-        DatabaseConnection db = new DatabaseConnection();
-        db.borrowBook("978-83-8116-1","ce78ef57-77ec-4bb7-82a2-1a78d3789aef","0227f11c-8f66-4835-8283-021f0df8b558");
-    }
-
     public class ServerOfflineException extends RuntimeException {
         public ServerOfflineException(String msg) {
             super(msg);
@@ -211,4 +209,11 @@ public class DatabaseConnection implements DatabaseProxy {
             super(msg);
         }
     }
+
+    public class LoginException extends RuntimeException{
+        public LoginException(String errorMsg) {
+            super(errorMsg);
+        }
+    }
+
 }
