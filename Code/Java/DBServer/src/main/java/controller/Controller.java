@@ -320,8 +320,9 @@ public class Controller {
         String email = (String) args.get("email");
         String address = (String) args.get("address");
         int phoneNum = ((Double) args.get("phoneNum")).intValue();
+        String password = (String) args.get("password");
 
-        return new Customer(UUID.randomUUID().toString(), name, email, address, phoneNum);
+        return new Customer(UUID.randomUUID().toString(), name, email, address, phoneNum, password);
     }
 
     private class InvalidOperationException extends Exception {

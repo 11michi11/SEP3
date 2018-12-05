@@ -10,8 +10,10 @@ import controller.ConfigurationLoader;
 import model.Book;
 import model.Customer;
 import model.DetailedBook;
+import model.LogInResponse;
 import org.springframework.stereotype.Component;
 
+import javax.security.auth.login.LoginException;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.net.Socket;
@@ -24,7 +26,7 @@ import java.util.Map;
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
-    private final String IP = ConfigurationLoader.getDbAddress();
+    private final String IP = "localhost";//ConfigurationLoader.getDbAddress();
     private Gson gson = new Gson();
 
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
@@ -110,12 +112,37 @@ public class DatabaseConnection implements DatabaseProxy {
         return sendMessage(request);
     }
 
+    @Override
+    public LogInResponse logIn(String email, String password) throws LoginException {
+        Map<String, Object> args = new HashMap<>();
+        args.put("email", email);
+        args.put("password", password);
+        Request request = new Request(Request.Operation.LogIn, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        return handleLogInResponse(response, status);
+    }
+
+    private LogInResponse handleLogInResponse(String response, ResponseStatus status) throws LoginException {
+        switch (status) {
+            case OK:
+                return getContent(response);
+            case Error:
+                String errorMsg = getContent(response);
+                throw new LoginException("Database returned error: " + errorMsg);
+            default:
+                throw new LoginException("Unknown response status: " + status);
+        }
+    }
+
     public String addCustomer(Customer customer){
         Map<String, Object> args = new HashMap<>();
         args.put("name", customer.getName());
         args.put("email", customer.getEmail());
         args.put("address", customer.getAddress());
         args.put("phoneNum", customer.getPhoneNum());
+        args.put("password", customer.getPassword());
 
         Request request = new Request(Request.Operation.RegisterCustomer, args);
 

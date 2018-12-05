@@ -31,15 +31,19 @@ class Registration extends Component {
                     <p>Name:
                     <Input type="text" value={this.state.value} onChange={this.handleSearch} name="registration" id="name" 
                     placeholder="name" /></p>
-                    <p></p>
+                    <p/>
+                    <p>Password:
+                    <Input type="password" value={this.state.value} onChange={this.handleSearch} name="password" id="password" placeholder="password" />
+                    </p>
+                    <p/>
                     <p>Email:
                     <Input type="text" value={this.state.value} onChange={this.handleSearch} name="registration" id="email" 
                     placeholder="email" /></p>
-                    <p></p>
+                    <p/>
                     <p>Address:
                     <Input type="text" value={this.state.value} onChange={this.handleSearch} name="registration" id="address" 
                     placeholder="address" /></p>
-                    <p></p>
+                    <p/>
                     <p>Phone number:
                     <Input type="text" value={this.state.value} onChange={this.handleSearch} name="registration" id="phoneNum" 
                     placeholder="phone number" /></p>
