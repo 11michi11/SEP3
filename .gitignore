@@ -132,10 +132,6 @@ Code/Java/Bookstore/nohup\.out
 
 Code/Library/\.idea/\.idea\.Library/\.idea/workspace\.xml
 
-*.dll
+Code/Java/BookService/\.idea/workspace\.xml
 
-*.pdb
-
-Code/Java/Bookstore/\.idea/libraries/
-
-Code/Java/Bookstore/\.idea/Bookstore\.iml
+Code/Java/Bookstore/\.idea/

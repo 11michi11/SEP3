@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "customer", schema = "public")
-public class Customer {
+public class Customer implements User {
 
     @Id @Column(name = "customerid")
     private String id;
@@ -37,6 +37,11 @@ public class Customer {
         this.address = address;
         this.phoneNum = phoneNum;
         this.password = password;
+    }
+
+    @Override
+    public boolean authenticate(String password) {
+        return this.password.equals(password);
     }
 
     public String getId() {
