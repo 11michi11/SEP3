@@ -17,9 +17,12 @@ class Home extends Component {
         e.preventDefault();
         
         // console.log(this.state.searchData);
-        // axios.get("http://localhost:8080/search?searchTerm="+this.state.searchData, {crossdomain: true})
+        // const agent = new https.Agent({
+        //     rejectUnauthorized: false
+        //   });
+        // axios.get("https://localhost:8080/search?searchTerm="+this.state.searchData, {crossdomain: true, httpsAgent: agent})
         // .then(res => {
-
+        //  
         
         //     console.log(res.data);
         // })

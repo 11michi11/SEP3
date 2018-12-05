@@ -5,6 +5,7 @@ controller\connection\DatabaseConnection$1.class
 model\BookStore.class
 controller\requests\CreateCustomer.class
 model\Institution.class
+controller\requests\MakeOrder.class
 model\Library.class
 controller\connection\DatabaseProxy.class
 controller\connection\Request.class
