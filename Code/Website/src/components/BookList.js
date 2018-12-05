@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios'
 import LoadingCanvas from './../canvas/LoadingCanvas'
+import https from 'https';
 
 class BookList extends Component {
     state = { 
@@ -12,11 +13,16 @@ class BookList extends Component {
      componentDidMount() {
         console.log(this.props.match.params.search_term);
         const {search_term} = this.props.match.params;
-        axios.get("http://localhost:8080/search?searchTerm="+search_term, {crossdomain: true})
+        const agent = new https.Agent({
+            rejectUnauthorized: false
+          });
+        axios.get("https://localhost:8080/search?searchTerm="+search_term, {
+            crossdomain: true,
+            httpsAgent: agent,
+            requestCert: false
+        })
         .then(res => {
-
-        
-            this.setState({books: res.data})
+           this.setState({books: res.data})
             console.log(res.data);
         })
      }

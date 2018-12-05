@@ -17,9 +17,12 @@ class Home extends Component {
         e.preventDefault();
         
         // console.log(this.state.searchData);
-        // axios.get("http://localhost:8080/search?searchTerm="+this.state.searchData, {crossdomain: true})
+        // const agent = new https.Agent({
+        //     rejectUnauthorized: false
+        //   });
+        // axios.get("https://localhost:8080/search?searchTerm="+this.state.searchData, {crossdomain: true, httpsAgent: agent})
         // .then(res => {
-
+        //  
         
         //     console.log(res.data);
         // })
@@ -57,7 +60,7 @@ class Home extends Component {
                                     placeholder="Book name, isbn, year, author etc." />
                                  </div>
                                 <div className="col-sm-2 p-1" >
-                                    <Button outline color="secondary" size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>More</Button>
+                                    <Button outline color="secondary" size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Advanced search</Button>
                                 </div>
                             </div>
                             <Collapse isOpen={this.state.collapse}>
