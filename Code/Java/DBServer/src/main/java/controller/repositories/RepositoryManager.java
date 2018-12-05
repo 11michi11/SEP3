@@ -155,5 +155,32 @@ public class RepositoryManager implements DBProxy {
         libraryAdminRepo.delete(admin);
     }
 
+    @Override
+    public User getUserByEmail(String email) throws UserNotFoundException {
+        User user = null;
+        try {
+            user = libraryAdminRepo.getByEmail(email);
+        } catch (LibraryAdminRepository.LibraryAdminNotFoundException ignored) {
+        }
+        try {
+            user = bookStoreAdminRepo.getByEmail(email);
+        } catch (BookStoreAdminRepository.BookStoreAdminNotFoundException ignored) {
+        }
+        try {
+            user = customerRepo.getByEmail(email);
+        } catch (CustomerRepository.CustomerNotFoundException ignored) {
+        }
 
+        if(user == null)
+            throw new UserNotFoundException("Email or password is incorrect");
+
+        return user;
+    }
+
+
+    public static class UserNotFoundException extends Exception {
+        public UserNotFoundException(String msg) {
+            super(msg);
+        }
+    }
 }
