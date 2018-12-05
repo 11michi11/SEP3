@@ -135,3 +135,7 @@ Code/Library/\.idea/\.idea\.Library/\.idea/workspace\.xml
 *.dll
 
 *.pdb
+
+Code/Java/Bookstore/\.idea/libraries/
+
+Code/Java/Bookstore/\.idea/Bookstore\.iml
