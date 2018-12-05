@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Controllers;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Schema;
 
 namespace Requests.Controllers
 {
@@ -17,13 +20,28 @@ namespace Requests.Controllers
        
         // GET search?searchTerm=Tolkien
         [HttpGet]
+        [Route("cookies")]
+        public ActionResult<string> Cookies()
+        {
+            var cookies = Request.Cookies;
+            var clientCookieValue = Request.Cookies["client_cookie"];
+//            var clientCookie = Request.Headers["client_cookie"].SingleOrDefault();
+//            string clientCookieValue = clientCookie["client_cookie"].Value;
+//            
+//            HttpResponseMessage response = Request.CreateResponse("Client cookie said - " + clientCookieValue);
+//
+            return Ok("Your cookie value: " + clientCookieValue);
+        }
+        
+        // GET search?searchTerm=Tolkien
+        [HttpGet]
         [Route("search")]
         public ActionResult<List<Book>> Search(string searchTerm)
         {
             return _libraryController.Search(searchTerm);
         }
 
-        // GET advancedSearch?year=2000
+        // GET advancedSearch?author=Tolkien&year=2000
         [HttpGet]
         [Route("advancedSearch")]
         public ActionResult<List<Book>> AdvancedSearch(string title, string author, int? year, string isbn, Category? category) {
