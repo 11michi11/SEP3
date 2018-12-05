@@ -50,4 +50,8 @@ public interface DBProxy {
 	void addLibraryAdministrator(String libraryID, String name, String email, String password) throws LibraryRepository.LibraryNotFoundException;
 
 	void addBookStoreAdministrator(String bookstoreID, String name, String email, String password) throws BookStoreRepository.BookStoreNotFoundException;
+
+    void deleteBookStoreAdministrator(String adminID) throws BookStoreRepository.BookStoreNotFoundException, BookStoreAdminRepository.BookStoreAdminNotFoundException;
+
+    void deleteLibraryAdministrator(String adminID) throws LibraryAdminRepository.LibraryAdminNotFoundException;
 }
