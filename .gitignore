@@ -125,3 +125,9 @@ pom.properties
 *.class
 
 Code/Java/DBServer/\.idea/
+
+Code/Java/BookService/nohup\.out
+
+Code/Java/Bookstore/nohup\.out
+
+Code/Library/\.idea/\.idea\.Library/\.idea/workspace\.xml
