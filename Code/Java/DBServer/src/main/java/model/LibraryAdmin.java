@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "libraryadmin", schema = "public")
-public class LibraryAdmin {
+public class LibraryAdmin implements User {
 
     @Id @Column(name = "adminid")
     private String adminId;
@@ -31,6 +31,11 @@ public class LibraryAdmin {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    @Override
+    public boolean authenticate(String password) {
+        return this.password.equals(password);
     }
 
     public String getAdminId() {
