@@ -2,6 +2,7 @@ package controller;
 
 import com.google.gson.internal.LinkedTreeMap;
 import communication.DBServer;
+import communication.LogInResponse;
 import communication.Request;
 import communication.Response;
 import controller.repositories.*;
@@ -384,7 +385,8 @@ public class Controller {
         if (!user.authenticate(password))
             throw new UserNotAuthenticated("Email or password is invalid");
 
-        return new Response(Response.Status.OK, user.getClass().getSimpleName()).toJson();
+        LogInResponse logInResponse = new LogInResponse("empty", user.getClass().getSimpleName());
+        return new Response(Response.Status.OK,logInResponse ).toJson();
     }
 
     private class InvalidOperationException extends Exception {

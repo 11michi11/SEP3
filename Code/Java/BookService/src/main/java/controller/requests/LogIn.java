@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
-import javax.security.auth.login.LoginException;
+
 
 @RestController
 public class LogIn implements ApplicationContextAware {
@@ -17,13 +17,26 @@ public class LogIn implements ApplicationContextAware {
 
 	@CrossOrigin
 	@GetMapping("/login")
-	public LogInResponse logIn(@RequestBody String email,@RequestBody String password) throws LoginException {
+	public LogInResponse logIn(@RequestBody LogInRequest logInData)  {
 		Controller controller = context.getBean(Controller.class);
-		return controller.logIn(email,password);
+		return controller.logIn(logInData.email,logInData.password);
 	}
 
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		context=(ConfigurableApplicationContext) applicationContext;
+	}
+
+	public static class LogInRequest{
+		public String email;
+		public String password;
+
+		public LogInRequest() {
+		}
+
+		public LogInRequest(String email, String password) {
+			this.email = email;
+			this.password = password;
+		}
 	}
 }
