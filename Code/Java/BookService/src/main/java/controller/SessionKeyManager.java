@@ -1,16 +1,13 @@
 package controller;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
 
 public class SessionKeyManager {
 	static HashMap<String,Calendar> sessionKeys = new HashMap<>();
 
 	public static String generateSK() {
 		String sessionKey = UUID.randomUUID().toString();
-		Calendar expirationDate = GregorianCalendar.getInstance();
+		Calendar expirationDate = GregorianCalendar.getInstance(TimeZone.getDefault());
 		expirationDate.add(Calendar.HOUR,1);
 		sessionKeys.put(sessionKey, expirationDate);
 		return sessionKey;
