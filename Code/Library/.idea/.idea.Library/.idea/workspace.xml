@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="efcb72c6-6c0c-4d14-bf05-cd7b0f951cf2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Java/BookService/src/main/java/controller/requests/CheckSessionKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/BookService/src/main/java/controller/requests/CheckSessionKey.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/SessionKeyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/SessionKeyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/Controllers.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Controllers.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/obj/Requests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Requests.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.packagespec.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,18 +17,20 @@
     <session id="-1580701117">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="1" />
+          <entry key="cs" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="1" />
+          <entry key="C#" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -55,19 +46,24 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs">
+        <entry file="file://$PROJECT_DIR$/Controllers/LibraryController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state>
               <folding>
-                <marker date="1544019639590" expanded="false" signature="6:47" ph="..." />
-                <marker date="1544019639590" expanded="true" signature="70:838" ph="{...}" />
-                <marker date="1544019639590" expanded="true" signature="107:836" ph="{...}" />
-                <marker date="1544019639590" expanded="true" signature="283:700" ph="{...}" />
-                <marker date="1544019639590" expanded="true" signature="392:546" ph="{...}" />
-                <marker date="1544019639590" expanded="true" signature="777:830" ph="{...}" />
+                <marker date="1543927626165" expanded="false" signature="6:92" ph="..." />
+                <marker date="1543927626165" expanded="true" signature="115:1321" ph="{...}" />
+                <marker date="1543927626165" expanded="true" signature="152:1319" ph="{...}" />
+                <marker date="1543927626165" expanded="true" signature="287:445" ph="{...}" />
+                <marker date="1543927626165" expanded="true" signature="310:435" ph="/* moved to Requests/Program.cs ... */" />
+                <marker date="1543927626165" expanded="true" signature="500:591" ph="{...}" />
+                <marker date="1543927626165" expanded="true" signature="652:691" ph="{...}" />
+                <marker date="1543927626165" expanded="true" signature="744:810" ph="{...}" />
+                <marker date="1543927626165" expanded="true" signature="924:1019" ph="{...}" />
+                <marker date="1543927626165" expanded="true" signature="1063:1111" ph="{...}" />
+                <marker date="1543927626165" expanded="true" signature="1154:1208" ph="{...}" />
+                <marker date="1543927626165" expanded="true" signature="1256:1313" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -79,7 +75,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/LibraryController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -94,9 +90,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="950" />
-    <option name="width" value="979" />
+    <option name="width" value="980" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
@@ -116,6 +112,12 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Resources" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
@@ -177,11 +179,12 @@
       <option name="presentableId" value="Default" />
       <updated>1544017582322</updated>
       <workItem from="1544017587453" duration="2274000" />
+      <workItem from="1544029791725" duration="87000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2274000" />
+    <option name="totallyTimeSpent" value="2361000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -193,20 +196,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12483221" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="NuGet" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Unit Tests" />
-      <window_info anchor="bottom" id="REST Client" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -214,18 +208,26 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Errors In Solution" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="bottom" id="NuGet" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="11" />
+      <window_info anchor="bottom" id="REST Client" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -241,17 +243,23 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs">
+    <entry file="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs" />
+    <entry file="file://$PROJECT_DIR$/Controllers/LibraryController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state>
           <folding>
-            <marker date="1544019639590" expanded="false" signature="6:47" ph="..." />
-            <marker date="1544019639590" expanded="true" signature="70:838" ph="{...}" />
-            <marker date="1544019639590" expanded="true" signature="107:836" ph="{...}" />
-            <marker date="1544019639590" expanded="true" signature="283:700" ph="{...}" />
-            <marker date="1544019639590" expanded="true" signature="392:546" ph="{...}" />
-            <marker date="1544019639590" expanded="true" signature="777:830" ph="{...}" />
+            <marker date="1543927626165" expanded="false" signature="6:92" ph="..." />
+            <marker date="1543927626165" expanded="true" signature="115:1321" ph="{...}" />
+            <marker date="1543927626165" expanded="true" signature="152:1319" ph="{...}" />
+            <marker date="1543927626165" expanded="true" signature="287:445" ph="{...}" />
+            <marker date="1543927626165" expanded="true" signature="310:435" ph="/* moved to Requests/Program.cs ... */" />
+            <marker date="1543927626165" expanded="true" signature="500:591" ph="{...}" />
+            <marker date="1543927626165" expanded="true" signature="652:691" ph="{...}" />
+            <marker date="1543927626165" expanded="true" signature="744:810" ph="{...}" />
+            <marker date="1543927626165" expanded="true" signature="924:1019" ph="{...}" />
+            <marker date="1543927626165" expanded="true" signature="1063:1111" ph="{...}" />
+            <marker date="1543927626165" expanded="true" signature="1154:1208" ph="{...}" />
+            <marker date="1543927626165" expanded="true" signature="1256:1313" ph="{...}" />
           </folding>
         </state>
       </provider>
