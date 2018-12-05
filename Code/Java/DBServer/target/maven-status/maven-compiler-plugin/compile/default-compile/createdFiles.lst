@@ -1,3 +1,4 @@
+controller\repositories\LibraryAdminRepository$LibraryAdminNotFoundException.class
 controller\repositories\LibraryRepository$LibraryNotFoundException.class
 controller\repositories\BookStorageRepository.class
 controller\repositories\LibraryOrderRepository.class
@@ -32,6 +33,7 @@ controller\repositories\BookStoreStorageRepository$BookAlreadyInBookStoreExcepti
 model\LibraryBook.class
 model\BookBridge.class
 communication\Request$Operation.class
+controller\repositories\LibraryAdminRepo.class
 model\Institution.class
 controller\repositories\RepositoryManager.class
 model\Library.class
@@ -41,6 +43,8 @@ controller\repositories\CustomerRepository$CustomerEmailException.class
 controller\repositories\BookRepository$BookNotFoundException.class
 controller\Controller$InvalidOperationException.class
 controller\repositories\LibraryRepo.class
+model\LibraryAdmin.class
+controller\repositories\LibraryAdminRepository.class
 controller\repositories\LibraryOrderRepo.class
 controller\repositories\BookStoreRepository$BookStoreNotFoundException.class
 communication\Request$RequestJsonFormatException.class
