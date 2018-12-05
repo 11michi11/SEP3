@@ -13,7 +13,7 @@ public class BookstoreMain {
 
         SessionKeyManager sessionKeyManager = context.getBean(SessionKeyManager.class);
         try {
-            System.out.println(sessionKeyManager.isSKValid("a168c083-c574-4113-ab99-1d82a3a1303c"));
+            System.out.println(sessionKeyManager.isSKValid("b0d934f2-c124-4392-8e01-7fe702027b1e"));
         } catch (SessionKeyManager.SessionKeyInvalidException e) {
             e.printStackTrace();
         }

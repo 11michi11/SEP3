@@ -16,7 +16,7 @@ import java.util.HashMap;
 @Component
 public class SessionKeyManager {
 
-	private HashMap<String, Calendar> sessionKeys;
+	private HashMap<String, Calendar> sessionKeys = new HashMap<>();
 	private static final String URL = "https://localhost:8080/checkSK/";
 
 	public boolean isSKValid(String sessionKey) throws SessionKeyInvalidException {
