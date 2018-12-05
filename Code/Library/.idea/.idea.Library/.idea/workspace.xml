@@ -4,19 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs" line="95" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efcb72c6-6c0c-4d14-bf05-cd7b0f951cf2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Java/BookService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/BookService/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Java/Bookstore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/Bookstore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/SessionKeyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/SessionKeyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.runtimeconfig.dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.csprojAssemblyReference.cache" afterDir="false" />
-    </list>
+    <list default="true" id="efcb72c6-6c0c-4d14-bf05-cd7b0f951cf2" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+            <state relative-caret-position="289">
+              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
               <folding>
                 <marker date="1544024775887" expanded="true" signature="6:163" ph="..." />
                 <marker date="1544024775887" expanded="true" signature="186:3604" ph="{...}" />
@@ -119,7 +107,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="950" />
     <option name="width" value="979" />
     <option name="height" value="1040" />
@@ -216,7 +204,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7017000" />
+    <option name="totallyTimeSpent" value="7287000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -228,7 +216,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
@@ -329,8 +317,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+        <state relative-caret-position="289">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
           <folding>
             <marker date="1544024775887" expanded="true" signature="6:163" ph="..." />
             <marker date="1544024775887" expanded="true" signature="186:3604" ph="{...}" />
