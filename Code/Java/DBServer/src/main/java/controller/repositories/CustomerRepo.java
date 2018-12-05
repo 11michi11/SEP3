@@ -9,4 +9,6 @@ public interface CustomerRepo {
     Customer get(String customerId) throws CustomerRepository.CustomerNotFoundException;
 
 	void delete(Customer customer);
+
+    Customer getByEmail(String email) throws CustomerRepository.CustomerNotFoundException;
 }

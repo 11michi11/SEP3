@@ -50,6 +50,26 @@ public class LibraryAdminRepository implements LibraryAdminRepo {
         HibernateAdapter.deleteObject(admin);
     }
 
+    @Override
+    public LibraryAdmin getByEmail(String email) throws LibraryAdminNotFoundException {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            LibraryAdmin admin = (LibraryAdmin) session.createQuery("FROM LibraryAdmin where email like :email").setParameter("email", email).getSingleResult();
+            tx.commit();
+            if (admin == null)
+                throw new LibraryAdminNotFoundException("There is no library admin with email: " + email);
+            return admin;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } catch (javax.persistence.NoResultException e) {
+            throw new LibraryAdminNotFoundException("There is no library admin with email: " + email);
+        }
+        throw new LibraryAdminNotFoundException("There is no library admin with email: " + email);
+
+    }
+
     public class LibraryAdminNotFoundException extends Throwable {
         public LibraryAdminNotFoundException(String msg) {
             super(msg);

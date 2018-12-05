@@ -9,4 +9,5 @@ public interface LibraryAdminRepo {
     void add(LibraryAdmin admin);
     void delete(LibraryAdmin admin);
 
+    LibraryAdmin getByEmail(String email) throws LibraryAdminRepository.LibraryAdminNotFoundException;
 }
