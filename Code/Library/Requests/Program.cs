@@ -20,6 +20,8 @@ namespace Requests
             LibraryController.GetInstance().SetDatabaseProxy(new DatabaseProxy());
 //            LibraryController.GetInstance().SetDatabaseProxy(new MockDatabaseProxy());
             CreateWebHostBuilder(args).Build().Run();
+            var msg = SessionKeyManager.IsSkValid("3b89713c-b3f7-4e78-845b-367f0a038f67");
+            Console.Write(msg);
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
