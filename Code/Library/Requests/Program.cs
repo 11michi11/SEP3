@@ -20,8 +20,10 @@ namespace Requests
             LibraryController.GetInstance().SetDatabaseProxy(new DatabaseProxy());
 //            LibraryController.GetInstance().SetDatabaseProxy(new MockDatabaseProxy());
             CreateWebHostBuilder(args).Build().Run();
-            var msg = SessionKeyManager.IsSkValid("3b89713c-b3f7-4e78-845b-367f0a038f67");
-            Console.Write(msg);
+//            Console.Write("Waiting");
+//            System.Threading.Thread.Sleep(5000);
+//            var msg = SessionKeyManager.IsSkValid("74e1f8f3-73f9-41d0-bce8-6efa9f704acd");
+//            Console.Write(msg);
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
