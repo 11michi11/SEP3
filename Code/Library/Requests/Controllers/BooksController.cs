@@ -51,7 +51,10 @@ namespace Requests.Controllers
         // GET bookDetails/isbn
         [HttpGet]
         [Route("bookDetails/{isbn}")]
-        public ActionResult<string> BookDetails(string isbn) {
+        public ActionResult<string> BookDetails(string isbn)
+        {
+            //get session key from cookie
+            Console.WriteLine(SessionKeyManager.IsSkValid("dd382d29-1cb5-4e34-baac-e7aa79cb0d51"));
             return _libraryController.BookDetails(isbn);
         }
 
