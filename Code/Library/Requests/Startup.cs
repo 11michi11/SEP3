@@ -34,7 +34,6 @@ namespace Requests {
                 app.UseHsts(); 
             }
 
-            // commented in order to avoid security issues with "https"
             app.UseHttpsRedirection();
 
             // route configuration for advanced search
