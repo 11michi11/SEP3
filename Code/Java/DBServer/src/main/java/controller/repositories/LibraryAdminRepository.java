@@ -22,7 +22,7 @@ public class LibraryAdminRepository implements LibraryAdminRepo {
     }
 
     @Override
-    public LibraryAdmin get(String id) throws LibraryAdminNotFoundException {
+    public LibraryAdmin getLibraryAdmin(String id) throws LibraryAdminNotFoundException {
         Transaction tx = null;
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
