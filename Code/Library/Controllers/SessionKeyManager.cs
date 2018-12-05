@@ -25,7 +25,7 @@ namespace Controllers
 
         private static DateTime CheckInBookService(string sessionKey)
         {
-            return DateTime.Now;
+            
         }
     }
 }
