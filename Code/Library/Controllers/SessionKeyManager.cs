@@ -50,12 +50,9 @@ namespace Controllers
 
         private static string MakeRequest(string url)
         {
-            WebRequest request = WebRequest.Create(url);
-            request.Credentials = CredentialCache.DefaultCredentials;
-
-            //allows for validation of SSL certificates 
-            ServicePointManager.SecurityProtocol = (SecurityProtocolType) 48 | (SecurityProtocolType) 192 | (SecurityProtocolType) 768 | (SecurityProtocolType) 3072
-                                                   | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.ServerCertificateValidationCallback = delegate { return true; };
 
             
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();

@@ -135,3 +135,13 @@ Code/Library/\.idea/\.idea\.Library/\.idea/workspace\.xml
 Code/Java/BookService/\.idea/workspace\.xml
 
 Code/Java/Bookstore/\.idea/
+
+Code/Library/Controllers/obj/
+
+Code/Library/\.idea/\.idea\.Library/\.idea/
+
+Code/Library/Models/obj/Debug/netstandard2\.0/
+
+Code/Library/Models/obj/
+
+Code/Library/Requests/obj/Debug/netcoreapp2\.1/
