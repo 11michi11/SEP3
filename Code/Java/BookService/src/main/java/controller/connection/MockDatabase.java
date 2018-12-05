@@ -3,7 +3,9 @@ package controller.connection;
 import model.Book;
 import model.Customer;
 import model.DetailedBook;
+import model.LogInResponse;
 
+import javax.security.auth.login.LoginException;
 import java.lang.reflect.Array;
 import java.util.LinkedList;
 import java.util.List;
@@ -40,6 +42,11 @@ public class MockDatabase implements DatabaseProxy {
 	@Override
 	public String buyBook(String isbn, String bookstoreID, String customerID) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public LogInResponse logIn(String email, String password) throws LoginException {
 		return null;
 	}
 }

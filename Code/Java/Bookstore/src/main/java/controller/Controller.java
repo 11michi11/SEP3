@@ -40,8 +40,7 @@ public class Controller {
     public static void main(String[] args) {
         DatabaseConnection db = new DatabaseConnection();
         Controller controller = new Controller(db);
-        Book book = new Book("isbn21354", "title", "author", 23, Book.Category.Fantasy);
-        System.out.println(controller.addBook(book));
+
     }
 
 
