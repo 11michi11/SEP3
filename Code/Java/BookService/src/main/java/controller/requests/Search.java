@@ -1,9 +1,7 @@
 package controller.requests;
 
 import controller.Controller;
-import controller.connection.DatabaseConnection;
 import model.Book;
-
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
