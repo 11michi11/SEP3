@@ -2,36 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3149b73a-d434-4f7b-8813-3ffa53740807" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../DBServer/resources/model.Book/_21.cfe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBServer/resources/model.Book/_21.cfs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBServer/resources/model.Book/_21.si" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBServer/resources/model.Book/segments_3t" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Library/Requests/obj/Requests.csproj.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Library/Requests/obj/Requests.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Library/Requests/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Library/Requests/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Library/Tests/obj/Debug/netcoreapp2.1/Tests.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Library/Tests/obj/Debug/netcoreapp2.1/Tests.csprojAssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Library/Tests/obj/Tests.csproj.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Library/Tests/obj/Tests.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Library/Tests/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Library/Tests/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SessionKeyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SessionKeyManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/connection/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/connection/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Bookstore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bookstore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bookstore/src/main/java/controller/SessionKeyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Bookstore/src/main/java/controller/SessionKeyManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bookstore/src/main/java/controller/requests/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Bookstore/src/main/java/controller/requests/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DBServer/DBServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../DBServer/DBServer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1v.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/segments_3s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/segments_1v" beforeDir="false" afterPath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/segments_1x" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DBServer/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DBServer/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DBServer/src/test/ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DBServer/src/test/ControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Library/Controllers/SessionKeyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Controllers/SessionKeyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Library/Requests/Controllers/BooksController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Requests/Controllers/BooksController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Docs/Process_Report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Docs/Process_Report.docx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,11 +14,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Search.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/Search.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="37">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MakeOrder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/MakeOrder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="16" column="136" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="136" />
+            <state relative-caret-position="286">
+              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -73,8 +56,8 @@
       <file leaf-file-name="SessionKeyManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/SessionKeyManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+            <state relative-caret-position="572">
+              <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -354,7 +337,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14763000" />
+    <option name="totallyTimeSpent" value="15729000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-7" width="1550" height="838" extended-state="6" />
@@ -622,13 +605,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/CreateCustomer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/cors/CORSFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="61">
@@ -666,13 +642,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/connection/MockDatabase.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/Search.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/advices/SessionKeyExeptionAdvice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -725,13 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/MakeOrder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="16" column="136" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="136" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/connection/DatabaseProxy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="89">
@@ -756,10 +718,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/CreateCustomer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/MakeOrder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/Search.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/SessionKeyManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        <state relative-caret-position="572">
+          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
         </state>
       </provider>
     </entry>
