@@ -4,6 +4,7 @@ import controller.DBProxy;
 import model.*;
 
 import java.util.List;
+import java.util.UUID;
 
 public class RepositoryManager implements DBProxy {
 
@@ -16,6 +17,8 @@ public class RepositoryManager implements DBProxy {
     private CustomerRepo customerRepo;
     private LibraryOrderRepo libraryOrderRepo;
     private BookStoreOrderRepo bookStoreOrderRepo;
+    private LibraryAdminRepo libraryAdminRepo;
+    private BookStoreAdminRepo bookStoreAdminRepo;
 
     private static RepositoryManager ourInstance = new RepositoryManager();
 
@@ -33,6 +36,8 @@ public class RepositoryManager implements DBProxy {
         customerRepo = CustomerRepository.getInstance();
         libraryOrderRepo = LibraryOrderRepository.getInstance();
         bookStoreOrderRepo = BookStoreOrderRepository.getInstance();
+        libraryAdminRepo = LibraryAdminRepository.getInstance();
+        bookStoreAdminRepo = BookStoreAdminRepository.getInstance();
 
     }
 
@@ -120,5 +125,62 @@ public class RepositoryManager implements DBProxy {
     @Override
     public void buyBook(String isbn, String bookstoreId, String customerId) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, CustomerRepository.CustomerNotFoundException, BookStoreRepository.BookStoreNotFoundException {
         bookStoreOrderRepo.add(isbn, bookstoreId, customerId);
+    }
+
+    @Override
+    public void addLibraryAdministrator(String libraryID, String name, String email, String password) throws LibraryRepository.LibraryNotFoundException {
+        Library library = libraryRepo.get(libraryID);
+        String id = UUID.randomUUID().toString();
+        LibraryAdmin admin = new LibraryAdmin(id, library, name, email, password);
+        libraryAdminRepo.add(admin);
+    }
+
+    @Override
+    public void addBookStoreAdministrator(String bookstoreID, String name, String email, String password) throws BookStoreRepository.BookStoreNotFoundException {
+        BookStore bookStore = bookStoreRepo.get(bookstoreID);
+        String id = UUID.randomUUID().toString();
+        BookStoreAdmin admin = new BookStoreAdmin(id, bookStore, name, email, password);
+        bookStoreAdminRepo.add(admin);
+    }
+
+    @Override
+    public void deleteBookStoreAdministrator(String adminID) throws BookStoreAdminRepository.BookStoreAdminNotFoundException {
+        BookStoreAdmin admin = bookStoreAdminRepo.getBookstoreAdmin(adminID);
+        bookStoreAdminRepo.delete(admin);
+    }
+
+    @Override
+    public void deleteLibraryAdministrator(String adminID) throws LibraryAdminRepository.LibraryAdminNotFoundException {
+        LibraryAdmin admin = libraryAdminRepo.getLibraryAdmin(adminID);
+        libraryAdminRepo.delete(admin);
+    }
+
+    @Override
+    public User getUserByEmail(String email) throws UserNotFoundException {
+        User user = null;
+        try {
+            user = libraryAdminRepo.getByEmail(email);
+        } catch (LibraryAdminRepository.LibraryAdminNotFoundException ignored) {
+        }
+        try {
+            user = bookStoreAdminRepo.getByEmail(email);
+        } catch (BookStoreAdminRepository.BookStoreAdminNotFoundException ignored) {
+        }
+        try {
+            user = customerRepo.getByEmail(email);
+        } catch (CustomerRepository.CustomerNotFoundException ignored) {
+        }
+
+        if(user == null)
+            throw new UserNotFoundException("Email or password is incorrect");
+
+        return user;
+    }
+
+
+    public static class UserNotFoundException extends Exception {
+        public UserNotFoundException(String msg) {
+            super(msg);
+        }
     }
 }

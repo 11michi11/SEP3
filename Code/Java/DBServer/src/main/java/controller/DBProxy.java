@@ -46,4 +46,14 @@ public interface DBProxy {
     void borrowBook(String isbn,String libraryID, String customerID) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException, LibraryRepository.LibraryNotFoundException;
 
 	void buyBook(String isbn, String bookstoreId, String customerId) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, CustomerRepository.CustomerNotFoundException, BookStoreRepository.BookStoreNotFoundException;
+
+	void addLibraryAdministrator(String libraryID, String name, String email, String password) throws LibraryRepository.LibraryNotFoundException;
+
+	void addBookStoreAdministrator(String bookstoreID, String name, String email, String password) throws BookStoreRepository.BookStoreNotFoundException;
+
+    void deleteBookStoreAdministrator(String adminID) throws BookStoreRepository.BookStoreNotFoundException, BookStoreAdminRepository.BookStoreAdminNotFoundException;
+
+    void deleteLibraryAdministrator(String adminID) throws LibraryAdminRepository.LibraryAdminNotFoundException;
+
+    User getUserByEmail(String email) throws RepositoryManager.UserNotFoundException;
 }

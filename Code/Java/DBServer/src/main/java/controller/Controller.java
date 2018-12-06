@@ -2,11 +2,13 @@ package controller;
 
 import com.google.gson.internal.LinkedTreeMap;
 import communication.DBServer;
+import communication.LogInResponse;
 import communication.Request;
 import communication.Response;
 import controller.repositories.*;
 import model.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -58,17 +60,27 @@ public class Controller {
                     return handleLibraryBookDetails(request);
                 case MakeLibraryOrder:
                     return handleMakeLibraryOrder(request);
-	            case MakeBookStoreOrder:
-	            	return handleMakeBookstoreOrder(request);
+                case MakeBookStoreOrder:
+                    return handleMakeBookstoreOrder(request);
+                case AddBookStoreAdministrator:
+                    return handleAddBookStoreAdministrator(request);
+                case AddLibraryAdministrator:
+                    return handleAddLibraryAdministrator(request);
+                case DeleteBookStoreAdministrator:
+                    return handleDeleteBookStoreAdministrator(request);
+                case DeleteLibraryAdministrator:
+                    return handleDeleteLibraryAdministrator(request);
+                case Authenticate:
+                    return handleAuthenticate(request);
             }
             throw new InvalidOperationException("Wrong operation");
-        } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException e) {
+        } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException | BookStoreAdminRepository.BookStoreAdminNotFoundException | LibraryAdminRepository.LibraryAdminNotFoundException | RepositoryManager.UserNotFoundException | UserNotAuthenticated e) {
             //send error
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
     }
 
-	public String handleSearch(Request request) {
+    public String handleSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
         String searchTerm = (String) arguments.get("searchTerm");
 
@@ -293,16 +305,16 @@ public class Controller {
         return new Response(Response.Status.OK, "Added").toJson();
     }
 
-	private String handleMakeBookstoreOrder(Request request) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, BookStoreRepository.BookStoreNotFoundException, CustomerRepository.CustomerNotFoundException {
-		Map<String, Object> arguments = request.getArguments();
+    private String handleMakeBookstoreOrder(Request request) throws BookStoreStorageRepository.BookStoreStorageNotFoundException, BookStoreRepository.BookStoreNotFoundException, CustomerRepository.CustomerNotFoundException {
+        Map<String, Object> arguments = request.getArguments();
         String isbn = (String) arguments.get("isbn");
         String bookstoreId = (String) arguments.get("bookstoreId");
         String customerId = (String) arguments.get("customerId");
 
-		db.buyBook(isbn, bookstoreId, customerId);
-		return new Response(Response.Status.OK, "Added").toJson();
+        db.buyBook(isbn, bookstoreId, customerId);
+        return new Response(Response.Status.OK, "Added").toJson();
 
-	}
+    }
 
     private String handleRegisterCustomer(Request request) {
         Customer customer = createCustomerFromArguments(request.getArguments());
@@ -325,8 +337,67 @@ public class Controller {
         return new Customer(UUID.randomUUID().toString(), name, email, address, phoneNum, password);
     }
 
+    private String handleAddLibraryAdministrator(Request request) throws LibraryRepository.LibraryNotFoundException {
+        Map<String, Object> args = request.getArguments();
+        String libraryId = (String) args.get("libraryId");
+        String name = (String) args.get("name");
+        String email = (String) args.get("email");
+        String password = (String) args.get("password");
+
+
+        db.addLibraryAdministrator(libraryId, name, email, password);
+        return new Response(Response.Status.OK, "Library administrator created").toJson();
+    }
+
+    private String handleAddBookStoreAdministrator(Request request) throws BookStoreRepository.BookStoreNotFoundException {
+        Map<String, Object> args = request.getArguments();
+        String bookstoreId = (String) args.get("bookstoreId");
+        String name = (String) args.get("name");
+        String email = (String) args.get("email");
+        String password = (String) args.get("password");
+
+        db.addBookStoreAdministrator(bookstoreId, name, email, password);
+        return new Response(Response.Status.OK, "Bookstore administrator created").toJson();
+    }
+
+    private String handleDeleteLibraryAdministrator(Request request) throws LibraryAdminRepository.LibraryAdminNotFoundException {
+        Map<String, Object> args = request.getArguments();
+        String adminId = (String) args.get("adminId");
+
+        db.deleteLibraryAdministrator(adminId);
+        return new Response(Response.Status.OK, "Bookstore administrator deleted").toJson();
+    }
+
+    private String handleDeleteBookStoreAdministrator(Request request) throws BookStoreRepository.BookStoreNotFoundException, BookStoreAdminRepository.BookStoreAdminNotFoundException {
+        Map<String, Object> args = request.getArguments();
+        String adminId = (String) args.get("adminId");
+
+        db.deleteBookStoreAdministrator(adminId);
+        return new Response(Response.Status.OK, "Bookstore administrator deleted").toJson();
+    }
+
+    private String handleAuthenticate(Request request) throws RepositoryManager.UserNotFoundException, UserNotAuthenticated {
+        Map<String, Object> args = request.getArguments();
+        String email = (String) args.get("email");
+        String password = (String) args.get("password");
+
+        User user = db.getUserByEmail(email);
+        if (!user.authenticate(password))
+            throw new UserNotAuthenticated("Email or password is invalid");
+
+        LogInResponse logInResponse = new LogInResponse("empty", user.getClass().getSimpleName());
+        return new Response(Response.Status.OK,logInResponse ).toJson();
+    }
+
     private class InvalidOperationException extends Exception {
+
         InvalidOperationException(String msg) {
+            super(msg);
+        }
+    }
+
+    private class UserNotAuthenticated extends Throwable {
+        public UserNotAuthenticated(String msg) {
             super(msg);
         }
     }

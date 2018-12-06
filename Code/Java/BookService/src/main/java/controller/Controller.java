@@ -9,14 +9,12 @@ import model.LogInResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.security.auth.login.LoginException;
 import java.util.List;
 
 @Component
 public class Controller {
 
     private DatabaseProxy db;
-    private Gson gson = new Gson();
 
     @Autowired
     Controller(DatabaseProxy db) {
@@ -53,7 +51,7 @@ public class Controller {
         return db.buyBook(isbn, bookstoreID, customerID);
     }
 
-	public LogInResponse logIn(String email, String password) throws LoginException {
+	public LogInResponse logIn(String email, String password) throws DatabaseConnection.LoginException {
         LogInResponse logInResponse = db.logIn(email,password);
         logInResponse.setSessionKey(SessionKeyManager.generateSK());
         return logInResponse;
