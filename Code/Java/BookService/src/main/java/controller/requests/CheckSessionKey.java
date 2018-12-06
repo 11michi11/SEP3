@@ -1,6 +1,5 @@
 package controller.requests;
 
-import controller.Controller;
 import controller.SessionKeyManager;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -11,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.TimeZone;
 
 @RestController
 public class CheckSessionKey implements ApplicationContextAware {
@@ -20,8 +21,13 @@ public class CheckSessionKey implements ApplicationContextAware {
 
 	@CrossOrigin
 	@GetMapping("/checkSK/{sessionKey}")
-	public Calendar checkSK(@PathVariable String sessionKey) {
-		return SessionKeyManager.checkSK(sessionKey);
+	public String checkSK(@PathVariable String sessionKey) {
+		Calendar calendar = SessionKeyManager.checkSKFromInstitution(sessionKey);
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
+		sdf.setTimeZone(TimeZone.getDefault());
+		System.out.println(calendar.getTime());
+		return sdf.format(calendar.getTime());
 	}
 
 	@Override

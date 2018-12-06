@@ -2,10 +2,8 @@ package controller.connection;
 
 import model.Book;
 import model.Customer;
-import model.DetailedBook;
 import model.LogInResponse;
 
-import javax.security.auth.login.LoginException;
 import java.util.List;
 
 public interface DatabaseProxy {
@@ -16,5 +14,5 @@ public interface DatabaseProxy {
 	String borrowBook(String bookID, String libraryID, String customerID);
 	String buyBook(String isbn, String bookstoreID, String customerID);
 
-	LogInResponse logIn(String email, String password) throws LoginException;
+	LogInResponse logIn(String email, String password) throws DatabaseConnection.LoginException;
 }
