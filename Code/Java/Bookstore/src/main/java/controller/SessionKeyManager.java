@@ -21,7 +21,7 @@ public class SessionKeyManager {
 	private HashMap<String, Calendar> sessionKeys = new HashMap<>();
 	private static final String URL = "https://localhost:8080/checkSK/";
 
-	public boolean isSKValid(String sessionKey) throws SessionKeyInvalidException {
+	public void isSessionKeyValid(String sessionKey) throws SessionKeyInvalidException {
 		Calendar expirationDate = sessionKeys.get(sessionKey);
 		if (expirationDate == null) {
 			expirationDate = checkInBookService(sessionKey);
@@ -30,7 +30,8 @@ public class SessionKeyManager {
 
 		Calendar now = GregorianCalendar.getInstance(TimeZone.getDefault());
 		System.out.println(now.getTime());
-		return now.before(expirationDate);
+		if (!now.before(expirationDate))
+			throw new SessionKeyInvalidException("The session key is not valid. Session can not be authenticated");
 	}
 
 	private Calendar checkInBookService(String sessionKey) throws SessionKeyInvalidException {
@@ -131,8 +132,7 @@ public class SessionKeyManager {
 	}
 
 
-
-	public static class SessionKeyInvalidException extends Exception{
+	public static class SessionKeyInvalidException extends RuntimeException{
 		public SessionKeyInvalidException(String msg) {
 			super(msg);
 		}
