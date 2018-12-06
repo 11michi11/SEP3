@@ -35,11 +35,10 @@ class BookList extends Component {
           return (
             <div key={b.isbn} className="card">
               <div className="card-body">
-                <Link to={"/books/" + b.isbn}>
-                  <h5 className="card-title">
-                    <Link to={"/details/" + b.isbn}>{b.title}</Link>
-                  </h5>
-                </Link>
+                <h5 className="card-title">
+                  <Link to={"/details/" + b.isbn}>{b.title}</Link>
+                </h5>
+
                 <div className="card-subtitle text-muted">
                   {b.author} ({b.year}) /{" "}
                   <span className=" text-danger">{b.category}</span>

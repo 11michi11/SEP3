@@ -63,7 +63,13 @@ class Home extends Component {
                                     <Button outline color="secondary" size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Advanced search</Button>
                                 </div>
                             </div>
-                            <Collapse isOpen={this.state.collapse}>
+                            
+                            <p/>
+
+                            <Button color="primary" size="sm"  onClick={e => this.handleSubmit(e)}>Search</Button>
+                            </FormGroup>
+                        </Form>
+                        <Collapse isOpen={this.state.collapse}>
                                 <Card>
                                  <CardBody>
                                     <Form>
@@ -87,11 +93,6 @@ class Home extends Component {
                                 </CardBody>
                                 </Card>
                             </Collapse>
-                            <p/>
-
-                            <Button color="primary" size="sm"  onClick={e => this.handleSubmit(e)}>Search</Button>
-                            </FormGroup>
-                        </Form>
                     </div>
                 </div>
             </div> 
