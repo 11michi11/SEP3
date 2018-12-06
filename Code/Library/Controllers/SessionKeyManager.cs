@@ -58,18 +58,21 @@ namespace Controllers
             request.ServerCertificateValidationCallback = delegate { return true; };
 
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            try
+            {
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            string responseFromServer = reader.ReadToEnd();
+                Stream dataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(dataStream);
+                string responseFromServer = reader.ReadToEnd();
 
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
+                return responseFromServer;
+            }
+            catch (WebException e)
             {
                 throw new SessionKeyInvalidException("Session is invalid");
             }
-
-            return responseFromServer;
+           
         }
 
 //        private static async Task<string> MakeRequest(string url)
@@ -92,7 +95,7 @@ namespace Controllers
 //        }
     }
 
-    internal class SessionKeyInvalidException : Exception
+    public class SessionKeyInvalidException : Exception
     {
         public SessionKeyInvalidException(string msg) : base(msg){}
     }
