@@ -1,6 +1,7 @@
 package controller.requests;
 
 import controller.Controller;
+import controller.SessionKeyManager;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -14,7 +15,8 @@ public class BookDetails implements ApplicationContextAware {
 
     @CrossOrigin
     @GetMapping("/bookDetails/{isbn}")
-    public String getBookDetails(@PathVariable String isbn){
+    public String getBookDetails(@PathVariable String isbn, @CookieValue("sessionKey") String sessionKey){
+        SessionKeyManager.checkSessionKey(sessionKey);
         Controller controller=context.getBean(Controller.class);
         return controller.getBookDetails(isbn);
     }
