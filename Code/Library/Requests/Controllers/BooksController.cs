@@ -18,19 +18,24 @@ namespace Requests.Controllers
     {
         private readonly LibraryController _libraryController = LibraryController.GetInstance();
        
-        // GET search?searchTerm=Tolkien
-        [HttpGet]
-        [Route("cookies")]
-        public ActionResult<string> Cookies()
+        private bool CheckSessionKey()
         {
-            var cookies = Request.Cookies;
-            var clientCookieValue = Request.Cookies["client_cookie"];
-//            var clientCookie = Request.Headers["client_cookie"].SingleOrDefault();
-//            string clientCookieValue = clientCookie["client_cookie"].Value;
-//            
-//            HttpResponseMessage response = Request.CreateResponse("Client cookie said - " + clientCookieValue);
-//
-            return Ok("Your cookie value: " + clientCookieValue);
+            var sessionKeyFromClient = Request.Cookies["sessionKey"];
+            try
+            {
+                if (sessionKeyFromClient != null && SessionKeyManager.IsSkValid(sessionKeyFromClient))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (SessionKeyInvalidException e)
+            {
+                return false;
+            }
         }
         
         // GET search?searchTerm=Tolkien
@@ -38,14 +43,28 @@ namespace Requests.Controllers
         [Route("search")]
         public ActionResult<List<Book>> Search(string searchTerm)
         {
-            return _libraryController.Search(searchTerm);
+            if (CheckSessionKey())
+            {
+                return _libraryController.Search(searchTerm); 
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
 
         // GET advancedSearch?author=Tolkien&year=2000
         [HttpGet]
         [Route("advancedSearch")]
         public ActionResult<List<Book>> AdvancedSearch(string title, string author, int? year, string isbn, Category? category) {
-            return _libraryController.AdvancedSearch(title, author,year, isbn,category);
+            if (CheckSessionKey())
+            {
+                return _libraryController.AdvancedSearch(title, author,year, isbn,category);
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
 
         // GET bookDetails/isbn
@@ -53,9 +72,14 @@ namespace Requests.Controllers
         [Route("bookDetails/{isbn}")]
         public ActionResult<string> BookDetails(string isbn)
         {
-            //get session key from cookie
-            Console.WriteLine(SessionKeyManager.IsSkValid("dd382d29-1cb5-4e34-baac-e7aa79cb0d51"));
-            return _libraryController.BookDetails(isbn);
+            if (CheckSessionKey())
+            {
+                return _libraryController.BookDetails(isbn);
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
 
 
@@ -64,13 +88,19 @@ namespace Requests.Controllers
         [Route("book")]
         public IActionResult CreateBook([FromBody] Book book)
         {
-            //for checking if book can be created
-            if(!ModelState.IsValid) {
-                return BadRequest(ModelState);
+            if (CheckSessionKey())
+            {
+                //for checking if book can be created
+                if(!ModelState.IsValid) {
+                    return BadRequest(ModelState);
+                }
+                _libraryController.CreateBook(book);
+                return Ok("Book created successfully");
             }
-            _libraryController.CreateBook(book);
-            return Ok("Book created successfully");
-            // return CreatedAtRoute("GetBook", new {id = book.Id}, book);
+            else
+            {
+                return Unauthorized();
+            }
         }
 
         // DELETE book/id
@@ -78,13 +108,20 @@ namespace Requests.Controllers
         [Route("book/{id}")]
         public IActionResult DeleteBook(string id)
         {
-            try {
-            _libraryController.DeleteBook(id);
-            } catch(NullReferenceException ex) {
-                return BadRequest("Book not found");
-            }
+            if (CheckSessionKey())
+            {
+                try {
+                    _libraryController.DeleteBook(id);
+                } catch(NullReferenceException ex) {
+                    return BadRequest("Book not found");
+                }
 
-            return Ok("Book deleted"); 
+                return Ok("Book deleted"); 
+            }
+            else
+            {
+                return Unauthorized();
+            }   
         }
     }
 }
