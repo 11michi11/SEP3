@@ -1,5 +1,6 @@
 controller\repositories\LibraryAdminRepository$LibraryAdminNotFoundException.class
 controller\repositories\LibraryRepository$LibraryNotFoundException.class
+controller\repositories\RepositoryManager$UserNotFoundException.class
 controller\repositories\BookStorageRepository.class
 controller\repositories\LibraryOrderRepository.class
 controller\repositories\BookStoreRepository.class
@@ -7,17 +8,21 @@ model\BookStoreOrder.class
 model\BookStore.class
 controller\repositories\LibraryStorageRepository.class
 model\DetailedBook$1.class
+communication\LogInResponse.class
+controller\repositories\BookStoreAdminRepository.class
 controller\repositories\BookStoreRepo.class
 controller\repositories\CustomerRepo.class
 controller\repositories\BookStoreStorageRepo.class
 controller\Controller$1.class
 communication\DBServer.class
 model\Customer.class
+model\User.class
 controller\repositories\LibraryStorageRepo.class
 model\LibraryStorage.class
 controller\repositories\CustomerRepository$CustomerNotFoundException.class
 controller\repositories\BookRepository.class
 controller\repositories\LibraryStorageRepository$BookAlreadyDeletedException.class
+controller\Controller$UserNotAuthenticated.class
 controller\HibernateAdapter.class
 controller\DBProxy.class
 controller\repositories\BookStoreOrderRepo.class
@@ -28,6 +33,7 @@ model\Book.class
 controller\repositories\LibraryRepository.class
 model\DetailedBook.class
 controller\repositories\BookRepo.class
+controller\repositories\BookStoreAdminRepository$BookStoreAdminNotFoundException.class
 controller\Controller.class
 controller\repositories\BookStoreStorageRepository$BookAlreadyInBookStoreException.class
 model\LibraryBook.class
@@ -35,6 +41,7 @@ model\BookBridge.class
 communication\Request$Operation.class
 controller\repositories\LibraryAdminRepo.class
 model\Institution.class
+controller\repositories\BookStoreAdminRepo.class
 controller\repositories\RepositoryManager.class
 model\Library.class
 communication\DBServer$HandleClient.class
@@ -53,6 +60,7 @@ controller\repositories\BookStoreStorageRepository.class
 controller\repositories\CustomerRepository.class
 communication\Response.class
 controller\repositories\BookStorageRepo.class
+model\BookStoreAdmin.class
 controller\repositories\BookStoreStorageRepository$BookStoreStorageNotFoundException.class
 model\LibraryOrder.class
 controller\repositories\LibraryStorageRepository$LibraryStorageNotFoundException.class

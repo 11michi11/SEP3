@@ -15,13 +15,16 @@ namespace Controllers
         
         public static bool IsSkValid(string sessionKey)
         {
-            var expirationDate = _sessionKeys[sessionKey];
-            if (expirationDate == null)
+            DateTime? expirationDate;
+            try
+            {
+                 expirationDate = _sessionKeys[sessionKey];
+            }catch(Exception e)
             {
                 expirationDate = CheckInBookService(sessionKey);
-               _sessionKeys.Add(sessionKey, expirationDate);
+                _sessionKeys.Add(sessionKey, expirationDate);
             }
-
+            
             var now = DateTime.Now;
             var compareValue = Nullable.Compare(expirationDate, now);
             return compareValue > 0;
@@ -32,7 +35,7 @@ namespace Controllers
             try
             {
                 var response = MakeRequest(Url + sessionKey);
-                var date = DateTime.ParseExact(response, "yyyy MMM dd HH:mm:ss", CultureInfo.InvariantCulture);
+                var date = DateTime.ParseExact(response, "yyyy MMM dd HH:mm:ss", null);
                 return date;
             }
             catch (ArgumentNullException ae)
@@ -53,10 +56,7 @@ namespace Controllers
             WebRequest request = WebRequest.Create(url);
             request.Credentials = CredentialCache.DefaultCredentials;
 
-            //allows for validation of SSL certificates 
-            ServicePointManager.SecurityProtocol = (SecurityProtocolType) 48 | (SecurityProtocolType) 192 | (SecurityProtocolType) 768 | (SecurityProtocolType) 3072
-                                                   | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream dataStream = response.GetResponseStream();

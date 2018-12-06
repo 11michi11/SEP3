@@ -29,7 +29,6 @@
         <e p="Resources" t="Include">
           <e p="ConfigurationLoader.cs" t="Include" />
         </e>
-        <e p="SessionKeyManager.cs" t="Include" />
       </e>
       <e p="Library.sln" t="IncludeFlat" />
       <e p="Models" t="IncludeRecursive">
