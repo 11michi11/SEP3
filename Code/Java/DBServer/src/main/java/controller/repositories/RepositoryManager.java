@@ -155,5 +155,10 @@ public class RepositoryManager implements DBProxy {
         libraryAdminRepo.delete(admin);
     }
 
+    @Override
+    public void confirmBookstoreOrder(String orderId) throws CustomerRepository.CustomerNotFoundException {
+        bookStoreOrderRepo.delete(orderId);
+    }
+
 
 }

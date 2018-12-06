@@ -54,4 +54,7 @@ public interface DBProxy {
     void deleteBookStoreAdministrator(String adminID) throws BookStoreRepository.BookStoreNotFoundException, BookStoreAdminRepository.BookStoreAdminNotFoundException;
 
     void deleteLibraryAdministrator(String adminID) throws LibraryAdminRepository.LibraryAdminNotFoundException;
+
+    void confirmBookstoreOrder(String orderId) throws CustomerRepository.CustomerNotFoundException;
+
 }

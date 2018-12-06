@@ -79,6 +79,8 @@ public class Controller {
 					return handleDeleteBookStoreAdministrator(request);
 				case DeleteLibraryAdministrator:
 					return handleDeleteLibraryAdministrator(request);
+				case ConfirmBookstoreOrder:
+					return handleConfirmBookstoreOrder(request);
 			}
 			throw new InvalidOperationException("Wrong operation");
 		} catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException | BookStoreAdminRepository.BookStoreAdminNotFoundException | LibraryAdminRepository.LibraryAdminNotFoundException e) {
@@ -381,6 +383,14 @@ public class Controller {
 
 		db.deleteBookStoreAdministrator(adminId);
 		return new Response(Response.Status.OK, "Bookstore administrator deleted").toJson();
+	}
+
+	private String handleConfirmBookstoreOrder(Request request) throws CustomerRepository.CustomerNotFoundException {
+		Map<String, Object> args = request.getArguments();
+		String orderId = (String) args.get("orderId");
+
+		db.confirmBookstoreOrder(orderId);
+		return new Response(Response.Status.OK, "Confirmation was successful").toJson();
 	}
 
 	private class InvalidOperationException extends Exception {
