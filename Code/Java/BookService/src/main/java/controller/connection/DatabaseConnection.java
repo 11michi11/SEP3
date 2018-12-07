@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
+import controller.ConfigurationLoader;
 import model.Book;
 import model.Customer;
 import model.LogInResponse;
@@ -22,7 +23,7 @@ import java.util.Map;
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
-    private final String IP = "localhost";//ConfigurationLoader.getDbAddress();
+    private final String IP = ConfigurationLoader.getDbAddress();
     private static Gson gson = new Gson();
 
     public List<Book> search(String searchTerm) throws ServerOfflineException, SearchException {
