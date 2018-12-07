@@ -22,7 +22,7 @@ public class CheckSessionKey implements ApplicationContextAware {
 	@CrossOrigin
 	@GetMapping("/checkSK/{sessionKey}")
 	public String checkSK(@PathVariable String sessionKey) {
-		Calendar calendar = SessionKeyManager.checkSK(sessionKey);
+		Calendar calendar = SessionKeyManager.checkSKFromInstitution(sessionKey);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
 		sdf.setTimeZone(TimeZone.getDefault());

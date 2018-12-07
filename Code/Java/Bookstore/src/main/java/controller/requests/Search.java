@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,8 +28,8 @@ public class Search implements ApplicationContextAware {
     }
 
     @RequestMapping("/search")
-    public List<Book> search(@RequestParam(value = "searchTerm") String searchTerm) {
-//        sessionKeyManager.isSKValid()
+    public List<Book> search(@RequestParam(value = "searchTerm") String searchTerm, @CookieValue("sessionKey") String sessionKey) throws SessionKeyManager.SessionKeyInvalidException {
+        sessionKeyManager.isSessionKeyValid(sessionKey);
 
         Controller controller = context.getBean(Controller.class);
         return controller.search(searchTerm);
@@ -39,7 +40,9 @@ public class Search implements ApplicationContextAware {
                                      @RequestParam(value = "author", defaultValue = "") String author,
                                      @RequestParam(value = "year", required = false) Integer year,
                                      @RequestParam(value = "isbn", defaultValue = "") String isbn,
-                                     @RequestParam(value = "category", required = false) Book.Category category) {
+                                     @RequestParam(value = "category", required = false) Book.Category category,
+                                     @CookieValue("sessionKey") String sessionKey) {
+        sessionKeyManager.isSessionKeyValid(sessionKey);
         Controller controller = context.getBean(Controller.class);
         if(year == null)
             year = 0;

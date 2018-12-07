@@ -27,13 +27,13 @@ public class BookStoreStorageRepoTest {
 
     @Test
     public void addBookToBookStore() {
-        Book book = new Book("isbn", "title", "author", 0, Book.Category.Empty);
+        Book book = new Book("testisbn", "title", "author", 0, Book.Category.Empty);
 
         try {
             String bookId = bookStoreStorageRepo.addBookToBookStore(book, BOOKSTORE_ID);
 
             bookStoreStorageRepo.deleteBookFromBookStore("testisbn", BOOKSTORE_ID);
-            bookRepo.delete("isbn");
+            bookRepo.delete("testisbn");
         } catch (BookStoreRepository.BookStoreNotFoundException e) {
             fail("No Bookstore");
         } catch (BookRepository.BookNotFoundException e) {
@@ -140,7 +140,7 @@ public class BookStoreStorageRepoTest {
         }
         assertEquals(books, bookStoreStorageRepo.advancedSearch(BOOKSTORE_ID, "isbn", "title", "author", 0, Book.Category.Empty));
         try {
-            bookStoreStorageRepo.deleteBookFromBookStore("testisbn", BOOKSTORE_ID);
+            bookStoreStorageRepo.deleteBookFromBookStore("isbn", BOOKSTORE_ID);
             bookRepo.delete("isbn");
         } catch (BookRepository.BookNotFoundException e) {
             fail("No Bookstore");
