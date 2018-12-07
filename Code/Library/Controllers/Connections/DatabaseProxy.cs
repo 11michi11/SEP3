@@ -144,6 +144,20 @@ namespace Controllers.Connections
             return GetContent(response);
         }
 
+        public void ReturnBook(string orderId)
+        {
+            var ar = new Dictionary<string, object>
+                {{"library", true}, {"id", LIBRARY_ID}, {"orderid", orderId}};
+
+            var request = new Request(Request.Operation.ReturnBook, ar);
+
+            Console.WriteLine($"Sending request: '{request.ToJSON()}'");
+            var response = SendMessage(request);
+
+            var status = GetResponseStatus(response);
+            Console.Write(status);
+        }
+
         protected enum ResponseStatus
         {
             OK,

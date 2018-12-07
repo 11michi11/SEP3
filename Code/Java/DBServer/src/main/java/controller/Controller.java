@@ -21,7 +21,7 @@ public class Controller {
         this.db = db;
         this.server = server;
         server.setController(this);
-       // server.start();
+        server.start();
     }
 
     public static void main(String[] args) {
@@ -71,7 +71,7 @@ public class Controller {
                     return handleDeleteLibraryAdministrator(request);
                 case Authenticate:
                     return handleAuthenticate(request);
-	            case ConfirmBookstoreOrder:
+	            case ConfirmBookStoreOrder:
 		            return handleConfirmBookstoreOrder(request);
             }
             throw new InvalidOperationException("Wrong operation");
@@ -375,7 +375,7 @@ public class Controller {
 	}
 
 
-	private class InvalidOperationException extends Exception {
+	public class InvalidOperationException extends Exception {
 
         InvalidOperationException(String msg) {
             super(msg);

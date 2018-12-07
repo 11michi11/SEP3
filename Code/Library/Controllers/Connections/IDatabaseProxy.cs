@@ -10,5 +10,6 @@ namespace Controllers.Connections
         void CreateBook(Book book);
         void DeleteBook(string bookid);
         string BookDetails(string isbn);
+        void ReturnBook(string orderId);
     }
 }
