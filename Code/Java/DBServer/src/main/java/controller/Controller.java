@@ -73,6 +73,8 @@ public class Controller {
                     return handleAuthenticate(request);
 	            case ConfirmBookStoreOrder:
 		            return handleConfirmBookstoreOrder(request);
+                case ReturnBook:
+                    return handleReturnBookRequest(request);
             }
             throw new InvalidOperationException("Wrong operation");
         } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException | BookStoreAdminRepository.BookStoreAdminNotFoundException | LibraryAdminRepository.LibraryAdminNotFoundException | RepositoryManager.UserNotFoundException | UserNotAuthenticated e) {
@@ -373,6 +375,14 @@ public class Controller {
 		db.confirmBookstoreOrder(orderId);
 		return new Response(Response.Status.OK, "Confirmation was successful").toJson();
 	}
+
+    private String handleReturnBookRequest(Request request) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException {
+        Map<String, Object> args = request.getArguments();
+        String orderId = (String) args.get("orderId");
+
+        db.returnBook(orderId);
+        return new Response(Response.Status.OK, "Book was returned successfully").toJson();
+    }
 
 
 	public class InvalidOperationException extends Exception {
