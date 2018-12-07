@@ -145,13 +145,13 @@ public class RepositoryManager implements DBProxy {
 
     @Override
     public void deleteBookStoreAdministrator(String adminID) throws BookStoreAdminRepository.BookStoreAdminNotFoundException {
-        BookStoreAdmin admin = bookStoreAdminRepo.getBookstoreAdmin(adminID);
+        BookStoreAdmin admin = bookStoreAdminRepo.get(adminID);
         bookStoreAdminRepo.delete(admin);
     }
 
     @Override
     public void deleteLibraryAdministrator(String adminID) throws LibraryAdminRepository.LibraryAdminNotFoundException {
-        LibraryAdmin admin = libraryAdminRepo.getLibraryAdmin(adminID);
+        LibraryAdmin admin = libraryAdminRepo.get(adminID);
         libraryAdminRepo.delete(admin);
     }
 
