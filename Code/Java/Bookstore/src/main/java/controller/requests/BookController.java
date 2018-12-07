@@ -25,18 +25,6 @@ public class BookController implements ApplicationContextAware {
        
        return controller.addBook(book);
     }
-    
-    @RequestMapping(method=RequestMethod.DELETE, value="/book/{isbn}")
-    public String deleteBook(@PathVariable String isbn, @CookieValue("sessionKey") String sessionKey) {
-        sessionKeyManager.isSessionKeyValid(sessionKey);
-    	Controller controller = context.getBean(Controller.class);
-    	return controller.deleteBook(isbn); 
-    	
-    }
-
-		return controller.addBook(book);
-
-	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/book/{isbn}")
 	public String deleteBook(@PathVariable String isbn, @CookieValue("sessionKey") String sessionKey) {
