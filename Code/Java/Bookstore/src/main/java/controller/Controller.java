@@ -36,12 +36,16 @@ public class Controller {
 		return db.deleteBook(isbn);
 	}
 
+	public String confirm(String orderId) {
+		return db.confirm(orderId);
+	}
 
     public static void main(String[] args) {
         DatabaseConnection db = new DatabaseConnection();
         Controller controller = new Controller(db);
 
     }
+
 
 
 }

@@ -24,7 +24,6 @@ public class BookController implements ApplicationContextAware {
         Controller controller = context.getBean(Controller.class);
        
        return controller.addBook(book);
-      
     }
     
     @RequestMapping(method=RequestMethod.DELETE, value="/book/{isbn}")

@@ -11,4 +11,6 @@ public interface DatabaseProxy {
 	List<Book> advancedSearch(String title, String author, int year, String isbn, Book.Category category) throws DatabaseConnection.ServerOfflineException, DatabaseConnection.SearchException;
 	String addBook(Book book);
 	String deleteBook(String isbn);
+
+	String confirm(String orderId);
 }
