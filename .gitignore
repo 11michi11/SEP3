@@ -157,3 +157,5 @@ Code/Library/Models/obj/
 Code/Library/Models/obj/
 
 Code/Library/Requests/obj/Debug/netcoreapp2\.1/
+
+*.cache
