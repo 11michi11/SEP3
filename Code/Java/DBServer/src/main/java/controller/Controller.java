@@ -71,7 +71,7 @@ public class Controller {
                     return handleDeleteLibraryAdministrator(request);
                 case Authenticate:
                     return handleAuthenticate(request);
-	            case ConfirmBookstoreOrder:
+	            case ConfirmBookStoreOrder:
 		            return handleConfirmBookstoreOrder(request);
             }
             throw new InvalidOperationException("Wrong operation");
