@@ -69,6 +69,7 @@ public class BookStoreStorageRepository implements BookStoreStorageRepo {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<BookStoreStorage> getStoragesByIsbnAndBookstore(String isbn, String bookstoreId) {
         Transaction tx = null;

@@ -26,7 +26,7 @@ public class BookStoreAdministratorRepoTest {
 		bookStoreAdminRepo.add(admin);
 
 		try {
-			assertEquals(admin, bookStoreAdminRepo.getBookstoreAdmin("adminID"));
+			assertEquals(admin, bookStoreAdminRepo.get("adminID"));
 		} catch (BookStoreAdminRepository.BookStoreAdminNotFoundException e) {
 			fail("Admin can not be added");
 		}
