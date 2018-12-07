@@ -48,5 +48,10 @@ namespace Controllers
 
             return _proxy.BookDetails(isbn);
         }
+
+        public void ReturnBook(string orderId)
+        {
+            _proxy.ReturnBook(orderId);
+        }
     }
 }
