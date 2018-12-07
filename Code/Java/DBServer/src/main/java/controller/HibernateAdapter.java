@@ -376,7 +376,7 @@ public class HibernateAdapter {
 
     public static void main(String[] args) throws InterruptedException {
 
-        HibernateAdapter.advancedSearchInLibrary("ce78ef57-77ec-4bb7-82a2-1a78d3789aef", "zzzzzzzzzzzzzzzzzzzzzzz", "zzzzzzzzzzzzzzzzzzzzzzz", "Tolkien", 0, Book.Category.Empty);
+        HibernateAdapter.searchInLibrary("testisbn","ce78ef57-77ec-4bb7-82a2-1a78d3789aef");
 
 //               HibernateAdapter.rebuildLuceneIndex();
     }
