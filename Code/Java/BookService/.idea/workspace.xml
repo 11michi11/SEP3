@@ -2,12 +2,100 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3149b73a-d434-4f7b-8813-3ffa53740807" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SessionKeyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SessionKeyManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/requests/CheckSessionKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/requests/CheckSessionKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Bookstore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bookstore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DBServer/DBServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../DBServer/DBServer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1.fdt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1.nvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1.nvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1_1.liv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1_Lucene50_0.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1_Lucene50_0.pos" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1_Lucene50_0.tim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_1_Lucene50_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_20.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_20.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_20.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_21.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_21.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/_21.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Book/segments_3t" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStore/_1.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStore/_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStore/_1.nvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStore/_1.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStore/_1_Lucene50_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStore/segments_2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_1.fdt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_1.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_1.nvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_1.nvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_1.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_1_Lucene50_0.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_1_Lucene50_0.pos" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_1_Lucene50_0.tim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_1_Lucene50_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_1g.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_9.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_9.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_9.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_e.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_e.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_e.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_f.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_f.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/_f.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.BookStoreStorage/segments_2t" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Library/_1.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Library/_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Library/_1.nvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Library/_1.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Library/_1_Lucene50_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.Library/segments_2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_12.fdt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_12.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_12.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_12.nvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_12.nvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_12.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_12_Lucene50_0.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_12_Lucene50_0.pos" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_12_Lucene50_0.tim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_12_Lucene50_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_13.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_13.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_13.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_14.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_14.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/_14.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/resources/model.LibraryStorage/segments_1x" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../DBServer/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DBServer/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/src/main/java/controller/HibernateAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DBServer/src/main/java/controller/HibernateAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/src/main/java/controller/repositories/LibraryStorageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DBServer/src/main/java/controller/repositories/LibraryStorageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/src/test/BookStoreOrderRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DBServer/src/test/BookStoreOrderRepoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBServer/src/test/BookStoreStorageRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DBServer/src/test/BookStoreStorageRepoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DBServer/src/test/ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DBServer/src/test/ControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/.idea/.idea.Library/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/.idea/.idea.Library/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/.idea/.idea.Library/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/.idea/.idea.Library/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Controllers/obj/Debug/netstandard2.0/Controllers.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Controllers/obj/Debug/netstandard2.0/Controllers.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Models/obj/Debug/netstandard2.0/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Models/obj/Debug/netstandard2.0/Models.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Models/obj/Debug/netstandard2.0/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Models/obj/Debug/netstandard2.0/Models.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Requests/obj/Debug/netcoreapp2.1/Requests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Requests/obj/Debug/netcoreapp2.1/Requests.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Requests/obj/Debug/netcoreapp2.1/Requests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Requests/obj/Debug/netcoreapp2.1/Requests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Requests/obj/Debug/netcoreapp2.1/Requests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Requests/obj/Debug/netcoreapp2.1/Requests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Requests/obj/Requests.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Requests/obj/Requests.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Requests/obj/Requests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Requests/obj/Requests.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Requests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Requests/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Requests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Requests/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Tests/obj/Debug/netcoreapp2.1/Tests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Tests/obj/Debug/netcoreapp2.1/Tests.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Tests/obj/Debug/netcoreapp2.1/Tests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Tests/obj/Debug/netcoreapp2.1/Tests.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Tests/obj/Tests.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Tests/obj/Tests.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Tests/obj/Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Tests/obj/Tests.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Tests/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Tests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Tests/obj/project.packagespec.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,11 +145,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/SessionKeyManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="207">
               <caret line="9" column="61" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/LogIn.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="15" column="51" lean-forward="true" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -298,11 +398,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14624000" />
+    <option name="totallyTimeSpent" value="15826000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="Image Layers" order="1" />
@@ -440,16 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/LogIn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="51" lean-forward="true" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/connection/DatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
@@ -492,6 +581,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="9" column="61" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/requests/LogIn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="51" lean-forward="true" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
