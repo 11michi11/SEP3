@@ -8,7 +8,6 @@ import communication.Response;
 import controller.repositories.*;
 import model.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -18,11 +17,11 @@ public class Controller {
     private DBProxy db;
     private DBServer server;
 
-    private Controller(DBProxy db, DBServer server) {
+    public Controller(DBProxy db, DBServer server) {
         this.db = db;
         this.server = server;
         server.setController(this);
-        server.start();
+       // server.start();
     }
 
     public static void main(String[] args) {
@@ -82,7 +81,7 @@ public class Controller {
 
     public String handleSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
-        String searchTerm = (String) arguments.get("searchTerm");
+        String searchTerm = (String) arguments.getOrDefault("searchTerm", "");
 
         List<Book> books = search(searchTerm);
 
@@ -98,22 +97,6 @@ public class Controller {
         if (searchTerm.equals(""))
             searchTerm = emptyStringValue;
 
-        int year;
-        try {
-            year = Integer.parseInt(searchTerm);
-        } catch (NumberFormatException e) {
-            year = 0;
-        }
-
-        String cat = searchTerm.toLowerCase();
-        cat = cat.substring(0, 1).toUpperCase() + cat.substring(1);
-        Book.Category searchCategory;
-        try {
-            searchCategory = Book.Category.valueOf(cat);
-        } catch (IllegalArgumentException e) {
-            searchCategory = Book.Category.Empty;
-        }
-
         return db.searchInLibrary(searchTerm, libraryId);
     }
 
@@ -122,32 +105,16 @@ public class Controller {
         if (searchTerm.equals(""))
             searchTerm = emptyStringValue;
 
-        int year;
-        try {
-            year = Integer.parseInt(searchTerm);
-        } catch (NumberFormatException e) {
-            year = 0;
-        }
-
-        String cat = searchTerm.toLowerCase();
-        cat = cat.substring(0, 1).toUpperCase() + cat.substring(1);
-        Book.Category searchCategory;
-        try {
-            searchCategory = Book.Category.valueOf(cat);
-        } catch (IllegalArgumentException e) {
-            searchCategory = Book.Category.Empty;
-        }
-
-        return db.advancedSearchInBookStore(bookStoreId, searchTerm, searchTerm, searchTerm, year, searchCategory);
+        return db.searchInBookStore(searchTerm, bookStoreId);
     }
 
     private String handleAdvancedSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
-        String isbn = (String) arguments.get("isbn");
-        String title = (String) arguments.get("title");
-        String author = (String) arguments.get("author");
-        int year = ((Double) arguments.get("year")).intValue();
-        Book.Category category = Book.Category.valueOf((String) arguments.get("category"));
+        String isbn = (String) arguments.getOrDefault("isbn", "");
+        String title = (String) arguments.getOrDefault("title", "");
+        String author = (String) arguments.getOrDefault("author", "");
+        int year = ((Double) arguments.getOrDefault("year", 0)).intValue();
+        Book.Category category = Book.Category.valueOf((String) arguments.getOrDefault("category", "Empty"));
 
         List<Book> books = advancedSearch(isbn, title, author, year, category);
 
@@ -190,16 +157,24 @@ public class Controller {
         return new Response(Response.Status.OK, books).toJson();
     }
 
-    public String handleLibraryAdvancedSearch(Request request) {
+    public String handleLibraryAdvancedSearch(Request request) throws InvalidOperationException {
         Map<String, Object> arguments = request.getArguments();
-        String isbn = (String) arguments.get("isbn");
-        String title = (String) arguments.get("title");
-        String author = (String) arguments.get("author");
-        int year = ((Double) arguments.get("year")).intValue();
-        Book.Category category = Book.Category.valueOf((String) arguments.get("category"));
+        String isbn = (String) arguments.getOrDefault("isbn", "");
+        if(isbn == null) isbn = "";
+        String title = (String) arguments.getOrDefault("title", "");
+        if(title == null) title = "";
+        String author = (String) arguments.getOrDefault("author", "");
+        if(author == null) author = "";
+        Object yearObj = arguments.getOrDefault("year", 0);
+        if (yearObj == null) yearObj = 0.0;
+        int year = ((Double) yearObj).intValue();
+        String cat = (String) arguments.getOrDefault("category", "Empty");
+        if (cat == null) cat = "Empty";
+        Book.Category category = Book.Category.valueOf(cat);
 
         String libraryid = (String) arguments.get("libraryid");
-
+        if(libraryid == null)
+            throw new InvalidOperationException("No library id");
         List<Book> books = db.advancedSearchInLibrary(libraryid, isbn, title, author, year, category);
 
         return new Response(Response.Status.OK, books).toJson();
@@ -389,7 +364,7 @@ public class Controller {
         return new Response(Response.Status.OK,logInResponse ).toJson();
     }
 
-    private class InvalidOperationException extends Exception {
+    public class InvalidOperationException extends Exception {
 
         InvalidOperationException(String msg) {
             super(msg);

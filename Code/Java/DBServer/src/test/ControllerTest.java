@@ -3,6 +3,7 @@ import communication.Request;
 import controller.Controller;
 import controller.DBProxy;
 import controller.repositories.LibraryRepository;
+import controller.repositories.RepositoryManager;
 import model.Book;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,84 +21,44 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.when;
 
 public class ControllerTest {
-
+//
 //    @Mock
 //    private DBProxy db;
 //    @Mock
 //    private DBServer server;
 //
 //    @InjectMocks
-//    private Controller controller;
-//
-//    @BeforeEach
-//    public void setup() {
-//        MockitoAnnotations.initMocks(this);
-//    }
-//
-//    @Test
-//    public void searchByTitleTest() {
-//        Book book = new Book("isbn", "title", "author", 0, Book.Category.Fantasy);
-//        List<Book> books = Collections.singletonList(book);
-//        when(db.advancedSearch("Tolkien", "Tolkien", "Tolkien", 0, Book.Category.Empty)).thenReturn(books);
-//
-//        Map<String, Object> args = new HashMap<>();
-//        args.put("searchTerm", "Tolkien");
-//        Request request = new Request(Request.Operation.Search, args);
-//
-//        assertEquals(books, controller.search("Tolkien"));
-//    }
-//
-//    @Test
-//    public void searchByYearTest() {
-//        Book book = new Book("isbn", "title", "author", 1974, Book.Category.Fantasy);
-//        List<Book> books = Collections.singletonList(book);
-//        when(db.advancedSearch("1974", "1974", "1974", 1974, Book.Category.Empty)).thenReturn(books);
-//
-//        Map<String, Object> args = new HashMap<>();
-//        args.put("searchTerm", 1974);
-//        Request request = new Request(Request.Operation.Search, args);
-//
-//        assertEquals(books, controller.search("1974"));
-//    }
-//
-//    @Test
-//    public void searchByCategoryTest() {
-//        Book book = new Book("isbn", "title", "author", 1974, Book.Category.Fantasy);
-//        List<Book> books = Collections.singletonList(book);
-//        when(db.advancedSearch("Fantasy", "Fantasy", "Fantasy", 0, Book.Category.Fantasy)).thenReturn(books);
-//
-//        Map<String, Object> args = new HashMap<>();
-//        args.put("searchTerm", "Fantasy");
-//        Request request = new Request(Request.Operation.Search, args);
-//
-//        assertEquals(books, controller.search("Fantasy"));
-//    }
-//
-//    @Test
-//    public void searchByEmptyStringTest() {
-//        Book book = new Book("isbn", "title", "author", 1974, Book.Category.Fantasy);
-//        List<Book> books = Collections.singletonList(book);
-//        when(db.advancedSearch("!@#$%^&*()", "!@#$%^&*()", "!@#$%^&*()", 0, Book.Category.Empty)).thenReturn(books);
-//
-//        Map<String, Object> args = new HashMap<>();
-//        args.put("searchTerm", "");
-//        Request request = new Request(Request.Operation.Search, args);
-//
-//        assertEquals(books, controller.search(""));
-//    }
-//
-//    @Test
-//    public void addBookToLibraryTest() {
-//        Book book = new Book("isbn", "title", "author", 1974, Book.Category.Fantasy);
-//        String institutionId = "id";
-//        try {
-//            db.addBookToLibrary(book, institutionId);
-//        } catch (LibraryRepository.LibraryNotFoundException e) {
-//            fail(e.getMessage());
-//        }
-//
-//        //Request request = new Request(Request.Operation.AddBook, );
-//
-//    }
+    private Controller controller;
+
+    @BeforeEach
+    public void setup() {
+       // MockitoAnnotations.initMocks(this);
+        DBProxy db = RepositoryManager.getInstance();
+        DBServer server = new DBServer();
+        controller = new Controller(db, server);
+    }
+
+    @Test
+    void nullSearchTest(){
+        Map<String, Object> args = new HashMap<>();
+        args.put("isbn", null);
+        args.put("title", "Tolkien");
+        args.put("author", null);
+        args.put("year", null);
+        args.put("category", null);
+        args.put("libraryid", "ce78ef57-77ec-4bb7-82a2-1a78d3789aef");
+        Request request = new Request(Request.Operation.LibraryAdvancedSearch, args);
+
+        String resposne = null;
+        try {
+            resposne = controller.handleLibraryAdvancedSearch(request);
+        } catch (Controller.InvalidOperationException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(resposne);
+    }
+
+
 
 }
