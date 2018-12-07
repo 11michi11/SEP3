@@ -7,41 +7,41 @@ import java.util.Map;
 
 public class Request {
 
-    public enum Operation {Search, AdvancedSearch, BookDetails, AddBook, DeleteBook, LibrarySearch, BookStoreSearch, BookStoreAdvancedSearch, LibraryAdvancedSearch, LibraryBookDetails, MakeLibraryOrder, MakeBookStoreOrder, RegisterCustomer, AddBookStoreAdministrator, AddLibraryAdministrator, DeleteBookStoreAdministrator, Authenticate, DeleteLibraryAdministrator}
+	public enum Operation {Search, AdvancedSearch, BookDetails, AddBook, DeleteBook, LibrarySearch, BookStoreSearch, BookStoreAdvancedSearch, LibraryAdvancedSearch, LibraryBookDetails, MakeLibraryOrder, MakeBookStoreOrder, RegisterCustomer, AddBookStoreAdministrator, AddLibraryAdministrator, DeleteBookStoreAdministrator, DeleteLibraryAdministrator, Authenticate, ConfirmBookstoreOrder}
 
-    private Operation operation;
-    private Map<String, Object> args;
+	private Operation operation;
+	private Map<String, Object> args;
 
-    public Request(Operation operation, Map<String, Object> args) {
-        this.operation = operation;
-        this.args = args;
-    }
+	public Request(Operation operation, Map<String, Object> args) {
+		this.operation = operation;
+		this.args = args;
+	}
 
-    public Operation getOperation() {
-        return operation;
-    }
+	public Operation getOperation() {
+		return operation;
+	}
 
-    public Map<String, Object> getArguments() {
-        return args;
-    }
+	public Map<String, Object> getArguments() {
+		return args;
+	}
 
-    public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
-    }
+	public String toJson() {
+		Gson gson = new Gson();
+		return gson.toJson(this);
+	}
 
-    public static Request fromJson(String json) throws RequestJsonFormatException {
-        try {
-            Gson gson = new Gson();
-            return gson.fromJson(json, Request.class);
-        }catch(JsonSyntaxException e){
-            throw new RequestJsonFormatException("Wrong format of Request JSON");
-        }
-    }
+	public static Request fromJson(String json) throws RequestJsonFormatException {
+		try {
+			Gson gson = new Gson();
+			return gson.fromJson(json, Request.class);
+		} catch (JsonSyntaxException e) {
+			throw new RequestJsonFormatException("Wrong format of Request JSON");
+		}
+	}
 
-    public static class RequestJsonFormatException extends Exception {
-        RequestJsonFormatException(String msg) {
-            super(msg);
-        }
-    }
+	public static class RequestJsonFormatException extends Exception {
+		RequestJsonFormatException(String msg) {
+			super(msg);
+		}
+	}
 }
