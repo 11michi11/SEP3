@@ -54,6 +54,11 @@ namespace Controllers.Connections
             return json;
         }
 
+        public void ReturnBook(string orderId)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public void CreateBook(Book book)
         {
