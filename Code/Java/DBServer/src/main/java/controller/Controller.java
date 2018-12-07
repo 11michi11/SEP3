@@ -21,7 +21,7 @@ public class Controller {
         this.db = db;
         this.server = server;
         server.setController(this);
-       // server.start();
+        server.start();
     }
 
     public static void main(String[] args) {
@@ -375,7 +375,7 @@ public class Controller {
 	}
 
 
-	private class InvalidOperationException extends Exception {
+	public class InvalidOperationException extends Exception {
 
         InvalidOperationException(String msg) {
             super(msg);
