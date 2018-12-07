@@ -156,6 +156,10 @@ public class RepositoryManager implements DBProxy {
     }
 
     @Override
+    public void confirmBookstoreOrder(String orderId) throws CustomerRepository.CustomerNotFoundException {
+        bookStoreOrderRepo.delete(orderId);
+    }
+    @Override
     public User getUserByEmail(String email) throws UserNotFoundException {
         User user = null;
         try {
