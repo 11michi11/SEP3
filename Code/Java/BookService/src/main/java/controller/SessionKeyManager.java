@@ -4,6 +4,11 @@ import java.util.*;
 
 public class SessionKeyManager {
 	static HashMap<String,Calendar> sessionKeys = new HashMap<>();
+	static{
+		Calendar expirationDate = GregorianCalendar.getInstance(TimeZone.getDefault());
+		expirationDate.add(Calendar.DAY_OF_MONTH,1);
+		sessionKeys.put("9440b6fe-b4c4-4dab-b13b-99c37ec173ed", expirationDate);
+	}
 
 	public static String generateSK() {
 		String sessionKey = UUID.randomUUID().toString();

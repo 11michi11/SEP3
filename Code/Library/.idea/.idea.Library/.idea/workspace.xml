@@ -1,19 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs" line="95" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="efcb72c6-6c0c-4d14-bf05-cd7b0f951cf2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Java/BookService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/BookService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_1.fdt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_1.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_1.nvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_1.nvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_1.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_1_1.liv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_1_Lucene50_0.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_1_Lucene50_0.pos" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_1_Lucene50_0.tim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_1_Lucene50_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_20.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_20.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_20.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_21.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_21.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/_21.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Book/segments_3t" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStore/_1.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStore/_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStore/_1.nvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStore/_1.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStore/_1_Lucene50_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStore/segments_2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_1.fdt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_1.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_1.nvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_1.nvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_1.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_1_Lucene50_0.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_1_Lucene50_0.pos" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_1_Lucene50_0.tim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_1_Lucene50_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_1g.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_9.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_9.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_9.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_e.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_e.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_e.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_f.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_f.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/_f.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.BookStoreStorage/segments_2t" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Library/_1.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Library/_1.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Library/_1.nvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Library/_1.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Library/_1_Lucene50_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.Library/segments_2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_12.fdt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_12.fdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_12.fnm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_12.nvd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_12.nvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_12.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_12_Lucene50_0.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_12_Lucene50_0.pos" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_12_Lucene50_0.tim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_12_Lucene50_0.tip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_13.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_13.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_13.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_14.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_14.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/_14.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/resources/model.LibraryStorage/segments_1x" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/DBServer/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/src/main/java/controller/HibernateAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/DBServer/src/main/java/controller/HibernateAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/src/test/BookStoreStorageRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/DBServer/src/test/BookStoreStorageRepoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/DBServer/src/test/ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/DBServer/src/test/ControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/SessionKeyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/SessionKeyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/Controllers.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Controllers.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/obj/Debug/netstandard2.0/Controllers.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/netstandard2.0/Models.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Requests/obj/Requests.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Requests.csproj.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/obj/Requests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Requests.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Requests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/netcoreapp2.1/Tests.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.packagespec.json" afterDir="false" />
@@ -28,47 +107,85 @@
     <session id="-1580701117">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="1" />
+          <entry key="cs" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="1" />
+          <entry key="C#" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="333" />
+          <entry key="cs" value="1002" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="333" />
+          <entry key="C#" value="1002" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="896925177">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1543517385219" expanded="false" signature="6:47" ph="..." />
+                <marker date="1543517385219" expanded="true" signature="82:407" ph="{...}" />
+                <marker date="1543517385219" expanded="true" signature="120:405" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="60">
+              <caret line="44" column="86" lean-forward="true" selection-start-line="44" selection-start-column="86" selection-end-line="44" selection-end-column="86" />
               <folding>
-                <marker date="1544019639590" expanded="false" signature="6:47" ph="..." />
-                <marker date="1544019639590" expanded="true" signature="70:838" ph="{...}" />
-                <marker date="1544019639590" expanded="true" signature="107:836" ph="{...}" />
-                <marker date="1544019639590" expanded="true" signature="283:700" ph="{...}" />
-                <marker date="1544019639590" expanded="true" signature="392:546" ph="{...}" />
-                <marker date="1544019639590" expanded="true" signature="777:830" ph="{...}" />
+                <marker date="1543401336718" expanded="false" signature="6:92" ph="..." />
+                <marker date="1543401336718" expanded="true" signature="115:1321" ph="{...}" />
+                <marker date="1543401336718" expanded="true" signature="152:1319" ph="{...}" />
+                <marker date="1543401336718" expanded="true" signature="287:445" ph="{...}" />
+                <marker date="1543401336718" expanded="true" signature="310:435" ph="/* moved to Requests/Program.cs ... */" />
+                <marker date="1543401336718" expanded="true" signature="500:591" ph="{...}" />
+                <marker date="1543401336718" expanded="true" signature="652:691" ph="{...}" />
+                <marker date="1543401336718" expanded="true" signature="744:810" ph="{...}" />
+                <marker date="1543401336718" expanded="true" signature="924:1019" ph="{...}" />
+                <marker date="1543401336718" expanded="true" signature="1063:1111" ph="{...}" />
+                <marker date="1543401336718" expanded="true" signature="1154:1208" ph="{...}" />
+                <marker date="1543401336718" expanded="true" signature="1256:1313" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="552">
+              <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -80,11 +197,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/LibraryController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Requests/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Requests/Startup.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/Requests/Program.cs" />
         <option value="$PROJECT_DIR$/Controllers/SessionKeyManager.cs" />
+        <option value="$PROJECT_DIR$/Controllers/Connections/Request.cs" />
       </list>
     </option>
   </component>
@@ -96,7 +218,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="950" />
-    <option name="width" value="979" />
+    <option name="width" value="980" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
@@ -104,7 +226,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -120,13 +241,26 @@
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Models" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Connections" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Requests" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Requests" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
         </subPane>
         <option name="show-all-files" value="false" />
       </pane>
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -148,19 +282,24 @@
   </component>
   <component name="RunManager">
     <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.dll" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Requests" />
       <option name="PASS_PARENT_ENVS" value="1" />
+      <envs>
+        <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
+        <env name="ASPNETCORE_URLS" value="https://localhost:5001;http://localhost:5000" />
+      </envs>
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Requests/Requests.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="None" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.1" />
+      <browser start="true" url="https://localhost:5001" />
       <method v="2">
         <option name="Build" enabled="true" />
       </method>
@@ -177,11 +316,13 @@
       <option name="presentableId" value="Default" />
       <updated>1544017582322</updated>
       <workItem from="1544017587453" duration="2274000" />
+      <workItem from="1544029791725" duration="87000" />
+      <workItem from="1544111972256" duration="1856000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2274000" />
+    <option name="totallyTimeSpent" value="9143000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -194,38 +335,38 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="NuGet" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Unit Tests" />
-      <window_info anchor="bottom" id="REST Client" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.6772793" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Errors In Solution" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="bottom" id="NuGet" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="11" />
+      <window_info anchor="bottom" id="REST Client" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="15" weight="0.3299566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -241,18 +382,41 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Requests/Startup.cs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="289">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/LibraryController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="44" column="86" lean-forward="true" selection-start-line="44" selection-start-column="86" selection-end-line="44" selection-end-column="86" />
           <folding>
-            <marker date="1544019639590" expanded="false" signature="6:47" ph="..." />
-            <marker date="1544019639590" expanded="true" signature="70:838" ph="{...}" />
-            <marker date="1544019639590" expanded="true" signature="107:836" ph="{...}" />
-            <marker date="1544019639590" expanded="true" signature="283:700" ph="{...}" />
-            <marker date="1544019639590" expanded="true" signature="392:546" ph="{...}" />
-            <marker date="1544019639590" expanded="true" signature="777:830" ph="{...}" />
+            <marker date="1543401336718" expanded="false" signature="6:92" ph="..." />
+            <marker date="1543401336718" expanded="true" signature="115:1321" ph="{...}" />
+            <marker date="1543401336718" expanded="true" signature="152:1319" ph="{...}" />
+            <marker date="1543401336718" expanded="true" signature="287:445" ph="{...}" />
+            <marker date="1543401336718" expanded="true" signature="310:435" ph="/* moved to Requests/Program.cs ... */" />
+            <marker date="1543401336718" expanded="true" signature="500:591" ph="{...}" />
+            <marker date="1543401336718" expanded="true" signature="652:691" ph="{...}" />
+            <marker date="1543401336718" expanded="true" signature="744:810" ph="{...}" />
+            <marker date="1543401336718" expanded="true" signature="924:1019" ph="{...}" />
+            <marker date="1543401336718" expanded="true" signature="1063:1111" ph="{...}" />
+            <marker date="1543401336718" expanded="true" signature="1154:1208" ph="{...}" />
+            <marker date="1543401336718" expanded="true" signature="1256:1313" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
         </state>
       </provider>
     </entry>
