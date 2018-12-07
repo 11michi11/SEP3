@@ -31,6 +31,7 @@ public class HibernateAdapter {
         return sessionFactory;
     }
 
+    @SuppressWarnings("Duplicates")
     public static List executeQuery(String searchTerm, Class classObj, String... fields) {
         SessionFactory sessionFactory = HibernateAdapter.getSessionFactory();
         Session session = sessionFactory.getCurrentSession();
@@ -39,23 +40,19 @@ public class HibernateAdapter {
         FullTextEntityManager fullTextEntityManager =
                 org.hibernate.search.jpa.Search.getFullTextEntityManager(em);
         em.getTransaction().begin();
-
 // create native Lucene query unsing the query DSL
 // alternatively you can write the Lucene query using the Lucene query parser
 // or the Lucene programmatic API. The Hibernate Search DSL is recommended though
         QueryBuilder qb = fullTextEntityManager.getSearchFactory()
                 .buildQueryBuilder().forEntity(classObj).get();
-
         org.apache.lucene.search.Query luceneQuery = qb.keyword()
                 .onFields(fields)
                 .ignoreFieldBridge()
                 .matching(searchTerm)
                 .createQuery();
-
 // wrap Lucene query in a javax.persistence.Query
         javax.persistence.Query jpaQuery =
                 fullTextEntityManager.createFullTextQuery(luceneQuery, classObj);
-
 // execute search
         List result = jpaQuery.getResultList();
         em.getTransaction().commit();
@@ -376,9 +373,9 @@ public class HibernateAdapter {
 
     public static void main(String[] args) throws InterruptedException {
 
-        HibernateAdapter.searchInLibrary("testisbn","ce78ef57-77ec-4bb7-82a2-1a78d3789aef");
+//        HibernateAdapter.searchInLibrary("testisbn","ce78ef57-77ec-4bb7-82a2-1a78d3789aef");
 
-//               HibernateAdapter.rebuildLuceneIndex();
+               HibernateAdapter.rebuildLuceneIndex();
     }
 
 }
