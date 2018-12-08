@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, Input, Button, Collapse, CardBody, Card} from 'reactstrap'
+import Cookies from 'js-cookie'
 
 
 class Home extends Component {
 
     componentDidMount = () => {
             console.log(this.props);
+            Cookies.set('sessionKey', '9440b6fe-b4c4-4dab-b13b-99c37ec173ed');
     }
 
    handleSearch = (event) => {
-    this.setState({searchData: event.target.value});
-    
+    this.setState({
+        //searchData: event.target.value
+        [event.target.id]: event.target.value
+    })
     }
 
     handleSubmit = e => {
@@ -28,6 +32,10 @@ class Home extends Component {
         // })
         this.props.history.push('/search/'+this.state.searchData);
     }
+    handleAdvancedSubmit = e => {
+        e.preventDefault();
+        this.props.history.push('/advancedSearch/'+this.state.author+this.state.title+this.state.category+this.state.year+this.state.isbn);
+    }
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
@@ -39,7 +47,12 @@ class Home extends Component {
       }
 
     state = { 
-        searchData: ''
+        searchData: '',
+        author: '',
+        title:'',
+        category:'',
+        year:'',
+        isbn:''
      }
     render() { 
         return (
@@ -52,21 +65,27 @@ class Home extends Component {
                 </div>
                 <div className="row">
                     <div className="offset-sm-3 col-sm-6 p-5 text-center" >
-                        <Form>
+                        <Form onSubmit={e => this.handleSubmit(e)}>
                         <FormGroup>
                             <div className="row">
                                 <div className="col-sm-10" >
-                                    <Input type="text" value={this.state.value} onChange={this.handleSearch} name="search" id="searchInput" 
+                                    <Input type="text" value={this.state.value} onChange={this.handleSearch} name="search" id="searchData" 
                                     placeholder="Book name, isbn, year, author etc." />
                                  </div>
                                 <div className="col-sm-2 p-1" >
                                     <Button outline color="secondary" size="sm" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Advanced search</Button>
                                 </div>
                             </div>
-                            <Collapse isOpen={this.state.collapse}>
+                            
+                            <p/>
+
+                            <Button color="primary" size="sm">Search</Button>
+                            </FormGroup>
+                        </Form>
+                        <Collapse isOpen={this.state.collapse}>
                                 <Card>
                                  <CardBody>
-                                    <Form>
+                                    <Form  onSubmit={e => this.handleAdcancedSubmit(e)}>
                                     <FormGroup>
                                         <Input type="text" value={this.state.value} onChange={this.handleSearch} name="advancedSearch" id="author" 
                                         placeholder="author" />
@@ -82,16 +101,13 @@ class Home extends Component {
                                         <p/>
                                         <Input type="text" value={this.state.value} onChange={this.handleSearch} name="advancedSearch" id="isbn" 
                                         placeholder="isbn" />
+                                        <p/>
+                                        <Button color="primary" size="sm">Search</Button>
                                     </FormGroup>
                                     </Form>
                                 </CardBody>
                                 </Card>
                             </Collapse>
-                            <p/>
-
-                            <Button color="primary" size="sm"  onClick={e => this.handleSubmit(e)}>Search</Button>
-                            </FormGroup>
-                        </Form>
                     </div>
                 </div>
             </div> 

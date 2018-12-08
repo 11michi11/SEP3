@@ -14,7 +14,7 @@ namespace Controllers.Connections
         private readonly Dictionary<string, object> args;
         
         public enum Operation{LibrarySearch, LibraryAdvancedSearch,AddBook, DeleteBook,
-            LibraryBookDetails,ReturnBook
+            LibraryBookDetails,ReturnBook,LibraryOrders
         }
 
         public Request(Operation operation, Dictionary<string, object> args)

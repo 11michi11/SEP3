@@ -27,7 +27,8 @@ class AdministratorLibrary extends Component {
     axios
       .get("https://localhost:8080/search?searchTerm=" + this.state.searchData, {
         crossdomain: true,
-        httpsAgent: agent
+        httpsAgent: agent,
+        withCredentials: true
       })
       .then(res => {
         this.setState({ books: res.data });

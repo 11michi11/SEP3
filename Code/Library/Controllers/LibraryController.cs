@@ -53,5 +53,10 @@ namespace Controllers
         {
             _proxy.ReturnBook(orderId);
         }
+
+        public string GetOrders()
+        {
+            return _proxy.GetOrders();
+        }
     }
 }
