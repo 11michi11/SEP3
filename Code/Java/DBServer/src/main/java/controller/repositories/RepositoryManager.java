@@ -166,6 +166,11 @@ public class RepositoryManager implements DBProxy {
     }
 
     @Override
+    public List<LibraryOrder> getLibraryOrders(String libraryId) {
+        return libraryOrderRepo.getLibraryOrders(libraryId);
+    }
+
+    @Override
     public User getUserByEmail(String email) throws UserNotFoundException {
         User user = null;
         try {
