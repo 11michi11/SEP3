@@ -144,5 +144,20 @@ namespace Requests.Controllers
                 return Unauthorized();
             } 
         }
+        
+        // GET orders
+        [HttpGet]
+        [Route("orders")]
+        public ActionResult<string> GetOrders()
+        {
+            if (CheckSessionKey())
+            {
+                return _libraryController.GetOrders(); 
+            }
+            else
+            {
+                return Unauthorized();
+            }
+        }
     }
 }

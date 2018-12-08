@@ -14,4 +14,5 @@ public interface BookStoreOrderRepo {
 
     BookStoreOrder get(String orderId);
 
+    List<BookStoreOrder> getBookStoreOrders(String bookStoreId);
 }
