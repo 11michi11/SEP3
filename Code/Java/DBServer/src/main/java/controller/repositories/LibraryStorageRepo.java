@@ -13,10 +13,6 @@ public interface LibraryStorageRepo {
 
     Book getBookByBookId(String bookId) throws BookRepository.BookNotFoundException;
 
-    List<Book> search(String libraryId, String searchTerm);
-
-    List<Book> advancedSearch(String libraryId, String isbn, String title, String author, int year, Book.Category category);
-
     List<LibraryStorage> getStoragesByIsbnAndLibrary(String isbn, String libraryId);
 
     List<LibraryStorage> getLibrariesStorageByIsbn(String isbn);
@@ -24,4 +20,8 @@ public interface LibraryStorageRepo {
     List<String> getAvailableBooks(String isbn, String libraryID);
 
     LibraryStorage getStorageByBookId(String bookId) throws LibraryStorageRepository.LibraryStorageNotFoundException;
+
+    List<Book> search(String libraryId, String searchTerm);
+
+    List<Book> advancedSearch(String libraryId, String isbn, String title, String author, int year, Book.Category category);
 }

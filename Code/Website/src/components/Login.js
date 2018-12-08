@@ -23,7 +23,8 @@ class Login extends Component {
         "https://localhost:8080/login",
         {
           email: this.state.email,
-          password: this.state.password
+          password: this.state.password,
+          withCredentials: true
         },
         { crossdomain: true, httpsAgent: agent }
       )

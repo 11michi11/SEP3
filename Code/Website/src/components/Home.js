@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, Input, Button, Collapse, CardBody, Card} from 'reactstrap'
+import Cookies from 'js-cookie'
 
 
 class Home extends Component {
 
     componentDidMount = () => {
             console.log(this.props);
+            Cookies.set('sessionKey', '9440b6fe-b4c4-4dab-b13b-99c37ec173ed');
     }
 
    handleSearch = (event) => {

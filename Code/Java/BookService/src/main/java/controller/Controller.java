@@ -8,6 +8,7 @@ import model.Customer;
 import model.LogInResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import utils.Password;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class Controller {
     }
 
     public String addCustomer(Customer customer){
+        customer.setPassword(Password.encryptPwd(customer.getPassword()));
         return db.addCustomer(customer);
     }
 
@@ -52,7 +54,7 @@ public class Controller {
     }
 
 	public LogInResponse logIn(String email, String password) throws DatabaseConnection.LoginException {
-        LogInResponse logInResponse = db.logIn(email,password);
+        LogInResponse logInResponse = db.logIn(email,Password.encryptPwd(password));
         logInResponse.setSessionKey(SessionKeyManager.generateSK());
         return logInResponse;
 	}

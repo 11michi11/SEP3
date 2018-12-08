@@ -16,7 +16,12 @@ class Details extends Component {
     const agent = new https.Agent({
         rejectUnauthorized: false
       });
-       axios.get("https://localhost:8080/bookDetails/"+isbn, {crossdomain: true, httpsAgent: agent})
+       axios.get("https://localhost:8080/bookDetails/"+isbn, 
+       {
+           crossdomain: true, 
+           httpsAgent: agent,
+           withCredentials: true
+        })
        .then(res => {
        
        

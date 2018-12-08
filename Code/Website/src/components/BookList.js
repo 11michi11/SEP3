@@ -20,7 +20,18 @@ class BookList extends Component {
     axios
       .get("https://localhost:8080/search?searchTerm=" + search_term, {
         crossdomain: true,
-        httpsAgent: agent
+        httpsAgent: agent,
+        withCredentials: true
+      })
+      .then(res => {
+        this.setState({ books: res.data });
+        console.log(res.data);
+      });
+    axios
+      .get("https://localhost:8080/advancedSearch?searchTerm=" + search_term, {
+        crossdomain: true,
+        httpsAgent: agent,
+        withCredentials: true
       })
       .then(res => {
         this.setState({ books: res.data });

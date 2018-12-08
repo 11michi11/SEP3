@@ -28,6 +28,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/books" component={BookList} />
             <Route path="/search/:search_term" component={BookList} />
+            <Route path="/advancedSearch/:search_term" component={BookList} />
             <Route path="/registration" component={Registration} />
             <Route
               path="/login"

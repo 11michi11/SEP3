@@ -31,7 +31,7 @@ public class BookStoreAdminRepository implements BookStoreAdminRepo{
 	}
 
 	@Override
-	public BookStoreAdmin getBookstoreAdmin(String id) throws BookStoreAdminNotFoundException {
+	public BookStoreAdmin get(String id) throws BookStoreAdminNotFoundException {
 		Transaction tx = null;
 		try (Session session = sessionFactory.openSession()) {
 			tx = session.beginTransaction();

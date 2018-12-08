@@ -123,5 +123,26 @@ namespace Requests.Controllers
                 return Unauthorized();
             }   
         }
+        
+        // DELETE orders/orderId
+        [HttpDelete]
+        [Route("orders/{orderId}")]
+        public IActionResult ReturnBook(string orderId)
+        {
+            if (CheckSessionKey())
+            {
+                try {
+                    _libraryController.ReturnBook(orderId);
+                } catch(NullReferenceException ex) {
+                    return BadRequest("Order not found");
+                }
+
+                return Ok("The book has been returned successfully"); 
+            }
+            else
+            {
+                return Unauthorized();
+            } 
+        }
     }
 }
