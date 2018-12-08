@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import LoadingCanvas from "./../canvas/LoadingCanvas";
 import https from "https";
+import {Button} from "reactstrap";
 
 class Orders extends Component {
     state = {
@@ -10,13 +11,12 @@ class Orders extends Component {
     };
 
     componentDidMount() {
-  
       const agent = new https.Agent({
         rejectUnauthorized: false
       });
   
       axios
-        .get("https://localhost:8080/search?searchTerm=" + search_term, {
+        .get("https://localhost:9090/orders", {
           crossdomain: true,
           httpsAgent: agent,
           withCredentials: true
@@ -26,22 +26,43 @@ class Orders extends Component {
           console.log(res.data);
         });
     }
+    handleConfirm = (e)=>{
+        e.preventdefault();
+        //???
+        const orderid= this.orders.orderid;
+        const agent = new https.Agent({
+          rejectUnauthorized: false
+        });
+        axios
+        //???
+          .delete( "https://localhost:9090/orders/"+orderid,
+            { crossdomain: true,
+              httpsAgent: agent,
+              withCredentials: true }
+          )
+          .then(res => {
+            var str = "SUCCESS!";
+    
+            window.alert(`${str}`);
+          })
+          .catch(error => {
+            window.alert(`${error}
+                           Something went wrong
+                           `);
+          });
+    }
     render() {
       const { orders } = this.state;
       const orderList =
         this.state.orders.length > 0 ? (
           orders.map(o => {
             return (
-              <div key={o.id} className="card">
+              <div key={o.orderid} className="card">
                 <div className="card-body">
-                  <h5 className="card-title">
-                    <Link to={"/details/" + b.isbn}>{b.title}</Link>
-                  </h5>
-  
                   <div className="card-subtitle text-muted">
-                    {b.author} ({b.year}) /{" "}
-                    <span className=" text-danger">{b.category}</span>
+                    {o.isbn} ({o.customerid}) /{" "}
                   </div>
+                  <Button color="primary" size="md" onClick={e => this.handleConfirm(e)}>Confirm</Button>
                   <p />
                 </div>
               </div>
