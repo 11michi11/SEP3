@@ -14,6 +14,13 @@ public class Order implements ApplicationContextAware {
 	private ConfigurableApplicationContext context;
 	private SessionKeyManager sessionKeyManager;
 
+	@RequestMapping("/orders")
+	public String getBookstoreOrders(@CookieValue("sessionKey") String sessionKey) {
+		sessionKeyManager.isSessionKeyValid(sessionKey);
+		Controller controller = context.getBean(Controller.class);
+		return controller.getBookstoreOrders();
+	}
+
 	@RequestMapping(method=RequestMethod.DELETE, value = "/orders/{orderId}")
 	public String confirm(@PathVariable String orderId, @CookieValue("sessionKey") String sessionKey) {
 		sessionKeyManager.isSessionKeyValid(sessionKey);

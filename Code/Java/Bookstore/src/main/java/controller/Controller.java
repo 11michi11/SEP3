@@ -40,12 +40,14 @@ public class Controller {
 		return db.confirm(orderId);
 	}
 
+    public String getBookstoreOrders() {
+        return db.getBookstoreOrders();
+    }
+
     public static void main(String[] args) {
         DatabaseConnection db = new DatabaseConnection();
         Controller controller = new Controller(db);
 
     }
-
-
 
 }

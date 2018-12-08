@@ -13,4 +13,6 @@ public interface DatabaseProxy {
 	String deleteBook(String isbn);
 
 	String confirm(String orderId);
+
+    String getBookstoreOrders();
 }

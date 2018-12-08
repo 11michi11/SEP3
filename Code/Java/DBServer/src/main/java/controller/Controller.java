@@ -78,6 +78,8 @@ public class Controller {
                     return handleReturnBookRequest(request);
                 case LibraryOrders:
                     return handleLibraryOrders(request);
+                case BookStoreOrders:
+                    return handleBookStoreOrders(request);
             }
             throw new InvalidOperationException("Wrong operation");
         } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException | BookStoreAdminRepository.BookStoreAdminNotFoundException | LibraryAdminRepository.LibraryAdminNotFoundException | RepositoryManager.UserNotFoundException | UserNotAuthenticated e) {
@@ -85,8 +87,6 @@ public class Controller {
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
     }
-
-
 
     public String handleSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
@@ -383,15 +383,24 @@ public class Controller {
 
     private String handleReturnBookRequest(Request request) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException {
         Map<String, Object> args = request.getArguments();
-        String orderId = (String) args.get("orderId");
+        String orderId = (String) args.get("orderid");
 
         db.returnBook(orderId);
         return new Response(Response.Status.OK, "Book was returned successfully").toJson();
     }
 
+
+    private String handleBookStoreOrders(Request request) {
+        Map<String, Object> args = request.getArguments();
+        String bookstoreid = (String) args.get("bookstoreid");
+
+        List<BookStoreOrder> orders = db.getBookStoreOrders(bookstoreid);
+        return new Response(Response.Status.OK, orders).toJson();
+    }
+
     private String handleLibraryOrders(Request request) {
         Map<String, Object> args = request.getArguments();
-        String libraryId = (String) args.get("libraryId");
+        String libraryId = (String) args.get("libraryid");
 
         List<LibraryOrder> orders = db.getLibraryOrders(libraryId);
         return new Response(Response.Status.OK, orders).toJson();
