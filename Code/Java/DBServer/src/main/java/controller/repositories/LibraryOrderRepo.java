@@ -13,4 +13,6 @@ public interface LibraryOrderRepo {
     List<LibraryOrder> get();
 
     LibraryOrder get(String orderId);
+
+    List<LibraryOrder> getLibraryOrders(String libraryId);
 }
