@@ -10,50 +10,58 @@ class Details extends Component {
     }
 
     componentDidMount() {
-    //    console.log(this.props.match.params.isbn);
-    //    const {isbn} = this.props.match.params;
-    // const agent = new https.Agent({
-    //     rejectUnauthorized: false
-    //   });
-    //    axios.get("https://localhost:8080/bookDetails/"+isbn, {crossdomain: true, httpsAgent: agent})
-    //    .then(res => {
-    //    
+       console.log(this.props.match.params.search_term);
+       const isbn = this.props.match.params.search_term;
+       console.log({isbn});
+    const agent = new https.Agent({
+        rejectUnauthorized: false
+      });
+       axios.get("https://localhost:8080/bookDetails/"+isbn, 
+       {
+           crossdomain: true, 
+           httpsAgent: agent,
+           withCredentials: true
+        })
+       .then(res => {
        
-    //        this.setState({book: res.data})
-    //        console.log(this.state.book);
-    //    })
+       
+           this.setState({book: res.data.book})
+           console.log(this.state)
+           this.setState({libraries: res.data.libraries})
+           this.setState({bookstores: res.data.bookstores})
+       })
 
-    this.setState({
-        book: {
-            title: "Black holes",
-            category: "Science",
-            available: true,
-            year: "25.06.1990",
-            author: "Jackobsen Jakob Rem",
-            description: "",
-            isbn: "978-83-246-7758-23"
-        },
-        libraries: [{
-            name: "First Library",
-            id: "ce78ef57-77ec-4bb7-82a2-1a78d3789aef",
-            quantity: 2
-        }, {
-            name: "Second Library",
-            id: "ce78ef57-77ec-4bb7-82a2-1a78d3789eaf",
-            quantity: 0
-        }, {
-            name: "Third Library",
-            id: "ec78ef57-77ec-4bb7-82a2-1a78d3789eaf",
-            quantity: 125
-        }],
-        bookstores: [{
-            name:"First Book Store",
-            id:"eb3777c8-77fe-4acd-962d-6853da2e05e0"
-        }, {
-            name:"Second Book Store",
-            id:"eb3777c8-77fe-4aed-962d-6853da2e05e0"
-        }]
-    })
+    // this.setState({
+    //     book: {
+    //         title: "Black holes",
+    //         category: "Science",
+    //         available: true,
+    //         year: "25.06.1990",
+    //         author: "Jackobsen Jakob Rem",
+    //         description: "",
+    //         isbn: "978-83-246-7758-23"
+    //     },
+    //     libraries: [{
+    //         name: "First Library",
+    //         id: "ce78ef57-77ec-4bb7-82a2-1a78d3789aef",
+    //         quantity: 2
+    //     }, {
+    //         name: "Second Library",
+    //         id: "ce78ef57-77ec-4bb7-82a2-1a78d3789eaf",
+    //         quantity: 0
+    //     }, {
+    //         name: "Third Library",
+    //         id: "ec78ef57-77ec-4bb7-82a2-1a78d3789eaf",
+    //         quantity: 125
+    //     }],
+    //     bookstores: [{
+    //         name:"First Book Store",
+    //         id:"eb3777c8-77fe-4acd-962d-6853da2e05e0"
+    //     }, {
+    //         name:"Second Book Store",
+    //         id:"eb3777c8-77fe-4aed-962d-6853da2e05e0"
+    //     }]
+    // })
 
     // localhost:8080/isbn
     // book: isbn, title, year, libraries[ libraryid, bookid, available: bool], bookstores: [bookstoreid]
@@ -74,8 +82,8 @@ class Details extends Component {
                 return library.quantity > 0 ?(
                     <div className="collection-item" key={library.id}>
                         <div className="row">
-                            <div className="col-sm-8">
-                                <span>{library.name}</span>
+                            <div className="col-sm-7">
+                                <span>{library.libraryName}</span>
                             </div><div className="col-sm-1">
                                 <span>{library.quantity}</span>
                             </div><div className="col-sm-3">

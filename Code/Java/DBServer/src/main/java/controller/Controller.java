@@ -7,6 +7,7 @@ import communication.Request;
 import communication.Response;
 import controller.repositories.*;
 import model.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 import java.util.Map;
@@ -73,6 +74,10 @@ public class Controller {
                     return handleAuthenticate(request);
 	            case ConfirmBookStoreOrder:
 		            return handleConfirmBookstoreOrder(request);
+                case ReturnBook:
+                    return handleReturnBookRequest(request);
+                case LibraryOrders:
+                    return handleLibraryOrders(request);
             }
             throw new InvalidOperationException("Wrong operation");
         } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException | BookStoreAdminRepository.BookStoreAdminNotFoundException | LibraryAdminRepository.LibraryAdminNotFoundException | RepositoryManager.UserNotFoundException | UserNotAuthenticated e) {
@@ -80,6 +85,8 @@ public class Controller {
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
     }
+
+
 
     public String handleSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
@@ -373,6 +380,22 @@ public class Controller {
 		db.confirmBookstoreOrder(orderId);
 		return new Response(Response.Status.OK, "Confirmation was successful").toJson();
 	}
+
+    private String handleReturnBookRequest(Request request) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException {
+        Map<String, Object> args = request.getArguments();
+        String orderId = (String) args.get("orderId");
+
+        db.returnBook(orderId);
+        return new Response(Response.Status.OK, "Book was returned successfully").toJson();
+    }
+
+    private String handleLibraryOrders(Request request) {
+        Map<String, Object> args = request.getArguments();
+        String libraryId = (String) args.get("libraryId");
+
+        List<LibraryOrder> orders = db.getLibraryOrders(libraryId);
+        return new Response(Response.Status.OK, orders).toJson();
+    }
 
 
 	public class InvalidOperationException extends Exception {

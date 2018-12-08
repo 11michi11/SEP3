@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
+import controller.ConfigurationLoader;
 import model.Book;
 import model.Customer;
 import model.LogInResponse;

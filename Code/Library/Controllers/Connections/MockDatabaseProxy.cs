@@ -59,6 +59,11 @@ namespace Controllers.Connections
             throw new NotImplementedException();
         }
 
+        public string GetOrders()
+        {
+            throw new NotImplementedException();
+        }
+
 
         public void CreateBook(Book book)
         {
