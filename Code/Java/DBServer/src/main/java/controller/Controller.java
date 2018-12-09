@@ -368,7 +368,7 @@ public class Controller {
         if (!user.authenticate(password))
             throw new UserNotAuthenticated("Email or password is invalid");
 
-        LogInResponse logInResponse = new LogInResponse("empty", user.getClass().getSimpleName());
+        LogInResponse logInResponse = new LogInResponse("empty", user.getClass().getSimpleName(), user.getName());
         return new Response(Response.Status.OK,logInResponse ).toJson();
     }
 
