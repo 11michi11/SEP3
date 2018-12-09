@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Details from "./components/Details";
 import Administrator from "./components/Administrator";
 import Orders from "./components/Orders";
+import AdministratorLibrary from "./components/AdministratorLibrary";
 
 class App extends Component {
   state = {
@@ -38,7 +39,8 @@ class App extends Component {
               render={props => <Login handleLogIn={this.handleLogIn} />}
             />
             <Route path="/details/:search_term" component={Details} />
-            <Route path="/admin" component={Administrator} />
+            <Route path="/bookstore_admin" component={Administrator} />
+            <Route path="/library_admin" component={AdministratorLibrary} />
           </Switch>
         </div>
       </BrowserRouter>
