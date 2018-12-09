@@ -4,7 +4,12 @@
     <bookmark url="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs" line="95" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efcb72c6-6c0c-4d14-bf05-cd7b0f951cf2" name="Default Changelist" comment="" />
+    <list default="true" id="efcb72c6-6c0c-4d14-bf05-cd7b0f951cf2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Website/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Website/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Website/src/components/BookList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Website/src/components/BookList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Website/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Website/src/components/Home.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +88,7 @@
     <session id="1649204407">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.52" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -121,8 +127,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="172" column="40" selection-start-line="172" selection-start-column="40" selection-end-line="172" selection-end-column="40" />
+            <state relative-caret-position="303">
+              <caret line="171" column="40" lean-forward="true" selection-start-line="171" selection-start-column="40" selection-end-line="171" selection-end-column="40" />
               <folding>
                 <marker date="1544350622680" expanded="false" signature="6:261" ph="..." />
                 <marker date="1544350622680" expanded="true" signature="296:6784" ph="{...}" />
@@ -188,7 +194,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="950" />
     <option name="width" value="980" />
     <option name="height" value="1040" />
@@ -288,7 +294,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08389262" />
@@ -382,8 +388,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="172" column="40" selection-start-line="172" selection-start-column="40" selection-end-line="172" selection-end-column="40" />
+        <state relative-caret-position="303">
+          <caret line="171" column="40" lean-forward="true" selection-start-line="171" selection-start-column="40" selection-end-line="171" selection-end-column="40" />
           <folding>
             <marker date="1544350622680" expanded="false" signature="6:261" ph="..." />
             <marker date="1544350622680" expanded="true" signature="296:6784" ph="{...}" />

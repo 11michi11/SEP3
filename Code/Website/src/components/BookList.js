@@ -6,37 +6,70 @@ import https from "https";
 
 class BookList extends Component {
   state = {
-    books: []
+    books: [],
+    advSearch: {
+      author: "",
+      title: "",
+      category: "",
+      year: "",
+      isbn: ""
+    }
   };
 
   componentDidMount() {
-    console.log(this.props.match.params.search_term);
     const { search_term } = this.props.match.params;
-
+    console.log(this.props);
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
 
-    axios
-      .get("https://localhost:8080/search?searchTerm=" + search_term, {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true
-      })
-      .then(res => {
-        this.setState({ books: res.data });
-        console.log(res.data);
+    console.log(this.props.match.path.substring(1, 9));
+    if (this.props.match.path.substring(1, 9) === "advanced") {
+      console.log("PROPS" + this.props);
+      console.log(this.props.match.params);
+      this.setState({
+        advSearch: {
+          author: this.props.match.params.author,
+          title: this.props.match.params.title,
+          category: this.props.match.params.category,
+          year: this.props.match.params.year,
+          isbn: this.props.match.params.isbn
+        }
       });
-    axios
-      .get("https://localhost:8080/advancedSearch?searchTerm=" + search_term, {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true
-      })
-      .then(res => {
-        this.setState({ books: res.data });
-        console.log(res.data);
-      });
+      console.log(this.state);
+      axios
+        .get(
+          `https://localhost:8080/advancedSearch?title=${
+            this.state.title
+          }&author=${this.state.author}&year=${this.state.year}&isbn=${
+            this.state.isbn
+          }&category=${this.state.category}`,
+          {
+            crossdomain: true,
+            httpsAgent: agent,
+            withCredentials: true
+          }
+        )
+        .then(res => {
+          this.setState({
+            books: res.data
+          });
+          console.log("Res data: " + res.data);
+        });
+    } else {
+      axios
+        .get("https://localhost:8080/search?searchTerm=" + search_term, {
+          crossdomain: true,
+          httpsAgent: agent,
+          withCredentials: true
+        })
+        .then(res => {
+          this.setState({
+            books: res.data
+          });
+          console.log("Res data: " + res.data);
+        });
+    }
   }
   render() {
     const { books } = this.state;
