@@ -13,18 +13,25 @@ import AdministratorLibrary from "./components/AdministratorLibrary";
 class App extends Component {
   state = {
     name: "",
-    loggedIn: false
+    loggedIn: false,
+    accountType: ""
   };
 
-  handleLogIn = e => {
-    console.log("blah222");
+  handleLogIn = (name, accountType) => {
+    this.setState({ name: name });
+    this.setState({ accountType: accountType });
+    this.setState({ loggedIn: true });
   };
 
   render() {
     return (
       <BrowserRouter>
         <div>
-          <Navbar loggedIn={this.state.loggedIn} name={this.state.name} />
+          <Navbar
+            loggedIn={this.state.loggedIn}
+            name={this.state.name}
+            accountType={this.state.accountType}
+          />
 
           <Switch>
             <Route exact path="/" component={Home} />
