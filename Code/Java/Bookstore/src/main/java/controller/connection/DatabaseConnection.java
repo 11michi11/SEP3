@@ -115,13 +115,13 @@ public class DatabaseConnection implements DatabaseProxy {
         Map<String, Object> args = new HashMap<>();
         args.put("orderId", orderId);
 
-        Request request = new Request(Request.Operation.Confirm, args);
+        Request request = new Request(Request.Operation.ConfirmBookStoreOrder, args);
 
         String response = sendMessage(request);
         ResponseStatus status = getResponseStatus(response);
         if (status.equals(ResponseStatus.OK))
             return "OK";
-        return "Error: " + getContent(response);
+        return "Error: " + getContent(response).toString();
     }
 
     @Override
