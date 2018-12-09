@@ -13,7 +13,8 @@ import AdministratorLibrary from "./components/AdministratorLibrary";
 class App extends Component {
   state = {
     name: "",
-    loggedIn: false
+    loggedIn: false,
+    accountType: ""
   };
 
   handleLogIn = e => {
@@ -24,7 +25,11 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Navbar loggedIn={this.state.loggedIn} name={this.state.name} />
+          <Navbar
+            loggedIn={this.state.loggedIn}
+            name={this.state.name}
+            accountType={this.state.accountType}
+          />
 
           <Switch>
             <Route exact path="/" component={Home} />
