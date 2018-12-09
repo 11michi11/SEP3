@@ -80,7 +80,7 @@ public class BookStoreOrderRepository implements BookStoreOrderRepo {
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
             List<BookStoreOrderData> bookStoreOrders = (List<BookStoreOrderData>) session.createQuery("SELECT " +
-                    " new model.BookStoreOrderData(order.orderid, order.book.isbn, order.book.title, order.customer.name, order.customer.email) " +
+                    " new model.BookStoreOrderData(order.orderid, order.book.isbn, order.book.title, order.customer.name, order.customer.email, order.customer.address, order.customer.phoneNum) " +
                     "FROM BookStoreOrder as order WHERE bookStore.bookstoreid like :bookStoreId").setParameter("bookStoreId",bookStoreId).list();
             tx.commit();
             return bookStoreOrders;
