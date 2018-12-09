@@ -17,8 +17,10 @@ class App extends Component {
     accountType: ""
   };
 
-  handleLogIn = e => {
-    console.log("blah222");
+  handleLogIn = (name, accountType) => {
+    this.setState({ name: name });
+    this.setState({ accountType: accountType });
+    this.setState({ loggedIn: true });
   };
 
   render() {
