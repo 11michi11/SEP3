@@ -30,8 +30,8 @@ class Login extends Component {
       )
       .then(res => {
         var str = "SUCCESS!";
-
-        this.props.handleLogIn(this.state.email, res.userType);
+        console.log(res);
+        this.props.handleLogIn(this.state.email, res.data.userType);
 
         window.alert(`${str}`);
       })

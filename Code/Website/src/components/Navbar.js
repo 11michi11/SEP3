@@ -6,6 +6,12 @@ class Navbar extends Component {
   componentDidMount() {
     console.log(this.props.loggedIn);
   }
+
+  handleLogout = e => {
+    this.props.loggedIn = false;
+    this.props.name = "";
+    this.props.accountType = "";
+  };
   render() {
     let validatedNavbar;
     if (this.props.loggedIn && this.props.accountType === "Customer") {
@@ -24,6 +30,13 @@ class Navbar extends Component {
               <li className="nav-item">
                 <span className="nav-link">
                   <NavLink to="/profile">Profile</NavLink>
+                </span>
+              </li>
+              <li className="nav-item">
+                <span className="nav-link">
+                  <NavLink to="/" onClick={this.handleLogout}>
+                    Log out
+                  </NavLink>
                 </span>
               </li>
             </ul>
@@ -56,6 +69,13 @@ class Navbar extends Component {
                   <NavLink to="/librrary_admin">Control Panel</NavLink>
                 </span>
               </li>
+              <li className="nav-item">
+                <span className="nav-link">
+                  <NavLink to="/logout" onClick={this.handleLogout}>
+                    Log out
+                  </NavLink>
+                </span>
+              </li>
             </ul>
           </div>
         </nav>
@@ -84,6 +104,13 @@ class Navbar extends Component {
               <li className="nav-item">
                 <span className="nav-link">
                   <NavLink to="/bookstore_admin">Control Panel</NavLink>
+                </span>
+              </li>
+              <li className="nav-item">
+                <span className="nav-link">
+                  <NavLink to="/logout" onClick={this.handleLogout}>
+                    Log out
+                  </NavLink>
                 </span>
               </li>
             </ul>
