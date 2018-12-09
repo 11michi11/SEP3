@@ -4,11 +4,13 @@ public class LogInResponse {
 	private String url;
 	private String sessionKey;
 	private String userType;
+	private String name;
 
-	public LogInResponse(String url,String userType) {
+	public LogInResponse(String url,String userType, String name) {
 		this.url = url;
 		this.sessionKey = null;
 		this.userType = userType;
+		this.name = name;
 	}
 
 	public void setSessionKey(String sessionKey) {
@@ -35,12 +37,21 @@ public class LogInResponse {
 		this.userType = userType;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Override
 	public String toString() {
 		return "LogInResponse{" +
 				"url='" + url + '\'' +
 				", sessionKey='" + sessionKey + '\'' +
 				", userType='" + userType + '\'' +
+				", name='" + name + '\'' +
 				'}';
 	}
 }
