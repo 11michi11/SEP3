@@ -63,5 +63,5 @@ public interface DBProxy {
 
     List<LibraryOrder> getLibraryOrders(String libraryId);
 
-    List<BookStoreOrder> getBookStoreOrders(String bookStoreId);
+    List<BookStoreOrderData> getBookStoreOrders(String bookStoreId);
 }

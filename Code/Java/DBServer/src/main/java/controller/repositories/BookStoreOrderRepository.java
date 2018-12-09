@@ -75,11 +75,13 @@ public class BookStoreOrderRepository implements BookStoreOrderRepo {
     }
 
     @Override
-    public List<BookStoreOrder> getBookStoreOrders(String bookStoreId) {
+    public List<BookStoreOrderData> getBookStoreOrders(String bookStoreId) {
         Transaction tx = null;
         try (Session session = sessionFactory.openSession()) {
             tx = session.beginTransaction();
-            List<BookStoreOrder> bookStoreOrders = (List<BookStoreOrder>) session.createQuery("FROM BookStoreOrder WHERE bookStore.bookstoreid like :bookStoreId").setParameter("bookStoreId",bookStoreId).list();
+            List<BookStoreOrderData> bookStoreOrders = (List<BookStoreOrderData>) session.createQuery("SELECT " +
+                    " new model.BookStoreOrderData(order.orderid, order.book.isbn, order.book.title, order.customer.name, order.customer.email, order.customer.address, order.customer.phoneNum) " +
+                    "FROM BookStoreOrder as order WHERE bookStore.bookstoreid like :bookStoreId").setParameter("bookStoreId",bookStoreId).list();
             tx.commit();
             return bookStoreOrders;
         } catch (HibernateException e) {

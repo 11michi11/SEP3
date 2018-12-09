@@ -270,7 +270,7 @@ class AdministratorLibrary extends Component {
       <div className="container">
         <div className="row p-5">
           <div className="col text-center">
-            <h1 className="display-4"> Bookstore Admin Panel </h1>
+            <h1 className="display-4"> Library Admin Panel </h1>
           </div>
         </div>
         <div className="row">
