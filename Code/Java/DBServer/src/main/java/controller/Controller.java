@@ -393,7 +393,7 @@ public class Controller {
         Map<String, Object> args = request.getArguments();
         String bookstoreid = (String) args.get("bookstoreid");
 
-        List<BookStoreOrder> orders = db.getBookStoreOrders(bookstoreid);
+        List<BookStoreOrderData> orders = db.getBookStoreOrders(bookstoreid);
         return new Response(Response.Status.OK, orders).toJson();
     }
 
