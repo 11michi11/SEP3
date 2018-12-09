@@ -26,31 +26,31 @@ class Orders extends Component {
           console.log(res.data);
         });
     }
-    handleConfirm = (e)=>{
-        e.preventdefault();
-        //???
-        const orderid= this.orders.orderid;
-        const agent = new https.Agent({
-          rejectUnauthorized: false
-        });
-        axios
-        //???
-          .delete( "https://localhost:9090/orders/"+orderid,
-            { crossdomain: true,
-              httpsAgent: agent,
-              withCredentials: true }
-          )
-          .then(res => {
-            var str = "SUCCESS!";
+    // handleConfirm = (e, orderid)=>{
+    //     e.preventdefault();
+    //     //???
+    //     //const orderid= this.orders.orderid;
+    //     const agent = new https.Agent({
+    //       rejectUnauthorized: false
+    //     });
+    //     axios
+    //     //???
+    //       .delete( "https://localhost:9090/orders/"+orderid,
+    //         { crossdomain: true,
+    //           httpsAgent: agent,
+    //           withCredentials: true }
+    //       )
+    //       .then(res => {
+    //         var str = "SUCCESS!";
     
-            window.alert(`${str}`);
-          })
-          .catch(error => {
-            window.alert(`${error}
-                           Something went wrong
-                           `);
-          });
-    }
+    //         window.alert(`${str}`);
+    //       })
+    //       .catch(error => {
+    //         window.alert(`${error}
+    //                        Something went wrong
+    //                        `);
+    //       });
+    //}
     render() {
       const { orders } = this.state;
       const orderList =
@@ -60,9 +60,9 @@ class Orders extends Component {
               <div key={o.orderid} className="card">
                 <div className="card-body">
                   <div className="card-subtitle text-muted">
-                    {o.isbn} ({o.customerid}) /{" "}
+                    {o.isbn} ({o.customerid}) ({o.customerid}) /{" "}
                   </div>
-                  <Button color="primary" size="md" onClick={e => this.handleConfirm(e)}>Confirm</Button>
+                  {/* <Button color="primary" size="md" onClick={e => this.handleConfirm(e, o.orderid)}>Confirm</Button> */}
                   <p />
                 </div>
               </div>
