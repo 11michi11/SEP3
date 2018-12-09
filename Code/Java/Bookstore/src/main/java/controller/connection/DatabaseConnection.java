@@ -134,7 +134,7 @@ public class DatabaseConnection implements DatabaseProxy {
         String response = sendMessage(request);
         ResponseStatus status = getResponseStatus(response);
         if (status.equals(ResponseStatus.OK))
-            return getContent(response);
+            return getContent(response).toString();
         return "Error: " + getContent(response);
     }
 

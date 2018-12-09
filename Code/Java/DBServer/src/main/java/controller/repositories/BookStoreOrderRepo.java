@@ -1,6 +1,7 @@
 package controller.repositories;
 
 import model.BookStoreOrder;
+import model.BookStoreOrderData;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ public interface BookStoreOrderRepo {
 
     BookStoreOrder get(String orderId);
 
-    List<BookStoreOrder> getBookStoreOrders(String bookStoreId);
+    List<BookStoreOrderData> getBookStoreOrders(String bookStoreId);
 }
