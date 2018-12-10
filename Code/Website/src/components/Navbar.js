@@ -132,6 +132,16 @@ class Navbar extends Component {
               </li>
               <li className="nav-item">
                 <span className="nav-link">
+                  <NavLink to="/bookstore_orders">OrdersBookstore</NavLink>
+                </span>
+              </li>
+              <li className="nav-item">
+                <span className="nav-link">
+                  <NavLink to="/library_orders">OrdersLibrary</NavLink>
+                </span>
+              </li>
+              <li className="nav-item">
+                <span className="nav-link">
                   <NavLink to="/login">Log In</NavLink>
                 </span>
               </li>
