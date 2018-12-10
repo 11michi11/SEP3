@@ -1,7 +1,6 @@
 controller\Controller.class
 controller\connection\DatabaseConnection$1.class
 controller\SessionKeyManager.class
-controller\BookstoreMain$1.class
 controller\connection\DatabaseProxy.class
 controller\connection\Request.class
 controller\BookstoreMain.class
