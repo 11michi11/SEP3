@@ -91,4 +91,21 @@ public class LibraryOrderRepository implements LibraryOrderRepo {
         }
         return null;
     }
+
+    @Override
+    public List<LibraryOrderData> getLibraryOrders(String libraryId) {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<LibraryOrderData> libraryOrders = (List<LibraryOrderData>) session.createQuery("SELECT " +
+                    " new model.LibraryOrderData(order.orderid, order.book.isbn, order.book.title, order.dateOfOrder, order.returnDate, order.customer.name, order.customer.email, order.customer.address, order.customer.phoneNum) "
+                    +"FROM LibraryOrder as order WHERE library.libraryID like :libraryId").setParameter("libraryId",libraryId).list();
+            tx.commit();
+            return libraryOrders;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

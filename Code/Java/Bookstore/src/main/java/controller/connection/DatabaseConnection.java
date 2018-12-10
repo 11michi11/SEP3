@@ -20,8 +20,8 @@ import java.util.Map;
 public class DatabaseConnection implements DatabaseProxy {
 
     private final int PORT = 7777;
-        private final String IP = "207.154.237.196";
-//    private final String IP = "localhost";
+//        private final String IP = "207.154.237.196";
+    private final String IP = "localhost";
 
     private final String BOOKSTORE_ID = "eb3777c8-77fe-4acd-962d-6853da2e05e0";
 
@@ -108,6 +108,41 @@ public class DatabaseConnection implements DatabaseProxy {
         if (status.equals(ResponseStatus.OK))
             return "OK";
         return "Error: " + getContent(response);
+    }
+
+    @Override
+    public String confirm(String orderId) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("orderId", orderId);
+
+        Request request = new Request(Request.Operation.ConfirmBookStoreOrder, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        if (status.equals(ResponseStatus.OK))
+            return "OK";
+        return "Error: " + getContent(response).toString();
+    }
+
+    @Override
+    public String getBookstoreOrders() {
+        Map<String, Object> args = new HashMap<>();
+        args.put("bookstoreid", BOOKSTORE_ID);
+
+        Request request = new Request(Request.Operation.BookStoreOrders, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        if (status.equals(ResponseStatus.OK))
+            return getContentAsString(response);
+        return "Error: " + getContent(response);
+    }
+
+    private String getContentAsString(String json){
+        JsonParser parser = new JsonParser();
+        JsonElement element = parser.parse(json);
+        JsonObject obj = element.getAsJsonObject(); //since you know it's a JsonObject
+        return obj.get("content").toString();
     }
 
     private <T> T getContent(String contentJson) {

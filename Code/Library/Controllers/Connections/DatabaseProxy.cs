@@ -90,7 +90,7 @@ namespace Controllers.Connections
             // Data buffer for incoming data.  
             var toSend = Encoding.ASCII.GetBytes(request.ToJSON() + "\n");
 
-            var bytes = new byte[1024];
+            var bytes = new byte[10240];
             TcpClient client = new TcpClient("127.0.0.1", 7777);
             NetworkStream ns = client.GetStream();
 
@@ -147,7 +147,7 @@ namespace Controllers.Connections
         public void ReturnBook(string orderId)
         {
             var ar = new Dictionary<string, object>
-                {{"library", true}, {"id", LIBRARY_ID}, {"orderid", orderId}};
+                {{"orderid", orderId}};
 
             var request = new Request(Request.Operation.ReturnBook, ar);
 
@@ -156,6 +156,21 @@ namespace Controllers.Connections
 
             var status = GetResponseStatus(response);
             Console.Write(status);
+        }
+
+        public string GetOrders()
+        {
+            var ar = new Dictionary<string, object>
+                {{"libraryid", LIBRARY_ID}};
+
+            var request = new Request(Request.Operation.LibraryOrders, ar);
+
+            Console.WriteLine($"Sending request: '{request.ToJSON()}'");
+            var response = SendMessage(request);
+
+            var status = GetResponseStatus(response);
+            Console.WriteLine(response);
+            return GetContent(response);
         }
 
         protected enum ResponseStatus

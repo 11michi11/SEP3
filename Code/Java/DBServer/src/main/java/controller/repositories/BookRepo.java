@@ -10,9 +10,9 @@ public interface BookRepo {
 
     void delete(String isbn) throws BookRepository.BookNotFoundException;
 
-    void saveOrUpdate(Book book);
-
     Book get(String isbn) throws BookRepository.BookNotFoundException;
+
+    void saveOrUpdate(Book book);
 
     List<Book> search(String searchTerm);
 
