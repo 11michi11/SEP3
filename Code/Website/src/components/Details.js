@@ -30,6 +30,11 @@ class Details extends Component {
            this.setState({libraries: res.data.libraries})
            this.setState({bookstores: res.data.bookstores})
        })
+       .catch(error => {
+        window.alert(`${error}
+                       The book is not available
+                       `);
+      });
 
     // this.setState({
     //     book: {
@@ -112,7 +117,7 @@ class Details extends Component {
         ) : (<p className="center">Not available</p>)
 
 
-        const bookDetails = this.state.book ? (  
+        const bookDetails = this.state.book!=null ? (  
             <div className="row p-5 m-5">
                 <div className="offset-sm-1 col-sm-10 pt-2 pb-1">
                 <div className="card pt-2 pb-2">
