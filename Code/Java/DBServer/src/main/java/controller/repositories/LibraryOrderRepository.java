@@ -92,6 +92,7 @@ public class LibraryOrderRepository implements LibraryOrderRepo {
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<LibraryOrderData> getLibraryOrders(String libraryId) {
         Transaction tx = null;

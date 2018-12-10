@@ -388,7 +388,6 @@ public class Controller {
         return new Response(Response.Status.OK, "Book was returned successfully").toJson();
     }
 
-
     private String handleBookStoreOrders(Request request) {
         Map<String, Object> args = request.getArguments();
         String bookstoreid = (String) args.get("bookstoreid");
@@ -413,7 +412,7 @@ public class Controller {
         }
     }
 
-    private class UserNotAuthenticated extends Throwable {
+    private class UserNotAuthenticated extends Exception {
         public UserNotAuthenticated(String msg) {
             super(msg);
         }
