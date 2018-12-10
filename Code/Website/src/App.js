@@ -7,8 +7,9 @@ import Registration from "./components/Registration";
 import Login from "./components/Login";
 import Details from "./components/Details";
 import Administrator from "./components/Administrator";
-import Orders from "./components/Orders";
+import BookstoreOrders from "./components/BookstoreOrders";
 import AdministratorLibrary from "./components/AdministratorLibrary";
+import LibraryOrders from "./components/LibraryOrders";
 
 class App extends Component {
   state = {
@@ -37,8 +38,12 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/books" component={BookList} />
             <Route path="/search/:search_term" component={BookList} />
-            <Route path="/advancedSearch/:search_term" component={BookList} />
-            <Route path="/orders" component={Orders} />
+            <Route
+              path="/advancedSearch/:title?/:author?/:year?/:isbn?/:category?"
+              component={BookList}
+            />
+            <Route path="/bookstore_orders" component={BookstoreOrders} />
+            <Route path="/library_orders" component={LibraryOrders} />
             <Route path="/registration" component={Registration} />
             <Route
               path="/login"
