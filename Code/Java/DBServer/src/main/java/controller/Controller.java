@@ -81,7 +81,7 @@ public class Controller {
                     return handleBookStoreOrders(request);
             }
             throw new InvalidOperationException("Wrong operation");
-        } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException | BookStoreAdminRepository.BookStoreAdminNotFoundException | LibraryAdminRepository.LibraryAdminNotFoundException | RepositoryManager.UserNotFoundException | UserNotAuthenticated e) {
+        } catch (NullPointerException| Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException | BookStoreAdminRepository.BookStoreAdminNotFoundException | LibraryAdminRepository.LibraryAdminNotFoundException | RepositoryManager.UserNotFoundException | UserNotAuthenticated e) {
             //send error
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
@@ -401,7 +401,7 @@ public class Controller {
         Map<String, Object> args = request.getArguments();
         String libraryId = (String) args.get("libraryid");
 
-        List<LibraryOrder> orders = db.getLibraryOrders(libraryId);
+        List<LibraryOrderData> orders = db.getLibraryOrders(libraryId);
         return new Response(Response.Status.OK, orders).toJson();
     }
 
