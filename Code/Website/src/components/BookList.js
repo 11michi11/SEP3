@@ -27,35 +27,40 @@ class BookList extends Component {
     if (this.props.match.path.substring(1, 9) === "advanced") {
       console.log("PROPS" + this.props);
       console.log(this.props.match.params);
-      this.setState({
-        advSearch: {
-          author: this.props.match.params.author,
-          title: this.props.match.params.title,
-          category: this.props.match.params.category,
-          year: this.props.match.params.year,
-          isbn: this.props.match.params.isbn
-        }
-      });
-      console.log(this.state);
-      axios
-        .get(
-          `https://localhost:8080/advancedSearch?title=${
-            this.state.title
-          }&author=${this.state.author}&year=${this.state.year}&isbn=${
-            this.state.isbn
-          }&category=${this.state.category}`,
-          {
-            crossdomain: true,
-            httpsAgent: agent,
-            withCredentials: true
+      this.setState(
+        {
+          advSearch: {
+            author: this.props.match.params.author,
+            title: this.props.match.params.title,
+            category: this.props.match.params.category,
+            year: this.props.match.params.year,
+            isbn: this.props.match.params.isbn
           }
-        )
-        .then(res => {
-          this.setState({
-            books: res.data
-          });
-          console.log("Res data: " + res.data);
-        });
+        },
+        () => {
+          let title = this.state.title ? `title=${this.state.title}` : "";
+          let author = this.state.author ? `&author=${this.state.author}` : "";
+          let year = this.state.year ? `&year=${this.state.year}` : "";
+          let isbn = this.state.isbn ? `&isbn=${this.state.isbn}` : "";
+          let category = this.state.category
+            ? `&category=${this.state.category}`
+            : "";
+          axios
+            .get(
+              `https://localhost:8080/advancedSearch?${title}${author}${year}${isbn}${category}`,
+              {
+                crossdomain: true,
+                httpsAgent: agent,
+                withCredentials: true
+              }
+            )
+            .then(res => {
+              this.setState({ books: res.data });
+              console.log("Res data: " + res.data);
+            });
+          console.log(this.state.advSearch);
+        }
+      );
     } else {
       axios
         .get("https://localhost:8080/search?searchTerm=" + search_term, {
