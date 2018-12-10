@@ -26,48 +26,48 @@ class Orders extends Component {
           console.log(res.data);
         });
     }
-    handleConfirm = (e)=>{
-        e.preventdefault();
-        //???
-        const orderid= this.orders.orderid;
-        const agent = new https.Agent({
-          rejectUnauthorized: false
-        });
-        axios
-        //???
-          .delete( "https://localhost:9090/orders/"+orderid,
-            { crossdomain: true,
-              httpsAgent: agent,
-              withCredentials: true }
-          )
-          .then(res => {
-            var str = "SUCCESS!";
+    // handleConfirm = (e, orderid)=>{
+    //     e.preventdefault();
+    //     //???
+    //     //const orderid= this.orders.orderid;
+    //     const agent = new https.Agent({
+    //       rejectUnauthorized: false
+    //     });
+    //     axios
+    //     //???
+    //       .delete( "https://localhost:9090/orders/"+orderid,
+    //         { crossdomain: true,
+    //           httpsAgent: agent,
+    //           withCredentials: true }
+    //       )
+    //       .then(res => {
+    //         var str = "SUCCESS!";
     
-            window.alert(`${str}`);
-          })
-          .catch(error => {
-            window.alert(`${error}
-                           Something went wrong
-                           `);
-          });
-    }
+    //         window.alert(`${str}`);
+    //       })
+    //       .catch(error => {
+    //         window.alert(`${error}
+    //                        Something went wrong
+    //                        `);
+    //       });
+    //}
     render() {
       const { orders } = this.state;
       const orderList =
         this.state.orders.length > 0 ? (
-          orders.map(o => {
-            return (
-              <div key={o.orderid} className="card">
-                <div className="card-body">
-                  <div className="card-subtitle text-muted">
-                    {o.isbn} ({o.customerid}) /{" "}
-                  </div>
-                  <Button color="primary" size="md" onClick={e => this.handleConfirm(e)}>Confirm</Button>
-                  <p />
-                </div>
-              </div>
-            );
-          })
+          // orders.map(o => {
+          //   return (
+          //     <div key={o.orderId}>
+          //      <p>
+          //           {o.isbn} 
+          //           {/* {o.bookName} {o.customerName} {o.customerEmail} {o.customerAddress} {o.customerPhoneNum} */}
+          //           </p>
+          //         </div>
+                  
+          //   );
+          
+         // })
+         <div> {orders.orderId}</div>
         ) : (
           <div className="row p-5 m-5">
             <div className="offset-sm-5 col-sm-2 text-center">
@@ -75,7 +75,8 @@ class Orders extends Component {
             </div>
           </div>
         );
-      return <div className="container">{orderList}</div>;
+        return <div className="container">{orderList}</div>;
     }
+    
 }
 export default Orders;

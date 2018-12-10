@@ -1,9 +1,11 @@
 controller\Controller.class
 controller\connection\DatabaseConnection$1.class
 controller\SessionKeyManager.class
+controller\BookstoreMain$1.class
 controller\connection\DatabaseProxy.class
 controller\connection\Request.class
 controller\BookstoreMain.class
+controller\requests\advices\SessionKeyExeptionAdvice.class
 controller\requests\Search.class
 controller\requests\BookController.class
 controller\requests\advices\DatabaseConnecionExceptionAdvice.class
@@ -11,6 +13,7 @@ controller\connection\DatabaseConnection$2.class
 controller\cors\BookstoreCORSFilter.class
 controller\connection\DatabaseConnection$ServerOfflineException.class
 model\Book$Category.class
+controller\requests\Order.class
 controller\connection\Request$Operation.class
 controller\connection\DatabaseConnection.class
 controller\connection\Request$RequestJsonFormatException.class
@@ -18,4 +21,3 @@ controller\SessionKeyManager$SessionKeyInvalidException.class
 model\Book.class
 controller\connection\DatabaseConnection$SearchException.class
 controller\connection\DatabaseConnection$ResponseStatus.class
-controller\connection\MockDatabase.class
