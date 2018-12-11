@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class LibraryOrderRepoTest {
@@ -46,20 +47,7 @@ public class LibraryOrderRepoTest {
         }
     }
 
-
-    private LibraryOrder createLibraryOrder(String bookId, String customerId) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException {
-        LibraryStorage libraryStorage = libraryStorageRepo.getStorageByBookId(bookId);
-        Book book = libraryStorage.getBook();
-        Library library = libraryStorage.getLibrary();
-        Customer customer = customerRepo.get(customerId);
-        Calendar dateOfOrder = Calendar.getInstance();
-        Calendar returnDate = Calendar.getInstance();
-        returnDate.add(Calendar.DAY_OF_MONTH, 30);
-
-        String orderId = UUID.randomUUID().toString();
-        return new LibraryOrder(orderId, libraryStorage, library, book, customer, dateOfOrder, returnDate);
-    }
-
+    //Helper method
     private String addBookToLibrary(){
         Book book = new Book("testisbn", "testtitle", "testauthor", 999, Book.Category.Poetry);
         List<Book> books = Collections.singletonList(book);

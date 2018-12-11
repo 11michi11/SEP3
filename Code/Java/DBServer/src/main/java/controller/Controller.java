@@ -326,9 +326,10 @@ public class Controller {
         String name = (String) args.get("name");
         String email = (String) args.get("email");
         String password = (String) args.get("password");
+        String serverUrl = (String) args.get("serverUrl");
 
 
-        db.addLibraryAdministrator(libraryId, name, email, password);
+        db.addLibraryAdministrator(libraryId, name, email, password, serverUrl);
         return new Response(Response.Status.OK, "Library administrator created").toJson();
     }
 
@@ -338,8 +339,9 @@ public class Controller {
         String name = (String) args.get("name");
         String email = (String) args.get("email");
         String password = (String) args.get("password");
+        String serverUrl = (String) args.get("serverUrl");
 
-        db.addBookStoreAdministrator(bookstoreId, name, email, password);
+        db.addBookStoreAdministrator(bookstoreId, name, email, password, serverUrl);
         return new Response(Response.Status.OK, "Bookstore administrator created").toJson();
     }
 
@@ -369,8 +371,10 @@ public class Controller {
             throw new UserNotAuthenticated("Email or password is invalid");
 
         LogInResponse logInResponse;
-        if (user instanceof Admin)
-            logInResponse = new LogInResponse("empty", user.getClass().getSimpleName(), user.getName(), ((Admin)user).getInstitutionId(), user.getUserId());
+        if (user instanceof Admin){
+            Admin admin = (Admin) user;
+            logInResponse = new LogInResponse(admin.getServerUrl(), user.getClass().getSimpleName(), user.getName(), ((Admin)user).getInstitutionId(), user.getUserId());
+        }
         else
             logInResponse = new LogInResponse("empty", user.getClass().getSimpleName(), user.getName(), "bookservice", user.getUserId());
 
