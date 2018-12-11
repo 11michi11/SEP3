@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import LoadingCanvas from "./../canvas/LoadingCanvas";
 import https from "https";
 
 class BookList extends Component {

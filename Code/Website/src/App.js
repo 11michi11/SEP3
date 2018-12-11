@@ -10,6 +10,8 @@ import Administrator from "./components/Administrator";
 import BookstoreOrders from "./components/BookstoreOrders";
 import AdministratorLibrary from "./components/AdministratorLibrary";
 import LibraryOrders from "./components/LibraryOrders";
+import Cookies from "js-cookie";
+import AdministratorLibraryBookList from "./components/AdministratorLibraryBookList";
 
 class App extends Component {
   state = {
@@ -18,10 +20,11 @@ class App extends Component {
     accountType: ""
   };
 
-  handleLogIn = (name, accountType) => {
+  handleLogIn = (name, accountType, sessionKey) => {
     this.setState({ name: name });
     this.setState({ accountType: accountType });
     this.setState({ loggedIn: true });
+    Cookies.set("sessionKey", sessionKey + "");
   };
 
   render() {
@@ -52,6 +55,10 @@ class App extends Component {
             />
             <Route path="/details/:search_term" component={Details} />
             <Route path="/bookstore_admin" component={Administrator} />
+            <Route
+              path="/library_admin/bookList/:isbn"
+              component={AdministratorLibraryBookList}
+            />
             <Route path="/library_admin" component={AdministratorLibrary} />
           </Switch>
         </div>

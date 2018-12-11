@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efcb72c6-6c0c-4d14-bf05-cd7b0f951cf2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Library/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/Controllers/BooksController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/Controllers/BooksController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/obj/Debug/netcoreapp2.1/Requests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Website/src/components/LibraryOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Website/src/components/LibraryOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Website/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Website/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Website/src/components/AdministratorLibrary.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Website/src/components/AdministratorLibrary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Website/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Website/src/components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/Architecture.asta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/Architecture.asta" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -126,8 +124,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39">
-              <caret line="91" column="9" lean-forward="true" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
+            <state relative-caret-position="137">
+              <caret line="90" column="52" selection-start-line="90" selection-start-column="52" selection-end-line="90" selection-end-column="52" />
               <folding>
                 <marker date="1544537330674" expanded="true" signature="6:339" ph="..." />
                 <marker date="1544537330674" expanded="true" signature="371:4470" ph="{...}" />
@@ -172,7 +170,7 @@
         <entry file="file://$PROJECT_DIR$/Requests/Startup.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="736">
-              <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
               <folding>
                 <marker date="1544538131399" expanded="false" signature="6:450" ph="..." />
                 <marker date="1544538131399" expanded="true" signature="472:2405" ph="{...}" />
@@ -379,7 +377,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="950" />
     <option name="width" value="980" />
     <option name="height" value="1040" />
@@ -489,12 +487,12 @@
       <workItem from="1544351230873" duration="1522000" />
       <workItem from="1544457767331" duration="92000" />
       <workItem from="1544457900074" duration="2797000" />
-      <workItem from="1544533208885" duration="5294000" />
+      <workItem from="1544533208885" duration="7680000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24151000" />
+    <option name="totallyTimeSpent" value="26537000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -507,13 +505,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1442953" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.80271083" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22289157" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39759037" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -703,7 +702,7 @@
     <entry file="file://$PROJECT_DIR$/Requests/Startup.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="736">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
           <folding>
             <marker date="1544538131399" expanded="false" signature="6:450" ph="..." />
             <marker date="1544538131399" expanded="true" signature="472:2405" ph="{...}" />
@@ -721,8 +720,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="91" column="9" lean-forward="true" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
+        <state relative-caret-position="137">
+          <caret line="90" column="52" selection-start-line="90" selection-start-column="52" selection-end-line="90" selection-end-column="52" />
           <folding>
             <marker date="1544537330674" expanded="true" signature="6:339" ph="..." />
             <marker date="1544537330674" expanded="true" signature="371:4470" ph="{...}" />
