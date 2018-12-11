@@ -6,11 +6,11 @@ public class LogInResponse {
     private String url;
     private String sessionKey;
     private String userType;
-    private String customerId;
+    private String userId;
 
-    public LogInResponse(String url, String userType, String name, String institutionId, String customerId) {
+    public LogInResponse(String url, String userType, String name, String institutionId, String userId) {
         this.url = url;
-        this.customerId = customerId;
+        this.userId = userId;
         this.sessionKey ="empty";
         this.userType = userType;
         this.name = name;
