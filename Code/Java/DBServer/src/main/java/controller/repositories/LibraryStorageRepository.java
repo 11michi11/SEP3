@@ -88,7 +88,7 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
             return Collections.emptyList();
 
         List<LibraryStorage> list = HibernateAdapter.searchInLibrary(searchTerm, libraryId);
-        return list.stream().map(LibraryStorage::getBook).collect(Collectors.toList());
+        return new LinkedList<>(list.stream().map(LibraryStorage::getBook).collect(Collectors.toSet()));
     }
 
     @Override
@@ -102,7 +102,7 @@ public class LibraryStorageRepository implements LibraryStorageRepo {
             author = noMatchString;
 
         List<LibraryStorage> list = HibernateAdapter.advancedSearchInLibrary(libraryId, isbn, title, author, year,category);
-        return list.stream().map(LibraryStorage::getBook).collect(Collectors.toList());
+        return new LinkedList<>(list.stream().map(LibraryStorage::getBook).collect(Collectors.toSet()));
     }
 
     @Override

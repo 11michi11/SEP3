@@ -74,6 +74,22 @@ public class BookStoreOrderRepository implements BookStoreOrderRepo {
         return null;
     }
 
+    @Override
+    public List<BookStoreOrderData> getBookStoreOrders(String bookStoreId) {
+        Transaction tx = null;
+        try (Session session = sessionFactory.openSession()) {
+            tx = session.beginTransaction();
+            List<BookStoreOrderData> bookStoreOrders = (List<BookStoreOrderData>) session.createQuery("SELECT " +
+                    " new model.BookStoreOrderData(order.orderid, order.book.isbn, order.book.title, order.customer.name, order.customer.email, order.customer.address, order.customer.phoneNum) " +
+                    "FROM BookStoreOrder as order WHERE bookStore.bookstoreid like :bookStoreId").setParameter("bookStoreId",bookStoreId).list();
+            tx.commit();
+            return bookStoreOrders;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+        return null;     }
+
     private BookStoreOrder createBookStoreOrder(String isbn, String bookstoreId, String customerId) throws CustomerRepository.CustomerNotFoundException, BookStoreStorageRepository.BookStoreStorageNotFoundException {
        try {
            BookStoreStorage bookStoreStorage = bookStoreStorageRepo.getStoragesByIsbnAndBookstore(isbn, bookstoreId).get(0);

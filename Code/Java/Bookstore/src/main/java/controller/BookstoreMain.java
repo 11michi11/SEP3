@@ -11,6 +11,6 @@ public class BookstoreMain {
 
         Controller controller = context.getBean(Controller.class);
 
-        SessionKeyManager sessionKeyManager = context.getBean(SessionKeyManager.class);
     }
+
 }

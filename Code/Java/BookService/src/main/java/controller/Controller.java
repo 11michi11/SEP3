@@ -1,13 +1,14 @@
 package controller;
 
-import com.google.gson.Gson;
 import controller.connection.DatabaseConnection;
 import controller.connection.DatabaseProxy;
 import model.Book;
 import model.Customer;
 import model.LogInResponse;
+import model.AuthenticationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import utils.Password;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class Controller {
     }
 
     public String addCustomer(Customer customer){
+        customer.setPassword(Password.encryptPwd(customer.getPassword()));
         return db.addCustomer(customer);
     }
 
@@ -52,8 +54,10 @@ public class Controller {
     }
 
 	public LogInResponse logIn(String email, String password) throws DatabaseConnection.LoginException {
-        LogInResponse logInResponse = db.logIn(email,password);
-        logInResponse.setSessionKey(SessionKeyManager.generateSK());
+        LogInResponse logInResponse = db.logIn(email,Password.encryptPwd(password));
+        String institutionId = logInResponse.getInstitutionId();
+        String userType = logInResponse.getUserType();
+        logInResponse.setSessionKey(SessionKeyManager.generateSK(institutionId, AuthenticationData.UserType.valueOf(userType)));
         return logInResponse;
 	}
 }
