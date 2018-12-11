@@ -66,7 +66,7 @@ class Navbar extends Component {
               </li>
               <li className="nav-item">
                 <span className="nav-link">
-                  <NavLink to="/librrary_admin">Control Panel</NavLink>
+                  <NavLink to="/library_admin">Control Panel</NavLink>
                 </span>
               </li>
               <li className="nav-item">
@@ -128,16 +128,6 @@ class Navbar extends Component {
               <li className="nav-item active">
                 <span className="nav-link">
                   <NavLink to="/">Home</NavLink>
-                </span>
-              </li>
-              <li className="nav-item">
-                <span className="nav-link">
-                  <NavLink to="/bookstore_orders">OrdersBookstore</NavLink>
-                </span>
-              </li>
-              <li className="nav-item">
-                <span className="nav-link">
-                  <NavLink to="/library_orders">OrdersLibrary</NavLink>
                 </span>
               </li>
               <li className="nav-item">

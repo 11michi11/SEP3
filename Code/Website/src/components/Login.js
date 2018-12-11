@@ -5,6 +5,7 @@ import https from "https";
 
 class Login extends Component {
   componentDidMount() {
+    console.log(this.props);
     this.props.handleLogIn();
   }
   state = {
