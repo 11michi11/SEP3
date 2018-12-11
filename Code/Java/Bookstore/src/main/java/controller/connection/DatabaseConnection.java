@@ -110,6 +110,41 @@ public class DatabaseConnection implements DatabaseProxy {
         return "Error: " + getContent(response);
     }
 
+    @Override
+    public String confirm(String orderId) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("orderId", orderId);
+
+        Request request = new Request(Request.Operation.ConfirmBookStoreOrder, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        if (status.equals(ResponseStatus.OK))
+            return "OK";
+        return "Error: " + getContent(response).toString();
+    }
+
+    @Override
+    public String getBookstoreOrders() {
+        Map<String, Object> args = new HashMap<>();
+        args.put("bookstoreid", BOOKSTORE_ID);
+
+        Request request = new Request(Request.Operation.BookStoreOrders, args);
+
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        if (status.equals(ResponseStatus.OK))
+            return getContentAsString(response);
+        return "Error: " + getContent(response);
+    }
+
+    private String getContentAsString(String json){
+        JsonParser parser = new JsonParser();
+        JsonElement element = parser.parse(json);
+        JsonObject obj = element.getAsJsonObject(); //since you know it's a JsonObject
+        return obj.get("content").toString();
+    }
+
     private <T> T getContent(String contentJson) {
         JsonParser parser = new JsonParser();
         JsonElement element = parser.parse(contentJson);

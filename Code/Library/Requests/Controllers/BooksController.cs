@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Controllers;
+using Microsoft.AspNetCore.Cors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
 
 namespace Requests.Controllers
 {
+    [EnableCors()]
     [ApiController]
     public class BooksController : ControllerBase
     {

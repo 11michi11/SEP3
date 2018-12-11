@@ -7,7 +7,6 @@ import communication.Request;
 import communication.Response;
 import controller.repositories.*;
 import model.*;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 import java.util.Map;
@@ -72,21 +71,21 @@ public class Controller {
                     return handleDeleteLibraryAdministrator(request);
                 case Authenticate:
                     return handleAuthenticate(request);
-	            case ConfirmBookStoreOrder:
-		            return handleConfirmBookstoreOrder(request);
+                case ConfirmBookStoreOrder:
+                    return handleConfirmBookstoreOrder(request);
                 case ReturnBook:
                     return handleReturnBookRequest(request);
                 case LibraryOrders:
                     return handleLibraryOrders(request);
+                case BookStoreOrders:
+                    return handleBookStoreOrders(request);
             }
             throw new InvalidOperationException("Wrong operation");
-        } catch (Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException | BookStoreAdminRepository.BookStoreAdminNotFoundException | LibraryAdminRepository.LibraryAdminNotFoundException | RepositoryManager.UserNotFoundException | UserNotAuthenticated e) {
+        } catch (NullPointerException | Request.RequestJsonFormatException | InvalidOperationException | BookRepository.BookNotFoundException | LibraryRepository.LibraryNotFoundException | BookStoreRepository.BookStoreNotFoundException | BookStoreStorageRepository.BookAlreadyInBookStoreException | LibraryStorageRepository.BookAlreadyDeletedException | LibraryStorageRepository.LibraryStorageNotFoundException | BookStoreStorageRepository.BookStoreStorageNotFoundException | CustomerRepository.CustomerNotFoundException | BookStoreAdminRepository.BookStoreAdminNotFoundException | LibraryAdminRepository.LibraryAdminNotFoundException | RepositoryManager.UserNotFoundException | UserNotAuthenticated e) {
             //send error
             return new Response(Response.Status.Error, e.getMessage()).toJson();
         }
     }
-
-
 
     public String handleSearch(Request request) {
         Map<String, Object> arguments = request.getArguments();
@@ -169,11 +168,11 @@ public class Controller {
     public String handleLibraryAdvancedSearch(Request request) throws InvalidOperationException {
         Map<String, Object> arguments = request.getArguments();
         String isbn = (String) arguments.getOrDefault("isbn", "");
-        if(isbn == null) isbn = "";
+        if (isbn == null) isbn = "";
         String title = (String) arguments.getOrDefault("title", "");
-        if(title == null) title = "";
+        if (title == null) title = "";
         String author = (String) arguments.getOrDefault("author", "");
-        if(author == null) author = "";
+        if (author == null) author = "";
         Object yearObj = arguments.getOrDefault("year", 0);
         if (yearObj == null) yearObj = 0.0;
         int year = ((Double) yearObj).intValue();
@@ -182,7 +181,7 @@ public class Controller {
         Book.Category category = Book.Category.valueOf(cat);
 
         String libraryid = (String) arguments.get("libraryid");
-        if(libraryid == null)
+        if (libraryid == null)
             throw new InvalidOperationException("No library id");
         List<Book> books = db.advancedSearchInLibrary(libraryid, isbn, title, author, year, category);
 
@@ -369,43 +368,56 @@ public class Controller {
         if (!user.authenticate(password))
             throw new UserNotAuthenticated("Email or password is invalid");
 
-        LogInResponse logInResponse = new LogInResponse("empty", user.getClass().getSimpleName());
-        return new Response(Response.Status.OK,logInResponse ).toJson();
+        LogInResponse logInResponse;
+        if (user instanceof Admin)
+            logInResponse = new LogInResponse("empty", user.getClass().getSimpleName(), user.getName(), ((Admin)user).getInstitutionId(), user.getUserId());
+        else
+            logInResponse = new LogInResponse("empty", user.getClass().getSimpleName(), user.getName(), "bookservice", user.getUserId());
+
+        return new Response(Response.Status.OK, logInResponse).toJson();
     }
 
-	private String handleConfirmBookstoreOrder(Request request) throws CustomerRepository.CustomerNotFoundException {
-		Map<String, Object> args = request.getArguments();
-		String orderId = (String) args.get("orderId");
+    private String handleConfirmBookstoreOrder(Request request) throws CustomerRepository.CustomerNotFoundException {
+        Map<String, Object> args = request.getArguments();
+        String orderId = (String) args.get("orderId");
 
-		db.confirmBookstoreOrder(orderId);
-		return new Response(Response.Status.OK, "Confirmation was successful").toJson();
-	}
+        db.confirmBookstoreOrder(orderId);
+        return new Response(Response.Status.OK, "Confirmation was successful").toJson();
+    }
 
     private String handleReturnBookRequest(Request request) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException {
         Map<String, Object> args = request.getArguments();
-        String orderId = (String) args.get("orderId");
+        String orderId = (String) args.get("orderid");
 
         db.returnBook(orderId);
         return new Response(Response.Status.OK, "Book was returned successfully").toJson();
     }
 
+    private String handleBookStoreOrders(Request request) {
+        Map<String, Object> args = request.getArguments();
+        String bookstoreid = (String) args.get("bookstoreid");
+
+        List<BookStoreOrderData> orders = db.getBookStoreOrders(bookstoreid);
+        return new Response(Response.Status.OK, orders).toJson();
+    }
+
     private String handleLibraryOrders(Request request) {
         Map<String, Object> args = request.getArguments();
-        String libraryId = (String) args.get("libraryId");
+        String libraryId = (String) args.get("libraryid");
 
-        List<LibraryOrder> orders = db.getLibraryOrders(libraryId);
+        List<LibraryOrderData> orders = db.getLibraryOrders(libraryId);
         return new Response(Response.Status.OK, orders).toJson();
     }
 
 
-	public class InvalidOperationException extends Exception {
+    public class InvalidOperationException extends Exception {
 
         InvalidOperationException(String msg) {
             super(msg);
         }
     }
 
-    private class UserNotAuthenticated extends Throwable {
+    private class UserNotAuthenticated extends Exception {
         public UserNotAuthenticated(String msg) {
             super(msg);
         }

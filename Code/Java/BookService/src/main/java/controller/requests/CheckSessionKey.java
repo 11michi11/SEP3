@@ -20,9 +20,9 @@ public class CheckSessionKey implements ApplicationContextAware {
 	private ConfigurableApplicationContext context;
 
 	@CrossOrigin
-	@GetMapping("/checkSK/{sessionKey}")
-	public String checkSK(@PathVariable String sessionKey) {
-		Calendar calendar = SessionKeyManager.checkSKFromInstitution(sessionKey);
+	@GetMapping("/checkSK/{sessionKey}/{institutionId}")
+	public String checkSK(@PathVariable String sessionKey, @PathVariable String institutionId) {
+		Calendar calendar = SessionKeyManager.checkSKFromInstitution(sessionKey, institutionId);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
 		sdf.setTimeZone(TimeZone.getDefault());
