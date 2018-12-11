@@ -6,9 +6,11 @@ public class LogInResponse {
 	private String sessionKey;
 	private String userType;
 	private String name;
+	private String userId;
 
-	public LogInResponse(String url,String userType, String name, String institutionId) {
+	public LogInResponse(String url, String userType, String name, String institutionId, String userId) {
 		this.url = url;
+		this.userId = userId;
 		this.sessionKey = null;
 		this.userType = userType;
 		this.name = name;
@@ -26,6 +28,10 @@ public class LogInResponse {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	public String getUserId() {return userId;}
+
+	public void setUserId(String userId) { this.userId = userId;}
 
 	public String getSessionKey() {
 		return sessionKey;

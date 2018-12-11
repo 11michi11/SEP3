@@ -19,7 +19,6 @@ public class BookServiceMain {
         ConfigurableApplicationContext context= SpringApplication.run(BookServiceMain.class, args);
 
         Controller controller = context.getBean(Controller.class);
-        System.out.println(SessionKeyManager.generateSK());
     }
 
     @Bean
