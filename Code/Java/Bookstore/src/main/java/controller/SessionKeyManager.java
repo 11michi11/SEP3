@@ -17,6 +17,7 @@ public class SessionKeyManager {
 
 	private HashMap<String, Calendar> sessionKeys = new HashMap<>();
 	private static final String URL = "https://localhost:8080/checkSK/";
+	private final String BOOKSTORE_ID = "eb3777c8-77fe-4acd-962d-6853da2e05e0";
 
 	public void isSessionKeyValid(String sessionKey) throws SessionKeyInvalidException {
 		Calendar expirationDate = sessionKeys.get(sessionKey);
@@ -33,7 +34,7 @@ public class SessionKeyManager {
 
 	private Calendar checkInBookService(String sessionKey) throws SessionKeyInvalidException {
 		try {
-			String response = makeRequest(URL + sessionKey);
+			String response = makeRequest(URL + sessionKey+"/"+BOOKSTORE_ID);
 			DateFormat df = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
 			df.setTimeZone(TimeZone.getDefault());
 			Date date = df.parse(response);
