@@ -12,6 +12,7 @@ namespace Controllers
     {
         private const string Url = "https://localhost:8080/checkSK/";
         private static Dictionary<string, DateTime?> _sessionKeys = new Dictionary<string, DateTime?>();
+        private static readonly string LIBRARY_ID = "ce78ef57-77ec-4bb7-82a2-1a78d3789aef";
         
         public static bool IsSkValid(string sessionKey)
         {
@@ -34,7 +35,7 @@ namespace Controllers
         {
             try
             {
-                var response = MakeRequest(Url + sessionKey);
+                var response = MakeRequest(Url + sessionKey + "/" + LIBRARY_ID);
                 var date = DateTime.ParseExact(response, "yyyy MMM dd HH:mm:ss", null);
                 return date;
             }
