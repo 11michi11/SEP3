@@ -1,6 +1,7 @@
 package controller.repositories;
 
 import model.LibraryOrder;
+import model.LibraryOrderData;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ public interface LibraryOrderRepo {
 
     LibraryOrder get(String orderId);
 
-    List<LibraryOrder> getLibraryOrders(String libraryId);
+    List<LibraryOrderData> getLibraryOrders(String libraryId);
 }

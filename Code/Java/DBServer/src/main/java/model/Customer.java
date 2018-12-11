@@ -56,6 +56,11 @@ public class Customer implements User {
         return name;
     }
 
+    @Override
+    public String getUserId() {
+        return id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

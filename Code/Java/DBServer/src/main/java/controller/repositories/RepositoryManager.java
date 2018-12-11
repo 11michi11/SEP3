@@ -166,12 +166,12 @@ public class RepositoryManager implements DBProxy {
     }
 
     @Override
-    public List<BookStoreOrder> getBookStoreOrders(String bookStoreId) {
+    public List<BookStoreOrderData> getBookStoreOrders(String bookStoreId) {
         return bookStoreOrderRepo.getBookStoreOrders(bookStoreId);
     }
 
     @Override
-    public List<LibraryOrder> getLibraryOrders(String libraryId) {
+    public List<LibraryOrderData> getLibraryOrders(String libraryId) {
         return libraryOrderRepo.getLibraryOrders(libraryId);
     }
 

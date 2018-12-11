@@ -115,13 +115,13 @@ public class DatabaseConnection implements DatabaseProxy {
         Map<String, Object> args = new HashMap<>();
         args.put("orderId", orderId);
 
-        Request request = new Request(Request.Operation.Confirm, args);
+        Request request = new Request(Request.Operation.ConfirmBookStoreOrder, args);
 
         String response = sendMessage(request);
         ResponseStatus status = getResponseStatus(response);
         if (status.equals(ResponseStatus.OK))
             return "OK";
-        return "Error: " + getContent(response);
+        return "Error: " + getContent(response).toString();
     }
 
     @Override
@@ -134,8 +134,15 @@ public class DatabaseConnection implements DatabaseProxy {
         String response = sendMessage(request);
         ResponseStatus status = getResponseStatus(response);
         if (status.equals(ResponseStatus.OK))
-            return getContent(response);
+            return getContentAsString(response);
         return "Error: " + getContent(response);
+    }
+
+    private String getContentAsString(String json){
+        JsonParser parser = new JsonParser();
+        JsonElement element = parser.parse(json);
+        JsonObject obj = element.getAsJsonObject(); //since you know it's a JsonObject
+        return obj.get("content").toString();
     }
 
     private <T> T getContent(String contentJson) {

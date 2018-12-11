@@ -90,7 +90,7 @@ namespace Controllers.Connections
             // Data buffer for incoming data.  
             var toSend = Encoding.ASCII.GetBytes(request.ToJSON() + "\n");
 
-            var bytes = new byte[1024];
+            var bytes = new byte[10240];
             TcpClient client = new TcpClient("127.0.0.1", 7777);
             NetworkStream ns = client.GetStream();
 

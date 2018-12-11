@@ -6,37 +6,75 @@ import https from "https";
 
 class BookList extends Component {
   state = {
-    books: []
+    books: [],
+    advSearch: {
+      author: "",
+      title: "",
+      category: "",
+      year: "",
+      isbn: ""
+    }
   };
 
   componentDidMount() {
-    console.log(this.props.match.params.search_term);
     const { search_term } = this.props.match.params;
-
+    console.log(this.props);
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
 
-    axios
-      .get("https://localhost:8080/search?searchTerm=" + search_term, {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true
-      })
-      .then(res => {
-        this.setState({ books: res.data });
-        console.log(res.data);
-      });
-    axios
-      .get("https://localhost:8080/advancedSearch?searchTerm=" + search_term, {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true
-      })
-      .then(res => {
-        this.setState({ books: res.data });
-        console.log(res.data);
-      });
+    console.log(this.props.match.path.substring(1, 9));
+    if (this.props.match.path.substring(1, 9) === "advanced") {
+      console.log("PROPS" + this.props);
+      console.log(this.props.match.params);
+      this.setState(
+        {
+          advSearch: {
+            author: this.props.match.params.author,
+            title: this.props.match.params.title,
+            category: this.props.match.params.category,
+            year: this.props.match.params.year,
+            isbn: this.props.match.params.isbn
+          }
+        },
+        () => {
+          let title = this.state.title ? `title=${this.state.title}` : "";
+          let author = this.state.author ? `&author=${this.state.author}` : "";
+          let year = this.state.year ? `&year=${this.state.year}` : "";
+          let isbn = this.state.isbn ? `&isbn=${this.state.isbn}` : "";
+          let category = this.state.category
+            ? `&category=${this.state.category}`
+            : "";
+          axios
+            .get(
+              `https://localhost:8080/advancedSearch?${title}${author}${year}${isbn}${category}`,
+              {
+                crossdomain: true,
+                httpsAgent: agent,
+                withCredentials: true
+              }
+            )
+            .then(res => {
+              this.setState({ books: res.data });
+              console.log("Res data: " + res.data);
+            });
+          console.log(this.state.advSearch);
+        }
+      );
+    } else {
+      axios
+        .get("https://localhost:8080/search?searchTerm=" + search_term, {
+          crossdomain: true,
+          httpsAgent: agent,
+          withCredentials: true
+        })
+        .then(res => {
+          this.setState({
+            books: res.data
+          });
+          console.log("Res data: " + res.data);
+        });
+    }
   }
   render() {
     const { books } = this.state;
