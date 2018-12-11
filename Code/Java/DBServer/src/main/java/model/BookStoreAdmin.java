@@ -63,6 +63,11 @@ public class BookStoreAdmin implements User, Admin {
 		return name;
 	}
 
+	@Override
+	public String getUserId() {
+		return adminId;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}

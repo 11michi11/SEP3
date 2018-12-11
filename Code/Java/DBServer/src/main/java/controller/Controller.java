@@ -370,9 +370,9 @@ public class Controller {
 
         LogInResponse logInResponse;
         if (user instanceof Admin)
-            logInResponse = new LogInResponse("empty", user.getClass().getSimpleName(), user.getName(), ((Admin)user).getInstitutionId());
+            logInResponse = new LogInResponse("empty", user.getClass().getSimpleName(), user.getName(), ((Admin)user).getInstitutionId(), user.getUserId());
         else
-            logInResponse = new LogInResponse("empty", user.getClass().getSimpleName(), user.getName(), "bookservice");
+            logInResponse = new LogInResponse("empty", user.getClass().getSimpleName(), user.getName(), "bookservice", user.getUserId());
 
         return new Response(Response.Status.OK, logInResponse).toJson();
     }
