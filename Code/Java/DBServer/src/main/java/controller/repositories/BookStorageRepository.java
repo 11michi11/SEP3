@@ -4,6 +4,7 @@ import controller.HibernateAdapter;
 import model.*;
 import org.hibernate.SessionFactory;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,11 +14,13 @@ public class BookStorageRepository implements BookStorageRepo {
     private SessionFactory sessionFactory;
     private LibraryStorageRepo libraryStorageRepo;
     private BookStoreStorageRepo bookStoreStorageRepo;
+    private BookRepo bookRepo;
 
     public BookStorageRepository() {
         this.sessionFactory = HibernateAdapter.getSessionFactory();
         this.libraryStorageRepo = LibraryStorageRepository.getInstance();
         this.bookStoreStorageRepo = BookStoreStorageRepository.getInstance();
+        this.bookRepo = BookRepository.getInstance();
     }
 
     public static BookStorageRepository getInstance() {
@@ -44,7 +47,9 @@ public class BookStorageRepository implements BookStorageRepo {
 
             return new DetailedBook(book, libraryStorages, bookStores);
         } catch (IndexOutOfBoundsException e) {
-            throw new BookRepository.BookNotFoundException("There is no book with isbn:" + isbn);
+//            throw new BookRepository.BookNotFoundException("There is no book with isbn:" + isbn);
+            Book book = bookRepo.get(isbn);
+            return new DetailedBook(book, Collections.emptyList(),Collections.emptyList() );
         }
     }
 }

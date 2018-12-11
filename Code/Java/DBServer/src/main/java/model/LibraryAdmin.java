@@ -58,6 +58,11 @@ public class LibraryAdmin implements User {
         return name;
     }
 
+    @Override
+    public String getUserId() {
+        return adminId;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
