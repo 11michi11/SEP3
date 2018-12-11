@@ -16,7 +16,7 @@ public class LogIn implements ApplicationContextAware {
 	private ConfigurableApplicationContext context;
 
 	@CrossOrigin
-	@GetMapping("/login")
+	@PostMapping("/login")
 	public LogInResponse logIn(@RequestBody LogInRequest logInData)  {
 		Controller controller = context.getBean(Controller.class);
 		return controller.logIn(logInData.email,logInData.password);

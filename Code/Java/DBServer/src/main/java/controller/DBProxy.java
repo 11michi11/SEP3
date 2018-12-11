@@ -59,4 +59,9 @@ public interface DBProxy {
 
     void confirmBookstoreOrder(String orderId) throws CustomerRepository.CustomerNotFoundException;
 
+	void returnBook(String orderId) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException;
+
+    List<LibraryOrderData> getLibraryOrders(String libraryId);
+
+    List<BookStoreOrderData> getBookStoreOrders(String bookStoreId);
 }
