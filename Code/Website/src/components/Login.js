@@ -35,7 +35,8 @@ class Login extends Component {
         this.props.handleLogIn(
           res.data.name,
           res.data.userType,
-          res.data.sessionKey
+          res.data.sessionKey,
+          res.data.userId
         );
 
         window.alert(`${str}`);

@@ -17,14 +17,16 @@ class App extends Component {
   state = {
     name: "",
     loggedIn: false,
-    accountType: ""
+    accountType: "",
+    customerId: ""
   };
 
-  handleLogIn = (name, accountType, sessionKey) => {
+  handleLogIn = (name, accountType, sessionKey, customerId) => {
     this.setState({ name: name });
     this.setState({ accountType: accountType });
     this.setState({ loggedIn: true });
     Cookies.set("sessionKey", sessionKey + "");
+    this.setState({ customerId: customerId });
   };
 
   render() {
