@@ -23,14 +23,18 @@ public class BookStoreAdmin implements User, Admin {
 	@Column(name = "password")
 	private String password;
 
+	@Column(name = "serverUrl")
+	private String serverUrl;
+
 	public BookStoreAdmin() {}
 
-	public BookStoreAdmin(String adminId, BookStore bookstore, String name, String email, String password) {
+	public BookStoreAdmin(String adminId, BookStore bookstore, String name, String email, String password, String serverUrl) {
 		this.adminId = adminId;
 		this.bookstore = bookstore;
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.serverUrl = serverUrl;
 	}
 
 	@Override
@@ -88,6 +92,14 @@ public class BookStoreAdmin implements User, Admin {
 		this.password = password;
 	}
 
+	public String getServerUrl() {
+		return serverUrl;
+	}
+
+	public void setServerUrl(String serverUrl) {
+		this.serverUrl = serverUrl;
+	}
+
 	@Override
 	public String toString() {
 		return "BookStoreAdmin{" +
@@ -96,13 +108,14 @@ public class BookStoreAdmin implements User, Admin {
 				", name='" + name + '\'' +
 				", email='" + email + '\'' +
 				", password='" + password + '\'' +
+				", serverUrl='" + serverUrl + '\'' +
 				'}';
 	}
 
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof BookStoreAdmin)) return false;
+		if (o == null || getClass() != o.getClass()) return false;
 
 		BookStoreAdmin that = (BookStoreAdmin) o;
 
@@ -110,7 +123,8 @@ public class BookStoreAdmin implements User, Admin {
 		if (bookstore != null ? !bookstore.equals(that.bookstore) : that.bookstore != null) return false;
 		if (name != null ? !name.equals(that.name) : that.name != null) return false;
 		if (email != null ? !email.equals(that.email) : that.email != null) return false;
-		return password != null ? password.equals(that.password) : that.password == null;
+		if (password != null ? !password.equals(that.password) : that.password != null) return false;
+		return serverUrl != null ? serverUrl.equals(that.serverUrl) : that.serverUrl == null;
 	}
 
 	@Override
@@ -120,6 +134,7 @@ public class BookStoreAdmin implements User, Admin {
 		result = 31 * result + (name != null ? name.hashCode() : 0);
 		result = 31 * result + (email != null ? email.hashCode() : 0);
 		result = 31 * result + (password != null ? password.hashCode() : 0);
+		result = 31 * result + (serverUrl != null ? serverUrl.hashCode() : 0);
 		return result;
 	}
 }
