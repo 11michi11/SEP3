@@ -12,8 +12,7 @@ class BookList extends Component {
       category: "",
       year: "",
       isbn: ""
-    },
-    customerId: this.props.customerId
+    }
   };
 
   componentDidMount() {
