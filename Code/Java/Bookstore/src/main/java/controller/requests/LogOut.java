@@ -14,7 +14,7 @@ public class LogOut {
     private SessionKeyManager sessionKeyManager;
 
     @CrossOrigin
-    @DeleteMapping("/logout")
+    @DeleteMapping("/logOut")
     public String logOut(@CookieValue("sessionKey") String sessionKey) {
         sessionKeyManager.deleteFromCache(sessionKey);
         return "Logged out";
