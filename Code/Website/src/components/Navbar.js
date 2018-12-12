@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { withRouter, NavLink } from "react-router-dom";
+import https from "https";
+import axios from "axios";
 
 class Navbar extends Component {
   state = {};
@@ -8,9 +10,28 @@ class Navbar extends Component {
   }
 
   handleLogout = e => {
-    this.props.loggedIn = false;
-    this.props.name = "";
-    this.props.accountType = "";
+    e.preventDefault();
+    const agent = new https.Agent({ rejectUnauthorized: false });
+    axios
+      .delete(
+        "https://localhost:8080/logOut",
+        {
+          withCredentials: true
+        },
+        { crossdomain: true, httpsAgent: agent }
+      )
+      .then(res => {
+        var str = "SUCCESS!";
+        window.alert(`${str}`);
+        this.props.loggedIn = false;
+        this.props.name = "";
+        this.props.accountType = "";
+      })
+      .catch(error => {
+        window.alert(`${error}
+                       Something went wrong
+                       `);
+      });
   };
   render() {
     let validatedNavbar;
