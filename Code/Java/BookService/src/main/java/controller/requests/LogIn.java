@@ -1,6 +1,7 @@
 package controller.requests;
 
 import controller.Controller;
+import controller.SessionKeyManager;
 import model.LogInResponse;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -20,6 +21,13 @@ public class LogIn implements ApplicationContextAware {
 	public LogInResponse logIn(@RequestBody LogInRequest logInData)  {
 		Controller controller = context.getBean(Controller.class);
 		return controller.logIn(logInData.email,logInData.password);
+	}
+
+	@CrossOrigin
+	@DeleteMapping("/logout")
+	public String logOut(@CookieValue("sessionKey") String sessionKey) {
+		SessionKeyManager.deleteFromCache(sessionKey);
+		return "Logged out";
 	}
 
 	@Override

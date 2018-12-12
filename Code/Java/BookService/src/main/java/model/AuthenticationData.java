@@ -7,7 +7,7 @@ import java.util.TimeZone;
 
 public class AuthenticationData {
 
-	public enum UserType {Customer, LibraryAdmin, BookstoreAdmin, All}
+	public enum UserType {Customer, LibraryAdmin, BookStoreAdmin, All}
 
 	public String institutionId;
 	public UserType userType;
@@ -27,7 +27,7 @@ public class AuthenticationData {
 				return true;
 			case Customer:
 			case LibraryAdmin:
-			case BookstoreAdmin:
+			case BookStoreAdmin:
 				return now.before(expirationDate);
 			default:
 				return false;
@@ -41,7 +41,7 @@ public class AuthenticationData {
 			case All:
 				return true;
 			case LibraryAdmin:
-			case BookstoreAdmin:
+			case BookStoreAdmin:
 				return now.before(expirationDate) || institutionId.equals(this.institutionId);
 			case Customer:
 			default:
