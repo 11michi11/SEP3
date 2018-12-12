@@ -15,7 +15,7 @@ using Newtonsoft.Json.Schema;
 
 namespace Requests.Controllers
 {
-    [EnableCors()]
+    [EnableCors("AllowSpecificOrigin")]
     [ApiController]
     public class BooksController : ControllerBase
     {

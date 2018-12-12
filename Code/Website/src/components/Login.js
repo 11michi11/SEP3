@@ -5,7 +5,7 @@ import https from "https";
 
 class Login extends Component {
   componentDidMount() {
-    this.props.handleLogIn();
+    console.log(this.props);
   }
   state = {
     email: "",
@@ -31,7 +31,12 @@ class Login extends Component {
       .then(res => {
         var str = "SUCCESS!";
         console.log(res);
-        this.props.handleLogIn(this.state.email, res.data.userType);
+        this.props.handleLogIn(
+          res.data.name,
+          res.data.userType,
+          res.data.sessionKey,
+          res.data.userId
+        );
 
         window.alert(`${str}`);
       })
