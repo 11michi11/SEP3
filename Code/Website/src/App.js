@@ -18,7 +18,7 @@ class App extends Component {
     name: "",
     loggedIn: false,
     accountType: "",
-    customerId: "asd"
+    customerId: ""
   };
 
   handleLogIn = (name, accountType, sessionKey, customerId) => {
@@ -42,14 +42,17 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/books" component={BookList} />
-            <Route path="/search/:search_term" component={BookList} 
-            handleLogIn={this.handleLogIn} 
-              render={props => <BookList  handleLogIn={this.handleLogIn} />}
+            <Route
+              path="/search/:search_term"
+              customerId={this.state.customerId}
+              render={props => <BookList customerId={this.state.customerId} />}
             />
             <Route
               path="/advancedSearch/:title?/:author?/:year?/:isbn?/:category?"
               customerId={this.state.customerId}
-              render={(props) => <BookList {...props} customerId={this.state.customerId}/>}
+              render={props => (
+                <BookList {...props} customerId={this.state.customerId} />
+              )}
             />
             <Route path="/bookstore_orders" component={BookstoreOrders} />
             <Route path="/library_orders" component={LibraryOrders} />

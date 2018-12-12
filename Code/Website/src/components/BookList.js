@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import https from "https";
 
@@ -24,7 +24,6 @@ class BookList extends Component {
     });
 
     if (this.props.match.path.substring(1, 9) === "advanced") {
-    
       this.setState(
         {
           advSearch: {
@@ -103,4 +102,4 @@ class BookList extends Component {
   }
 }
 
-export default BookList;
+export default withRouter(BookList);

@@ -92,8 +92,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Requests/Program.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+            <state relative-caret-position="230">
+              <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
               <folding>
                 <marker date="1544456445424" expanded="true" signature="6:305" ph="..." />
                 <marker date="1544456445424" expanded="true" signature="325:870" ph="{...}" />
@@ -182,24 +182,24 @@
   </component>
   <component name="RunManager">
     <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/Tests/bin/Debug/netcoreapp2.1/Tests.dll" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Requests/bin/Debug/netcoreapp2.1/Requests.dll" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Requests" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <envs>
         <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
-        <env name="ASPNETCORE_URLS" value="http://localhost:5000" />
+        <env name="ASPNETCORE_URLS" value="https://localhost:5001;http://localhost:5000" />
       </envs>
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Tests/Tests.csproj" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Requests/Requests.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
       <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.1" />
-      <browser url="http://localhost:5000" />
+      <browser start="true" url="https://localhost:5001" />
       <method v="2">
         <option name="Build" enabled="true" />
       </method>
@@ -216,12 +216,12 @@
       <option name="presentableId" value="Default" />
       <updated>1544614965645</updated>
       <workItem from="1544614985327" duration="212000" />
-      <workItem from="1544615691380" duration="527000" />
+      <workItem from="1544615691380" duration="1175000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="739000" />
+    <option name="totallyTimeSpent" value="1387000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -233,8 +233,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1738255" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -318,8 +317,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Requests/Program.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        <state relative-caret-position="230">
+          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
           <folding>
             <marker date="1544456445424" expanded="true" signature="6:305" ph="..." />
             <marker date="1544456445424" expanded="true" signature="325:870" ph="{...}" />

@@ -24,18 +24,6 @@ class Details extends Component {
       })
       .then(res => {
         this.setState({ book: res.data.book });
-        console.log(this.state);
-        this.setState({ libraries: res.data.libraries });
-        this.setState({ bookstores: res.data.bookstores });
-      });
-    axios
-      .get("https://localhost:8080/bookDetails/" + isbn, {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true
-      })
-      .then(res => {
-        this.setState({ book: res.data.book });
         this.setState({ libraries: res.data.libraries });
         this.setState({ bookstores: res.data.bookstores });
         console.log(this.state);
@@ -100,9 +88,6 @@ class Details extends Component {
 
   render() {
     const { book } = this.state;
-    const smallFont = {
-      fontSize: 10
-    };
 
     // const qtIs =  book.qty>1 || book.qty === 0 ? (<span>are</span>) : (<span>is</span>); // qty is more than 1 or 0 then gramaticaly is "are"
     // const sNoS = book.qty>1 || book.qty === 0 ? ("s") : (""); // book or books
