@@ -12,7 +12,8 @@ class BookList extends Component {
       category: "",
       year: "",
       isbn: ""
-    }
+    },
+    customerId: this.props.customerId
   };
 
   componentDidMount() {
@@ -22,10 +23,8 @@ class BookList extends Component {
       rejectUnauthorized: false
     });
 
-    console.log(this.props.match.path.substring(1, 9));
     if (this.props.match.path.substring(1, 9) === "advanced") {
-      console.log("PROPS" + this.props);
-      console.log(this.props.match.params);
+    
       this.setState(
         {
           advSearch: {
@@ -55,9 +54,7 @@ class BookList extends Component {
             )
             .then(res => {
               this.setState({ books: res.data });
-              console.log("Res data: " + res.data);
             });
-          console.log(this.state.advSearch);
         }
       );
     } else {
@@ -71,7 +68,6 @@ class BookList extends Component {
           this.setState({
             books: res.data
           });
-          console.log("Res data: " + res.data);
         });
     }
   }
