@@ -20,7 +20,6 @@ public class Search implements ApplicationContextAware
 	
     @RequestMapping("/search")
     public List<Book> search(@RequestParam(value = "searchTerm") String searchTerm, @CookieValue("sessionKey") String sessionKey) {
-        SessionKeyManager.checkSessionKey(sessionKey);
 
         Controller controller=context.getBean(Controller.class);
         return controller.search(searchTerm);
@@ -33,7 +32,6 @@ public class Search implements ApplicationContextAware
                                      @RequestParam(value = "isbn", defaultValue = "") String isbn,
                                      @RequestParam(value = "category", required = false) Book.Category category,
                                      @CookieValue("sessionKey") String sessionKey) {
-        SessionKeyManager.checkSessionKey(sessionKey);
         Controller controller=context.getBean(Controller.class);
         if(year == null)
             year = 0;
