@@ -19,11 +19,11 @@ class Registration extends Component {
           phoneNum: this.state.phoneNum,
           password: this.state.password
         },
-        { 
-          crossdomain: true, 
+        {
+          crossdomain: true,
           httpsAgent: agent,
           withCredentials: true
-         }
+        }
       )
       .then(res => {
         var str = "SUCCEEDED!";

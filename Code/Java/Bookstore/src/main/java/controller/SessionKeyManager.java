@@ -1,6 +1,16 @@
 package controller;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.cookie.BasicClientCookie;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
 import org.springframework.stereotype.Component;
+import sun.net.www.http.HttpClient;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
@@ -16,8 +26,35 @@ import java.util.*;
 public class SessionKeyManager {
 
 	private HashMap<String, Calendar> sessionKeys = new HashMap<>();
-	private static final String URL = "https://localhost:8080/checkSK/";
+	private static final String URL = "https://localhost:8080/";
 	private final String BOOKSTORE_ID = "eb3777c8-77fe-4acd-962d-6853da2e05e0";
+
+	public void deleteFromCache(String sessionKey) {
+		sessionKeys.remove(sessionKey);
+		deleteFromBookService(sessionKey);
+	}
+
+	private void deleteFromBookService(String sessionKey) {
+		BasicCookieStore cookieStore = new BasicCookieStore();
+		BasicClientCookie cookie = new BasicClientCookie("sessionKey", sessionKey);
+		cookie.setDomain("localhost");
+		cookie.setPath("/");
+		cookieStore.addCookie(cookie);
+
+		DefaultHttpClient client = new DefaultHttpClient();
+		client.setCookieStore(cookieStore);
+
+		HttpDelete request = new HttpDelete(URL + "logOut");
+		HttpContext localContext = new BasicHttpContext();
+		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+		try {
+			HttpResponse response = client.execute(request, localContext);
+			System.out.println("\nSending 'DELETE' request to URL : " + request.getURI());
+			System.out.println("Response Code : " + response.getStatusLine());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void isSessionKeyValid(String sessionKey) throws SessionKeyInvalidException {
 		Calendar expirationDate = sessionKeys.get(sessionKey);
@@ -32,9 +69,11 @@ public class SessionKeyManager {
 			throw new SessionKeyInvalidException("The session key is not valid. Session can not be authenticated");
 	}
 
+
+
 	private Calendar checkInBookService(String sessionKey) throws SessionKeyInvalidException {
 		try {
-			String response = makeRequest(URL + sessionKey+"/"+BOOKSTORE_ID);
+			String response = makeRequest(URL + "checkSK/" + sessionKey+"/"+BOOKSTORE_ID);
 			DateFormat df = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
 			df.setTimeZone(TimeZone.getDefault());
 			Date date = df.parse(response);

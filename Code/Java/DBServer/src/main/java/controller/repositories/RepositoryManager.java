@@ -53,7 +53,7 @@ public class RepositoryManager implements DBProxy {
 
     @Override
     public List<Book> searchInLibrary(String searchTerm, String libraryId) {
-        return libraryStorageRepo.search(searchTerm, libraryId);
+        return libraryStorageRepo.search(libraryId, searchTerm );
     }
 
     @Override
