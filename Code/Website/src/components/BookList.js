@@ -12,12 +12,14 @@ class BookList extends Component {
       category: "",
       year: "",
       isbn: ""
-    }
+    },
+    customerID: this.props.customerID
   };
 
   componentDidMount() {
     const { search_term } = this.props.match.params;
     console.log(this.props);
+    console.log(this.props.customerID);
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
