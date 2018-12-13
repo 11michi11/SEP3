@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -17,7 +17,7 @@ namespace Requests.Controllers
 {
     [EnableCors("AllowSpecificOrigin")]
     [ApiController]
-    public class BooksController : ControllerBase
+    public class OrdersController : ControllerBase
     {
         private readonly LibraryController _libraryController = LibraryController.GetInstance();
        
@@ -40,46 +40,41 @@ namespace Requests.Controllers
                 return false;
             }
         }
-
-        // POST book
-        [HttpPost]
-        [Route("book")]
-        public IActionResult CreateBook([FromBody] Book book)
-        {
-            if (CheckSessionKey())
-            {
-                //for checking if book can be created
-                if(!ModelState.IsValid) {
-                    return BadRequest(ModelState);
-                }
-                _libraryController.CreateBook(book);
-                return Ok("Book created successfully");
-            }
-            else
-            {
-                return Unauthorized();
-            }
-        }
-
-        // DELETE book/id
+        
+        // DELETE orders/orderId
         [HttpDelete]
-        [Route("book/{id}")]
-        public IActionResult DeleteBook(string id)
+        [Route("orders/{orderId}")]
+        public IActionResult ReturnBook(string orderId)
         {
             if (CheckSessionKey())
             {
                 try {
-                    _libraryController.DeleteBook(id);
+                    _libraryController.ReturnBook(orderId);
                 } catch(NullReferenceException ex) {
-                    return BadRequest("Book not found");
+                    return BadRequest("Order not found");
                 }
 
-                return Ok("Book deleted"); 
+                return Ok("The book has been returned successfully"); 
             }
             else
             {
                 return Unauthorized();
-            }   
+            } 
+        }
+        
+        // GET orders
+        [HttpGet]
+        [Route("orders")]
+        public ActionResult<string> GetOrders()
+        {
+            if (CheckSessionKey())
+            {
+                return _libraryController.GetOrders(); 
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
     }
 }
