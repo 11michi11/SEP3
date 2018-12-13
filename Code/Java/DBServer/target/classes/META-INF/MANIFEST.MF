@@ -13,7 +13,7 @@ Class-Path: lib/gson-2.8.5.jar lib/hibernate-core-5.3.7.Final.jar lib/
  Final.jar lib/lucene-core-5.5.5.jar lib/lucene-misc-5.5.5.jar lib/luc
  ene-analyzers-common-5.5.5.jar lib/lucene-facet-5.5.5.jar lib/lucene-
  queries-5.5.5.jar lib/lucene-queryparser-5.5.5.jar lib/javassist-3.12
- .1.GA.jar
+ .1.GA.jar lib/mail-1.4.jar
 Main-Class: controller.Controller
 Created-By: Maven Integration for Eclipse
 

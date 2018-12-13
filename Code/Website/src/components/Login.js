@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Form, FormGroup, Input, Button, NavLink } from "reactstrap";
-import { withRouter } from "react-router-dom";
 import axios from "axios";
 import https from "https";
 
@@ -31,6 +30,7 @@ class Login extends Component {
         { crossdomain: true, httpsAgent: agent }
       )
       .then(res => {
+        const str = "SUCCESS!";
         console.log(res);
         this.props.handleLogIn(
           res.data.name,
@@ -107,10 +107,7 @@ class Login extends Component {
                 </p>
                 <p />
                 <div className="text-center">
-                  <Button
-                    color="primary"
-                    size="sm"
-                  >
+                  <Button color="primary" size="sm">
                     Log in
                   </Button>
                   <NavLink href="#">Forgot your password?</NavLink>
