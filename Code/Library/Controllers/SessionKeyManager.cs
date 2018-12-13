@@ -5,14 +5,15 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Controllers.Resources;
 
 namespace Controllers
 {
     public class SessionKeyManager
     {
-        private const string Url = "https://localhost:8080/";
+        private static readonly string Url = ConfigurationLoader.GetInstance().BookServiceURL;
         private static Dictionary<string, DateTime?> _sessionKeys = new Dictionary<string, DateTime?>();
-        private static readonly string LIBRARY_ID = "ce78ef57-77ec-4bb7-82a2-1a78d3789aef";
+        private static readonly string LIBRARY_ID = ConfigurationLoader.GetInstance().LibraryID;
         
         public static bool IsSkValid(string sessionKey)
         {
@@ -60,7 +61,7 @@ namespace Controllers
             if (cookie != null)
             {
                 request.CookieContainer = new CookieContainer();
-                request.CookieContainer.Add(cookie); //chyba
+                request.CookieContainer.Add(cookie);
                 request.Method = "DELETE";
             }
 
@@ -82,31 +83,12 @@ namespace Controllers
                  throw new SessionKeyInvalidException("Session is invalid");
                 throw new Exception("Cannot connect to BookService");
             }
-           
         }
 
-//        private static async Task<string> MakeRequest(string url)
-//        {
-//            using (HttpClient client = new HttpClient())
-//            {
-//                using (HttpResponseMessage response = await client.GetAsync(url))
-//                {
-//                    using (HttpContent content = response.Content)
-//                    {
-//                        string myContent = await content.ReadAsStringAsync();
-//                        if (response.StatusCode == HttpStatusCode.Unauthorized)
-//                        {
-//                            throw new SessionKeyInvalidException("Session is invalid");
-//                        }
-//                        return myContent;
-//                    } 
-//                }
-//            }
-//        }
         public static void LogOut(Cookie cookie)
         {
             _sessionKeys.Remove(cookie.Name);
-            var response = MakeRequest(Url + "logOut",cookie);
+            MakeRequest(Url + "logOut",cookie);
         }
     }
 

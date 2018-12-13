@@ -39,8 +39,6 @@ class Login extends Component {
           res.data.userId,
           res.data.url
         );
-
-        window.alert(`${str}`);
         this.props.history.push("/");
       })
       .catch(error => {

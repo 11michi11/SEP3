@@ -88,6 +88,13 @@ class Administrator extends Component {
           });
         }
         break;
+      case "authorInput":
+        {
+          this.setState({
+            newBook: { ...this.state.newBook, author: e.target.value }
+          });
+        }
+        break;
       case "isbnInput":
         {
           this.setState({
@@ -102,13 +109,7 @@ class Administrator extends Component {
           });
         }
         break;
-      case "authorInput":
-        {
-          this.setState({
-            newBook: { ...this.state.newBook, author: e.target.value }
-          });
-        }
-        break;
+      
       case "categoryInput":
         {
           this.setState({
@@ -122,37 +123,62 @@ class Administrator extends Component {
 
   sendAddBookRequest = e => {
     e.preventDefault();
-    const agent = new https.Agent({
-      rejectUnauthorized: false
-    });
-    axios
-      .post(
-        "https://localhost:9090/book",
-        {
-          title: this.state.newBook.title,
-          author: this.state.newBook.author,
-          year: this.state.newBook.year,
-          isbn: this.state.newBook.isbn,
-          category: this.state.newBook.category
-        },
-        { crossdomain: true, httpsAgent: agent, withCredentials: true }
-      )
-      .then(res => {
-        var str = "SUCCESS!";
-
-        window.alert(`${str} You\'ve added a book with following data: 
-        ${this.state.newBook.title},
-        ${this.state.newBook.author},
-        ${this.state.newBook.year},
-        ${this.state.newBook.isbn},
-        ${this.state.newBook.category},`);
-      })
-      .catch(error => {
-        window.alert(`${error}
-                       Something went wrong, check if you use one of the following categories and try again:
-                       Categories: [Criminal, Science, Poetry, Fantasy, Drama, Horror, SciFi, Empty, Children]
-                       `);
+    if(this.state.newBook.title===""||
+            this.state.newBook.author===""||
+            this.state.newBook.year===""||
+            this.state.newBook.isbn===""||
+            this.state.newBook.category==="")
+       {
+        window.alert(
+        "All fields must be filled"
+        );
+       }
+    else
+    {
+      const agent = new https.Agent({
+        rejectUnauthorized: false
       });
+      axios
+        .post(
+          "https://localhost:9090/book",
+          {
+            title: this.state.newBook.title,
+            author: this.state.newBook.author,
+            year: this.state.newBook.year,
+            isbn: this.state.newBook.isbn,
+            category: this.state.newBook.category
+          },
+          { crossdomain: true, httpsAgent: agent, withCredentials: true }
+        )
+        .then(res => {
+          var str = "SUCCESS!";
+
+          window.alert(`${str} You\'ve added a book with following data: 
+          ${this.state.newBook.title},
+          ${this.state.newBook.author},
+          ${this.state.newBook.year},
+          ${this.state.newBook.isbn},
+          ${this.state.newBook.category},`);
+
+          this.setState({
+            newBook:
+            {
+              title: "",
+              author: "",
+              year: "",
+              isbn: "",
+              category: ""
+            }
+          });
+          
+        })
+        .catch(error => {
+          window.alert(`${error}
+                        Something went wrong, check if you use one of the following categories and try again:
+                        Categories: [Criminal, Science, Poetry, Fantasy, Drama, Horror, SciFi, Empty, Children]
+                        `);
+        });
+      }
   };
 
   //
@@ -173,9 +199,22 @@ class Administrator extends Component {
               id="bookNameInput"
               value={this.state.newBook.title}
               onChange={this.handleBookFormChange}
+              value={this.state.newBook.title}
               className="form-control"
               type="text"
               placeholder="Title"
+            />
+            <br />
+
+            <label htmlFor="authorInput">Author</label>
+            <input
+              id="authorInput"
+              value={this.state.newBook.author}
+              onChange={this.handleBookFormChange}
+              value={this.state.newBook.author}
+              className="form-control"
+              type="text"
+              placeholder="Author"
             />
             <br />
 
@@ -184,6 +223,7 @@ class Administrator extends Component {
               id="isbnInput"
               value={this.state.newBook.isbn}
               onChange={this.handleBookFormChange}
+              value={this.state.newBook.isbn}
               className="form-control"
               type="text"
               placeholder="ISBN"
@@ -195,20 +235,10 @@ class Administrator extends Component {
               id="yearInput"
               value={this.state.newBook.year}
               onChange={this.handleBookFormChange}
+              value={this.state.newBook.year}
               className="form-control"
               type="text"
               placeholder="Year"
-            />
-            <br />
-
-            <label htmlFor="authorInput">Author</label>
-            <input
-              id="authorInput"
-              value={this.state.newBook.author}
-              onChange={this.handleBookFormChange}
-              className="form-control"
-              type="text"
-              placeholder="Author"
             />
             <br />
 
@@ -217,6 +247,7 @@ class Administrator extends Component {
               id="categoryInput"
               value={this.state.newBook.category}
               onChange={this.handleBookFormChange}
+              value={this.state.newBook.category}
               className="form-control"
               type="text"
               placeholder="Category"
@@ -228,7 +259,7 @@ class Administrator extends Component {
               className="btn btn-sm btn-success"
               onClick={this.sendAddBookRequest}
             >
-              Confirm Addition
+              Confirm
             </button>
           </form>
         </div>
