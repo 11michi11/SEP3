@@ -33,21 +33,20 @@ class Details extends Component {
       });
   }
   handleBuy = (isbn, bookstoreid, customerId) => {
+    console.log("SESSION KEY: ");
+    console.log(Cookies.get("sessionKey"));
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
-    console.log(isbn);
-    console.log(bookstoreid);
-    console.log(customerId);
+    console.log("ISBN: " + isbn);
+    console.log("bookstoreId: " + bookstoreid);
+    console.log("customerId: " + customerId);
     axios
-      .post("https://localhost:8080/buy", {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true,
-        isbn: isbn,
-        bookstoreid: bookstoreid,
-        customerID: customerId
-      })
+      .post(
+        "https://localhost:8080/buy",
+        { isbn: isbn, institutionId: bookstoreid, customerID: customerId },
+        { withCredentials: true, crossdomain: true, httpsAgent: agent }
+      )
       .then(res => {
         var str = "The order was made successfully";
 
@@ -61,19 +60,17 @@ class Details extends Component {
       });
   };
   handleBorrow = (isbn, libraryid, customerId) => {
+    console.log("SESSION KEY: ");
     console.log(Cookies.get("sessionKey"));
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
     axios
-      .post("https://localhost:8080/borrow", {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true,
-        isbn: isbn,
-        libraryid: libraryid,
-        customerID: customerId
-      })
+      .post(
+        "https://localhost:8080/borrow",
+        { isbn: isbn, institutionId: libraryid, customerID: customerId },
+        { withCredentials: true, crossdomain: true, httpsAgent: agent }
+      )
       .then(res => {
         var str = "The order was made successfully";
 
