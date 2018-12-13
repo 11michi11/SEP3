@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @RestController
 public class LogOut {
 
@@ -16,7 +18,12 @@ public class LogOut {
     @CrossOrigin
     @DeleteMapping("/logOut")
     public String logOut(@CookieValue("sessionKey") String sessionKey) {
-        sessionKeyManager.deleteFromCache(sessionKey);
+        try {
+            sessionKeyManager.deleteFromCache(sessionKey);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Cannot logged out";
+        }
         return "Logged out";
     }
 }

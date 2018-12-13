@@ -1,22 +1,12 @@
 package controller;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpDelete;
-import org.apache.http.client.protocol.ClientContext;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.cookie.BasicClientCookie;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
 import org.springframework.stereotype.Component;
 
 import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,31 +19,30 @@ public class SessionKeyManager {
 	private static final String URL = "https://localhost:8080/";
 	private final String BOOKSTORE_ID = "eb3777c8-77fe-4acd-962d-6853da2e05e0";
 
-	public void deleteFromCache(String sessionKey) {
+	public void deleteFromCache(String sessionKey) throws IOException {
 		sessionKeys.remove(sessionKey);
 		deleteFromBookService(sessionKey);
 	}
 
-	private void deleteFromBookService(String sessionKey) {
-		BasicCookieStore cookieStore = new BasicCookieStore();
-		BasicClientCookie cookie = new BasicClientCookie("sessionKey", sessionKey);
-		cookie.setDomain("localhost");
-		cookie.setPath("/");
-		cookieStore.addCookie(cookie);
+	private void deleteFromBookService(String sessionKey) throws IOException {
 
-		DefaultHttpClient client = new DefaultHttpClient();
-		client.setCookieStore(cookieStore);
+		URL url = new URL(URL + "logOut");
+		HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+		con.setRequestMethod("DELETE");
+		con.setRequestProperty("Cookie","sessionKey="+sessionKey);
+		int responseCode = con.getResponseCode();
+		System.out.println("\nSending 'DELETE' request to URL : " + url);
+		System.out.println("Response Code : " + responseCode);
 
-		HttpDelete request = new HttpDelete(URL + "logOut");
-		HttpContext localContext = new BasicHttpContext();
-		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
-		try {
-			HttpResponse response = client.execute(request, localContext);
-			System.out.println("\nSending 'DELETE' request to URL : " + request.getURI());
-			System.out.println("Response Code : " + response.getStatusLine());
-		} catch (IOException e) {
-			e.printStackTrace();
+		BufferedReader in = new BufferedReader(
+				new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		StringBuilder response = new StringBuilder();
+
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
 		}
+		in.close();
 	}
 
 	public void isSessionKeyValid(String sessionKey) throws SessionKeyInvalidException {
