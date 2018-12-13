@@ -47,7 +47,7 @@ class Details extends Component {
         httpsAgent: agent,
         withCredentials: true,
         isbn: isbn,
-        bookstoreid: bookstoreid,
+        institutionId: bookstoreid,
         customerID: customerId
       })
       .then(res => {
@@ -74,7 +74,7 @@ class Details extends Component {
         httpsAgent: agent,
         withCredentials: true,
         isbn: isbn,
-        libraryid: libraryid,
+        institutionId: libraryid,
         customerID: customerId
       })
       .then(res => {
