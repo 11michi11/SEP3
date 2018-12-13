@@ -33,18 +33,19 @@ class Details extends Component {
       });
   }
   handleBuy = (isbn, bookstoreid, customerId) => {
+    console.log("SESSION KEY: ");
+    console.log(Cookies.get("sessionKey"));
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
-    console.log(isbn);
-    console.log(bookstoreid);
-    console.log(customerId);
+    console.log("ISBN: " + isbn);
+    console.log("bookstoreId: " + bookstoreid);
+    console.log("customerId: " + customerId);
     axios
       .post("https://localhost:8080/buy", {
         crossdomain: true,
         httpsAgent: agent,
         withCredentials: true,
-        sessionKey: Cookies.get("sessionKey"),
         isbn: isbn,
         bookstoreid: bookstoreid,
         customerID: customerId
@@ -62,6 +63,7 @@ class Details extends Component {
       });
   };
   handleBorrow = (isbn, libraryid, customerId) => {
+    console.log("SESSION KEY: ");
     console.log(Cookies.get("sessionKey"));
     const agent = new https.Agent({
       rejectUnauthorized: false
@@ -71,7 +73,6 @@ class Details extends Component {
         crossdomain: true,
         httpsAgent: agent,
         withCredentials: true,
-        sessionKey: Cookies.get("sessionKey"),
         isbn: isbn,
         libraryid: libraryid,
         customerID: customerId
