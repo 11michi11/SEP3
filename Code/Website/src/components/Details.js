@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import https from "https";
+import Cookies from "js-cookie";
 
 class Details extends Component {
   state = {
@@ -35,9 +36,9 @@ class Details extends Component {
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
-    console.log(isbn)
-    console.log(bookstoreid)
-    console.log(customerId)
+    console.log(isbn);
+    console.log(bookstoreid);
+    console.log(customerId);
     axios
       .post("https://localhost:8080/buy", {
         crossdomain: true,
@@ -45,7 +46,7 @@ class Details extends Component {
         withCredentials: true,
         isbn: isbn,
         bookstoreid: bookstoreid,
-        customerID:customerId
+        customerID: customerId
       })
       .then(res => {
         var str = "The order was made successfully";
@@ -60,6 +61,7 @@ class Details extends Component {
       });
   };
   handleBorrow = (isbn, libraryid, customerId) => {
+    console.log(Cookies.get("sessionKey"));
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
@@ -70,7 +72,7 @@ class Details extends Component {
         withCredentials: true,
         isbn: isbn,
         libraryid: libraryid,
-        customerID:customerId,
+        customerID: customerId
       })
       .then(res => {
         var str = "The order was made successfully";
@@ -84,12 +86,11 @@ class Details extends Component {
                            `);
       });
   };
-  handleNotLoggedIn= (e)=>{
-    if (!(this.props.loggedIn && this.props.accountType === "Customer"))
-    {
+  handleNotLoggedIn = e => {
+    if (!(this.props.loggedIn && this.props.accountType === "Customer")) {
       window.alert(`In order to buy or borrow books you have to be logged in.`);
     }
-  }
+  };
 
   render() {
     const { book } = this.state;
@@ -105,9 +106,18 @@ class Details extends Component {
                 <span>{library.quantity}</span>
               </div>
               <div className="col-sm-3">
-                <a href="#" className="btn btn-success btn-sm mr-1 m-1"  
-                      onClick={(e,f,g)=>this.handleBorrow(this.state.book.isbn, library.libraryid, this.state.customerId)}
-                      onMouseLeave={e=>this.handleNotLoggedIn(e)}>
+                <a
+                  href="#"
+                  className="btn btn-success btn-sm mr-1 m-1"
+                  onClick={(e, f, g) =>
+                    this.handleBorrow(
+                      this.state.book.isbn,
+                      library.libraryid,
+                      this.state.customerId
+                    )
+                  }
+                  onMouseLeave={e => this.handleNotLoggedIn(e)}
+                >
                   Borrow
                 </a>
               </div>
@@ -127,9 +137,18 @@ class Details extends Component {
                 <span>{bookstore.name}</span>
               </div>
               <div className="col-sm-3">
-                <a href="#" className="btn btn-primary btn-sm mr-1 m-1" 
-                    onClick={(e,f,g)=>this.handleBuy(this.state.book.isbn, bookstore.bookstoreid, this.state.customerId)}
-                    onMouseLeave={e=>this.handleNotLoggedIn(e)}>
+                <a
+                  href="#"
+                  className="btn btn-primary btn-sm mr-1 m-1"
+                  onClick={(e, f, g) =>
+                    this.handleBuy(
+                      this.state.book.isbn,
+                      bookstore.bookstoreid,
+                      this.state.customerId
+                    )
+                  }
+                  onMouseLeave={e => this.handleNotLoggedIn(e)}
+                >
                   Buy
                 </a>
               </div>

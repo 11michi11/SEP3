@@ -169,7 +169,7 @@ namespace Requests.Controllers
         public IActionResult LogOut()
         {
             const string key = "sessionKey";
-            var cookie = new Cookie(key,Request.Cookies[key]);
+            var cookie = new Cookie(key, Request.Cookies[key]) {Domain = "localhost"};
             SessionKeyManager.LogOut(cookie);
             return Ok("Logged out");
         }

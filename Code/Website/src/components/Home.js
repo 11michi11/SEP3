@@ -9,11 +9,9 @@ import {
   Card
 } from "reactstrap";
 
-
 class Home extends Component {
   componentDidMount = () => {
     console.log(this.props);
-   
   };
 
   handleAdvancedSearchChange = e => {
