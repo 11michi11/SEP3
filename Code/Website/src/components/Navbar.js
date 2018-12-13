@@ -22,11 +22,10 @@ class Navbar extends Component {
         { crossdomain: true, httpsAgent: agent }
       )
       .then(res => {
-        var str = "SUCCESS!";
-        window.alert(`${str}`);
         this.props.loggedIn = false;
         this.props.name = "";
         this.props.accountType = "";
+        this.props.history.push("/");
       })
       .catch(error => {
         window.alert(`${error}
