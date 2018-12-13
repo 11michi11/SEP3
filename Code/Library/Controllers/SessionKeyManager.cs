@@ -5,12 +5,13 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Controllers.Resources;
 
 namespace Controllers
 {
     public class SessionKeyManager
     {
-        private const string Url = "https://localhost:8080/";
+        private static readonly string Url = ConfigurationLoader.GetInstance().BookServiceURL;
         private static Dictionary<string, DateTime?> _sessionKeys = new Dictionary<string, DateTime?>();
         private static readonly string LIBRARY_ID = "ce78ef57-77ec-4bb7-82a2-1a78d3789aef";
         

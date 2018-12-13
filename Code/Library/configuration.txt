@@ -1,4 +1,5 @@
 {
   "DatabaseHost": [127,0,0,1],
-  "DatabasePort": 7777
+  "DatabasePort": 7777,
+  "BookServiceURL": "https://localhost:8080/"
 }

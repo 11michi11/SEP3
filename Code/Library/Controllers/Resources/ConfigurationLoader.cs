@@ -13,6 +13,7 @@ namespace Controllers.Resources
 
         public byte[] DatabaseHost { get; set; }
         public int DatabasePort { get; set; }
+        public string BookServiceURL { get; set; }
         private ConfigurationLoader()
         {
             var path = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).ToString();
@@ -36,6 +37,7 @@ namespace Controllers.Resources
 
                     DatabaseHost = FromStringToByteArray(data["DatabaseHost"].ToString());
                     DatabasePort = (int) (long) data["DatabasePort"];
+                    BookServiceURL = (string) data["BookServiceURL"];
 
                     stream.Close();
                 }
