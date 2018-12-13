@@ -44,6 +44,7 @@ class Details extends Component {
         crossdomain: true,
         httpsAgent: agent,
         withCredentials: true,
+        sessionKey: Cookies.get("sessionKey"),
         isbn: isbn,
         bookstoreid: bookstoreid,
         customerID: customerId
@@ -70,6 +71,7 @@ class Details extends Component {
         crossdomain: true,
         httpsAgent: agent,
         withCredentials: true,
+        sessionKey: Cookies.get("sessionKey"),
         isbn: isbn,
         libraryid: libraryid,
         customerID: customerId
