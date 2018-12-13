@@ -66,7 +66,12 @@ class App extends Component {
               handleLogIn={this.handleLogIn}
               render={props => <Login handleLogIn={this.handleLogIn} />}
             />
-            <Route path="/details/:search_term" component={Details} />
+            <Route path="/details/:search_term"
+            render={props => <Details customerId={this.state.customerId}
+                                      loggedIn={this.state.loggedIn}
+                                      name={this.state.name}
+                                      accountType={this.state.accountType} />}
+             />
             <Route path="/bookstore_admin" component={Administrator} />
             <Route
               path="/library_admin/bookList/:isbn"

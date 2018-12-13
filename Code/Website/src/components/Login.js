@@ -80,7 +80,7 @@ class Login extends Component {
         <div className="row">
           <div className="offset-sm-3 col-sm-6 p-5">
             <p>Enter your credentials in order to log in:</p>
-            <Form>
+            <Form onSubmit={e => this.handleSubmit(e)}>
               <FormGroup>
                 <p>
                   Email:
@@ -110,7 +110,6 @@ class Login extends Component {
                   <Button
                     color="primary"
                     size="sm"
-                    onClick={e => this.handleSubmit(e)}
                   >
                     Log in
                   </Button>
