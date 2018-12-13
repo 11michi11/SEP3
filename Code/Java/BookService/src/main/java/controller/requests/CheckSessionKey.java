@@ -15,9 +15,7 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 @RestController
-public class CheckSessionKey implements ApplicationContextAware {
-
-	private ConfigurableApplicationContext context;
+public class CheckSessionKey {
 
 	@CrossOrigin
 	@GetMapping("/checkSK/{sessionKey}/{institutionId}")
@@ -30,11 +28,6 @@ public class CheckSessionKey implements ApplicationContextAware {
 		return sdf.format(calendar.getTime());
 	}
 
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		context=(ConfigurableApplicationContext) applicationContext;
-
-	}
 }
 
 
