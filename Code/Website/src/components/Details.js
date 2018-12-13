@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import https from "https";
 
@@ -6,7 +7,8 @@ class Details extends Component {
   state = {
     book: {},
     libraries: [],
-    bookstores: []
+    bookstores: [],
+    customerId: this.props.customerId
   };
 
   componentDidMount() {
@@ -29,21 +31,21 @@ class Details extends Component {
         console.log(this.state);
       });
   }
-  handleBuy = (isbn, bookstoreID) => {
+  handleBuy = (isbn, bookstoreid, customerId) => {
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
-    console.log(isbn);
-    console.log(bookstoreID);
-    //console.log(customerID)
+    console.log(isbn)
+    console.log(bookstoreid)
+    console.log(customerId)
     axios
       .post("https://localhost:8080/buy", {
         crossdomain: true,
         httpsAgent: agent,
         withCredentials: true,
         isbn: isbn,
-        bookstoreID: bookstoreID
-        //customerID:customerID
+        bookstoreid: bookstoreid,
+        customerID:customerId
       })
       .then(res => {
         var str = "The order was made successfully";
@@ -57,21 +59,18 @@ class Details extends Component {
                            `);
       });
   };
-  handleBorrow = (isbn, libraryID) => {
+  handleBorrow = (isbn, libraryid, customerId) => {
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
-    console.log(isbn);
-    console.log(libraryID);
-    //console.log(customerID)
     axios
       .post("https://localhost:8080/borrow", {
         crossdomain: true,
         httpsAgent: agent,
         withCredentials: true,
         isbn: isbn,
-        bookstoreID: libraryID
-        //customerID:customerID
+        libraryid: libraryid,
+        customerID:customerId,
       })
       .then(res => {
         var str = "The order was made successfully";
@@ -85,17 +84,19 @@ class Details extends Component {
                            `);
       });
   };
+  handleNotLoggedIn= (e)=>{
+    if (!(this.props.loggedIn && this.props.accountType === "Customer"))
+    {
+      window.alert(`In order to buy or borrow books you have to be logged in.`);
+    }
+  }
 
   render() {
     const { book } = this.state;
-
-    // const qtIs =  book.qty>1 || book.qty === 0 ? (<span>are</span>) : (<span>is</span>); // qty is more than 1 or 0 then gramaticaly is "are"
-    // const sNoS = book.qty>1 || book.qty === 0 ? ("s") : (""); // book or books
-    // const qtyVal = book.qty>0 ? (<span className="text-success">{book.qty} </span>) : (<span className="text-danger">no</span>) // show number or write 'no'
     const libraryList = this.state.libraries.length ? (
       this.state.libraries.map(library => {
         return library.quantity > 0 ? (
-          <div className="collection-item" key={library.id}>
+          <div className="collection-item" key={library.libraryid}>
             <div className="row">
               <div className="col-sm-7">
                 <span>{library.libraryName}</span>
@@ -104,7 +105,9 @@ class Details extends Component {
                 <span>{library.quantity}</span>
               </div>
               <div className="col-sm-3">
-                <a href="#" className="btn btn-success btn-sm mr-1 m-1">
+                <a href="#" className="btn btn-success btn-sm mr-1 m-1"  
+                      onClick={(e,f,g)=>this.handleBorrow(this.state.book.isbn, library.libraryid, this.state.customerId)}
+                      onMouseLeave={e=>this.handleNotLoggedIn(e)}>
                   Borrow
                 </a>
               </div>
@@ -118,13 +121,15 @@ class Details extends Component {
     const bookstoreList = this.state.bookstores.length ? (
       this.state.bookstores.map(bookstore => {
         return (
-          <div className="collection-item" key={bookstore.id}>
+          <div className="collection-item" key={bookstore.bookstoreid}>
             <div className="row">
               <div className="col-sm-9">
                 <span>{bookstore.name}</span>
               </div>
               <div className="col-sm-3">
-                <a href="#" className="btn btn-primary btn-sm mr-1 m-1">
+                <a href="#" className="btn btn-primary btn-sm mr-1 m-1" 
+                    onClick={(e,f,g)=>this.handleBuy(this.state.book.isbn, bookstore.bookstoreid, this.state.customerId)}
+                    onMouseLeave={e=>this.handleNotLoggedIn(e)}>
                   Buy
                 </a>
               </div>
@@ -184,4 +189,4 @@ class Details extends Component {
   }
 }
 
-export default Details;
+export default withRouter(Details);
