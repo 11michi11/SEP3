@@ -28,11 +28,15 @@ class App extends Component {
     this.setState({ accountType: accountType });
     this.setState({ loggedIn: true });
     this.setState({ customerId: customerId });
-    this.setState({url : url})
+    this.setState({ url: url });
     Cookies.set("sessionKey", sessionKey + "");
   };
 
   render() {
+    const marBoxStyle = {
+      height: "4em",
+      width: 20
+    };
     return (
       <BrowserRouter>
         <div>
@@ -42,7 +46,7 @@ class App extends Component {
             accountType={this.state.accountType}
             url={this.state.url}
           />
-
+          <div style={marBoxStyle} />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/books" component={BookList} />
@@ -66,12 +70,17 @@ class App extends Component {
               handleLogIn={this.handleLogIn}
               render={props => <Login handleLogIn={this.handleLogIn} />}
             />
-            <Route path="/details/:search_term"
-            render={props => <Details customerId={this.state.customerId}
-                                      loggedIn={this.state.loggedIn}
-                                      name={this.state.name}
-                                      accountType={this.state.accountType} />}
-             />
+            <Route
+              path="/details/:search_term"
+              render={props => (
+                <Details
+                  customerId={this.state.customerId}
+                  loggedIn={this.state.loggedIn}
+                  name={this.state.name}
+                  accountType={this.state.accountType}
+                />
+              )}
+            />
             <Route path="/bookstore_admin" component={Administrator} />
             <Route
               path="/library_admin/bookList/:isbn"

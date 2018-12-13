@@ -93,8 +93,9 @@
         <counts>
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.89" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -152,6 +153,46 @@
                 <marker date="1544701881763" expanded="true" signature="4302:4386" ph="{...}" />
                 <marker date="1544701881763" expanded="true" signature="4403:4470" ph="{...}" />
                 <marker date="1544701881763" expanded="true" signature="4599:4834" ph="{...}" />
+=======
+            <state relative-caret-position="115">
+              <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+              <folding>
+                <marker date="1544632492255" expanded="true" signature="6:357" ph="..." />
+                <marker date="1544632492255" expanded="true" signature="389:4818" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="501:4816" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="651:1155" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="747:1038" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="864:933" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="954:1024" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="1087:1145" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="1315:1545" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="1360:1451" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="1468:1535" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="1782:2033" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="1818:1939" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="1956:2023" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="2183:2411" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="2228:2317" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="2334:2401" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="2539:2980" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="2584:2886" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="2693:2763" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="2903:2970" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="3108:3528" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="3153:3431" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="3188:3262" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="3296:3372" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="3448:3515" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="3683:4134" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="3728:4039" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="3763:3842" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="3876:3953" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="4056:4123" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="4257:4480" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="4302:4386" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="4403:4470" ph="{...}" />
+                <marker date="1544632492255" expanded="true" signature="4599:4810" ph="{...}" />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
@@ -160,7 +201,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="225">
+=======
+            <state relative-caret-position="345">
+>>>>>>> Stashed changes
               <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
             </state>
           </provider>
@@ -169,7 +214,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Requests/Startup.cs">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="270">
+=======
+            <state relative-caret-position="414">
+>>>>>>> Stashed changes
               <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
             </state>
           </provider>
@@ -178,7 +227,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="483">
               <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
             </state>
           </provider>
@@ -187,7 +236,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
+            <state relative-caret-position="1633">
               <caret line="71" selection-start-line="71" selection-end-line="71" />
             </state>
           </provider>
@@ -196,7 +245,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controllers/LibraryController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="230">
               <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
             </state>
           </provider>
@@ -244,6 +293,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="128">
               <caret line="112" column="8" selection-start-line="112" selection-start-column="8" selection-end-line="112" selection-end-column="8" />
+=======
+            <state relative-caret-position="828">
+              <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -251,7 +304,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="414">
               <caret line="18" column="84" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="84" />
             </state>
           </provider>
@@ -263,18 +316,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Requests/Startup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Requests/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/LibraryController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Requests/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/SessionKeyManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Requests/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/Connections/Request.cs" root0="FORCE_HIGHLIGHTING" />
+<<<<<<< Updated upstream
     <setting file="file://$PROJECT_DIR$/Controllers/LibraryController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ED0D170-86D1-4299-AAF7-8A390BA4CE98/28/5ee6294c/CookieContainer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7540A5DA-343D-4E6A-AC2A-6190E339F993/f2/7f146158/Thread.cs" root0="SKIP_HIGHLIGHTING" />
+=======
+>>>>>>> Stashed changes
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -316,11 +373,6 @@
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Library" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -414,13 +466,22 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< Updated upstream
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07248322" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.147651" />
+>>>>>>> Stashed changes
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
+<<<<<<< Updated upstream
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32844576" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.398827" />
+=======
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3298193" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+>>>>>>> Stashed changes
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -499,6 +560,7 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/Requests/Program.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -517,30 +579,82 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+=======
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7540A5DA-343D-4E6A-AC2A-6190E339F993/f2/7f146158/Thread.cs" />
+    <entry file="file://$PROJECT_DIR$/Requests/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Requests/Controllers/BooksController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding>
+            <marker date="1544632492255" expanded="true" signature="6:357" ph="..." />
+            <marker date="1544632492255" expanded="true" signature="389:4818" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="501:4816" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="651:1155" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="747:1038" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="864:933" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="954:1024" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="1087:1145" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="1315:1545" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="1360:1451" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="1468:1535" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="1782:2033" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="1818:1939" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="1956:2023" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="2183:2411" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="2228:2317" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="2334:2401" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="2539:2980" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="2584:2886" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="2693:2763" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="2903:2970" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="3108:3528" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="3153:3431" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="3188:3262" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="3296:3372" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="3448:3515" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="3683:4134" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="3728:4039" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="3763:3842" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="3876:3953" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="4056:4123" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="4257:4480" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="4302:4386" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="4403:4470" ph="{...}" />
+            <marker date="1544632492255" expanded="true" signature="4599:4810" ph="{...}" />
+          </folding>
+>>>>>>> Stashed changes
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/Connections/IDatabaseProxy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Requests/Startup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/Resources/ConfigurationLoader.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="483">
           <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/LibraryController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/Controllers/Connections/DatabaseProxy.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -552,6 +666,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="112" column="8" selection-start-line="112" selection-start-column="8" selection-end-line="112" selection-end-column="8" />
+=======
+    <entry file="file://$PROJECT_DIR$/Controllers/Connections/MockDatabaseProxy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1633">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
         </state>
       </provider>
     </entry>
@@ -596,6 +715,10 @@
             <marker date="1544701881763" expanded="true" signature="4403:4470" ph="{...}" />
             <marker date="1544701881763" expanded="true" signature="4599:4834" ph="{...}" />
           </folding>
+=======
+        <state relative-caret-position="414">
+          <caret line="18" column="84" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="84" />
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>

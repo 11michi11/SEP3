@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import { Form, FormGroup, Input, Button, NavLink } from "reactstrap";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
@@ -30,7 +31,6 @@ class Login extends Component {
         { crossdomain: true, httpsAgent: agent }
       )
       .then(res => {
-        var str = "SUCCESS!";
         console.log(res);
         this.props.handleLogIn(
           res.data.name,
@@ -45,7 +45,7 @@ class Login extends Component {
       })
       .catch(error => {
         window.alert(`${error}
-                       Something went wrong
+                       Your e-mail or password is incorrect
                        `);
       });
   };
