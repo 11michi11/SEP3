@@ -82,7 +82,6 @@ namespace Controllers
                  throw new SessionKeyInvalidException("Session is invalid");
                 throw new Exception("Cannot connect to BookService");
             }
-           
         }
 
 //        private static async Task<string> MakeRequest(string url)
@@ -106,7 +105,7 @@ namespace Controllers
         public static void LogOut(Cookie cookie)
         {
             _sessionKeys.Remove(cookie.Name);
-            var response = MakeRequest(Url + "logOut",cookie);
+            MakeRequest(Url + "logOut",cookie);
         }
     }
 
