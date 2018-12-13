@@ -59,7 +59,8 @@ namespace Controllers
             request.ServerCertificateValidationCallback = delegate { return true; };
             if (cookie != null)
             {
-                request.CookieContainer.Add(cookie);
+                request.CookieContainer = new CookieContainer();
+                request.CookieContainer.Add(cookie); //chyba
                 request.Method = "DELETE";
             }
 

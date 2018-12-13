@@ -14,7 +14,7 @@ class Navbar extends Component {
     const agent = new https.Agent({ rejectUnauthorized: false });
     axios
       .delete(
-        "https://localhost:8080/logOut",
+        this.props.url+"logOut",
         {
           withCredentials: true
         },
@@ -26,6 +26,7 @@ class Navbar extends Component {
         this.props.loggedIn = false;
         this.props.name = "";
         this.props.accountType = "";
+        this.props.history.push("/");
       })
       .catch(error => {
         window.alert(`${error}

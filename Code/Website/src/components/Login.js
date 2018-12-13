@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Input, Button, NavLink } from "reactstrap";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 import https from "https";
 
@@ -35,10 +36,12 @@ class Login extends Component {
           res.data.name,
           res.data.userType,
           res.data.sessionKey,
-          res.data.userId
+          res.data.userId,
+          res.data.url
         );
 
         window.alert(`${str}`);
+        this.props.history.push("/");
       })
       .catch(error => {
         window.alert(`${error}
@@ -122,4 +125,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
