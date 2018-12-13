@@ -47,21 +47,21 @@ namespace Requests {
             
             app.UseHttpsRedirection();
             app.UseCors();
-            // route configuration for advanced search
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute
                 (
                     name: "advancedSearch",
                     template: "{action}/{key}/{group}",
-                    defaults: new {action = "advancedSearch"},
+                    defaults: new {action = "advancedSearch",controller="Search"},
                     constraints: new {key = @"\d+", group = @"\d+"}
                 );
                 routes.MapRoute
                 (
                     name: "search",
                     template: "{action}/{key}/{group}",
-                    defaults: new {action = "search"},
+                    defaults: new {action = "search",controller="Search"},
                     constraints: new {key = @"\d+", group = @"\d+"}
                 );
             });
