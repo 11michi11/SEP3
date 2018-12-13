@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import { Form, FormGroup, Input, Button, NavLink } from "reactstrap";
 import axios from "axios";
 import https from "https";
@@ -29,7 +30,6 @@ class Login extends Component {
         { crossdomain: true, httpsAgent: agent }
       )
       .then(res => {
-        var str = "SUCCESS!";
         console.log(res);
         this.props.handleLogIn(
           res.data.name,
@@ -37,12 +37,11 @@ class Login extends Component {
           res.data.sessionKey,
           res.data.userId
         );
-
-        window.alert(`${str}`);
+        this.props.history.push("/");
       })
       .catch(error => {
         window.alert(`${error}
-                       Something went wrong
+                       Your e-mail or password is incorrect
                        `);
       });
   };
@@ -121,4 +120,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
