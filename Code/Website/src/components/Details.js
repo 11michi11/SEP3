@@ -51,7 +51,7 @@ class Details extends Component {
         var str = "The order was made successfully";
 
         window.alert(`${str}`);
-        this.props.history.push("/bookDetails/" + isbn);
+        this.props.history.push("/");
       })
       .catch(error => {
         window.alert(`${error}
@@ -75,7 +75,7 @@ class Details extends Component {
         var str = "The order was made successfully";
 
         window.alert(`${str}`);
-        this.props.history.push("/bookDetails/" + isbn);
+        this.props.history.push("/");
       })
       .catch(error => {
         window.alert(`${error}
