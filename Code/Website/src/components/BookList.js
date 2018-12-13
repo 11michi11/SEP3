@@ -92,8 +92,8 @@ class BookList extends Component {
         })
       ) : (
         <div className="row p-5 m-5">
-          <div className="offset-sm-5 col-sm-2 text-center">
-            <span className="text-grey r">Loading...</span>
+          <div className="offset-sm-3 col-sm-6 text-center">
+            <span className="text-grey r">No book matching searching criteria.</span>
           </div>
         </div>
       );

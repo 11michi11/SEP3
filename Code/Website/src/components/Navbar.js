@@ -162,7 +162,7 @@ class Navbar extends Component {
               </li>
               <li className="nav-item">
                 <span className="nav-link">
-                  <NavLink to="/registration">Join us</NavLink>
+                  <NavLink to="/registration">Sign up</NavLink>
                 </span>
               </li>
             </ul>
