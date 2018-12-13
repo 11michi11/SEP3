@@ -59,8 +59,8 @@ class Administrator extends Component {
     });
     axios
       .delete("https://localhost:9090/book/" + e.target.value, {
+        crossdomain: true,
         httpsAgent: agent,
-        withCredentials: true,
         withCredentials: true
       })
       .then(res => {
@@ -134,9 +134,7 @@ class Administrator extends Component {
           isbn: this.state.newBook.isbn,
           category: this.state.newBook.category
         },
-        { crossdomain: true,
-          httpsAgent: agent,
-          withCredentials: true }
+        { crossdomain: true, httpsAgent: agent, withCredentials: true }
       )
       .then(res => {
         var str = "SUCCESS!";

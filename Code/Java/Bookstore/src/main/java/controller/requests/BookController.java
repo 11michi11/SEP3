@@ -1,19 +1,26 @@
 package controller.requests;
 
-import controller.Controller;
-import controller.SessionKeyManager;
-import model.Book;
-
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import controller.Controller;
+import controller.SessionKeyManager;
+import model.Book;
 
 @RestController
 public class BookController implements ApplicationContextAware {
 
 	private ConfigurableApplicationContext context;
+	@Autowired
 	private SessionKeyManager sessionKeyManager;
 
     @RequestMapping(method=RequestMethod.POST, value="/book")

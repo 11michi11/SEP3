@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
@@ -14,7 +15,7 @@ using Newtonsoft.Json.Schema;
 
 namespace Requests.Controllers
 {
-    [EnableCors()]
+    [EnableCors("AllowSpecificOrigin")]
     [ApiController]
     public class BooksController : ControllerBase
     {
@@ -160,6 +161,17 @@ namespace Requests.Controllers
             {
                 return Unauthorized();
             }
+        }
+        
+        // DELETE logOut
+        [HttpDelete]
+        [Route("logOut")]
+        public IActionResult LogOut()
+        {
+            const string key = "sessionKey";
+            var cookie = new Cookie(key, Request.Cookies[key]) {Domain = "localhost"};
+            SessionKeyManager.LogOut(cookie);
+            return Ok("Logged out");
         }
     }
 }

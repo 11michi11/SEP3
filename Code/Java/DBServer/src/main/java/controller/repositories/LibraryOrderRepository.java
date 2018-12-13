@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import utils.SendEmail;
 
 import java.util.Calendar;
 import java.util.List;
@@ -43,6 +44,11 @@ public class LibraryOrderRepository implements LibraryOrderRepo {
     @Override
     public void delete(String orderId) {
         LibraryOrder order = get(orderId);
+
+        String title = order.getBook().getTitle();
+        String email = order.getCustomer().getEmail();
+
+        SendEmail.sendBookReturnEmail(email, title);
 
         HibernateAdapter.deleteObject(order);
     }

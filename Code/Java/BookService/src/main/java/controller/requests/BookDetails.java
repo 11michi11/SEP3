@@ -15,8 +15,7 @@ public class BookDetails implements ApplicationContextAware {
 
     @CrossOrigin
     @GetMapping("/bookDetails/{isbn}")
-    public String getBookDetails(@PathVariable String isbn, @CookieValue("sessionKey") String sessionKey){
-        SessionKeyManager.checkSessionKey(sessionKey);
+    public String getBookDetails(@PathVariable String isbn){
         Controller controller=context.getBean(Controller.class);
         return controller.getBookDetails(isbn);
     }

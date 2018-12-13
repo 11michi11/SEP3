@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import { Form, FormGroup, Input, Button, NavLink } from "reactstrap";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 import https from "https";
 
 class Login extends Component {
   componentDidMount() {
-    this.props.handleLogIn();
+    console.log(this.props);
   }
   state = {
     email: "",
@@ -29,15 +31,21 @@ class Login extends Component {
         { crossdomain: true, httpsAgent: agent }
       )
       .then(res => {
-        var str = "SUCCESS!";
         console.log(res);
-        this.props.handleLogIn(this.state.email, res.data.userType);
+        this.props.handleLogIn(
+          res.data.name,
+          res.data.userType,
+          res.data.sessionKey,
+          res.data.userId,
+          res.data.url
+        );
 
         window.alert(`${str}`);
+        this.props.history.push("/");
       })
       .catch(error => {
         window.alert(`${error}
-                       Something went wrong
+                       Your e-mail or password is incorrect
                        `);
       });
   };
@@ -72,7 +80,7 @@ class Login extends Component {
         <div className="row">
           <div className="offset-sm-3 col-sm-6 p-5">
             <p>Enter your credentials in order to log in:</p>
-            <Form>
+            <Form onSubmit={e => this.handleSubmit(e)}>
               <FormGroup>
                 <p>
                   Email:
@@ -102,7 +110,6 @@ class Login extends Component {
                   <Button
                     color="primary"
                     size="sm"
-                    onClick={e => this.handleSubmit(e)}
                   >
                     Log in
                   </Button>
@@ -117,4 +124,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

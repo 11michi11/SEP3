@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { withRouter, NavLink } from "react-router-dom";
+import https from "https";
+import axios from "axios";
+import mainLogo from "./readwithpanda.png";
 
 class Navbar extends Component {
   state = {};
@@ -8,16 +11,37 @@ class Navbar extends Component {
   }
 
   handleLogout = e => {
-    this.props.loggedIn = false;
-    this.props.name = "";
-    this.props.accountType = "";
+    e.preventDefault();
+    const agent = new https.Agent({ rejectUnauthorized: false });
+    axios
+      .delete(
+        "https://localhost:8080/logOut",
+        {
+          withCredentials: true
+        },
+        { crossdomain: true, httpsAgent: agent }
+      )
+      .then(res => {
+        this.props.loggedIn = false;
+        this.props.name = "";
+        this.props.accountType = "";
+        this.props.history.push("/");
+      })
+      .catch(error => {
+        window.alert(`${error}
+                       Something went wrong
+                       `);
+      });
   };
   render() {
     let validatedNavbar;
+    const logoStyle = {
+      "max-width": "80px"
+    };
     if (this.props.loggedIn && this.props.accountType === "Customer") {
       validatedNavbar = (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="#">
             Welcome back, {this.props.name}
           </a>
           <div className="collapse navbar-collapse" id="navbarNav">
@@ -49,7 +73,7 @@ class Navbar extends Component {
     ) {
       validatedNavbar = (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="#">
             Welcome back, Library Admin
           </a>
           <div className="collapse navbar-collapse" id="navbarNav">
@@ -66,7 +90,7 @@ class Navbar extends Component {
               </li>
               <li className="nav-item">
                 <span className="nav-link">
-                  <NavLink to="/librrary_admin">Control Panel</NavLink>
+                  <NavLink to="/library_admin">Control Panel</NavLink>
                 </span>
               </li>
               <li className="nav-item">
@@ -86,7 +110,7 @@ class Navbar extends Component {
     ) {
       validatedNavbar = (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="#">
             Welcome back, Bookstore Admin
           </a>
           <div className="collapse navbar-collapse" id="navbarNav">
@@ -120,8 +144,8 @@ class Navbar extends Component {
     } else {
       validatedNavbar = (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="/">
-            Read with Panda
+          <a className="navbar-brand" href="#">
+            <img src={mainLogo} alt="logo" style={logoStyle} />
           </a>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
@@ -137,7 +161,7 @@ class Navbar extends Component {
               </li>
               <li className="nav-item">
                 <span className="nav-link">
-                  <NavLink to="/registration">Join us</NavLink>
+                  <NavLink to="/registration">Sign up</NavLink>
                 </span>
               </li>
             </ul>

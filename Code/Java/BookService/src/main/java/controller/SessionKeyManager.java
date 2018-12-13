@@ -43,6 +43,10 @@ public class SessionKeyManager {
 			throw new SessionKeyIsNotValidException("The session key is not valid");
 	}
 
+	public static void deleteFromCache(String sessionKey) {
+		sessionKeys.remove(sessionKey);
+	}
+
 	public static class SessionKeyIsNotValidException extends RuntimeException {
 
 		public SessionKeyIsNotValidException(String message) {
