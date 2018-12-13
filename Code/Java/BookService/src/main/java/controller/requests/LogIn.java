@@ -26,6 +26,7 @@ public class LogIn implements ApplicationContextAware {
 	@CrossOrigin
 	@DeleteMapping("/logOut")
 	public String logOut(@CookieValue("sessionKey") String sessionKey) {
+		System.out.println("Request to log out");
 		SessionKeyManager.deleteFromCache(sessionKey);
 		return "Logged out";
 	}

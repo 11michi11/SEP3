@@ -72,6 +72,7 @@ namespace Controllers
                 Stream dataStream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(dataStream);
                 string responseFromServer = reader.ReadToEnd();
+                Console.WriteLine("Sending '"+request.Method+"' request to BookService");
 
                 return responseFromServer;
             }
