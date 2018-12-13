@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter, NavLink } from "react-router-dom";
 import https from "https";
 import axios from "axios";
+import mainLogo from "./readwithpanda.png";
 
 class Navbar extends Component {
   state = {};
@@ -34,10 +35,13 @@ class Navbar extends Component {
   };
   render() {
     let validatedNavbar;
+    const logoStyle = {
+      "max-width": "80px"
+    };
     if (this.props.loggedIn && this.props.accountType === "Customer") {
       validatedNavbar = (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="#">
             Welcome back, {this.props.name}
           </a>
           <div className="collapse navbar-collapse" id="navbarNav">
@@ -69,7 +73,7 @@ class Navbar extends Component {
     ) {
       validatedNavbar = (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="#">
             Welcome back, Library Admin
           </a>
           <div className="collapse navbar-collapse" id="navbarNav">
@@ -106,7 +110,7 @@ class Navbar extends Component {
     ) {
       validatedNavbar = (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="#">
             Welcome back, Bookstore Admin
           </a>
           <div className="collapse navbar-collapse" id="navbarNav">
@@ -140,8 +144,8 @@ class Navbar extends Component {
     } else {
       validatedNavbar = (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="/">
-            Read with Panda
+          <a className="navbar-brand" href="#">
+            <img src={mainLogo} alt="logo" style={logoStyle} />
           </a>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
