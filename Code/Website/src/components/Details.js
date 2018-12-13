@@ -42,14 +42,11 @@ class Details extends Component {
     console.log("bookstoreId: " + bookstoreid);
     console.log("customerId: " + customerId);
     axios
-      .post("https://localhost:8080/buy", {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true,
-        isbn: isbn,
-        institutionId: bookstoreid,
-        customerID: customerId
-      })
+      .post(
+        "https://localhost:8080/buy",
+        { isbn: isbn, institutionId: bookstoreid, customerID: customerId },
+        { withCredentials: true, crossdomain: true, httpsAgent: agent }
+      )
       .then(res => {
         var str = "The order was made successfully";
 
@@ -69,14 +66,11 @@ class Details extends Component {
       rejectUnauthorized: false
     });
     axios
-      .post("https://localhost:8080/borrow", {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true,
-        isbn: isbn,
-        institutionId: libraryid,
-        customerID: customerId
-      })
+      .post(
+        "https://localhost:8080/borrow",
+        { isbn: isbn, institutionId: libraryid, customerID: customerId },
+        { withCredentials: true, crossdomain: true, httpsAgent: agent }
+      )
       .then(res => {
         var str = "The order was made successfully";
 

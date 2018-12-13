@@ -19,9 +19,11 @@ public class MakeOrder implements ApplicationContextAware {
 		Controller controller = context.getBean(Controller.class);
 		return controller.borrowBook(order.isbn, order.institutionId, order.customerID);
 	}
-
-	@RequestMapping(method = RequestMethod.POST, value ="/buy")
-	public String buyBook(@RequestBody Order order, @CookieValue("sessionKey") String sessionKey) {
+	
+	@CrossOrigin
+	@PostMapping("/buy")
+	public String buyBook(@RequestBody Order order,@CookieValue("sessionKey") String sessionKey) {
+		System.out.println(sessionKey + " SESSION KEY");
 		SessionKeyManager.checkSessionKey(sessionKey);
 		Controller controller = context.getBean(Controller.class);
 		return controller.buyBook(order.isbn, order.institutionId, order.customerID);

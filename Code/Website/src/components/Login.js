@@ -24,10 +24,9 @@ class Login extends Component {
         "https://localhost:8080/login",
         {
           email: this.state.email,
-          password: this.state.password,
-          withCredentials: true
+          password: this.state.password
         },
-        { crossdomain: true, httpsAgent: agent }
+        { crossdomain: true, httpsAgent: agent, withCredentials: true }
       )
       .then(res => {
         const str = "SUCCESS!";
