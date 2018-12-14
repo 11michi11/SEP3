@@ -1,7 +1,7 @@
 package controller;
 
 import com.google.gson.internal.LinkedTreeMap;
-import communication.DBServer;
+import communication.Server;
 import communication.LogInResponse;
 import communication.Request;
 import communication.Response;
@@ -15,9 +15,9 @@ import java.util.UUID;
 public class Controller {
 
     private DBProxy db;
-    private DBServer server;
+    private Server server;
 
-    public Controller(DBProxy db, DBServer server) {
+    public Controller(DBProxy db, Server server) {
         this.db = db;
         this.server = server;
         server.setController(this);
@@ -26,7 +26,7 @@ public class Controller {
 
     public static void main(String[] args) {
         DBProxy db = RepositoryManager.getInstance();
-        DBServer server = new DBServer();
+        Server server = new Server();
         Controller controller = new Controller(db, server);
     }
 
@@ -130,16 +130,6 @@ public class Controller {
     }
 
     public List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category) {
-        final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
-        if (isbn.equals(""))
-            isbn = emptyStringValue;
-
-        if (title.equals(""))
-            title = emptyStringValue;
-
-        if (author.equals(""))
-            author = emptyStringValue;
-
         return db.advancedSearch(isbn, title, author, year, category);
     }
 
