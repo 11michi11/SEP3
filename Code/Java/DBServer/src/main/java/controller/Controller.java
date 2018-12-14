@@ -1,7 +1,7 @@
 package controller;
 
 import com.google.gson.internal.LinkedTreeMap;
-import communication.DBServer;
+import communication.Server;
 import communication.LogInResponse;
 import communication.Request;
 import communication.Response;
@@ -15,9 +15,9 @@ import java.util.UUID;
 public class Controller {
 
     private DBProxy db;
-    private DBServer server;
+    private Server server;
 
-    public Controller(DBProxy db, DBServer server) {
+    public Controller(DBProxy db, Server server) {
         this.db = db;
         this.server = server;
         server.setController(this);
@@ -26,7 +26,7 @@ public class Controller {
 
     public static void main(String[] args) {
         DBProxy db = RepositoryManager.getInstance();
-        DBServer server = new DBServer();
+        Server server = new Server();
         Controller controller = new Controller(db, server);
     }
 
