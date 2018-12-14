@@ -17,21 +17,23 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class Search implements ApplicationContextAware {
+public class Search{
 
-    private ConfigurableApplicationContext context;
     private SessionKeyManager sessionKeyManager;
+    private Controller controller;
 
     @Autowired
-    public Search(SessionKeyManager sessionKeyManager) {
+    public Search(SessionKeyManager sessionKeyManager, Controller controller) {
         this.sessionKeyManager = sessionKeyManager;
+        this.controller = controller;
     }
 
     @RequestMapping("/search")
-    public List<Book> search(@RequestParam(value = "searchTerm") String searchTerm, @CookieValue("sessionKey") String sessionKey) throws SessionKeyManager.SessionKeyInvalidException {
+    public List<Book> search(@RequestParam(value = "searchTerm") String searchTerm,
+                             @CookieValue("sessionKey") String sessionKey)
+            throws SessionKeyManager.SessionKeyInvalidException {
         sessionKeyManager.isSessionKeyValid(sessionKey);
 
-        Controller controller = context.getBean(Controller.class);
         return controller.search(searchTerm);
     }
 
@@ -43,16 +45,11 @@ public class Search implements ApplicationContextAware {
                                      @RequestParam(value = "category", required = false) Book.Category category,
                                      @CookieValue("sessionKey") String sessionKey) {
         sessionKeyManager.isSessionKeyValid(sessionKey);
-        Controller controller = context.getBean(Controller.class);
+
         if(year == null)
             year = 0;
         if(category == null)
             category = Book.Category.Empty;
         return controller.advancedSearch(title, author, year, isbn, category);
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        context = (ConfigurableApplicationContext) applicationContext;
     }
 }

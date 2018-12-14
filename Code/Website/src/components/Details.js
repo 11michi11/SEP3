@@ -83,7 +83,7 @@ class Details extends Component {
   };
   handleNotLoggedIn = e => {
     if (!(this.props.loggedIn && this.props.accountType === "Customer")) {
-      window.alert(`In order to buy or borrow books you have to be logged in.`);
+      window.alert(`In order to buy or borrow books you have to be logged in as a customer.`);
     }
   };
 

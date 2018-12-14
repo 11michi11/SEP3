@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Controllers.Connections
 {
-    public class DatabaseProxy : IDatabaseProxy
+    public class DatabaseConnection : IDatabaseProxy
     {
         private readonly byte[] HOST = ConfigurationLoader.GetInstance().DatabaseHost;
         private readonly int PORT = ConfigurationLoader.GetInstance().DatabasePort;
@@ -53,7 +53,7 @@ namespace Controllers.Connections
                 case ResponseStatus.OK:
                     return GetContent<List<Book>>(response);
                 case ResponseStatus.Error:
-                    String errorMsg = GetContent<string>(response);
+                    var errorMsg = GetContent<string>(response);
                     throw new SearchException("Database returned error: " + errorMsg);
                 default:
                     throw new SearchException("Unknown response status: " + status);

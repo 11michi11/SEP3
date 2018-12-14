@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Tests
 {
-    public class DatabaseProxyTest : DatabaseProxy
+    public class DatabaseConnectionTest : DatabaseConnection
     {
         //Run only with DB running
         [Fact]
