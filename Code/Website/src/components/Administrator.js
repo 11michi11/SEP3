@@ -67,6 +67,19 @@ class Administrator extends Component {
         console.log(res);
         window.alert("Succesfuly deleted a book!");
         this.props.history.push("/bookstore_admin");
+        axios
+          .get(
+            "https://localhost:9090/search?searchTerm=" + this.state.searchData,
+            {
+              crossdomain: true,
+              httpsAgent: agent,
+              withCredentials: true
+            }
+          )
+          .then(res => {
+            this.setState({ books: res.data });
+            console.log(res.data);
+          });
       })
       .catch(error => {
         window.alert(error + "Cannot delete a book");
