@@ -38,6 +38,12 @@ public class LibraryOrderRepository implements LibraryOrderRepo {
         LibraryOrder order = createLibraryOrder(bookId, customerId);
 
         HibernateAdapter.addObject(order);
+
+        //marking the book as unavailable
+        LibraryStorage libraryStorage = order.getLibraryStorage();
+        libraryStorage.setAvailable(false);
+        HibernateAdapter.updateObject(libraryStorage);
+
         return order.getOrderid();
     }
 
@@ -51,6 +57,11 @@ public class LibraryOrderRepository implements LibraryOrderRepo {
         SendEmail.sendBookReturnEmail(email, title);
 
         HibernateAdapter.deleteObject(order);
+
+        //marking the book available
+        LibraryStorage libraryStorage = order.getLibraryStorage();
+        libraryStorage.setAvailable(true);
+        HibernateAdapter.updateObject(libraryStorage);
     }
 
     private LibraryOrder createLibraryOrder(String bookId, String customerId) throws LibraryStorageRepository.LibraryStorageNotFoundException, CustomerRepository.CustomerNotFoundException {
