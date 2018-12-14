@@ -138,7 +138,7 @@ class Details extends Component {
               </div>
             </div>
           </div>
-        ) : null;
+        ) : <p className="center">Not available</p>;
       })
     ) : (
       <p className="center">Not available</p>
