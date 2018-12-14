@@ -116,6 +116,12 @@ class AdministratorLibrary extends Component {
         "ISBN has to be shorter than 18 characters"
         );
     }
+    else if(this.state.newBook.year.match(/[a-z]/i))
+    {
+      window.alert(
+        "Year cannot contain letters"
+        );
+    }
     else
     {
       const agent = new https.Agent({
@@ -159,9 +165,9 @@ class AdministratorLibrary extends Component {
           });
         })
         .catch(error => {
-          window.alert(
-            "Year cannot contain letters"
-            );
+          window.alert(`${error}
+                        Something went wrong...
+                        `);
         });
       }
   };
