@@ -34,7 +34,7 @@ public class Controller {
         return db.getBookDetails(isbn);
     }
 
-    public String addCustomer(Customer customer){
+    public String addCustomer(Customer customer) throws DatabaseConnection.RegisterEmailException {
         customer.setPassword(Password.encryptPwd(customer.getPassword()));
         return db.addCustomer(customer);
     }
