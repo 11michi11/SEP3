@@ -5,14 +5,15 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Controllers.Resources;
 
 namespace Controllers
 {
     public class SessionKeyManager
     {
-        private const string Url = "https://localhost:8080/checkSK/";
+        private static readonly string Url = ConfigurationLoader.GetInstance().BookServiceURL;
         private static Dictionary<string, DateTime?> _sessionKeys = new Dictionary<string, DateTime?>();
-        private static readonly string LIBRARY_ID = "ce78ef57-77ec-4bb7-82a2-1a78d3789aef";
+        private static readonly string LIBRARY_ID = ConfigurationLoader.GetInstance().LibraryID;
         
         public static bool IsSkValid(string sessionKey)
         {
@@ -35,7 +36,7 @@ namespace Controllers
         {
             try
             {
-                var response = MakeRequest(Url + sessionKey + "/" + LIBRARY_ID);
+                var response = MakeRequest(Url + "checkSK/" + sessionKey + "/" + LIBRARY_ID,null);
                 var date = DateTime.ParseExact(response, "yyyy MMM dd HH:mm:ss", null);
                 return date;
             }
@@ -52,11 +53,17 @@ namespace Controllers
             
         }
 
-        private static string MakeRequest(string url)
+        private static string MakeRequest(string url,Cookie cookie)
         {
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ServerCertificateValidationCallback = delegate { return true; };
+            if (cookie != null)
+            {
+                request.CookieContainer = new CookieContainer();
+                request.CookieContainer.Add(cookie);
+                request.Method = "DELETE";
+            }
 
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             try
@@ -66,34 +73,23 @@ namespace Controllers
                 Stream dataStream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(dataStream);
                 string responseFromServer = reader.ReadToEnd();
+                Console.WriteLine("Sending '"+request.Method+"' request to BookService");
 
                 return responseFromServer;
             }
             catch (WebException e)
             {
-                throw new SessionKeyInvalidException("Session is invalid");
+                if (cookie == null)
+                 throw new SessionKeyInvalidException("Session is invalid");
+                throw new Exception("Cannot connect to BookService");
             }
-           
         }
 
-//        private static async Task<string> MakeRequest(string url)
-//        {
-//            using (HttpClient client = new HttpClient())
-//            {
-//                using (HttpResponseMessage response = await client.GetAsync(url))
-//                {
-//                    using (HttpContent content = response.Content)
-//                    {
-//                        string myContent = await content.ReadAsStringAsync();
-//                        if (response.StatusCode == HttpStatusCode.Unauthorized)
-//                        {
-//                            throw new SessionKeyInvalidException("Session is invalid");
-//                        }
-//                        return myContent;
-//                    } 
-//                }
-//            }
-//        }
+        public static void LogOut(Cookie cookie)
+        {
+            _sessionKeys.Remove(cookie.Name);
+            MakeRequest(Url + "logOut",cookie);
+        }
     }
 
     public class SessionKeyInvalidException : Exception

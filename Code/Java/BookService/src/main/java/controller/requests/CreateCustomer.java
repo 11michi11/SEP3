@@ -15,8 +15,7 @@ public class CreateCustomer implements ApplicationContextAware {
     private ConfigurableApplicationContext context;
 
     @RequestMapping(method= RequestMethod.POST, value="/signUp")
-    public String addCustomer(@RequestBody Customer customer, @CookieValue("sessionKey") String sessionKey){
-        SessionKeyManager.checkSessionKey(sessionKey);
+    public String addCustomer(@RequestBody Customer customer){
         Controller controller=context.getBean(Controller.class);
         return controller.addCustomer(customer);
     }

@@ -18,26 +18,23 @@ class AdministratorLibrary extends Component {
     }
   };
 
-  componentDidMount() {
-    console.log("component mounted");
-  }
+  componentDidMount() {}
 
   handleSearch = event => {
     this.setState({ searchData: event.target.value });
-    console.log(this.state.searchData);
   };
 
   handleSubmit = e => {
     e.preventDefault();
 
     this.setState({ displayAdd: false });
-    console.log(this.state.searchData);
+
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
     axios
       .get(
-        "https://localhost:9090/search?searchTerm=" + this.state.searchData,
+        "https://localhost:5001/search?searchTerm=" + this.state.searchData,
         {
           crossdomain: true,
           httpsAgent: agent,
@@ -46,30 +43,14 @@ class AdministratorLibrary extends Component {
       )
       .then(res => {
         this.setState({ books: res.data });
-        console.log(res.data);
       });
   };
 
-  handleDelete = e => {
+  handleListBooks = e => {
     e.preventDefault();
-    const agent = new https.Agent({
-      rejectUnauthorized: false
-    });
-    axios
-      .delete("https://localhost:9090/book/" + e.target.value, {
-        httpsAgent: agent,
-        withCredentials: true,
-        withCredentials: true
-      })
-      .then(res => {
-        console.log(res);
-        window.alert("Succesfuly deleted a book!");
-      })
-      .catch(error => {
-        window.alert(error + "Cannot delete a book");
-      });
 
-    console.log("delete " + e.target.value);
+    console.log(this.props);
+    this.props.history.push("/library_admin/bookList/" + e.target.value);
   };
 
   displayAdd = () => {
@@ -124,7 +105,7 @@ class AdministratorLibrary extends Component {
     });
     axios
       .post(
-        "https://localhost:9090/book",
+        "https://localhost:5001/book",
         {
           title: this.state.newBook.title,
           author: this.state.newBook.author,
@@ -248,17 +229,17 @@ class AdministratorLibrary extends Component {
               <h5 className="card-title">{b.title}</h5>
             </Link>
             <div className="card-subtitle text-muted">
-              {b.author} ({b.year}) /{" "}
+              {b.author} ({b.year}) / / {b.isbn}
               <span className=" text-danger">{b.category}</span>
             </div>
             <br />
             <button
               type="button"
-              className="btn btn-danger"
-              onClick={this.handleDelete}
+              className="btn btn-primary"
+              onClick={this.handleListBooks}
               value={b.isbn}
             >
-              Delete
+              List of Books
             </button>
 
             <p />

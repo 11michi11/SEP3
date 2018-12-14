@@ -3,6 +3,7 @@ package controller.repositories;
 import controller.HibernateAdapter;
 import model.*;
 import org.hibernate.*;
+import utils.SendEmail;
 
 import java.util.List;
 import java.util.UUID;
@@ -38,6 +39,11 @@ public class BookStoreOrderRepository implements BookStoreOrderRepo {
     @Override
     public void delete(String orderId) throws CustomerRepository.CustomerNotFoundException {
         BookStoreOrder bookStoreOrder = get(orderId);
+
+        String title = bookStoreOrder.getBook().getTitle();
+        String email = bookStoreOrder.getCustomer().getEmail();
+
+        SendEmail.sendOrderConfirmedEmail(email, title);
 
         HibernateAdapter.deleteObject(bookStoreOrder);
     }

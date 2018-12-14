@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import https from "https";
 
@@ -19,21 +20,28 @@ class Registration extends Component {
           phoneNum: this.state.phoneNum,
           password: this.state.password
         },
-        { 
-          crossdomain: true, 
+        {
+          crossdomain: true,
           httpsAgent: agent,
           withCredentials: true
-         }
+        }
       )
       .then(res => {
-        var str = "SUCCEEDED!";
-
-        window.alert(`REGISTRATION  ${str}!`);
+        this.props.history.push("/");
       })
       .catch(error => {
+        if(this.state.name==""||this.state.email==""||this.state.address==""||this.state.phoneNum==""||this.state.password=="")
+        {
+          window.alert(`${error}
+            All fields must be filled
+                       `);
+        }
+        else
+        {
         window.alert(`${error}
                       Something went wrong, registration failed - check the fields please
                        `);
+        }
       });
   };
   state = {
@@ -175,4 +183,4 @@ class Registration extends Component {
   }
 }
 
-export default Registration;
+export default withRouter(Registration);
