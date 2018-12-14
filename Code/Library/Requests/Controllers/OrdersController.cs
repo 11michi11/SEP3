@@ -20,13 +20,14 @@ namespace Requests.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly LibraryController _libraryController = LibraryController.GetInstance();
-       
+
         private bool CheckSessionKey()
         {
             var sessionKeyFromClient = Request.Cookies["sessionKey"];
             try
             {
-                if (sessionKeyFromClient != null && SessionKeyManager.IsSkValid(sessionKeyFromClient))
+                if (sessionKeyFromClient != null && 
+                    SessionKeyManager.IsSkValid(sessionKeyFromClient))
                 {
                     return true;
                 }
@@ -40,6 +41,21 @@ namespace Requests.Controllers
                 return false;
             }
         }
+
+        // GET orders
+        [HttpGet]
+        [Route("orders")]
+        public ActionResult<string> GetOrders()
+        {
+            if (CheckSessionKey())
+            {
+                return _libraryController.GetOrders();
+            }
+            else
+            {
+                return Unauthorized();
+            }
+        }
         
         // DELETE orders/orderId
         [HttpDelete]
@@ -48,33 +64,17 @@ namespace Requests.Controllers
         {
             if (CheckSessionKey())
             {
-                try {
+                try
+                {
                     _libraryController.ReturnBook(orderId);
-                } catch(NullReferenceException ex) {
+                } catch (NullReferenceException ex)
+                {
                     return BadRequest("Order not found");
                 }
+                return Ok("The book has been returned successfully");
+            }
+            return Unauthorized();
+        }
 
-                return Ok("The book has been returned successfully"); 
-            }
-            else
-            {
-                return Unauthorized();
-            } 
-        }
-        
-        // GET orders
-        [HttpGet]
-        [Route("orders")]
-        public ActionResult<string> GetOrders()
-        {
-            if (CheckSessionKey())
-            {
-                return _libraryController.GetOrders(); 
-            }
-            else
-            {
-                return Unauthorized();
-            }
-        }
     }
 }
