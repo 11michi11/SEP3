@@ -10,7 +10,7 @@
       <e p="Controllers" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Connections" t="Include">
-          <e p="DatabaseProxy.cs" t="Include" />
+          <e p="DatabaseConnection.cs" t="Include" />
           <e p="IDatabaseProxy.cs" t="Include" />
           <e p="MockDatabaseProxy.cs" t="Include" />
           <e p="Request.cs" t="Include" />
@@ -77,7 +77,7 @@
         <e p="BooksControllerTest.cs" t="Include" />
         <e p="BookTest.cs" t="Include" />
         <e p="ConfigurationLoaderTest.cs" t="Include" />
-        <e p="DatabaseProxyTest.cs" t="Include" />
+        <e p="DatabaseConnectionTest.cs" t="Include" />
         <e p="LibraryBookTest.cs" t="Include" />
         <e p="LibraryControllerTest.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">

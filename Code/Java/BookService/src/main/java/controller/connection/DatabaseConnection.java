@@ -169,8 +169,7 @@ public class DatabaseConnection implements DatabaseProxy {
         JsonElement element = parser.parse(contentJson);
         JsonObject obj = element.getAsJsonObject(); //since you know it's a JsonObject
         String content = obj.get("content").toString();
-        Type type = new TypeToken<T>() {
-        }.getType();
+        Type type = new TypeToken<T>() {}.getType();
         return gson.fromJson(content, type);
     }
 

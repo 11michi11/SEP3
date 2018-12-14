@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Controllers.Connections
 {
-    public class DatabaseProxy : IDatabaseProxy
+    public class DatabaseConnection : IDatabaseProxy
     {
         private readonly byte[] HOST = ConfigurationLoader.GetInstance().DatabaseHost;
         private readonly int PORT = ConfigurationLoader.GetInstance().DatabasePort;
