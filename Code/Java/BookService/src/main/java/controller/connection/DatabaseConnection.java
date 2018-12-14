@@ -140,7 +140,7 @@ public class DatabaseConnection implements DatabaseProxy {
         }
     }
 
-    public String addCustomer(Customer customer){
+    public String addCustomer(Customer customer) throws RegisterEmailException {
         Map<String, Object> args = new HashMap<>();
         args.put("name", customer.getName());
         args.put("email", customer.getEmail());
@@ -150,7 +150,11 @@ public class DatabaseConnection implements DatabaseProxy {
 
         Request request = new Request(Request.Operation.RegisterCustomer, args);
 
-        return sendMessage(request);
+        String response = sendMessage(request);
+        ResponseStatus status = getResponseStatus(response);
+        if (status.equals(ResponseStatus.OK))
+            return response;
+        else throw new RegisterEmailException("Email already in use");
     }
 
     private ResponseStatus getResponseStatus(String response) {
@@ -217,4 +221,9 @@ public class DatabaseConnection implements DatabaseProxy {
         }
     }
 
+    public class RegisterEmailException extends RuntimeException {
+        public RegisterEmailException(String msg) {
+            super(msg);
+        }
+    }
 }
