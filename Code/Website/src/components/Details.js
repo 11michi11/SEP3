@@ -32,26 +32,6 @@ class Details extends Component {
         console.log(this.state);
       });
   }
-  componentDidUpdate(){
-    console.log(this.props.match.params.search_term);
-    const isbn = this.props.match.params.search_term;
-    console.log({ isbn });
-    const agent = new https.Agent({
-      rejectUnauthorized: false
-    });
-    axios
-      .get("https://localhost:8080/bookDetails/" + isbn, {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true
-      })
-      .then(res => {
-        this.setState({ book: res.data.book });
-        this.setState({ libraries: res.data.libraries });
-        this.setState({ bookstores: res.data.bookstores });
-        console.log(this.state);
-      });
-  }
   handleBuy = (isbn, bookstoreid, customerId) => {
     console.log("SESSION KEY: ");
     console.log(Cookies.get("sessionKey"));
@@ -71,12 +51,30 @@ class Details extends Component {
         var str = "The order was made successfully";
 
         window.alert(`${str}`);
-      })
-      .catch(error => {
-        window.alert(`${error}
-                           Something went wrong
-                           `);
-      });
+          console.log(this.props.match.params.search_term);
+          const isbn = this.props.match.params.search_term;
+          console.log({ isbn });
+          const agent = new https.Agent({
+            rejectUnauthorized: false
+          });
+          axios
+            .get("https://localhost:8080/bookDetails/" + isbn, {
+              crossdomain: true,
+              httpsAgent: agent,
+              withCredentials: true
+            })
+            .then(res => {
+              this.setState({ book: res.data.book });
+              this.setState({ libraries: res.data.libraries });
+              this.setState({ bookstores: res.data.bookstores });
+              console.log(this.state);
+            });
+            })
+            .catch(error => {
+              window.alert(`${error}
+                                Something went wrong
+                                `);
+            });
   };
   handleBorrow = (isbn, libraryid, customerId) => {
     console.log("SESSION KEY: ");
@@ -94,6 +92,24 @@ class Details extends Component {
         var str = "The order was made successfully";
 
         window.alert(`${str}`);
+          console.log(this.props.match.params.search_term);
+          const isbn = this.props.match.params.search_term;
+          console.log({ isbn });
+          const agent = new https.Agent({
+            rejectUnauthorized: false
+          });
+          axios
+            .get("https://localhost:8080/bookDetails/" + isbn, {
+              crossdomain: true,
+              httpsAgent: agent,
+              withCredentials: true
+            })
+            .then(res => {
+              this.setState({ book: res.data.book });
+              this.setState({ libraries: res.data.libraries });
+              this.setState({ bookstores: res.data.bookstores });
+              console.log(this.state);
+            });
       })
       .catch(error => {
         window.alert(`${error}
