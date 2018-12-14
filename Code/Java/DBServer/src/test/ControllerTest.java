@@ -1,31 +1,14 @@
-import communication.DBServer;
-import communication.Request;
 import controller.Controller;
-import controller.DBProxy;
-import controller.repositories.LibraryRepository;
-import controller.repositories.RepositoryManager;
-import model.Book;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.Mockito.when;
 
 public class ControllerTest {
 //
 //    @Mock
 //    private DBProxy db;
 //    @Mock
-//    private DBServer server;
+//    private Server server;
 //
 //    @InjectMocks
     private Controller controller;
@@ -34,7 +17,7 @@ public class ControllerTest {
 //    public void setup() {
 //       // MockitoAnnotations.initMocks(this);
 //        DBProxy db = RepositoryManager.getInstance();
-//        DBServer server = new DBServer();
+//        Server server = new Server();
 //        controller = new Controller(db, server);
 //    }
 

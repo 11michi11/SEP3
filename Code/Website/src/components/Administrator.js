@@ -285,7 +285,7 @@ class Administrator extends Component {
             <button
               type="button"
               className="btn btn-danger"
-              onClick={this.handleDelete}
+              onClick={(e) => { if( window.confirm('Are you sure you want to delete this book?')) this.handleDelete(e)  }} 
               value={b.isbn}
             >
               Delete

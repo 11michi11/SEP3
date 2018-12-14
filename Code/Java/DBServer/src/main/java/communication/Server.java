@@ -7,13 +7,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
-public class DBServer {
+public class Server {
 
     private ServerSocket serverSocket;
     private final int PORT = 7777;
     private Controller controller;
 
-    public DBServer() {
+    public Server() {
     }
 
     public void start() {
