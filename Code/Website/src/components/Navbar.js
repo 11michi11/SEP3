@@ -11,7 +11,7 @@ class Navbar extends Component {
   }
 
   handleLogout = e => {
-    e.preventDefault();
+    //e.preventDefault();
     this.props.handleLogOut();
   };
   render() {
@@ -30,11 +30,6 @@ class Navbar extends Component {
               <li className="nav-item active">
                 <span className="nav-link">
                   <NavLink to="/">Home</NavLink>
-                </span>
-              </li>
-              <li className="nav-item">
-                <span className="nav-link">
-                  <NavLink to="/profile">Profile</NavLink>
                 </span>
               </li>
               <li className="nav-item">
@@ -76,7 +71,7 @@ class Navbar extends Component {
               </li>
               <li className="nav-item">
                 <span className="nav-link">
-                  <NavLink to="/logout" onClick={this.handleLogout}>
+                  <NavLink to="/" onClick={this.handleLogout}>
                     Log out
                   </NavLink>
                 </span>
@@ -113,7 +108,7 @@ class Navbar extends Component {
               </li>
               <li className="nav-item">
                 <span className="nav-link">
-                  <NavLink to="/logout" onClick={this.handleLogout}>
+                  <NavLink to="/" onClick={this.handleLogout}>
                     Log out
                   </NavLink>
                 </span>

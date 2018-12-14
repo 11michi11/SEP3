@@ -196,14 +196,23 @@ class Home extends Component {
                         placeholder="author"
                       />
                       <p />
-                      <Input
-                        type="text"
-                        value={this.state.category}
-                        onChange={this.handleAdvancedSearchChange}
-                        name="advancedSearch"
-                        id="category"
-                        placeholder="category"
-                      />
+                      <Input 
+                      type="select" 
+                      value={this.state.category} 
+                      onChange={this.handleAdvancedSearchChange} 
+                      name="category" 
+                      id="category">
+                        <option></option>
+                        <option>Fantasy</option>
+                        <option>Sci-Fi</option>
+                        <option>Criminal</option>
+                        <option>Science</option>
+                        <option>Drama</option>
+                        <option>Children</option>
+                        <option>Horror</option>
+                        <option>Poetry</option>
+                      </Input>
+                      
                       <p />
                       <Input
                         type="text"

@@ -70,6 +70,7 @@ public class Server {
                  BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()))) {
 
                 clientIP = client.getInetAddress().getHostAddress();
+                //without ready reading is not working properly
                 in.ready();
                 request = in.readLine();
                 System.out.println("Request from " + clientIP + ": " + request);
