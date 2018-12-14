@@ -66,6 +66,7 @@ class Administrator extends Component {
       .then(res => {
         console.log(res);
         window.alert("Succesfuly deleted a book!");
+        this.props.history.push("/bookstore_admin");
       })
       .catch(error => {
         window.alert(error + "Cannot delete a book");

@@ -12,31 +12,12 @@ class Navbar extends Component {
 
   handleLogout = e => {
     e.preventDefault();
-    const agent = new https.Agent({ rejectUnauthorized: false });
-    axios
-      .delete(
-        "https://localhost:8080/logOut",
-        {
-          withCredentials: true
-        },
-        { crossdomain: true, httpsAgent: agent }
-      )
-      .then(res => {
-        this.props.loggedIn = false;
-        this.props.name = "";
-        this.props.accountType = "";
-        this.props.history.push("/");
-      })
-      .catch(error => {
-        window.alert(`${error}
-                       Something went wrong
-                       `);
-      });
+    this.props.handleLogOut();
   };
   render() {
     let validatedNavbar;
     const logoStyle = {
-      "max-width": "80px"
+      maxWidth: "80px"
     };
     if (this.props.loggedIn && this.props.accountType === "Customer") {
       validatedNavbar = (

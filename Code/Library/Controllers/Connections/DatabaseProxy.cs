@@ -16,7 +16,7 @@ namespace Controllers.Connections
     {
         private readonly byte[] HOST = ConfigurationLoader.GetInstance().DatabaseHost;
         private readonly int PORT = ConfigurationLoader.GetInstance().DatabasePort;
-        private readonly string LIBRARY_ID = "ce78ef57-77ec-4bb7-82a2-1a78d3789aef";
+        private readonly string LIBRARY_ID = ConfigurationLoader.GetInstance().LibraryID;
 
         public List<Book> Search(string searchTerm)
         {
