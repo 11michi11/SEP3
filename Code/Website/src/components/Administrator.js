@@ -256,15 +256,22 @@ class Administrator extends Component {
             <br />
 
             <label htmlFor="categoryInput">Category</label>
-            <input
-              id="categoryInput"
-              value={this.state.newBook.category}
-              onChange={this.handleBookFormChange}
-              value={this.state.newBook.category}
-              className="form-control"
-              type="text"
-              placeholder="Category"
-            />
+            <Input 
+             type="select" 
+             value={this.state.newBook.category} 
+             onChange={this.handleBookFormChange} 
+             className="form-control"
+             id="categoryInput">
+               <option></option>
+               <option>Fantasy</option>
+               <option>Sci-Fi</option>
+               <option>Criminal</option>
+               <option>Science</option>
+               <option>Drama</option>
+               <option>Children</option>
+               <option>Horror</option>
+               <option>Poetry</option>
+             </Input>
             <br />
 
             <button
