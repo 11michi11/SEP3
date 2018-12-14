@@ -2,6 +2,7 @@ package controller.requests;
 
 import controller.SessionKeyManager;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -17,10 +18,13 @@ import java.util.TimeZone;
 @RestController
 public class CheckSessionKey {
 
+	@Autowired
+	private SessionKeyManager sessionKeyManager;
+
 	@CrossOrigin
 	@GetMapping("/checkSK/{sessionKey}/{institutionId}")
 	public String checkSK(@PathVariable String sessionKey, @PathVariable String institutionId) {
-		Calendar calendar = SessionKeyManager.checkSKFromInstitution(sessionKey, institutionId);
+		Calendar calendar = sessionKeyManager.checkSKFromInstitution(sessionKey, institutionId);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
 		sdf.setTimeZone(TimeZone.getDefault());
