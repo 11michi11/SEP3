@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class SessionKeyExeptionAdvice {
+public class SessionKeyExceptionAdvice {
 
 	@ResponseBody
 	@ExceptionHandler(SessionKeyManager.SessionKeyIsNotValidException.class)
@@ -16,5 +16,4 @@ public class SessionKeyExeptionAdvice {
 	String seesionInvalidHandler(SessionKeyManager.SessionKeyIsNotValidException ex) {
 		return ex.getMessage();
 	}
-
 }
