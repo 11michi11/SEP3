@@ -26,10 +26,7 @@ namespace Controllers
                 expirationDate = CheckInBookService(sessionKey);
                 _sessionKeys.Add(sessionKey, expirationDate);
             }
-            
-            var now = DateTime.Now;
-            var compareValue = Nullable.Compare(expirationDate, now);
-            return compareValue > 0;
+            return Nullable.Compare(expirationDate, DateTime.Now) > 0;
         }
 
         private static DateTime CheckInBookService(string sessionKey)
@@ -49,8 +46,7 @@ namespace Controllers
             {
                 Console.Write(fe);
                 throw new SessionKeyInvalidException("Invalid expiration data format");
-            }
-            
+            }     
         }
 
         private static string MakeRequest(string url,Cookie cookie)
