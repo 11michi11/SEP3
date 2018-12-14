@@ -110,6 +110,12 @@ class AdministratorLibrary extends Component {
         "All fields must be filled"
         );
        }
+    else if(this.state.newBook.isbn.length>17)
+    {
+      window.alert(
+        "ISBN has to be shorter than 18 characters"
+        );
+    }
     else
     {
       const agent = new https.Agent({
@@ -153,10 +159,9 @@ class AdministratorLibrary extends Component {
           });
         })
         .catch(error => {
-          window.alert(`${error}
-                        Something went wrong, check if you use one of the following categories and try again:
-                        Categories: [Criminal, Science, Poetry, Fantasy, Drama, Horror, SciFi, Empty, Children]
-                        `);
+          window.alert(
+            "Year cannot contain letters"
+            );
         });
       }
   };
