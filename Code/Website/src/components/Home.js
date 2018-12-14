@@ -65,11 +65,17 @@ class Home extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.collapse) {
-      this.props.history.push(
-        `/advancedSearch/${this.state.title}/${this.state.author}/${
-          this.state.year
-        }/${this.state.isbn}/${this.state.category}`
-      );
+      let url = `/advancedSearch/${
+        this.state.title ? this.state.title + "/" : ""
+      }${this.state.author ? this.state.author + "/" : ""}
+        ${this.state.year ? this.state.year + "/" : ""}${
+        this.state.isbn ? this.state.isbn + "/" : ""
+      }${this.state.category ? this.state.category : ""}`;
+
+      if (url.substr(url.length - 1) === "/") {
+        url = url.substr(0, url.length - 2);
+      }
+      this.props.history.push(url);
     } else {
       this.props.history.push("/search/" + this.state.searchData);
     }
@@ -174,16 +180,7 @@ class Home extends Component {
                     <FormGroup>
                       <Input
                         type="text"
-                        value={this.state.value}
-                        onChange={this.handleAdvancedSearchChange}
-                        name="advancedSearch"
-                        id="author"
-                        placeholder="author"
-                      />
-                      <p />
-                      <Input
-                        type="text"
-                        value={this.state.value}
+                        value={this.state.title}
                         onChange={this.handleAdvancedSearchChange}
                         name="advancedSearch"
                         id="title"
@@ -192,7 +189,16 @@ class Home extends Component {
                       <p />
                       <Input
                         type="text"
-                        value={this.state.value}
+                        value={this.state.author}
+                        onChange={this.handleAdvancedSearchChange}
+                        name="advancedSearch"
+                        id="author"
+                        placeholder="author"
+                      />
+                      <p />
+                      <Input
+                        type="text"
+                        value={this.state.category}
                         onChange={this.handleAdvancedSearchChange}
                         name="advancedSearch"
                         id="category"
@@ -201,7 +207,7 @@ class Home extends Component {
                       <p />
                       <Input
                         type="text"
-                        value={this.state.value}
+                        value={this.state.year}
                         onChange={this.handleAdvancedSearchChange}
                         name="advancedSearch"
                         id="year"
@@ -210,7 +216,7 @@ class Home extends Component {
                       <p />
                       <Input
                         type="text"
-                        value={this.state.value}
+                        value={this.state.isbn}
                         onChange={this.handleAdvancedSearchChange}
                         name="advancedSearch"
                         id="isbn"

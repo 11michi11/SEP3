@@ -130,16 +130,6 @@ public class Controller {
     }
 
     public List<Book> advancedSearch(String isbn, String title, String author, int year, Book.Category category) {
-        final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
-        if (isbn.equals(""))
-            isbn = emptyStringValue;
-
-        if (title.equals(""))
-            title = emptyStringValue;
-
-        if (author.equals(""))
-            author = emptyStringValue;
-
         return db.advancedSearch(isbn, title, author, year, category);
     }
 

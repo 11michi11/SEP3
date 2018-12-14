@@ -23,24 +23,47 @@ class BookList extends Component {
     });
 
     if (this.props.match.path.substring(1, 9) === "advanced") {
+      console.log("ADVANCED SEARCH");
+      console.log(this.props.match.params);
+
       this.setState(
         {
           advSearch: {
-            author: this.props.match.params.author,
-            title: this.props.match.params.title,
-            category: this.props.match.params.category,
-            year: this.props.match.params.year,
+            author: this.props.match.params.author
+              ? this.props.match.params.author
+              : "",
+            title: this.props.match.params.title
+              ? this.props.match.params.title
+              : "",
+            category: this.props.match.params.category
+              ? this.props.match.params.category
+              : "",
+            year: this.props.match.params.year
+              ? this.props.match.params.year
+              : "",
             isbn: this.props.match.params.isbn
+              ? this.props.match.params.isbn
+              : ""
           }
         },
         () => {
-          let title = this.state.title ? `title=${this.state.title}` : "";
-          let author = this.state.author ? `&author=${this.state.author}` : "";
-          let year = this.state.year ? `&year=${this.state.year}` : "";
-          let isbn = this.state.isbn ? `&isbn=${this.state.isbn}` : "";
-          let category = this.state.category
-            ? `&category=${this.state.category}`
+          console.log(this.state);
+          let title = this.state.advSearch.title
+            ? `title=${this.state.advSearch.title}`
             : "";
+          let author = this.state.advSearch.author
+            ? `&author=${this.state.advSearch.author}`
+            : "";
+          let year = this.state.advSearch.year
+            ? `&year=${this.state.advSearch.year}`
+            : "";
+          let isbn = this.state.advSearch.isbn
+            ? `&isbn=${this.state.advSearch.isbn}`
+            : "";
+          let category = this.state.advSearch.category
+            ? `&category=${this.state.advSearch.category}`
+            : "";
+          console.log(title + "," + author);
           axios
             .get(
               `https://localhost:8080/advancedSearch?${title}${author}${year}${isbn}${category}`,
@@ -93,7 +116,9 @@ class BookList extends Component {
       ) : (
         <div className="row p-5 m-5">
           <div className="offset-sm-3 col-sm-6 text-center">
-            <span className="text-grey r">No book matching searching criteria.</span>
+            <span className="text-grey r">
+              No book matching searching criteria.
+            </span>
           </div>
         </div>
       );
