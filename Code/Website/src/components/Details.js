@@ -32,6 +32,26 @@ class Details extends Component {
         console.log(this.state);
       });
   }
+  componentDidUpdate(){
+    console.log(this.props.match.params.search_term);
+    const isbn = this.props.match.params.search_term;
+    console.log({ isbn });
+    const agent = new https.Agent({
+      rejectUnauthorized: false
+    });
+    axios
+      .get("https://localhost:8080/bookDetails/" + isbn, {
+        crossdomain: true,
+        httpsAgent: agent,
+        withCredentials: true
+      })
+      .then(res => {
+        this.setState({ book: res.data.book });
+        this.setState({ libraries: res.data.libraries });
+        this.setState({ bookstores: res.data.bookstores });
+        console.log(this.state);
+      });
+  }
   handleBuy = (isbn, bookstoreid, customerId) => {
     console.log("SESSION KEY: ");
     console.log(Cookies.get("sessionKey"));
@@ -118,7 +138,7 @@ class Details extends Component {
               </div>
             </div>
           </div>
-        ) : null;
+        ) : <p className="center">Not available</p>;
       })
     ) : (
       <p className="center">Not available</p>
@@ -167,13 +187,6 @@ class Details extends Component {
                   <span className=" text-danger">{book.category}</span>
                   <div>isbn: {book.isbn}</div>
                 </div>
-                {/* <a href="#" className="btn btn-primary mr-1">Borrow</a>  <a href="#" className="btn btn-warning">Buy</a>
-                       <p>
-                       <span style={smallFont}>
-
-                          There {qtIs} currently {qtyVal} book{sNoS} available in the library
-                       </span>
-                           </p> */}
               </div>
             </div>
             <div className="row">
