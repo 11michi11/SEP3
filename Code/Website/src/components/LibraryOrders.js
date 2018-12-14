@@ -30,6 +30,26 @@ class LibraryOrders extends Component {
         console.log(error);
       });
   }
+  componentDidUpdate(){
+    const agent = new https.Agent({
+      rejectUnauthorized: false
+    });
+    console.log("DATA1");
+    axios
+      .get("https://localhost:5001/orders", {
+        crossdomain: true,
+        httpsAgent: agent,
+        withCredentials: true
+      })
+      .then(res => {
+        this.setState({ orders: res.data });
+        console.log("DATA");
+        console.log(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   handleConfirm = orderId => {
     console.log("OrderId: " + orderId);
     const agent = new https.Agent({
