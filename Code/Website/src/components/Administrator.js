@@ -67,6 +67,19 @@ class Administrator extends Component {
         console.log(res);
         window.alert("Succesfuly deleted a book!");
         this.props.history.push("/bookstore_admin");
+        axios
+          .get(
+            "https://localhost:9090/search?searchTerm=" + this.state.searchData,
+            {
+              crossdomain: true,
+              httpsAgent: agent,
+              withCredentials: true
+            }
+          )
+          .then(res => {
+            this.setState({ books: res.data });
+            console.log(res.data);
+          });
       })
       .catch(error => {
         window.alert(error + "Cannot delete a book");
@@ -128,11 +141,23 @@ class Administrator extends Component {
             this.state.newBook.year===""||
             this.state.newBook.isbn===""||
             this.state.newBook.category==="")
-       {
+    {
         window.alert(
         "All fields must be filled"
         );
-       }
+    }
+    else if(this.state.newBook.isbn.length>17)
+    {
+         window.alert(
+           "ISBN has to be shorter than 18 characters"
+           );
+    }
+    else if(this.state.newBook.year.match(/[a-z]/i))
+    {
+      window.alert(
+        "Year cannot contain letters"
+        );
+    }
     else
     {
       const agent = new https.Agent({
@@ -174,8 +199,7 @@ class Administrator extends Component {
         })
         .catch(error => {
           window.alert(`${error}
-                        Something went wrong, check if you use one of the following categories and try again:
-                        Categories: [Criminal, Science, Poetry, Fantasy, Drama, Horror, SciFi, Empty, Children]
+                        Something went wrong...
                         `);
         });
       }
@@ -243,15 +267,22 @@ class Administrator extends Component {
             <br />
 
             <label htmlFor="categoryInput">Category</label>
-            <input
-              id="categoryInput"
-              value={this.state.newBook.category}
-              onChange={this.handleBookFormChange}
-              value={this.state.newBook.category}
-              className="form-control"
-              type="text"
-              placeholder="Category"
-            />
+            <Input 
+             type="select" 
+             value={this.state.newBook.category} 
+             onChange={this.handleBookFormChange} 
+             className="form-control"
+             id="categoryInput">
+               <option></option>
+               <option>Fantasy</option>
+               <option>Sci-Fi</option>
+               <option>Criminal</option>
+               <option>Science</option>
+               <option>Drama</option>
+               <option>Children</option>
+               <option>Horror</option>
+               <option>Poetry</option>
+             </Input>
             <br />
 
             <button
