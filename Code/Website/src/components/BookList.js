@@ -17,15 +17,12 @@ class BookList extends Component {
 
   componentDidMount() {
     const { search_term } = this.props.match.params;
-    console.log(this.props);
+
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
 
     if (this.props.match.path.substring(1, 9) === "advanced") {
-      console.log("ADVANCED SEARCH");
-      console.log(this.props.match.params);
-
       this.setState(
         {
           advSearch: {
@@ -47,23 +44,27 @@ class BookList extends Component {
           }
         },
         () => {
-          console.log(this.state);
-          let title = this.state.advSearch.title
-            ? `title=${this.state.advSearch.title}`
-            : "";
-          let author = this.state.advSearch.author
-            ? `&author=${this.state.advSearch.author}`
-            : "";
-          let year = this.state.advSearch.year
-            ? `&year=${this.state.advSearch.year}`
-            : "";
-          let isbn = this.state.advSearch.isbn
-            ? `&isbn=${this.state.advSearch.isbn}`
-            : "";
-          let category = this.state.advSearch.category
-            ? `&category=${this.state.advSearch.category}`
-            : "";
-          console.log(title + "," + author);
+          let title =
+            this.state.advSearch.title !== "none"
+              ? `title=${this.state.advSearch.title}`
+              : "";
+          let author =
+            this.state.advSearch.author !== "none"
+              ? `&author=${this.state.advSearch.author}`
+              : "";
+          let year =
+            this.state.advSearch.year !== "none"
+              ? `&year=${this.state.advSearch.year}`
+              : "";
+          let isbn =
+            this.state.advSearch.isbn !== "none"
+              ? `&isbn=${this.state.advSearch.isbn}`
+              : "";
+          let category =
+            this.state.advSearch.category !== "none"
+              ? `&category=${this.state.advSearch.category}`
+              : "";
+
           axios
             .get(
               `https://localhost:8080/advancedSearch?${title}${author}${year}${isbn}${category}`,
