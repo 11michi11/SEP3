@@ -43,6 +43,10 @@ class AdministratorLibrary extends Component {
       rejectUnauthorized: false
     });
     if (this.state.collapse) {
+      if (isNaN(this.state.year)) {
+        alert("Year has to be a number");
+        return;
+      }
       let title = this.state.title ? `title=${this.state.title}` : "";
       let author = this.state.author ? `&author=${this.state.author}` : "";
       let year = this.state.year ? `&year=${this.state.year}` : "";
@@ -293,7 +297,7 @@ class AdministratorLibrary extends Component {
                     >
                       <option />
                       <option>Fantasy</option>
-                      <option>Sci-Fi</option>
+                      <option>SciFi</option>
                       <option>Criminal</option>
                       <option>Science</option>
                       <option>Drama</option>
@@ -399,7 +403,7 @@ class AdministratorLibrary extends Component {
             >
               <option />
               <option>Fantasy</option>
-              <option>Sci-Fi</option>
+              <option>SciFi</option>
               <option>Criminal</option>
               <option>Science</option>
               <option>Drama</option>
@@ -429,9 +433,8 @@ class AdministratorLibrary extends Component {
       return (
         <div key={b.isbn} className="card">
           <div className="card-body">
-            <Link to={"/books/" + b.isbn}>
-              <h5 className="card-title">{b.title}</h5>
-            </Link>
+            <h5 className="card-title">{b.title}</h5>
+
             <div className="card-subtitle text-muted">
               {b.author} ({b.year}) / / {b.isbn}
               <span className=" text-danger">{b.category}</span>
