@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Collapse, Card, CardBody } from "reactstrap";
 import https from "https";
 
 // Admin for Bookstore
@@ -11,6 +12,12 @@ class Administrator extends Component {
     books: [],
     searchData: "",
     displayAdd: true,
+    author: "",
+    title: "",
+    category: "",
+    year: "",
+    isbn: "",
+    collapse: false,
     newBook: {
       title: "",
       author: "",
@@ -23,6 +30,10 @@ class Administrator extends Component {
   componentDidMount() {
     console.log("component mounted");
   }
+
+  displayAdvanced = () => {
+    this.setState({ collapse: !this.state.collapse });
+  };
 
   handleSearch = event => {
     this.setState({ searchData: event.target.value });
@@ -37,19 +48,41 @@ class Administrator extends Component {
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
-    axios
-      .get(
-        "https://localhost:9090/search?searchTerm=" + this.state.searchData,
-        {
-          crossdomain: true,
-          httpsAgent: agent,
-          withCredentials: true
-        }
-      )
-      .then(res => {
-        this.setState({ books: res.data });
-        console.log(res.data);
-      });
+    if (this.state.collapse) {
+      let title = this.state.title ? `title=${this.state.title}` : "";
+      let author = this.state.author ? `&author=${this.state.author}` : "";
+      let year = this.state.year ? `&year=${this.state.year}` : "";
+      let isbn = this.state.isbn ? `&isbn=${this.state.isbn}` : "";
+      let category = this.state.category
+        ? `&category=${this.state.category}`
+        : "";
+      axios
+        .get(
+          `https://localhost:9090/advancedSearch?${title}${author}${year}${isbn}${category}`,
+          {
+            crossdomain: true,
+            httpsAgent: agent,
+            withCredentials: true
+          }
+        )
+        .then(res => {
+          this.setState({ books: res.data });
+        });
+    } else {
+      axios
+        .get(
+          "https://localhost:9090/search?searchTerm=" + this.state.searchData,
+          {
+            crossdomain: true,
+            httpsAgent: agent,
+            withCredentials: true
+          }
+        )
+        .then(res => {
+          this.setState({ books: res.data });
+          console.log(res.data);
+        });
+    }
   };
 
   handleDelete = e => {
@@ -92,6 +125,47 @@ class Administrator extends Component {
     this.setState({ displayAdd: !this.state.displayAdd });
   };
 
+  handleAdvancedSearchChange = e => {
+    switch (e.target.id) {
+      case "author":
+        {
+          this.setState({
+            author: e.target.value
+          });
+        }
+        break;
+      case "category":
+        {
+          this.setState({
+            category: e.target.value
+          });
+        }
+        break;
+      case "title":
+        {
+          this.setState({
+            title: e.target.value
+          });
+        }
+        break;
+      case "year":
+        {
+          this.setState({
+            year: e.target.value
+          });
+        }
+        break;
+      case "isbn":
+        {
+          this.setState({
+            isbn: e.target.value
+          });
+        }
+        break;
+    }
+    console.log(this.state);
+  };
+
   handleBookFormChange = e => {
     switch (e.target.id) {
       case "bookNameInput":
@@ -122,7 +196,7 @@ class Administrator extends Component {
           });
         }
         break;
-      
+
       case "categoryInput":
         {
           this.setState({
@@ -136,30 +210,19 @@ class Administrator extends Component {
 
   sendAddBookRequest = e => {
     e.preventDefault();
-    if(this.state.newBook.title===""||
-            this.state.newBook.author===""||
-            this.state.newBook.year===""||
-            this.state.newBook.isbn===""||
-            this.state.newBook.category==="")
-    {
-        window.alert(
-        "All fields must be filled"
-        );
-    }
-    else if(this.state.newBook.isbn.length>17)
-    {
-         window.alert(
-           "ISBN has to be shorter than 18 characters"
-           );
-    }
-    else if(this.state.newBook.year.match(/[a-z]/i))
-    {
-      window.alert(
-        "Year cannot contain letters"
-        );
-    }
-    else
-    {
+    if (
+      this.state.newBook.title === "" ||
+      this.state.newBook.author === "" ||
+      this.state.newBook.year === "" ||
+      this.state.newBook.isbn === "" ||
+      this.state.newBook.category === ""
+    ) {
+      window.alert("All fields must be filled");
+    } else if (this.state.newBook.isbn.length > 17) {
+      window.alert("ISBN has to be shorter than 18 characters");
+    } else if (this.state.newBook.year.match(/[a-z]/i)) {
+      window.alert("Year cannot contain letters");
+    } else {
       const agent = new https.Agent({
         rejectUnauthorized: false
       });
@@ -186,8 +249,7 @@ class Administrator extends Component {
           ${this.state.newBook.category},`);
 
           this.setState({
-            newBook:
-            {
+            newBook: {
               title: "",
               author: "",
               year: "",
@@ -195,20 +257,112 @@ class Administrator extends Component {
               category: ""
             }
           });
-          
         })
         .catch(error => {
           window.alert(`${error}
                         Something went wrong...
                         `);
         });
-      }
+    }
   };
 
   //
 
   render() {
     const { books } = this.state;
+    const inputSearch = this.state.collapse ? (
+      <Input
+        type="text"
+        value={this.state.value}
+        onChange={this.handleSearch}
+        name="search"
+        id="searchData"
+        placeholder="Book name, isbn, year, author etc."
+        disabled
+      />
+    ) : (
+      <Input
+        type="text"
+        value={this.state.value}
+        onChange={this.handleSearch}
+        name="search"
+        id="searchData"
+        placeholder="Book name, isbn, year, author etc."
+      />
+    );
+    const advancedSearch = this.state.collapse ? (
+      <div className="row mb-2">
+        <div className="col-md-4 offset-md-4">
+          <Collapse isOpen={this.state.collapse}>
+            <Card>
+              <CardBody>
+                <Form>
+                  <FormGroup>
+                    <Input
+                      type="text"
+                      value={this.state.title}
+                      onChange={this.handleAdvancedSearchChange}
+                      name="advancedSearch"
+                      id="title"
+                      placeholder="title"
+                    />
+                    <p />
+                    <Input
+                      type="text"
+                      value={this.state.author}
+                      onChange={this.handleAdvancedSearchChange}
+                      name="advancedSearch"
+                      id="author"
+                      placeholder="author"
+                    />
+                    <p />
+                    <Input
+                      type="select"
+                      value={this.state.category}
+                      onChange={this.handleAdvancedSearchChange}
+                      name="category"
+                      id="category"
+                    >
+                      <option />
+                      <option>Fantasy</option>
+                      <option>Sci-Fi</option>
+                      <option>Criminal</option>
+                      <option>Science</option>
+                      <option>Drama</option>
+                      <option>Children</option>
+                      <option>Horror</option>
+                      <option>Poetry</option>
+                    </Input>
+
+                    <p />
+                    <Input
+                      type="text"
+                      value={this.state.year}
+                      onChange={this.handleAdvancedSearchChange}
+                      name="advancedSearch"
+                      id="year"
+                      placeholder="year"
+                    />
+                    <p />
+                    <Input
+                      type="text"
+                      value={this.state.isbn}
+                      onChange={this.handleAdvancedSearchChange}
+                      name="advancedSearch"
+                      id="isbn"
+                      placeholder="isbn"
+                    />
+                    <p />
+                  </FormGroup>
+                </Form>
+              </CardBody>
+            </Card>
+          </Collapse>
+        </div>
+      </div>
+    ) : (
+      ""
+    );
     const addForm = this.state.displayAdd ? (
       <div className="row">
         <div className="offset-sm-4 col-sm-4 pb-2 pt-2 mb-2 border-success border">
@@ -267,22 +421,23 @@ class Administrator extends Component {
             <br />
 
             <label htmlFor="categoryInput">Category</label>
-            <Input 
-             type="select" 
-             value={this.state.newBook.category} 
-             onChange={this.handleBookFormChange} 
-             className="form-control"
-             id="categoryInput">
-               <option></option>
-               <option>Fantasy</option>
-               <option>Sci-Fi</option>
-               <option>Criminal</option>
-               <option>Science</option>
-               <option>Drama</option>
-               <option>Children</option>
-               <option>Horror</option>
-               <option>Poetry</option>
-             </Input>
+            <Input
+              type="select"
+              value={this.state.newBook.category}
+              onChange={this.handleBookFormChange}
+              className="form-control"
+              id="categoryInput"
+            >
+              <option />
+              <option>Fantasy</option>
+              <option>Sci-Fi</option>
+              <option>Criminal</option>
+              <option>Science</option>
+              <option>Drama</option>
+              <option>Children</option>
+              <option>Horror</option>
+              <option>Poetry</option>
+            </Input>
             <br />
 
             <button
@@ -305,9 +460,8 @@ class Administrator extends Component {
       return (
         <div key={b.isbn} className="card">
           <div className="card-body">
-            <Link to={"/books/" + b.isbn}>
-              <h5 className="card-title">{b.title}</h5>
-            </Link>
+            <h5 className="card-title">{b.title}</h5>
+
             <div className="card-subtitle text-muted">
               {b.author} ({b.year}) /{" "}
               <span className=" text-danger">{b.category}</span>
@@ -316,7 +470,12 @@ class Administrator extends Component {
             <button
               type="button"
               className="btn btn-danger"
-              onClick={(e) => { if( window.confirm('Are you sure you want to delete this book?')) this.handleDelete(e)  }} 
+              onClick={e => {
+                if (
+                  window.confirm("Are you sure you want to delete this book?")
+                )
+                  this.handleDelete(e);
+              }}
               value={b.isbn}
             >
               Delete
@@ -338,13 +497,7 @@ class Administrator extends Component {
           <div className="offset-sm-3 col-sm-6 p-5 text-center">
             <Form>
               <FormGroup>
-                <Input
-                  type="text"
-                  onChange={this.handleSearch}
-                  name="search"
-                  id="searchInput"
-                  placeholder="Book title, isbn, year, author etc."
-                />
+                {inputSearch}
                 <p />
                 <Button
                   color="primary"
@@ -360,10 +513,18 @@ class Administrator extends Component {
                 >
                   Add Book
                 </button>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-secondary ml-1"
+                  onClick={this.displayAdvanced}
+                >
+                  Advanced
+                </button>
               </FormGroup>
             </Form>
           </div>
         </div>
+        {advancedSearch}
         {addForm}
         {booksList}
       </div>

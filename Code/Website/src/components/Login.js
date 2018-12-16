@@ -38,7 +38,13 @@ class Login extends Component {
           res.data.userId,
           res.data.url
         );
-        this.props.history.push("/");
+        if (res.data.userType === "BookStoreAdmin") {
+          this.props.history.push("/bookstore_admin");
+        } else if (res.data.userType === "LibraryAdmin") {
+          this.props.history.push("/library_admin");
+        } else {
+          this.props.history.push("/");
+        }
       })
       .catch(error => {
         window.alert(`${error}
