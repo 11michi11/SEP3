@@ -49,6 +49,10 @@ class Administrator extends Component {
       rejectUnauthorized: false
     });
     if (this.state.collapse) {
+      if (isNaN(this.state.year)) {
+        alert("Year has to be a number");
+        return;
+      }
       let title = this.state.title ? `title=${this.state.title}` : "";
       let author = this.state.author ? `&author=${this.state.author}` : "";
       let year = this.state.year ? `&year=${this.state.year}` : "";
