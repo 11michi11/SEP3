@@ -107,7 +107,6 @@ class Login extends Component {
                   <Button color="primary" size="sm">
                     Log in
                   </Button>
-                  <NavLink href="#">Forgot your password?</NavLink>
                 </div>
               </FormGroup>
             </Form>
