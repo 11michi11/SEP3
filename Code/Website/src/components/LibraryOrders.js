@@ -85,9 +85,10 @@ class LibraryOrders extends Component {
                 <div className="col-md-2">{o.bookName}</div>
                 <div className="col-md-1">{o.customerName}</div>
                 <div className="col-md-2">{o.customerEmail}</div>
-                <div className="col-md-2">{o.customerAddress}</div>
+                <div className="col-md-1">{o.customerAddress}</div>
                 <div className="col-md-1">{o.customerPhoneNum}</div>
                 <div className="col-md-1">{o.dateOfOrder.dayOfMonth+"/"+o.dateOfOrder.month+"/"+o.dateOfOrder.year}</div>
+                <div className="col-md-1">{o.returnDate.dayOfMonth+"/"+o.returnDate.month+"/"+o.returnDate.year}</div>
                 <div className="col-md-1">
                   <a
                     href="#"
@@ -117,9 +118,10 @@ class LibraryOrders extends Component {
           <div className="col-md-2">title:</div>
           <div className="col-md-1">name:</div>
           <div className="col-md-2">email:</div>
-          <div className="col-md-2">address:</div>
+          <div className="col-md-1">address:</div>
           <div className="col-md-1">phone:</div>
           <div className="col-md-1">ordered:</div>
+          <div className="col-md-1">due date:</div>
         </div>
         {orderList}
       </div>
