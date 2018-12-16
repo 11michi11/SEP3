@@ -25,4 +25,9 @@ public class LibraryOrderData {
         this.customerAddress = customerAddress;
         this.customerPhoneNum = customerPhoneNum;
     }
+
+    public void corrrectMonth(){
+        dateOfOrder.add(Calendar.MONTH, 1);
+        returnDate.add(Calendar.MONTH, 1);
+    }
 }
