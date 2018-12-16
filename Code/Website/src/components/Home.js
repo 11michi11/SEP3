@@ -65,12 +65,11 @@ class Home extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    if (isNaN(this.state.year)) {
-      alert("Year has to be a number");
-      return;
-    }
-
     if (this.state.collapse) {
+      if (isNaN(this.state.year)) {
+        alert("Year has to be a number");
+        return;
+      }
       let url = `/advancedSearch/${
         this.state.title ? this.state.title + "/" : "none/"
       }${this.state.author ? this.state.author + "/" : "none/"}${

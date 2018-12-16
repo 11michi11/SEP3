@@ -56,17 +56,12 @@ class Navbar extends Component {
             <ul className="navbar-nav">
               <li className="nav-item active">
                 <span className="nav-link">
-                  <NavLink to="/">Home</NavLink>
+                  <NavLink to="/library_admin">Home</NavLink>
                 </span>
               </li>
               <li className="nav-item">
                 <span className="nav-link">
                   <NavLink to="/library_orders">Orders</NavLink>
-                </span>
-              </li>
-              <li className="nav-item">
-                <span className="nav-link">
-                  <NavLink to="/library_admin">Control Panel</NavLink>
                 </span>
               </li>
               <li className="nav-item">
