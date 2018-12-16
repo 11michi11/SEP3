@@ -49,20 +49,12 @@ class Administrator extends Component {
       rejectUnauthorized: false
     });
     if (this.state.collapse) {
-      let title = this.state.advSearch.title
-        ? `title=${this.state.advSearch.title}`
-        : "";
-      let author = this.state.advSearch.author
-        ? `&author=${this.state.advSearch.author}`
-        : "";
-      let year = this.state.advSearch.year
-        ? `&year=${this.state.advSearch.year}`
-        : "";
-      let isbn = this.state.advSearch.isbn
-        ? `&isbn=${this.state.advSearch.isbn}`
-        : "";
-      let category = this.state.advSearch.category
-        ? `&category=${this.state.advSearch.category}`
+      let title = this.state.title ? `title=${this.state.title}` : "";
+      let author = this.state.author ? `&author=${this.state.author}` : "";
+      let year = this.state.year ? `&year=${this.state.year}` : "";
+      let isbn = this.state.isbn ? `&isbn=${this.state.isbn}` : "";
+      let category = this.state.category
+        ? `&category=${this.state.category}`
         : "";
       axios
         .get(
@@ -278,6 +270,26 @@ class Administrator extends Component {
 
   render() {
     const { books } = this.state;
+    const inputSearch = this.state.collapse ? (
+      <Input
+        type="text"
+        value={this.state.value}
+        onChange={this.handleSearch}
+        name="search"
+        id="searchData"
+        placeholder="Book name, isbn, year, author etc."
+        disabled
+      />
+    ) : (
+      <Input
+        type="text"
+        value={this.state.value}
+        onChange={this.handleSearch}
+        name="search"
+        id="searchData"
+        placeholder="Book name, isbn, year, author etc."
+      />
+    );
     const advancedSearch = this.state.collapse ? (
       <div className="row mb-2">
         <div className="col-md-4 offset-md-4">
@@ -448,9 +460,8 @@ class Administrator extends Component {
       return (
         <div key={b.isbn} className="card">
           <div className="card-body">
-            <Link to={"/books/" + b.isbn}>
-              <h5 className="card-title">{b.title}</h5>
-            </Link>
+            <h5 className="card-title">{b.title}</h5>
+
             <div className="card-subtitle text-muted">
               {b.author} ({b.year}) /{" "}
               <span className=" text-danger">{b.category}</span>
@@ -486,13 +497,7 @@ class Administrator extends Component {
           <div className="offset-sm-3 col-sm-6 p-5 text-center">
             <Form>
               <FormGroup>
-                <Input
-                  type="text"
-                  onChange={this.handleSearch}
-                  name="search"
-                  id="searchInput"
-                  placeholder="Book title, isbn, year, author etc."
-                />
+                {inputSearch}
                 <p />
                 <Button
                   color="primary"
