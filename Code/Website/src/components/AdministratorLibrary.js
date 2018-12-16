@@ -429,9 +429,8 @@ class AdministratorLibrary extends Component {
       return (
         <div key={b.isbn} className="card">
           <div className="card-body">
-            <Link to={"/books/" + b.isbn}>
-              <h5 className="card-title">{b.title}</h5>
-            </Link>
+            <h5 className="card-title">{b.title}</h5>
+
             <div className="card-subtitle text-muted">
               {b.author} ({b.year}) / / {b.isbn}
               <span className=" text-danger">{b.category}</span>
