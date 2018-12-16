@@ -87,7 +87,7 @@ class LibraryOrders extends Component {
                 <div className="col-md-1">{o.customerEmail}</div>
                 <div className="col-md-2">{o.customerAddress}</div>
                 <div className="col-md-1">{o.customerPhoneNum}</div>
-                <div className="col-md-1">{o.dateOfOrder.toString()}</div>
+                <div className="col-md-1">{o.dateOfOrder.toLocaleDateString()}</div>
                 <div className="col-md-1">
                   <a
                     href="#"
