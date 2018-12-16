@@ -83,11 +83,11 @@ class LibraryOrders extends Component {
               <div className="row">
                 <div className="col-md-2">{o.isbn}</div>
                 <div className="col-md-2">{o.bookName}</div>
-                <div className="col-md-2">{o.customerName}</div>
-                <div className="col-md-1">{o.customerEmail}</div>
+                <div className="col-md-1">{o.customerName}</div>
+                <div className="col-md-2">{o.customerEmail}</div>
                 <div className="col-md-2">{o.customerAddress}</div>
                 <div className="col-md-1">{o.customerPhoneNum}</div>
-                <div className="col-md-1">{o.dateOfOrder.toLocaleDateString()}</div>
+                <div className="col-md-1">{o.dateOfOrder.dayOfMonth+"/"+o.dateOfOrder.month+"/"+o.dateOfOrder.year}</div>
                 <div className="col-md-1">
                   <a
                     href="#"
@@ -115,8 +115,8 @@ class LibraryOrders extends Component {
         <div className="row">
           <div className="col-md-2">isbn:</div>
           <div className="col-md-2">title:</div>
-          <div className="col-md-2">name:</div>
-          <div className="col-md-1">email:</div>
+          <div className="col-md-1">name:</div>
+          <div className="col-md-2">email:</div>
           <div className="col-md-2">address:</div>
           <div className="col-md-1">phone:</div>
           <div className="col-md-1">ordered:</div>
