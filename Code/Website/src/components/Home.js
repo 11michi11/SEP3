@@ -64,13 +64,22 @@ class Home extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+    if (isNaN(this.state.year)) {
+      alert("Year has to be a number");
+      return;
+    }
+
     if (this.state.collapse) {
       let url = `/advancedSearch/${
-        this.state.title ? this.state.title + "/" : ""
-      }${this.state.author ? this.state.author + "/" : ""}
-        ${this.state.year ? this.state.year + "/" : ""}${
-        this.state.isbn ? this.state.isbn + "/" : ""
-      }${this.state.category ? this.state.category : ""}`;
+        this.state.title ? this.state.title + "/" : "none/"
+      }${this.state.author ? this.state.author + "/" : "none/"}${
+        this.state.year ? this.state.year + "/" : "none/"
+      }${this.state.isbn ? this.state.isbn + "/" : "none/"}${
+        this.state.category ? this.state.category : "none"
+      }`;
+
+      console.log(url);
 
       if (url.substr(url.length - 1) === "/") {
         url = url.substr(0, url.length - 2);
@@ -196,13 +205,14 @@ class Home extends Component {
                         placeholder="author"
                       />
                       <p />
-                      <Input 
-                      type="select" 
-                      value={this.state.category} 
-                      onChange={this.handleAdvancedSearchChange} 
-                      name="category" 
-                      id="category">
-                        <option></option>
+                      <Input
+                        type="select"
+                        value={this.state.category}
+                        onChange={this.handleAdvancedSearchChange}
+                        name="category"
+                        id="category"
+                      >
+                        <option />
                         <option>Fantasy</option>
                         <option>Sci-Fi</option>
                         <option>Criminal</option>
@@ -212,7 +222,7 @@ class Home extends Component {
                         <option>Horror</option>
                         <option>Poetry</option>
                       </Input>
-                      
+
                       <p />
                       <Input
                         type="text"
