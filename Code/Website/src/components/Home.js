@@ -213,7 +213,7 @@ class Home extends Component {
                       >
                         <option />
                         <option>Fantasy</option>
-                        <option>Sci-Fi</option>
+                        <option>SciFi</option>
                         <option>Criminal</option>
                         <option>Science</option>
                         <option>Drama</option>
