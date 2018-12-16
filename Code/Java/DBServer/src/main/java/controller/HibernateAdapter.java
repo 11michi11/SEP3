@@ -319,19 +319,16 @@ public class HibernateAdapter {
                         .should(qb.keyword()
                                 .onFields("book.bookIsbn")
                                 .ignoreFieldBridge()//for enum
-                                .ignoreAnalyzer()
                                 .matching(isbn)
                                 .createQuery())
                         .should(qb.keyword()
                                 .onFields("book.title")
                                 .ignoreFieldBridge()//for enum
-                                .ignoreAnalyzer()
                                 .matching(title)
                                 .createQuery())
                         .should(qb.keyword()
                                 .onFields("book.author")
                                 .ignoreFieldBridge()//for enum
-                                .ignoreAnalyzer()
                                 .matching(author)
                                 .createQuery())
                         .should(qb.keyword()
@@ -373,7 +370,8 @@ public class HibernateAdapter {
 
     public static void main(String[] args) throws InterruptedException {
 
-//        HibernateAdapter.searchInLibrary("testisbn","ce78ef57-77ec-4bb7-82a2-1a78d3789aef");
+//        HibernateAdapter.advancedSearchInBookStore("eb3777c8-77fe-4acd-962d-6853da2e05e0", "test", "Java", "test", 0, Book.Category.Empty);
+//        HibernateAdapter.advancedSearchInLibrary("ce78ef57-77ec-4bb7-82a2-1a78d3789aef", "test", "Java", "test", 0, Book.Category.Empty);
 
                HibernateAdapter.rebuildLuceneIndex();
     }

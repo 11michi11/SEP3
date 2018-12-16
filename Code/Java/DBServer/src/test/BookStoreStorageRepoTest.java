@@ -92,7 +92,7 @@ public class BookStoreStorageRepoTest {
 
     }
 
-    //	@Test
+    @Test
     public void search() {
         Book book = new Book("isbn", "title", "author", 0, Book.Category.Empty);
         List<Book> books = Collections.singletonList(book);
