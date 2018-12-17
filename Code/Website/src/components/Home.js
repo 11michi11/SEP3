@@ -66,7 +66,7 @@ class Home extends Component {
     e.preventDefault();
 
     if (this.state.collapse) {
-      if (isNaN(this.state.year)) {
+      if (typeof this.state.year !== "undefined" && isNaN(this.state.year)) {
         alert("Year has to be a number");
         return;
       }
