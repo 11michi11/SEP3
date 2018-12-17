@@ -188,17 +188,6 @@ public class Controller {
 
         String bookstoreid = (String) arguments.get("bookstoreid");
 
-        final String emptyStringValue = "!@#$%^&*()"; //this value represents empty string for query so that it is not matched to any typical string value
-        if (isbn.equals(""))
-            isbn = emptyStringValue;
-
-        if (title.equals(""))
-            title = emptyStringValue;
-
-        if (author.equals(""))
-            author = emptyStringValue;
-
-
         List<Book> books = db.advancedSearchInBookStore(bookstoreid, isbn, title, author, year, category);
 
         return new Response(Response.Status.OK, books).toJson();
