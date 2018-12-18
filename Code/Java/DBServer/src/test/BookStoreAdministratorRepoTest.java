@@ -19,9 +19,9 @@ public class BookStoreAdministratorRepoTest {
 	}
 
 	@Test
-	void AddDeleteTest() {
+	void addDeleteTest() {
 		BookStore bookStoreID = new BookStore("eb3777c8-77fe-4acd-962d-6853da2e05e0");
-		BookStoreAdmin admin = new BookStoreAdmin("adminID", bookStoreID, "name", "email", "password");
+		BookStoreAdmin admin = new BookStoreAdmin("adminID", bookStoreID, "name", "email", "password", "serverUrl");
 
 		bookStoreAdminRepo.add(admin);
 

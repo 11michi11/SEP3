@@ -1,4 +1,6 @@
 {
   "DatabaseHost": [127,0,0,1],
-  "DatabasePort": 7777
+  "DatabasePort": 7777,
+  "BookServiceURL": "https://localhost:8080/",
+  "LibraryID": "ce78ef57-77ec-4bb7-82a2-1a78d3789aef"
 }

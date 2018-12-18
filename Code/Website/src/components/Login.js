@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import { Form, FormGroup, Input, Button, NavLink } from "reactstrap";
 import axios from "axios";
 import https from "https";
 
 class Login extends Component {
   componentDidMount() {
-    this.props.handleLogIn();
+    console.log(this.props);
   }
   state = {
     email: "",
@@ -23,21 +24,31 @@ class Login extends Component {
         "https://localhost:8080/login",
         {
           email: this.state.email,
-          password: this.state.password,
-          withCredentials: true
+          password: this.state.password
         },
-        { crossdomain: true, httpsAgent: agent }
+        { crossdomain: true, httpsAgent: agent, withCredentials: true }
       )
       .then(res => {
-        var str = "SUCCESS!";
+        const str = "SUCCESS!";
         console.log(res);
-        this.props.handleLogIn(this.state.email, res.data.userType);
-
-        window.alert(`${str}`);
+        this.props.handleLogIn(
+          res.data.name,
+          res.data.userType,
+          res.data.sessionKey,
+          res.data.userId,
+          res.data.url
+        );
+        if (res.data.userType === "BookStoreAdmin") {
+          this.props.history.push("/bookstore_admin");
+        } else if (res.data.userType === "LibraryAdmin") {
+          this.props.history.push("/library_admin");
+        } else {
+          this.props.history.push("/");
+        }
       })
       .catch(error => {
         window.alert(`${error}
-                       Something went wrong
+                       Your e-mail or password is incorrect
                        `);
       });
   };
@@ -72,7 +83,7 @@ class Login extends Component {
         <div className="row">
           <div className="offset-sm-3 col-sm-6 p-5">
             <p>Enter your credentials in order to log in:</p>
-            <Form>
+            <Form onSubmit={e => this.handleSubmit(e)}>
               <FormGroup>
                 <p>
                   Email:
@@ -99,14 +110,9 @@ class Login extends Component {
                 </p>
                 <p />
                 <div className="text-center">
-                  <Button
-                    color="primary"
-                    size="sm"
-                    onClick={e => this.handleSubmit(e)}
-                  >
+                  <Button color="primary" size="sm">
                     Log in
                   </Button>
-                  <NavLink href="#">Forgot your password?</NavLink>
                 </div>
               </FormGroup>
             </Form>
@@ -117,4 +123,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
