@@ -11,32 +11,13 @@ class Navbar extends Component {
   }
 
   handleLogout = e => {
-    e.preventDefault();
-    const agent = new https.Agent({ rejectUnauthorized: false });
-    axios
-      .delete(
-        "https://localhost:8080/logOut",
-        {
-          withCredentials: true
-        },
-        { crossdomain: true, httpsAgent: agent }
-      )
-      .then(res => {
-        this.props.loggedIn = false;
-        this.props.name = "";
-        this.props.accountType = "";
-        this.props.history.push("/");
-      })
-      .catch(error => {
-        window.alert(`${error}
-                       Something went wrong
-                       `);
-      });
+    //e.preventDefault();
+    this.props.handleLogOut();
   };
   render() {
     let validatedNavbar;
     const logoStyle = {
-      "max-width": "80px"
+      maxWidth: "80px"
     };
     if (this.props.loggedIn && this.props.accountType === "Customer") {
       validatedNavbar = (
@@ -49,11 +30,6 @@ class Navbar extends Component {
               <li className="nav-item active">
                 <span className="nav-link">
                   <NavLink to="/">Home</NavLink>
-                </span>
-              </li>
-              <li className="nav-item">
-                <span className="nav-link">
-                  <NavLink to="/profile">Profile</NavLink>
                 </span>
               </li>
               <li className="nav-item">
@@ -80,7 +56,7 @@ class Navbar extends Component {
             <ul className="navbar-nav">
               <li className="nav-item active">
                 <span className="nav-link">
-                  <NavLink to="/">Home</NavLink>
+                  <NavLink to="/library_admin">Home</NavLink>
                 </span>
               </li>
               <li className="nav-item">
@@ -90,12 +66,7 @@ class Navbar extends Component {
               </li>
               <li className="nav-item">
                 <span className="nav-link">
-                  <NavLink to="/library_admin">Control Panel</NavLink>
-                </span>
-              </li>
-              <li className="nav-item">
-                <span className="nav-link">
-                  <NavLink to="/logout" onClick={this.handleLogout}>
+                  <NavLink to="/" onClick={this.handleLogout}>
                     Log out
                   </NavLink>
                 </span>
@@ -117,7 +88,7 @@ class Navbar extends Component {
             <ul className="navbar-nav">
               <li className="nav-item active">
                 <span className="nav-link">
-                  <NavLink to="/">Home</NavLink>
+                  <NavLink to="/bookstore_admin">Home</NavLink>
                 </span>
               </li>
               <li className="nav-item">
@@ -127,12 +98,7 @@ class Navbar extends Component {
               </li>
               <li className="nav-item">
                 <span className="nav-link">
-                  <NavLink to="/bookstore_admin">Control Panel</NavLink>
-                </span>
-              </li>
-              <li className="nav-item">
-                <span className="nav-link">
-                  <NavLink to="/logout" onClick={this.handleLogout}>
+                  <NavLink to="/" onClick={this.handleLogout}>
                     Log out
                   </NavLink>
                 </span>

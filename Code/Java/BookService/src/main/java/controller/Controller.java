@@ -18,6 +18,9 @@ public class Controller {
     private DatabaseProxy db;
 
     @Autowired
+    private SessionKeyManager sessionKeyManager;
+
+    @Autowired
     Controller(DatabaseProxy db) {
         this.db = db;
     }
@@ -34,7 +37,7 @@ public class Controller {
         return db.getBookDetails(isbn);
     }
 
-    public String addCustomer(Customer customer){
+    public String addCustomer(Customer customer) throws DatabaseConnection.RegisterEmailException {
         customer.setPassword(Password.encryptPwd(customer.getPassword()));
         return db.addCustomer(customer);
     }
@@ -57,7 +60,7 @@ public class Controller {
         LogInResponse logInResponse = db.logIn(email,Password.encryptPwd(password));
         String institutionId = logInResponse.getInstitutionId();
         String userType = logInResponse.getUserType();
-        logInResponse.setSessionKey(SessionKeyManager.generateSK(institutionId, AuthenticationData.UserType.valueOf(userType)));
+        logInResponse.setSessionKey(sessionKeyManager.generateSK(institutionId, AuthenticationData.UserType.valueOf(userType)));
         return logInResponse;
 	}
 }

@@ -37,19 +37,20 @@ public class BookStorageRepository implements BookStorageRepo {
 
         libraryStorages.forEach(System.out::println);
 
-        //There is only one book
+        Book book;
         try {
-            Book book = libraryStorages.get(0).getBook();
-
-            List<BookStore> bookStores = bookStoreStorages.stream()
-                    .filter(libraryStorage -> libraryStorage.getBook().getIsbn().equals(book.getIsbn()))
-                    .map(BookStoreStorage::getBookstore).collect(Collectors.toList());
-
-            return new DetailedBook(book, libraryStorages, bookStores);
+            //There is only one book
+            book = libraryStorages.get(0).getBook();
         } catch (IndexOutOfBoundsException e) {
-//            throw new BookRepository.BookNotFoundException("There is no book with isbn:" + isbn);
-            Book book = bookRepo.get(isbn);
-            return new DetailedBook(book, Collections.emptyList(),Collections.emptyList() );
+            book = bookRepo.get(isbn);
+            libraryStorages = Collections.emptyList();
         }
+
+        Book finalBook = book;
+        List<BookStore> bookStores = bookStoreStorages.stream()
+                .filter(libraryStorage -> libraryStorage.getBook().getIsbn().equals(finalBook.getIsbn()))
+                .map(BookStoreStorage::getBookstore).collect(Collectors.toList());
+
+        return new DetailedBook(book, libraryStorages, bookStores);
     }
 }

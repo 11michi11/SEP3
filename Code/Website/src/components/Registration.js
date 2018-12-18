@@ -36,6 +36,18 @@ class Registration extends Component {
             All fields must be filled
                        `);
         }
+        else if(this.state.phoneNum.match(/[a-z]/i))
+        {
+          window.alert(`${error}
+            The phone number cannot conatin letters
+                     `);
+        }
+        else if(error.response.status===418)
+        {
+          window.alert(`${error}
+            This email is already used
+                     `);
+        }
         else
         {
         window.alert(`${error}

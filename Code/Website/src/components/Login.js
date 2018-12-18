@@ -24,12 +24,12 @@ class Login extends Component {
         "https://localhost:8080/login",
         {
           email: this.state.email,
-          password: this.state.password,
-          withCredentials: true
+          password: this.state.password
         },
-        { crossdomain: true, httpsAgent: agent }
+        { crossdomain: true, httpsAgent: agent, withCredentials: true }
       )
       .then(res => {
+        const str = "SUCCESS!";
         console.log(res);
         this.props.handleLogIn(
           res.data.name,
@@ -38,7 +38,13 @@ class Login extends Component {
           res.data.userId,
           res.data.url
         );
-        this.props.history.push("/");
+        if (res.data.userType === "BookStoreAdmin") {
+          this.props.history.push("/bookstore_admin");
+        } else if (res.data.userType === "LibraryAdmin") {
+          this.props.history.push("/library_admin");
+        } else {
+          this.props.history.push("/");
+        }
       })
       .catch(error => {
         window.alert(`${error}
@@ -104,13 +110,9 @@ class Login extends Component {
                 </p>
                 <p />
                 <div className="text-center">
-                  <Button
-                    color="primary"
-                    size="sm"
-                  >
+                  <Button color="primary" size="sm">
                     Log in
                   </Button>
-                  <NavLink href="#">Forgot your password?</NavLink>
                 </div>
               </FormGroup>
             </Form>

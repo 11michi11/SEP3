@@ -172,7 +172,9 @@ public class RepositoryManager implements DBProxy {
 
     @Override
     public List<LibraryOrderData> getLibraryOrders(String libraryId) {
-        return libraryOrderRepo.getLibraryOrders(libraryId);
+        List<LibraryOrderData> libraryOrders = libraryOrderRepo.getLibraryOrders(libraryId);
+        libraryOrders.forEach(LibraryOrderData::corrrectMonth);
+        return libraryOrders;
     }
 
     @Override

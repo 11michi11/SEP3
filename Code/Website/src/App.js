@@ -11,6 +11,8 @@ import BookstoreOrders from "./components/BookstoreOrders";
 import AdministratorLibrary from "./components/AdministratorLibrary";
 import LibraryOrders from "./components/LibraryOrders";
 import Cookies from "js-cookie";
+import https from "https";
+import axios from "axios";
 import AdministratorLibraryBookList from "./components/AdministratorLibraryBookList";
 
 class App extends Component {
@@ -20,6 +22,31 @@ class App extends Component {
     accountType: "",
     customerId: "",
     url: ""
+  };
+
+  handleLogOut = () => {
+    // loging out
+    const agent = new https.Agent({ rejectUnauthorized: false });
+    axios
+      .delete("https://localhost:8080/logOut", {
+        withCredentials: true,
+        crossdomain: true,
+        httpsAgent: agent
+      })
+      .then(res => {
+        this.setState({
+          name: "",
+          loggedIn: false,
+          accountType: "",
+          customerId: "",
+          url: ""
+        });
+      })
+      .catch(error => {
+        window.alert(`${error}
+                       Something went wrong
+                       `);
+      });
   };
 
   handleLogIn = (name, accountType, sessionKey, customerId, url) => {
@@ -45,6 +72,7 @@ class App extends Component {
             name={this.state.name}
             accountType={this.state.accountType}
             url={this.state.url}
+            handleLogOut={this.handleLogOut}
           />
           <div style={marBoxStyle} />
           <Switch>

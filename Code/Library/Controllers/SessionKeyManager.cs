@@ -13,7 +13,7 @@ namespace Controllers
     {
         private static readonly string Url = ConfigurationLoader.GetInstance().BookServiceURL;
         private static Dictionary<string, DateTime?> _sessionKeys = new Dictionary<string, DateTime?>();
-        private static readonly string LIBRARY_ID = "ce78ef57-77ec-4bb7-82a2-1a78d3789aef";
+        private static readonly string LIBRARY_ID = ConfigurationLoader.GetInstance().LibraryID;
         
         public static bool IsSkValid(string sessionKey)
         {
@@ -26,10 +26,7 @@ namespace Controllers
                 expirationDate = CheckInBookService(sessionKey);
                 _sessionKeys.Add(sessionKey, expirationDate);
             }
-            
-            var now = DateTime.Now;
-            var compareValue = Nullable.Compare(expirationDate, now);
-            return compareValue > 0;
+            return Nullable.Compare(expirationDate, DateTime.Now) > 0;
         }
 
         private static DateTime CheckInBookService(string sessionKey)
@@ -49,8 +46,7 @@ namespace Controllers
             {
                 Console.Write(fe);
                 throw new SessionKeyInvalidException("Invalid expiration data format");
-            }
-            
+            }     
         }
 
         private static string MakeRequest(string url,Cookie cookie)
@@ -61,7 +57,7 @@ namespace Controllers
             if (cookie != null)
             {
                 request.CookieContainer = new CookieContainer();
-                request.CookieContainer.Add(cookie); //chyba
+                request.CookieContainer.Add(cookie);
                 request.Method = "DELETE";
             }
 
@@ -85,24 +81,6 @@ namespace Controllers
             }
         }
 
-//        private static async Task<string> MakeRequest(string url)
-//        {
-//            using (HttpClient client = new HttpClient())
-//            {
-//                using (HttpResponseMessage response = await client.GetAsync(url))
-//                {
-//                    using (HttpContent content = response.Content)
-//                    {
-//                        string myContent = await content.ReadAsStringAsync();
-//                        if (response.StatusCode == HttpStatusCode.Unauthorized)
-//                        {
-//                            throw new SessionKeyInvalidException("Session is invalid");
-//                        }
-//                        return myContent;
-//                    } 
-//                }
-//            }
-//        }
         public static void LogOut(Cookie cookie)
         {
             _sessionKeys.Remove(cookie.Name);

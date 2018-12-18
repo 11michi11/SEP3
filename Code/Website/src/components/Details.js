@@ -33,52 +33,83 @@ class Details extends Component {
       });
   }
   handleBuy = (isbn, bookstoreid, customerId) => {
+    console.log("SESSION KEY: ");
+    console.log(Cookies.get("sessionKey"));
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
-    console.log(isbn);
-    console.log(bookstoreid);
-    console.log(customerId);
+    console.log("ISBN: " + isbn);
+    console.log("bookstoreId: " + bookstoreid);
+    console.log("customerId: " + customerId);
     axios
-      .post("https://localhost:8080/buy", {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true,
-        isbn: isbn,
-        bookstoreid: bookstoreid,
-        customerID: customerId
-      })
+      .post(
+        "https://localhost:8080/buy",
+        { isbn: isbn, institutionId: bookstoreid, customerID: customerId },
+        { withCredentials: true, crossdomain: true, httpsAgent: agent }
+      )
       .then(res => {
         var str = "The order was made successfully";
 
         window.alert(`${str}`);
-        this.props.history.push("/bookDetails/" + isbn);
-      })
-      .catch(error => {
-        window.alert(`${error}
-                           Something went wrong
-                           `);
-      });
+          console.log(this.props.match.params.search_term);
+          const isbn = this.props.match.params.search_term;
+          console.log({ isbn });
+          const agent = new https.Agent({
+            rejectUnauthorized: false
+          });
+          axios
+            .get("https://localhost:8080/bookDetails/" + isbn, {
+              crossdomain: true,
+              httpsAgent: agent,
+              withCredentials: true
+            })
+            .then(res => {
+              this.setState({ book: res.data.book });
+              this.setState({ libraries: res.data.libraries });
+              this.setState({ bookstores: res.data.bookstores });
+              console.log(this.state);
+            });
+            })
+            .catch(error => {
+              window.alert(`${error}
+                                Something went wrong
+                                `);
+            });
   };
   handleBorrow = (isbn, libraryid, customerId) => {
+    console.log("SESSION KEY: ");
     console.log(Cookies.get("sessionKey"));
     const agent = new https.Agent({
       rejectUnauthorized: false
     });
     axios
-      .post("https://localhost:8080/borrow", {
-        crossdomain: true,
-        httpsAgent: agent,
-        withCredentials: true,
-        isbn: isbn,
-        libraryid: libraryid,
-        customerID: customerId
-      })
+      .post(
+        "https://localhost:8080/borrow",
+        { isbn: isbn, institutionId: libraryid, customerID: customerId },
+        { withCredentials: true, crossdomain: true, httpsAgent: agent }
+      )
       .then(res => {
         var str = "The order was made successfully";
 
         window.alert(`${str}`);
-        this.props.history.push("/bookDetails/" + isbn);
+          console.log(this.props.match.params.search_term);
+          const isbn = this.props.match.params.search_term;
+          console.log({ isbn });
+          const agent = new https.Agent({
+            rejectUnauthorized: false
+          });
+          axios
+            .get("https://localhost:8080/bookDetails/" + isbn, {
+              crossdomain: true,
+              httpsAgent: agent,
+              withCredentials: true
+            })
+            .then(res => {
+              this.setState({ book: res.data.book });
+              this.setState({ libraries: res.data.libraries });
+              this.setState({ bookstores: res.data.bookstores });
+              console.log(this.state);
+            });
       })
       .catch(error => {
         window.alert(`${error}
@@ -88,7 +119,7 @@ class Details extends Component {
   };
   handleNotLoggedIn = e => {
     if (!(this.props.loggedIn && this.props.accountType === "Customer")) {
-      window.alert(`In order to buy or borrow books you have to be logged in.`);
+      window.alert(`In order to buy or borrow books you have to be logged in as a customer.`);
     }
   };
 
@@ -123,7 +154,7 @@ class Details extends Component {
               </div>
             </div>
           </div>
-        ) : null;
+        ) : <p className="center">Not available</p>;
       })
     ) : (
       <p className="center">Not available</p>
@@ -172,13 +203,6 @@ class Details extends Component {
                   <span className=" text-danger">{book.category}</span>
                   <div>isbn: {book.isbn}</div>
                 </div>
-                {/* <a href="#" className="btn btn-primary mr-1">Borrow</a>  <a href="#" className="btn btn-warning">Buy</a>
-                       <p>
-                       <span style={smallFont}>
-
-                          There {qtIs} currently {qtyVal} book{sNoS} available in the library
-                       </span>
-                           </p> */}
               </div>
             </div>
             <div className="row">

@@ -16,23 +16,25 @@ public class CustomerRepoTest {
 		this.customerRepo = new CustomerRepository();
 	}
 
+	/** @noinspection SpellCheckingInspection*/
 	@Test
-	public void getCustomerTest() {
-		Customer customer = new Customer("id", "name", "email", "address", 666, "password");
+	void getCustomerTest() {
+		//setup
+		Customer customer = new Customer("id", "name", "email", "address", 111, "password");
 		try {
 			customerRepo.add(customer);
 		} catch (CustomerRepository.CustomerEmailException e) {
 			fail("Customer can not be added, email already in use");
 		}
 
-
+		//test
 		try {
 			assertEquals(customer, customerRepo.get("id"));
 		} catch (CustomerRepository.CustomerNotFoundException e) {
 			fail("No customer");
 		}
 
+		//clenup
 		customerRepo.delete(customer);
-
 	}
 }

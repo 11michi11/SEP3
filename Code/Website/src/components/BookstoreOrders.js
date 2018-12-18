@@ -26,6 +26,22 @@ class BookstoreOrders extends Component {
           console.log(res.data);
         });
     }
+    componentDidUpdate(){
+      const agent = new https.Agent({
+        rejectUnauthorized: false
+      });
+
+      axios
+      .get("https://localhost:9090/orders", {
+        crossdomain: true,
+        httpsAgent: agent,
+        withCredentials: true
+      })
+      .then(res => {
+        this.setState({ orders: res.data });
+        console.log(res.data);
+      });
+    }
     handleConfirm = (e)=>{
         console.log(e)
         const agent = new https.Agent({
@@ -41,7 +57,6 @@ class BookstoreOrders extends Component {
             var str = "The order has been confirmed successfully";
     
             window.alert(`${str}`);
-            this.props.history.push("/bookstore_orders");
           })
           .catch(error => {
             window.alert(`${error}

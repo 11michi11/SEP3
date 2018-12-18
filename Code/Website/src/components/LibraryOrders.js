@@ -30,6 +30,26 @@ class LibraryOrders extends Component {
         console.log(error);
       });
   }
+  componentDidUpdate(){
+    const agent = new https.Agent({
+      rejectUnauthorized: false
+    });
+    console.log("DATA1");
+    axios
+      .get("https://localhost:5001/orders", {
+        crossdomain: true,
+        httpsAgent: agent,
+        withCredentials: true
+      })
+      .then(res => {
+        this.setState({ orders: res.data });
+        console.log("DATA");
+        console.log(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   handleConfirm = orderId => {
     console.log("OrderId: " + orderId);
     const agent = new https.Agent({
@@ -63,10 +83,12 @@ class LibraryOrders extends Component {
               <div className="row">
                 <div className="col-md-2">{o.isbn}</div>
                 <div className="col-md-2">{o.bookName}</div>
-                <div className="col-md-2">{o.customerName}</div>
+                <div className="col-md-1">{o.customerName}</div>
                 <div className="col-md-2">{o.customerEmail}</div>
-                <div className="col-md-2">{o.customerAddress}</div>
+                <div className="col-md-1">{o.customerAddress}</div>
                 <div className="col-md-1">{o.customerPhoneNum}</div>
+                <div className="col-md-1">{o.dateOfOrder.dayOfMonth+"/"+o.dateOfOrder.month+"/"+o.dateOfOrder.year}</div>
+                <div className="col-md-1">{o.returnDate.dayOfMonth+"/"+o.returnDate.month+"/"+o.returnDate.year}</div>
                 <div className="col-md-1">
                   <a
                     href="#"
@@ -94,10 +116,12 @@ class LibraryOrders extends Component {
         <div className="row">
           <div className="col-md-2">isbn:</div>
           <div className="col-md-2">title:</div>
-          <div className="col-md-2">name:</div>
+          <div className="col-md-1">name:</div>
           <div className="col-md-2">email:</div>
-          <div className="col-md-2">address:</div>
+          <div className="col-md-1">address:</div>
           <div className="col-md-1">phone:</div>
+          <div className="col-md-1">ordered:</div>
+          <div className="col-md-1">due date:</div>
         </div>
         {orderList}
       </div>
