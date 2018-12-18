@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "libraryadmin", schema = "public")
-public class LibraryAdmin implements User {
+public class LibraryAdmin implements User, Admin{
 
     @Id @Column(name = "adminid")
     private String adminId;
@@ -22,15 +22,19 @@ public class LibraryAdmin implements User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "serverUrl")
+    private String serverUrl;
+
     public LibraryAdmin() {
     }
 
-    public LibraryAdmin(String adminId, Library library, String name, String email, String password) {
+    public LibraryAdmin(String adminId, Library library, String name, String email, String password, String serverUrl) {
         this.adminId = adminId;
         this.library = library;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.serverUrl = serverUrl;
     }
 
     @Override
@@ -84,6 +88,19 @@ public class LibraryAdmin implements User {
     }
 
     @Override
+    public String getInstitutionId() {
+        return library.getLibraryID();
+    }
+
+    public String getServerUrl() {
+        return serverUrl;
+    }
+
+    public void setServerUrl(String serverUrl) {
+        this.serverUrl = serverUrl;
+    }
+
+    @Override
     public String toString() {
         return "LibraryAdmin{" +
                 "adminId='" + adminId + '\'' +
@@ -91,6 +108,7 @@ public class LibraryAdmin implements User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", serverUrl='" + serverUrl + '\'' +
                 '}';
     }
 
@@ -105,7 +123,8 @@ public class LibraryAdmin implements User {
         if (library != null ? !library.equals(that.library) : that.library != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        return password != null ? password.equals(that.password) : that.password == null;
+        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        return serverUrl != null ? serverUrl.equals(that.serverUrl) : that.serverUrl == null;
     }
 
     @Override
@@ -115,6 +134,7 @@ public class LibraryAdmin implements User {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (serverUrl != null ? serverUrl.hashCode() : 0);
         return result;
     }
 }

@@ -30,8 +30,7 @@ public class Search implements ApplicationContextAware
                                      @RequestParam(value = "author", defaultValue = "") String author,
                                      @RequestParam(value = "year", required = false) Integer year,
                                      @RequestParam(value = "isbn", defaultValue = "") String isbn,
-                                     @RequestParam(value = "category", required = false) Book.Category category
-                                     ) {
+                                     @RequestParam(value = "category", required = false) Book.Category category) {
         Controller controller=context.getBean(Controller.class);
         if(year == null)
             year = 0;

@@ -53,7 +53,7 @@ public class RepositoryManager implements DBProxy {
 
     @Override
     public List<Book> searchInLibrary(String searchTerm, String libraryId) {
-        return libraryStorageRepo.search(searchTerm, libraryId);
+        return libraryStorageRepo.search(libraryId, searchTerm );
     }
 
     @Override
@@ -128,18 +128,18 @@ public class RepositoryManager implements DBProxy {
     }
 
     @Override
-    public void addLibraryAdministrator(String libraryID, String name, String email, String password) throws LibraryRepository.LibraryNotFoundException {
+    public void addLibraryAdministrator(String libraryID, String name, String email, String password, String serverUrl) throws LibraryRepository.LibraryNotFoundException {
         Library library = libraryRepo.get(libraryID);
         String id = UUID.randomUUID().toString();
-        LibraryAdmin admin = new LibraryAdmin(id, library, name, email, password);
+        LibraryAdmin admin = new LibraryAdmin(id, library, name, email, password, serverUrl);
         libraryAdminRepo.add(admin);
     }
 
     @Override
-    public void addBookStoreAdministrator(String bookstoreID, String name, String email, String password) throws BookStoreRepository.BookStoreNotFoundException {
+    public void addBookStoreAdministrator(String bookstoreID, String name, String email, String password, String serverUrl) throws BookStoreRepository.BookStoreNotFoundException {
         BookStore bookStore = bookStoreRepo.get(bookstoreID);
         String id = UUID.randomUUID().toString();
-        BookStoreAdmin admin = new BookStoreAdmin(id, bookStore, name, email, password);
+        BookStoreAdmin admin = new BookStoreAdmin(id, bookStore, name, email, password, serverUrl);
         bookStoreAdminRepo.add(admin);
     }
 
@@ -172,7 +172,9 @@ public class RepositoryManager implements DBProxy {
 
     @Override
     public List<LibraryOrderData> getLibraryOrders(String libraryId) {
-        return libraryOrderRepo.getLibraryOrders(libraryId);
+        List<LibraryOrderData> libraryOrders = libraryOrderRepo.getLibraryOrders(libraryId);
+        libraryOrders.forEach(LibraryOrderData::corrrectMonth);
+        return libraryOrders;
     }
 
     @Override
