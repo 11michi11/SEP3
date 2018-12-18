@@ -21,7 +21,7 @@ namespace Controllers.Connections
         {
             books.Add(new Book("Got", "Miska", 2015, "ISBN1", Category.Drama));
             books.Add(new Book("LoR", "Miska", 2015, "ISBN1", Category.Drama));
-            books.Add(new Book("HarryPotter", "Miska", 2015, "ISBN2", Category.ScienceFiction));
+            books.Add(new Book("HarryPotter", "Miska", 2015, "ISBN2", Category.SciFi));
             books.Add(new Book("LoR", "Tolkien", 2015, "ISBN3", Category.Fantasy));
             books.Add(new Book("BookToDelete","Unknown",2222,"ISBN 1-1-1",Category.Children));
         }
