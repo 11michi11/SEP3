@@ -1,9 +1,11 @@
 package controller;
 
 import model.AuthenticationData;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
+@Component
 public class SessionKeyManager {
 	static HashMap<String,AuthenticationData> sessionKeys = new HashMap<>();
 
@@ -14,7 +16,7 @@ public class SessionKeyManager {
 		sessionKeys.put("9440b6fe-b4c4-4dab-b13b-99c37ec173ed",data);
 	}
 
-	public static String generateSK(String institutionId, AuthenticationData.UserType userType) {
+	public String generateSK(String institutionId, AuthenticationData.UserType userType) {
 		String sessionKey= UUID.randomUUID().toString();
 		Calendar expirationDate = GregorianCalendar.getInstance(TimeZone.getDefault());
 		expirationDate.add(Calendar.HOUR,1);
@@ -23,7 +25,7 @@ public class SessionKeyManager {
 		return sessionKey;
 	}
 
-	public static Calendar checkSKFromInstitution(String sessionKey, String institutionId) throws SessionKeyIsNotValidException {
+	public Calendar checkSKFromInstitution(String sessionKey, String institutionId) throws SessionKeyIsNotValidException {
 		AuthenticationData data = sessionKeys.get(sessionKey);
 		if (data == null) {
 			throw new SessionKeyIsNotValidException("The session key is not valid");
@@ -33,7 +35,7 @@ public class SessionKeyManager {
 		throw new SessionKeyIsNotValidException("The session key is not valid");
 	}
 
-	public static void checkSessionKey(String sessionKey) throws SessionKeyIsNotValidException {
+	public void checkSessionKey(String sessionKey) throws SessionKeyIsNotValidException {
 		AuthenticationData data = sessionKeys.get(sessionKey);
 		if (data == null) {
 			throw new SessionKeyIsNotValidException("The session key is not valid");
@@ -41,6 +43,10 @@ public class SessionKeyManager {
 
 		if (!data.authenticate())
 			throw new SessionKeyIsNotValidException("The session key is not valid");
+	}
+
+	public static void deleteFromCache(String sessionKey) {
+		sessionKeys.remove(sessionKey);
 	}
 
 	public static class SessionKeyIsNotValidException extends RuntimeException {

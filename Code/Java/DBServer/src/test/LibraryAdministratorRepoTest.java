@@ -20,9 +20,9 @@ public class LibraryAdministratorRepoTest {
 
 
     @Test
-    void AddDeleteTest(){
+    void addDeleteTest(){
         Library lib = new Library("ce78ef57-77ec-4bb7-82a2-1a78d3789aef");
-        LibraryAdmin admin = new LibraryAdmin("adminID", lib, "name", "email", "password");
+        LibraryAdmin admin = new LibraryAdmin("adminID", lib, "name", "email", "password", "serverUrl");
 
         libraryAdminRepo.add(admin);
 
